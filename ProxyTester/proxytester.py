@@ -8,7 +8,7 @@ from subprocess import Popen, PIPE
 
 #########################################################################                                           
 #                                                                       #
-# Copyright (C) 2012 GNUton                                             #
+# Copyright (C) 2013 GNUton                                             #
 # Copyright (C) 2010 LeXeL                                              #
 #                                                                       #
 # This program is free software: you can redistribute it and/or modify  #
@@ -142,7 +142,7 @@ if __name__ == '__main__':
         print "%s proxies tested" % str(mat)
         if proxyList == "network":
             interval = 120
-            print "Next check in %di secs" % interval 
+            print "Next check in %d secs" % interval 
             time.sleep(interval)
         else:
             sys.exit(0)
