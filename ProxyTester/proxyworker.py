@@ -1,8 +1,14 @@
 #!/usr/bin/python
-import re, random, time, sys, urllib2
+import re
+import random
+import time
+import sys
+import urllib2
 from subprocess import Popen, PIPE
+
 #########################################################################                                           
 #                                                                       #
+# Copyright (C) 2012 GNUton                                             #
 # Copyright (C) 2010 LeXeL                                              #
 #                                                                       #
 # This program is free software: you can redistribute it and/or modify  #
@@ -20,9 +26,9 @@ from subprocess import Popen, PIPE
 #########################################################################
 
 class Proxyworker(object):
+    supportedsites=["http://www.ip-adress.com/proxy_list/"]
     def __init__(self, proxyList=None):
         self.ip_port=[]
-        suportedsites=["http://www.ip-adress.com/proxy_list/"]
         self.useragents	= ['Mozilla/4.0 (compatible; MSIE 5.0; SunOS 5.10 sun4u; X11)',
 					'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Avant Browser;',
 					'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.0)',
@@ -41,10 +47,12 @@ class Proxyworker(object):
         elif sys.platform == 'win32' or sys.platform == 'dos' or sys.platform[0:5] == 'ms-dos':
             self.lin_win = False
         self.builder()
-        if proxyList:
+
+        if proxyList != "network":
             pass
         else:
-            for i in suportedsites:
+            pass
+            for i in self.supportedsites:
                 self.scraper(i)
         
     def builder(self):
@@ -114,13 +122,27 @@ class Proxyworker(object):
                 sys.exit(1)
         
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+       print "***  Welcome to proxy scanner  ***  "
+       print "This script checks the quality of proxies in a file:"
+       print " %s proxies.txt" % sys.argv[0]
+       print "or the ones available at %s" % str(Proxyworker.supportedsites)
+       print " %s network" % sys.argv[0]
+       sys.exit(1)
+
+    proxyList = sys.argv[1]
     global donotrepeat
     donotrepeat=[]
     value1 = len(donotrepeat)
     while True:
-        t = Proxyworker()
+        t = Proxyworker(proxyList)
         value2 = len(donotrepeat)
         mat = value2 - value1
         value1 = len(donotrepeat)
-        print "\nA total of "+str(mat)+" new proxy's where tested\n"
-        time.sleep(120)
+        print "%s proxies tested" % str(mat)
+        if proxyList == "network":
+            interval = 120
+            print "Next check in %di secs" % interval 
+            time.sleep(interval)
+        else:
+            sys.exit(0)
