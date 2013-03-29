@@ -65,7 +65,7 @@ class Proxyworker(object):
         """ Download proxy IPs from the specified URL"""
         print "Getting URL list from %s" % url        
     	source = urllib2.urlopen(url).read()
-    	founds = re.findall("\d+.\d+.\d+.\d+:[80]+",source)
+    	founds = re.findall("\d+.\d+.\d+.\d+:\d+",source)
     	self.order(founds)
     
     def order(self,l):
@@ -118,8 +118,8 @@ class Proxyworker(object):
                     self.prnt(host,port,latency[0])
 
             except KeyboardInterrupt:
-                print "!Quiting!"
-                sys.exit(1)
+                print "Bye Bye"
+                sys.exit(3)
         
 if __name__ == '__main__':
     if len(sys.argv) < 2:
