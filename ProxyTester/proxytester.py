@@ -4,6 +4,10 @@ import random
 import time
 import sys
 import urllib2
+import json
+import httplib
+import socket
+from  datetime import datetime
 from subprocess import Popen, PIPE
 
 #########################################################################                                           
@@ -49,14 +53,14 @@ class Proxyworker(object):
         self.builder()
 
         if proxyList != "network":
-            pass
+            pass #TODO Not implemented yet
         else:
             pass
             for i in self.supportedsites:
                 self.scraper(i)
         
     def builder(self):
-        """ Set a random User-Agent as default HTTP header"""
+        """Set a random User-Agent"""
         opener = urllib2.build_opener(urllib2.HTTPHandler())
         opener.addheaders = [('User-agent',random.choice(self.useragents))]
         urllib2.install_opener(opener)
@@ -76,51 +80,34 @@ class Proxyworker(object):
             global donotrepeat#los revisa que no se ayan escaneado
             if i not in donotrepeat:
                 donotrepeat.append(i)
-                i = i.split(':')
                 
-                self.ping(i[0],i[1])
+                latency, isAnonimous = self.tester(i)
+                if not latency:
+                    continue
+                
+                print "Proxy=%s, Latency=%f s, Anonimous=%s" %(i, latency, isAnonimous) 
+    
+    def tester(self,proxyStr):
+        """ Returns latency and type of proxy"""
+        t = datetime.now()
 
-    def prnt(self,host,port,latency):
-        """Prints out the report"""
+        proxy_support = urllib2.ProxyHandler({"http" : proxyStr})
+        opener = urllib2.build_opener(proxy_support)
+        urllib2.install_opener(opener)
 
-        if int(latency) < 199:
-            quality = "GOOD"
-        elif int(latency) < 499:
-            quality = "SLOW"
-        else:
-            quality = "BAD"
+        try:
+            reply = urllib2.urlopen("http://www.gnuton.org/proxychecker/index.php", timeout = 10).read()
+        except (urllib2.URLError, httplib.BadStatusLine, socket.timeout):
+            print "Proxy= %s - Unable to read data. Host down or too slow?" % (proxyStr)
+            return None, None
 
-        print "%s:%s, Latency %s (%s)" % (host,port,latency, quality)
+        j = json.loads(reply)
+        host = proxyStr.split(":")[0]
+        isAnonymous = host == j["ip"] and j["proxy_detected"] == 0
+        latency = (datetime.now() - t).microseconds / 1e6
+        #print "IP SHOWN" + j["ip"] + "PROXY DETECTED" +  str(j["proxy_detected"]) 
+        return latency, isAnonymous 
 
-    def ping(self,host,port):
-        ####PARTE DE WINDOWS####
-        if self.lin_win == False:
-            try:
-                p = Popen('ping -n 1 ' + str(host), stdout=PIPE, shell = True)
-                m = re.search('Average = (.*)ms', p.stdout.read())
-                if m:
-                    latency = m.group(1)
-                    self.prnt(host,port,latency)
-            except KeyboardInterrupt:
-                print "!Quiting!"
-                sys.exit(1)
-
-        ####PARTE DE LINUX####    
-        elif self.lin_win == True:
-            try:
-                process = Popen('ping -c 1 ' + str(host), stdout=PIPE, stderr=PIPE, shell = True)
-                value = process.communicate()[0]
-                pattern = re.compile(r'[\d|\.]+/([\d|\.]+)/[\d|\.]+')
-                new_value = pattern.findall(value)
-                m = ''.join(new_value)
-                if m:
-                    latency = m.split('.')
-                    self.prnt(host,port,latency[0])
-
-            except KeyboardInterrupt:
-                print "Bye Bye"
-                sys.exit(3)
-        
 if __name__ == '__main__':
     if len(sys.argv) < 2:
        print "***  Welcome to proxy scanner  ***  "
