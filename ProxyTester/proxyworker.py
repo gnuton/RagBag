@@ -20,16 +20,14 @@ from subprocess import Popen, PIPE
 #########################################################################
 
 class Proxyworker(object):
-    def __init__(self):
+    def __init__(self, proxyList=None):
         self.ip_port=[]
         suportedsites=["http://www.ip-adress.com/proxy_list/"]
-        self.useragents 	= ['Mozilla/4.0 (compatible; MSIE 5.0; SunOS 5.10 sun4u; X11)',
-					'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.2pre) Gecko/20100207 Ubuntu/9.04 (jaunty) Namoroka/3.6.2pre',
+        self.useragents	= ['Mozilla/4.0 (compatible; MSIE 5.0; SunOS 5.10 sun4u; X11)',
 					'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Avant Browser;',
 					'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.0)',
 				        'Mozilla/4.0 (compatible; MSIE 7.0b; Windows NT 5.1)',
 				        'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.6)',
-				        'Microsoft Internet Explorer/4.0b1 (Windows 95)',
 				        'Opera/8.00 (Windows NT 5.1; U; en)',
 					'amaya/9.51 libwww/5.4.0',
 					'Mozilla/4.0 (compatible; MSIE 5.0; AOL 4.0; Windows 95; c_athome)',
@@ -43,18 +41,23 @@ class Proxyworker(object):
         elif sys.platform == 'win32' or sys.platform == 'dos' or sys.platform[0:5] == 'ms-dos':
             self.lin_win = False
         self.builder()
-        for i in suportedsites:
-            self.scraper(i)
+        if proxyList:
+            pass
+        else:
+            for i in suportedsites:
+                self.scraper(i)
         
-    def builder(self):#Crea un opener con un random User-Agent
+    def builder(self):
+        """ Set a random User-Agent as default HTTP header"""
         opener = urllib2.build_opener(urllib2.HTTPHandler())
         opener.addheaders = [('User-agent',random.choice(self.useragents))]
         urllib2.install_opener(opener)
 
     def scraper(self,url):
+        """ Download proxy IPs from the specified URL"""
         print "Getting URL list from %s" % url        
     	source = urllib2.urlopen(url).read()
-    	founds = re.findall("\d+.\d+.\d+.\d+:[80]+",source)#saca los proxys del URL
+    	founds = re.findall("\d+.\d+.\d+.\d+:[80]+",source)
     	self.order(founds)
     
     def order(self,l):
@@ -64,19 +67,22 @@ class Proxyworker(object):
         for i in self.ip_port:
             global donotrepeat#los revisa que no se ayan escaneado
             if i not in donotrepeat:
-                
                 donotrepeat.append(i)
                 i = i.split(':')
                 
                 self.ping(i[0],i[1])
 
-    def prnt(self,host,port,latency):#Imprime los proxy de acuerdo a su latency
-            if int(latency) < 199:
-                print "Proxy: %s:%s <----- Good Latency %s" %(host,port,str(latency))
-            elif int(latency) > 200 and int(latency) < 499:
-                print "Proxy: %s:%s <----- Slow Latency %s" %(host,port,str(latency))
-            elif int(latency) > 500:
-                print "Proxy: %s:%s <----- Bad Latency %s" %(host,port,str(latency))      
+    def prnt(self,host,port,latency):
+        """Prints out the report"""
+
+        if int(latency) < 199:
+            quality = "GOOD"
+        elif int(latency) < 499:
+            quality = "SLOW"
+        else:
+            quality = "BAD"
+
+        print "%s:%s, Latency %s (%s)" % (host,port,latency, quality)
 
     def ping(self,host,port):
         ####PARTE DE WINDOWS####
@@ -90,6 +96,7 @@ class Proxyworker(object):
             except KeyboardInterrupt:
                 print "!Quiting!"
                 sys.exit(1)
+
         ####PARTE DE LINUX####    
         elif self.lin_win == True:
             try:
