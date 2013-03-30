@@ -31,63 +31,55 @@ from subprocess import Popen, PIPE
 
 class Proxyworker(object):
     supportedsites=["http://www.ip-adress.com/proxy_list/"]
-    def __init__(self, proxyList=None):
-        self.ip_port=[]
-        self.useragents	= ['Mozilla/4.0 (compatible; MSIE 5.0; SunOS 5.10 sun4u; X11)',
-					'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Avant Browser;',
-					'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.0)',
-				        'Mozilla/4.0 (compatible; MSIE 7.0b; Windows NT 5.1)',
-				        'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.6)',
-				        'Opera/8.00 (Windows NT 5.1; U; en)',
-					'amaya/9.51 libwww/5.4.0',
-					'Mozilla/4.0 (compatible; MSIE 5.0; AOL 4.0; Windows 95; c_athome)',
-					'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)',
-					'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.5 (like Gecko) (Kubuntu)',
-					'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; ZoomSpider.net bot; .NET CLR 1.1.4322)',
-					'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; QihooBot 1.0 qihoobot@qihoo.net)',
-					'Mozilla/4.0 (compatible; MSIE 5.0; Windows ME) Opera 5.11 [en]'] 
-        if sys.platform in ['linux-i386','linux2','darwin']:
-            self.lin_win = True
-        elif sys.platform == 'win32' or sys.platform == 'dos' or sys.platform[0:5] == 'ms-dos':
-            self.lin_win = False
-        self.builder()
 
+    def __init__(self, checkedProxies):
+        self.__useragents = ["Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0",
+                             "Mozilla/5.0 (Windows NT 6.1; rv:5.0) Gecko/20100101 Firefox/5.02",
+                             "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0",
+                             "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)",
+                             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:19.0) Gecko/20100101 Firefox/19.0",
+                             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.11 (KHTML, like Gecko)"]
+        self.__checkedProxies = checkedProxies
+        self.__setDefaultRandomUserAgent()
+
+    def start(self, proxyList = "network"):
+        proxies = set()
+        
+        #Get list of proxies to scan
         if proxyList != "network":
             pass #TODO Not implemented yet
         else:
-            pass
             for i in self.supportedsites:
-                self.scraper(i)
-        
-    def builder(self):
-        """Set a random User-Agent"""
+                proxies = set.union(proxies, self.__scraper(i))
+
+        #Remove already scanned proxies from the list
+        proxies -= self.__checkedProxies
+
+        #Scan proxies
+        self.__scan(proxies)
+  
+    def __setDefaultRandomUserAgent(self):
         opener = urllib2.build_opener(urllib2.HTTPHandler())
-        opener.addheaders = [('User-agent',random.choice(self.useragents))]
+        opener.addheaders = [('User-agent',random.choice(self.__useragents))]
         urllib2.install_opener(opener)
 
-    def scraper(self,url):
+    def __scraper(self, url):
         """ Download proxy IPs from the specified URL"""
         print "Getting URL list from %s" % url        
     	source = urllib2.urlopen(url).read()
-    	founds = re.findall("\d+.\d+.\d+.\d+:\d+",source)
-    	self.order(founds)
+    	founds = re.findall("\d+.\d+.\d+.\d+:\d+", source)
+        return set(founds)
     
-    def order(self,l):
-        for i in l:
-            if i not in self.ip_port:
-                self.ip_port.append(i)#Los guarda en una lista sin repetirse
-        for i in self.ip_port:
-            global donotrepeat#los revisa que no se ayan escaneado
-            if i not in donotrepeat:
-                donotrepeat.append(i)
-                
-                latency, isAnonimous = self.tester(i)
-                if not latency:
-                    continue
-                
-                print "Proxy=%s, Latency=%f s, Anonimous=%s" %(i, latency, isAnonimous) 
+    def __scan(self,proxies):
+        print "Scannig %d proxies" % len(proxies)
+        for proxy in proxies:
+            self.__checkedProxies.add(proxy)
+            latency, isAnonimous = self.__tester(proxy)
+            if not latency:
+                continue    
+            print "Proxy=%s, Latency=%f s, Anonimous=%s" %(proxy, latency, isAnonimous) 
     
-    def tester(self,proxyStr):
+    def __tester(self, proxyStr):
         """ Returns latency and type of proxy"""
         t = datetime.now()
 
@@ -97,7 +89,7 @@ class Proxyworker(object):
 
         try:
             reply = urllib2.urlopen("http://www.gnuton.org/proxychecker/index.php", timeout = 10).read()
-        except (urllib2.URLError, httplib.BadStatusLine, socket.timeout):
+        except (urllib2.URLError, httplib.BadStatusLine, socket.timeout, socket.error):
             print "Proxy= %s - Unable to read data. Host down or too slow?" % (proxyStr)
             return None, None
 
@@ -118,18 +110,18 @@ if __name__ == '__main__':
        sys.exit(1)
 
     proxyList = sys.argv[1]
-    global donotrepeat
-    donotrepeat=[]
-    value1 = len(donotrepeat)
-    while True:
-        t = Proxyworker(proxyList)
-        value2 = len(donotrepeat)
-        mat = value2 - value1
-        value1 = len(donotrepeat)
-        print "%s proxies tested" % str(mat)
-        if proxyList == "network":
-            interval = 120
-            print "Next check in %d secs" % interval 
-            time.sleep(interval)
-        else:
-            sys.exit(0)
+    checkedProxies = set() 
+
+    try: 
+        while True:
+            t = Proxyworker(checkedProxies)
+            t.start(proxyList)
+
+            if proxyList == "network":
+                interval = 120
+                print "Next check in %d secs" % interval 
+                time.sleep(interval)
+            else:
+                sys.exit(0)
+    except KeyboardInterrupt:
+         print "Process terminated. %s proxies checked" % len(checkedProxies)
