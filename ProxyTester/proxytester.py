@@ -49,7 +49,15 @@ class Proxyworker(object):
         
         #Get list of proxies to scan
         if proxyList != "network":
-            pass #TODO Not implemented yet
+            try:
+                f = open(proxyList, 'r')
+            except IOError as e:
+                print e
+                sys.exit(1)
+
+            buffer = "".join(f.readlines())
+            proxies = re.findall("\d+.\d+.\d+.\d+:\d+", buffer)
+            proxies = set(proxies)
         else:
             for i in self.supportedsites:
                 proxies = set.union(proxies, self.__scraper(i))
@@ -75,8 +83,8 @@ class Proxyworker(object):
         except:
             return set()
 
-    	founds = re.findall("\d+.\d+.\d+.\d+:\d+", source)
-        return set(founds)
+    	proxies = re.findall("\d+.\d+.\d+.\d+:\d+", source)
+        return set(proxies)
     
     def __scan(self,proxies):
         print "Scannig %d proxies" % len(proxies)

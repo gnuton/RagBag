@@ -1,0 +1,7 @@
+proxychecker is able to extract proxies from files
+even in case hosts and ports are mixed with other text.
+
+casasadpasd
+asad85.64.202.69:29991
+129.82.12.188:3128asdsd
+128.42.142.41:3124
