@@ -58,6 +58,7 @@ class Proxyworker(object):
             buffer = "".join(f.readlines())
             proxies = re.findall("\d+.\d+.\d+.\d+:\d+", buffer)
             proxies = set(proxies)
+            f.close()
         else:
             for i in self.supportedsites:
                 proxies = set.union(proxies, self.__scraper(i))
