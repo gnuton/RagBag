@@ -1,5 +1,14 @@
 <?
-  # Check for proxy
+  # This PHP script analises HTTP headers trying to understand if the client is hidden behind a proxy server
+  # For transparent and anonymous proxy, proxy_detected value is 1.
+  # For highly anonymous or elite proxies, proxy_detected is 0.
+  #
+  # Proxy types:
+  #  Transparent - if define any of the vars below or if the client IP
+  #  Anonymous - allowed vars HTTP_VIA and HTTP_FORWARDED_FOR if they do not contain client IP
+  #  Elite - it does not define any of these vars 
+
+  # Check for Elite proxies
   $TEST = $_SERVER['HTTP_VIA']
   .$_SERVER['HTTP_X_FORWARDED_FOR']
   .$_SERVER['HTTP_FORWARDED_FOR']
