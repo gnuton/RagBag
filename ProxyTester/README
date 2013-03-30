@@ -1,0 +1,27 @@
+__________                             ___________              __                
+\______   \_______  _______  ______.__.\__    ___/___   _______/  |_  ___________ 
+ |     ___/\_  __ \/  _ \  \/  <   |  |  |    |_/ __ \ /  ___/\   __\/ __ \_  __ \
+ |    |     |  | \(  <_> >    < \___  |  |    |\  ___/ \___ \  |  | \  ___/|  | \/
+ |____|     |__|   \____/__/\_ \/ ____|  |____| \___  >____  > |__|  \___  >__|   
+                              \/\/                  \/     \/            \/      
+ *** I think I'm getting used to this kind of lame ascii writings :P ***
+
+ ProxyTester is a python script which helps you to check the validity of
+ on-line and off-line proxy lists.
+
+ The script performs the following checks:
+  1. Connection - downloads a JSON file from gnuton.org
+  2. Latency - mesures time spent to get a JSON file
+  3. Anonimity - performed by the PHP script on gnuton.org
+
+ If the script is launched in "network" mode with the command ./proxytester network,
+ it gets a proxy list from the net and checks every proxy there. 
+ At the end it waits for 120 seconds before re-starting the process over.
+
+ The PHP script which helps ProxyChecker to test the proxy type is in this repos and 
+ it can be tested at the following address http://www.gnuton.org/proxychecker/index.php
+ If you have any hint about how to increase the proxy anonymity analysis, 
+ drop me a tweet or mail!
+ 
+ Enjoy this code and follow me on Tweeter (@GNUton).
+
