@@ -30,7 +30,9 @@ from subprocess import Popen, PIPE
 #########################################################################
 
 class Proxyworker(object):
-    supportedsites=["http://www.ip-adress.com/proxy_list/"]
+    supportedsites=[ #"http://www.tubeincreaser.com/proxylist.txt", 
+                    #"http://multiproxy.org/txt_all/proxy.txt",
+                    "http://www.ip-adress.com/proxy_list/"]
 
     def __init__(self, checkedProxies):
         self.__useragents = ["Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0",
@@ -67,8 +69,12 @@ class Proxyworker(object):
 
     def __scraper(self, url):
         """ Download proxy IPs from the specified URL"""
-        print "Getting URL list from %s" % url        
-    	source = urllib2.urlopen(url).read()
+        print "Getting URL list from %s" % url
+        try:        
+    	    source = urllib2.urlopen(url).read()
+        except:
+            return set()
+
     	founds = re.findall("\d+.\d+.\d+.\d+:\d+", source)
         return set(founds)
     
