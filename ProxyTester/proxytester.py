@@ -60,7 +60,9 @@ class Proxyworker(object):
   
     def __setDefaultRandomUserAgent(self):
         opener = urllib2.build_opener(urllib2.HTTPHandler())
-        opener.addheaders = [('User-agent',random.choice(self.__useragents))]
+        userAgent = random.choice(self.__useragents)
+        print "Using '%s' as user agent" % userAgent
+        opener.addheaders = [('User-agent', userAgent)]
         urllib2.install_opener(opener)
 
     def __scraper(self, url):
