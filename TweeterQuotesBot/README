@@ -1,10 +1,11 @@
 Simple Twitter BOT
 
 The following script gets quotes under 140 chars from the Italian WikiQuotes RSS feed and tweets them.
-It actually tweet other text from any other RSS feed resource on the Internet.
+It can actually tweet any text from any other RSS feed resource on the Internet.
 
-It requires python-feedparser lib to run and Tweeter tokens
+It requires python-feedparser lib and a valid Tweeter's auth tokens to work.
 
+For question, feel free to contact me at gnuton@gnuton.org
 
 Cheers,
-Antonio
+GNUton
