@@ -1,4 +1,9 @@
-Simple Twitter BOT
+___________                      __              __________        __   
+\__    ___/_  _  __ ____   _____/  |_  __________\______   \ _____/  |_ 
+  |    |  \ \/ \/ // __ \_/ __ \   __\/ __ \_  __ \    |  _//  _ \   __\
+  |    |   \     /\  ___/\  ___/|  | \  ___/|  | \/    |   (  <_> )  |  
+  |____|    \/\_/  \___  >\___  >__|  \___  >__|  |______  /\____/|__|  
+                       \/     \/          \/             \/             
 
 The following script gets quotes under 140 chars from the Italian WikiQuotes RSS feed and tweets them.
 It can actually tweet any text from any other RSS feed resource on the Internet.
@@ -7,5 +12,6 @@ It requires python-feedparser lib and a valid Tweeter's auth tokens to work.
 
 For question, feel free to contact me at gnuton@gnuton.org
 
-Cheers,
-GNUton
+Meanwhile you are reading this README file it may still running on my little raspberry pi...  you
+can have a loook at its output at https://twitter.com/QuoteOfTheDayIT
+
