@@ -99,7 +99,8 @@ class Proxyworker(object):
     def __geolocation(self,ip):
         url = 'http://api.hostip.info/get_html.php?ip=%s&position=true' % ip
         response = urllib2.urlopen(url).read()
-        return response.split('\n')[0]
+        a = response.split('\n')
+        return a[0] + ", " + a[1]
   
     def __tester(self, proxyStr):
         """ Returns latency and type of proxy"""
