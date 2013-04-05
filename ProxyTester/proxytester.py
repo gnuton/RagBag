@@ -94,8 +94,13 @@ class Proxyworker(object):
             latency, isAnonimous = self.__tester(proxy)
             if not latency:
                 continue    
-            print "Proxy=%s, Latency=%f s, Anonimous=%s" %(proxy, latency, isAnonimous) 
-    
+            print "Proxy=%s, Latency=%f s, Anonimous=%s, %s" %(proxy, latency, isAnonimous, self.__geolocation(proxy)) 
+
+    def __geolocation(self,ip):
+        url = 'http://api.hostip.info/get_html.php?ip=%s&position=true' % ip
+        response = urllib2.urlopen(url).read()
+        return response.split('\n')[0]
+  
     def __tester(self, proxyStr):
         """ Returns latency and type of proxy"""
         t = datetime.now()
@@ -116,7 +121,7 @@ class Proxyworker(object):
         latency = (datetime.now() - t).microseconds / 1e6
         #print "IP SHOWN" + j["ip"] + "PROXY DETECTED" +  str(j["proxy_detected"]) 
         return latency, isAnonymous 
-
+  
 if __name__ == '__main__':
     if len(sys.argv) < 2:
        print "***  Welcome to proxy scanner  ***  "
