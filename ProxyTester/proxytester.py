@@ -98,7 +98,10 @@ class Proxyworker(object):
 
     def __geolocation(self,ip):
         url = 'http://api.hostip.info/get_html.php?ip=%s&position=true' % ip
-        response = urllib2.urlopen(url).read()
+        try:
+            response = urllib2.urlopen(url).read()
+        except:
+            return ''
         a = response.split('\n')
         return a[0] + ", " + a[1]
   
