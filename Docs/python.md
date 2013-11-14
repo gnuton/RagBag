@@ -157,6 +157,12 @@ if __name__ == "__main__":
         print bar.get_x()
 ````
 
+## Singleton pattern ##
+A singleton class is a class which has only one instance in the application scope
+````
+TODO
+````
 
 # FAQ #
-1. What's the best IDE for programming in python? Get (PyCharm)[http://www.jetbrains.com/pycharm/] 
+1. What's the best IDE for programming in python? Get [PyCharm](http://www.jetbrains.com/pycharm/)
+2. 
