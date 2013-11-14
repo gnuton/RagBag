@@ -80,7 +80,7 @@ What's a decorator in a nutshell? It's a fuction which returns another function.
 def my_decorator(old_function):
         # function defined which will be returned by the decorator
         def new_function(*args, **kwrds):
-                old_function(*args, **kwrds)
+                old_function(*args, **kwrds) # args is __main__.foo object and kwrds is {} in this case
                 
         return new_function
 
