@@ -168,7 +168,8 @@ TODO
 ### Builder pattern ###
 Python is not Java. Python allows you to have default value for function arguments
 So you may want to write your code in this way:
-````class foo:
+````
+class foo:
      defaultVar1 = "a"
      defaultVar2 = "b"
      def __init__(self, **args):
