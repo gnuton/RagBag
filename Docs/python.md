@@ -3,8 +3,8 @@
 
 # INTRO #
 Python allows people to write programs very quickly. The aim of this doc is 
-let you learn python as quick as possible. Few words, small example which
-allow you to graps basic concepts that you can develop further with some 
+let you learn python as quick as possible. Few words, small examples which
+allow you to grasp basic concepts that you can develop further with some 
 real programming.
 
 
