@@ -15,11 +15,9 @@
 # Advanced topics #
 
 ## Properties ##
+The following snippets shows how to use properties in Python
 
 ````
-# Properties
-
-
 class foo(object):
         @property
         def x(self):
@@ -32,6 +30,32 @@ class foo(object):
         @x.setter
         def x(self, value):
                 self._x = value
+
+        def getX(self):
+                return self._x
+
+if __name__ == "__main__":
+        bar = foo()
+        print bar.x
+        bar.x = 2
+        print bar.x
+        print bar.getX()
+````
+
+We can define properties without using decorators too, the code in this case would be...
+````
+class foo(object):
+
+        def get_x(self):
+                try:
+                        return self._x
+                except AttributeError:
+                        return None
+
+        def set_x(self, value):
+                self._x = value
+
+        x = property(get_x, set_x)
 
         def getX(self):
                 return self._x
