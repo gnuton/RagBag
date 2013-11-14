@@ -74,3 +74,22 @@ if __name__ == "__main__":
 Mostly used by some libraries as Flask or by "properties" as seen in the previous paragraph, decorators are usually blacboxes for most of newbie pythonists
 What's a decorator in a nutshell? It's a fuction which returns another function.
 
+
+````
+def my_decorator(old_function):
+        def new_function(*args, **kwrds):
+                old_function(*args, **kwrds)
+        return new_function
+
+class foo(object):
+
+        @my_decorator
+        def get_x(self):
+                try:
+                        return self._x
+                except AttributeError:
+                        return None
+if __name__ == "__main__":
+        bar = foo()
+        print bar.get_x()
+````
