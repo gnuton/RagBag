@@ -8,10 +8,13 @@
       MM           VVV      MM     MM    MM YA.   ,A9 MM    MM  
     .JMML.         ,V       `Mbmo.JMML  JMML.`Ybmd9'.JMML  JMML.
                 ,V                                            
-             OOb"     For me! :P                                             
+             OOb"                                             
 
 # INTRO #
-On this document I'm going to collect short snippets about Python.
+Python allows people to write programs very quickly. The aim of this doc is 
+let you learn python as quick as possible. Few words, small example which
+allow you to graps basic concepts that you can develop further with some 
+real programming.
 
 
 # Intermediate topics #
@@ -69,6 +72,24 @@ if __name__ == "__main__":
         print bar.x
         print bar.getX()
 ````
+
+## *args or muliple function arguments##
+````
+def foo1(first, second):
+        print first
+        print second
+
+def foo2(*args_as_list):
+        print args_as_list
+
+def foo3(**args_as_dict):
+        print args_as_dict
+
+foo1(1,2)
+foo2(1,2)
+foo3(first=1, second=2)
+````
+# Advanced topics #
 
 ## Decorators ##
 Mostly used by some libraries as Flask or by "properties" as seen in the previous paragraph, decorators are usually blacboxes for most of newbie pythonists
