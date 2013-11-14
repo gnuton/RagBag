@@ -9,6 +9,46 @@ real programming.
 
 
 # Basic topics #
+
+## static class attributes ##
+variables defined in the class definition are defined as static
+````
+class foo:
+        a=3
+        def __init__(self):
+                print "INIT"
+
+
+if __name__ == "__main__":
+        foo.sf()
+
+        print foo.a  # prints out 3
+        foo.a = 5
+        print foo.a  # prints out 5
+
+        bar = foo()
+        print bar.a  # prints out 5
+
+````   
+## static methods ##
+static class methods must be marked by @staticmethod (that's a decorator, see advanced topics for more info)
+If you do not define it you will get an error like this: 
+"TypeError: unbound method sf() must be called with foo instance as first argument (got nothing instead)"
+````
+class foo:
+        def __init__(self):
+                print "INIT"
+        
+        @staticmethod
+        def sf():
+                print "STATIC FUNCTION"
+
+
+if __name__ == "__main__":
+        foo.sf()
+````
+
+
 # Intermediate topics #
 
 ## Generators ##
