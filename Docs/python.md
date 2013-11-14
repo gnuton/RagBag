@@ -7,7 +7,6 @@ let you learn python as quick as possible. Few words, small examples which
 allow you to grasp basic concepts that you can develop further with some 
 real programming.
 
-
 # Basic topics #
 
 ## static class attributes ##
@@ -157,3 +156,7 @@ if __name__ == "__main__":
         bar = foo()
         print bar.get_x()
 ````
+
+
+# FAQ #
+1. What's the best IDE for programming in python? Get (PyCharm)[http://www.jetbrains.com/pycharm/] 
