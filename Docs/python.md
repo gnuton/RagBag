@@ -133,7 +133,7 @@ foo3(first=1, second=2)
 ## Decorators ##
 Mostly used by some libraries as Flask or by "properties" as seen in the previous paragraph, decorators are usually blacboxes for most of newbie pythonists
 What's a decorator in a nutshell? It's a fuction which returns another function.
-You can find a lots of very usefull decorators in the [Python decorator library](https://wiki.python.org/moin/PythonDecoratorLibrary)
+You can find a lot of very useful decorators in the [Python decorator library](https://wiki.python.org/moin/PythonDecoratorLibrary)
 
 ````
 # This is the fuction which defines my decorator
