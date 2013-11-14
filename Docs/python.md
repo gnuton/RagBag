@@ -157,6 +157,8 @@ if __name__ == "__main__":
         bar = foo()
         print bar.get_x()
 ````
+## Descriptors ##
+[Documentation](http://docs.python.org/2/howto/descriptor.html)
 
 ## Design patterns ##
 ### Singleton class ###
