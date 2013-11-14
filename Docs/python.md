@@ -75,7 +75,8 @@ if __name__ == "__main__":
 
 ## args, * and **: ways of passing args to functions##
 Python allows programmers to pass arguments to functions in three ways.
-The following "foo" functions these three options
+foo functions show all these three options to you
+
 ````
 def foo1(first, second):
         print first
