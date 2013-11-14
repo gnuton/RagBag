@@ -188,7 +188,9 @@ if __name__ == "__main__":
 ##  Concurrency programming ##
 
 ### Multiprocessing module ###
-Multiprocessing is maybe the easiest way to run a function on some data. Data
+If you want to run in paralled a function on a list of data, this may be the code you are looking for.
+Please note that Python actually spawn new processes and doesn't not really use threads here.
+
 ````
 def  runFunctionsInParallel(listOf_FuncAndArgLists):
     """
