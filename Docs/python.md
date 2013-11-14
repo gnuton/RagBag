@@ -152,15 +152,36 @@ class foo(object):
                         return self._x
                 except AttributeError:
                         return None
+                        
 if __name__ == "__main__":
         bar = foo()
         print bar.get_x()
 ````
 
-## Singleton pattern ##
+## Design patterns ##
+### Singleton class ###
 A singleton class is a class which has only one instance in the application scope
 ````
 TODO
+````
+
+### Builder pattern ###
+Python is not Java. Python allows you to have default value for function arguments
+So you may want to write your code in this way:
+````class foo:
+     defaultVar1 = "a"
+     defaultVar2 = "b"
+     def __init__(self, **args):
+          self.var1 = args.get("var1", self.defaultVar1)
+          self.var2 = args.get("var2", self.defaultVar2)
+          print "INIT var1=%s var2=%s" % (self.var1, self.var2)
+
+if __name__ == "__main__":
+     bar = foo(var1="c")                # INIT var1=c var2=b
+     bar = foo(var2="d")                # INIT var1=a var2=d
+     bar = foo(var2="d", var1="c")      # INIT var1=c var2=d
+     bar = foo()                        # INIT var1=a var2=b
+
 ````
 
 # FAQ #
