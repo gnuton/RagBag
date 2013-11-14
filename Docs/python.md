@@ -1,14 +1,5 @@
-                                                       
-                                 ,,                           
-    `7MM"""Mq.              mm   `7MM                           
-      MM   `MM.             MM     MM                           
-      MM   ,M9 `7M'   `MF'mmMMmm   MMpMMMb.  ,pW"Wq.`7MMpMMMb.  
-      MMmmdM9    VA   ,V    MM     MM    MM 6W'   `Wb MM    MM  
-      MM          VA ,V     MM     MM    MM 8M     M8 MM    MM  
-      MM           VVV      MM     MM    MM YA.   ,A9 MM    MM  
-    .JMML.         ,V       `Mbmo.JMML  JMML.`Ybmd9'.JMML  JMML.
-                ,V                                            
-             OOb"     for everybody!                                         
+     
+![logo](http://www.python.org/community/logos/python-logo-master-v3-TM.png)
 
 # INTRO #
 Python allows people to write programs very quickly. The aim of this doc is 
@@ -17,7 +8,11 @@ allow you to graps basic concepts that you can develop further with some
 real programming.
 
 
+# Basic topics #
 # Intermediate topics #
+
+## Generators ##
+TODO
 
 ## Properties ##
 The following snippets shows how to use properties in Python
