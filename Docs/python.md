@@ -8,11 +8,13 @@
       MM           VVV      MM     MM    MM YA.   ,A9 MM    MM  
     .JMML.         ,V       `Mbmo.JMML  JMML.`Ybmd9'.JMML  JMML.
                 ,V                                            
-             OOb"     Docs                                             
+             OOb"     For me! :P                                             
 
 # INTRO #
+On this document I'm going to collect short snippets about Python.
 
-# Advanced topics #
+
+# Intermediate topics #
 
 ## Properties ##
 The following snippets shows how to use properties in Python
@@ -67,3 +69,8 @@ if __name__ == "__main__":
         print bar.x
         print bar.getX()
 ````
+
+## Decorators ##
+Mostly used by some libraries as Flask or by "properties" as seen in the previous paragraph, decorators are usually blacboxes for most of newbie pythonists
+What's a decorator in a nutshell? It's a fuction which returns another function.
+
