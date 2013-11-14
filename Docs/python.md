@@ -190,7 +190,8 @@ if __name__ == "__main__":
 ### Multiprocessing module ###
 If you want to run in paralled a function on a list of data, this may be the code you are looking for.
 Please note that Python actually spawn new processes and doesn't not really use threads here.
-
+The number of processes that the operating system can run is limited. Usually it's 1024. 
+On linux, you can run: "ulimit -n" to know how many open files can your system handle per user. 
 ````
 def  runFunctionsInParallel(listOf_FuncAndArgLists):
     """
