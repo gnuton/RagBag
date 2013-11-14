@@ -185,6 +185,49 @@ if __name__ == "__main__":
 
 ````
 
+##  Concurrency programming ##
+
+### Multiprocessing module ###
+Multiprocessing is maybe the easiest way to run a function on some data. Data
+````
+def  runFunctionsInParallel(listOf_FuncAndArgLists):
+    """
+    Take a list of lists like [function, arg1, arg2, ...]. Run those functions in parallel, wait for them all to finish, and return the list of their return values, in order.
+    (This still needs error handling ie to ensure everything returned okay.)
+    """
+    from multiprocessing import Process, Queue
+
+    def storeOutputFFF(fff,theArgs,que): #add a argument to function for assigning a queue
+        print 'MULTIPROCESSING: Launching %s in parallel '%fff.func_name
+        que.put(fff(*theArgs)) #we're putting return value into queue
+
+    queues=[Queue() for fff in listOf_FuncAndArgLists] #create a queue object for each function
+    jobs = [Process(target=storeOutputFFF,args=[funcArgs[0],funcArgs[1:],queues[iii]]) for iii,funcArgs in enumerate(listOf_FuncAndArgLists)]
+    for job in jobs: job.start() # Launch them all
+    for job in jobs: job.join() # Wait for them all to finish
+    # And now, collect all the outputs:
+    return([queue.get() for queue in queues])
+
+def concat(x):
+    return "CIAO" + str(x)
+
+#NOTE: OS limits the num of parallel process.
+# OSError: [Errno 24] Too many open files is returned for high values in range
+if __name__ == "__main__":
+   # Create a list of jobs called lfaa. A job is tuple containing function name and argument
+   lfaa = list()
+   args = range(100)
+   for arg in args:
+       lfaa.append((concat, arg))
+
+   # This is a blocking function
+   results = runFunctionsInParallel(lfaa)
+   
+   # results is a list containing the values returned by "concat" in this case
+   # please note that this list is not sorted.
+   print "Results %d" % len(results)
+````
+
 # FAQ #
 1. What's the best IDE for programming in python? Get [PyCharm](http://www.jetbrains.com/pycharm/)
 2. 
