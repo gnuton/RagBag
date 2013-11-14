@@ -11,7 +11,9 @@ real programming.
 # Basic topics #
 
 ## static class attributes ##
-variables defined in the class definition are defined as static
+variables defined in the class definition are defined as static. static means you don't need to instantiate to object to access to the variable.
+Python allows you to edit static variables.
+
 ````
 class foo:
         a=3
