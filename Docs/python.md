@@ -8,7 +8,7 @@
       MM           VVV      MM     MM    MM YA.   ,A9 MM    MM  
     .JMML.         ,V       `Mbmo.JMML  JMML.`Ybmd9'.JMML  JMML.
                 ,V                                            
-             OOb"                                             
+             OOb"     for everybody!                                         
 
 # INTRO #
 Python allows people to write programs very quickly. The aim of this doc is 
@@ -73,7 +73,9 @@ if __name__ == "__main__":
         print bar.getX()
 ````
 
-## *args or muliple function arguments##
+## args, * and **: ways of passing args to functions##
+Python allows programmers to pass arguments to functions in three ways.
+The following "foo" functions these three options
 ````
 def foo1(first, second):
         print first
