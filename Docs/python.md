@@ -308,6 +308,8 @@ class foo:
         def sum(self,a,b):
                 return a+b
 
+        def throwException(self):
+                raise Exception("ciao")
 
 class fooTest(unittest.TestCase):
         def setUp(self):
@@ -317,6 +319,10 @@ class fooTest(unittest.TestCase):
 
         def test_1(self):
                 assert self.bar.sum(1,2) == 3
+
+        def test_2(self):
+                with self.assertRaisesRegexp(Exception, "ciao"):
+                        self.bar.throwException()
 
 if __name__ == "__main__":
         unittest.main()
