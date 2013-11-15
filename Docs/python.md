@@ -11,6 +11,9 @@ real programming.
 
 ## new-style classes ##
 Before Python 2.2 there was no consistent way to discover what attributes and methods were supported by an object.
+Subclassing object class gives to your class a consistance interface among other python classes which allow developers
+to get, set and delete attributes, to check the size of the object in memory (__sizeof__()), to get a string which
+represent the object (__repr__ or __str__) and so on.
 ```` 
 # Defines old-style class
 class a:
