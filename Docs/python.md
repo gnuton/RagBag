@@ -130,7 +130,13 @@ foo3(first=1, second=2)
 ````
 # Advanced topics #
 
-## Decorators ##
+
+## Descriptors ##
+[Documentation](http://docs.python.org/2/howto/descriptor.html)
+
+## Design patterns ##
+
+### Decorators ###
 Mostly used by some libraries as Flask or by "properties" as seen in the previous paragraph, decorators are usually blacboxes for most of newbie pythonists
 What's a decorator in a nutshell? It's a fuction which returns another function.
 You can find a lot of very useful decorators in the [Python decorator library](https://wiki.python.org/moin/PythonDecoratorLibrary)
@@ -157,10 +163,7 @@ if __name__ == "__main__":
         bar = foo()
         print bar.get_x()
 ````
-## Descriptors ##
-[Documentation](http://docs.python.org/2/howto/descriptor.html)
 
-## Design patterns ##
 ### Singleton class ###
 A singleton class is a class which has only one instance in the application scope
 Here is a decorator which you can use to make your class singleton
