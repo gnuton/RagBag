@@ -9,6 +9,26 @@ real programming.
 
 # Basic topics #
 
+## new-style classes ##
+Before Python 2.2 there was no consistent way to discover what attributes and methods were supported by an object.
+```` 
+# Defines old-style class
+class a:
+   pass
+
+# Defines new-style class
+class b(object):
+   pass
+ 
+dir(a)
+# a supports the following methods
+# ['__doc__', '__module__']
+
+dir(b)
+# b supports the following methods
+# ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+```` 
+
 ## static class attributes ##
 variables defined in the class declaration are defined as static. static means you don't need to instantiate to object to access to the variable.
 Python allows you to edit static variables.
