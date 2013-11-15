@@ -298,7 +298,29 @@ if __name__ == "__main__":
    # please note that this list is not sorted.
    print "Results %d" % len(results)
 ````
+## Unit testing ##
+### unittest module ###
+Basic usage:
+````
+import unittest
 
+class foo:
+        def sum(self,a,b):
+                return a+b
+
+
+class fooTest(unittest.TestCase):
+        def setUp(self):
+                # Create an instance of the class
+                # setUp runs before each of test* methods here
+                self.bar = foo()
+
+        def test_1(self):
+                assert self.bar.sum(1,2) == 3
+
+if __name__ == "__main__":
+        unittest.main()
+````
 # FAQ #
 1. What's the best IDE for programming in python? Get [PyCharm](http://www.jetbrains.com/pycharm/)
 2. Where can I get some help? Try to ask your questions in #python@Freenode IRC channel
