@@ -298,4 +298,5 @@ if __name__ == "__main__":
 
 # FAQ #
 1. What's the best IDE for programming in python? Get [PyCharm](http://www.jetbrains.com/pycharm/)
-2. How do you enforce types in functions? Use @accepts(int, int, int) and @return(float) [decorators](https://wiki.python.org/moin/PythonDecoratorLibrary#Type_Enforcement_.28accepts.2Freturns.29)
+2. Where can I get some help? Try to ask your questions in #python@Freenode IRC channel
+3. How do you enforce types in functions? Use @accepts(int, int, int) and @return(float) [decorators](https://wiki.python.org/moin/PythonDecoratorLibrary#Type_Enforcement_.28accepts.2Freturns.29)
