@@ -105,7 +105,7 @@ Generator expressions provide an additional shortcut to build generators out of 
 doubles = (2 * n for n in range(50))
 # doubles is a generator object 
 doubles.next()
-# next() method let the generator generate the next item
+# next() method let the generator generates the next item
 ````
 
 
