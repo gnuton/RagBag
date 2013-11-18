@@ -9,6 +9,9 @@ real programming.
 
 # Basic topics #
 
+## Exceptions ##
+[Built-in exceptions](http://docs.python.org/2/library/exceptions.html)
+
 ## new-style classes ##
 Before Python 2.2 there was no consistent way to discover what attributes and methods were supported by an object.
 Subclassing object class gives to your class a consistance interface among other python classes which allow developers
