@@ -83,6 +83,7 @@ Generators is something that every pythonist should know about.
 They are generally used instead of list because they generate items when required, saving lots of memory.
 List instead keep all the items in memory and that's not always acceptable nor elegant.
 
+### YIELD ####
 Generators can be obtained using 'yield' in a function.
 Or in with a less pythonic way using the generator pattern achieved with a iterable shown in the patterns paragraph.
 ````
@@ -96,6 +97,8 @@ sum_of_first_n = sum(firstn(1000000))
 print sum_of_first_n
 
 ````
+
+### Generator expressions ###
 Generator expressions provide an additional shortcut to build generators out of expressions similar to that of list comprehensions.
 
 ````
