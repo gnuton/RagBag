@@ -76,7 +76,7 @@ if __name__ == "__main__":
 # Intermediate topics #
 
 ## Generators ##
-TODO
+[Reference manual](https://wiki.python.org/moin/Generators)
 
 ## Properties ##
 The following snippets shows how to use properties in Python
