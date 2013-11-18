@@ -96,6 +96,15 @@ sum_of_first_n = sum(firstn(1000000))
 print sum_of_first_n
 
 ````
+Generator expressions provide an additional shortcut to build generators out of expressions similar to that of list comprehensions.
+
+````
+doubles = (2 * n for n in range(50))
+# doubles is a generator object 
+doubles.next()
+# next() method let the generator generate the next item
+````
+
 
 
 [Reference manual](https://wiki.python.org/moin/Generators)
