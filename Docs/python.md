@@ -76,6 +76,25 @@ if __name__ == "__main__":
 # Intermediate topics #
 
 ## Generators ##
+Generators is something that every pythonist should know about.
+They are generally used instead of list because they generate items when required, saving lots of memory.
+List instead keep all the items in memory and that's not always acceptable nor elegant.
+
+Generators can be obtained using 'yield' in a function.
+Or in with a less pythonic way using the generator pattern achieved with a iterable shown in the patterns paragraph.
+````
+def firstn(n):
+        num = 0
+        while num < n:
+                yield num
+                num = num+1
+
+sum_of_first_n = sum(firstn(1000000))
+print sum_of_first_n
+
+````
+
+
 [Reference manual](https://wiki.python.org/moin/Generators)
 
 ## Properties ##
