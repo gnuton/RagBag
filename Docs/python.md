@@ -9,6 +9,24 @@ real programming.
 
 # Basic topics #
 
+## Classes ##
+
+## Private methods ##
+By default python class methods are public. To make a method private the class
+name has to start with "__".
+
+Even if private is still possible to access to a private method in the following way:
+````
+class foo(object):
+        def __init__(self):
+                print "INIT FOO"
+
+        def __hidden(self):
+                print "HIDDEN FOO"
+f = foo()
+f._foo__hidden()
+````
+
 ## Exceptions ##
 [Built-in exceptions](http://docs.python.org/2/library/exceptions.html)
 
