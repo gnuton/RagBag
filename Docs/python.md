@@ -378,6 +378,7 @@ if __name__ == "__main__":
    # please note that this list is not sorted.
    print "Results %d" % len(results)
 ````
+
 ## Unit testing ##
 ### unittest module ###
 Basic usage:
@@ -407,6 +408,22 @@ class fooTest(unittest.TestCase):
 if __name__ == "__main__":
         unittest.main()
 ````
+## Misc ##
+### Closures ###
+Or "Function closure" is a function object that has access to vars in "terminated" enclosing scopes.
+````
+# myVar lives in the foo enclosing scope
+def foo(myVar):
+     # bar is a closure since it has access to myVar
+     def bar():
+          print myVar
+     return bar
+
+# f holds a reference to the function bar(), at this point foo has been executed and is not in memory anymore
+f = foo("ciao")
+f()
+````
+
 # FAQ #
 1. What's the best IDE for programming in python? Get [PyCharm](http://www.jetbrains.com/pycharm/)
 2. Where can I get some help? Try to ask your questions in #python@Freenode IRC channel
