@@ -98,8 +98,7 @@ if __name__ == "__main__":
 
 ## Generators ##
 Generators is something that every pythonist should know about.
-They are generally used instead of list because they generate items when required, saving lots of memory.
-List instead keep all the items in memory and that's not always acceptable nor elegant.
+They are iterable objects (like lists), but they item returned by next() is generated on the fly.
 
 ### YIELD ####
 Generators can be obtained using 'yield' in a function.
