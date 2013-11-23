@@ -433,6 +433,12 @@ if __name__ == "__main__":
 gevent is a Python networking library that uses greenlet to provide a synchronous API on top of libevent event loop.
 [Read more](http://www.gevent.org/intro.html)
 
+### WSGI ####
+The Web Server Gateway Interface is a simple and universal interface between web servers and web applications or frameworks for the Python programming language.
+
+[List of python WSGI frameworks] (http://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#WSGI-compatible_applications_and_frameworks)
+#### Flask ####
+[TODO]
 
 ## Misc ##
 ### Closures ###
