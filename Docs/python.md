@@ -426,6 +426,14 @@ class fooTest(unittest.TestCase):
 if __name__ == "__main__":
         unittest.main()
 ````
+
+## Cool libraries ##
+### Networking ###
+#### GEvent ####
+gevent is a Python networking library that uses greenlet to provide a synchronous API on top of libevent event loop.
+[Read more](http://www.gevent.org/intro.html)
+
+
 ## Misc ##
 ### Closures ###
 Or "Function closure" is a function object that has access to vars in "terminated" enclosing scopes.
@@ -441,6 +449,8 @@ def foo(myVar):
 f = foo("ciao")
 f()
 ````
+
+
 
 # FAQ #
 1. What's the best IDE for programming in python? Get [PyCharm](http://www.jetbrains.com/pycharm/)
