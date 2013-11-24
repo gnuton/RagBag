@@ -97,8 +97,8 @@ if __name__ == "__main__":
 # Intermediate topics #
 
 ## Generators ##
-Generators is something that every pythonist should know about.
-They are iterable objects (like lists), but they item returned by next() is generated on the fly.
+The concept of generators is something that every pythonist should be aware about.
+In a nutshell, they are iterable objects (like lists), but when next() is called, the returned item is generated on the fly.
 
 ### YIELD ####
 Generators can be obtained using 'yield' in a function.
