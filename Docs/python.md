@@ -8,7 +8,89 @@ allow you to grasp basic concepts that you can develop further with some
 real programming.
 
 # Basic topics #
+````
+# You have numbers
+3 #=> 3
 
+# Math is what you would expect
+1 + 1 #=> 2
+8 - 1 #=> 7
+10 * 2 #=> 20
+35 / 5 #=> 7
+
+# Division is a bit tricky. It is integer division and floors the results
+# automatically.
+5 / 2 #=> 2
+
+# To fix division we need to learn about floats.
+2.0     # This is a float
+11.0 / 4.0 #=> 2.75 ahhh...much better
+
+# Enforce precedence with parentheses
+(1 + 3) * 2 #=> 8
+
+# Boolean values are primitives
+True
+False
+
+# negate with not
+not True #=> False
+not False #=> True
+
+# Equality is ==
+1 == 1 #=> True
+2 == 1 #=> False
+
+# Inequality is !=
+1 != 1 #=> False
+2 != 1 #=> True
+
+# More comparisons
+1 < 10 #=> True
+1 > 10 #=> False
+2 <= 2 #=> True
+2 >= 2 #=> True
+
+# Comparisons can be chained!
+1 < 2 < 3 #=> True
+2 < 3 < 2 #=> False
+
+# Strings are created with " or '
+"This is a string."
+'This is also a string.'
+
+# Strings can be added too!
+"Hello " + "world!" #=> "Hello world!"
+
+# A string can be treated like a list of characters
+"This is a string"[0] #=> 'T'
+
+# % can be used to format strings, like this:
+"%s can be %s" % ("strings", "interpolated")
+
+# A newer way to format strings is the format method.
+# This method is the preferred way
+"{0} can be {1}".format("strings", "formatted")
+# You can use keywords if you don't want to count.
+"{name} wants to eat {food}".format(name="Bob", food="lasagna")
+
+# None is an object
+None #=> None
+
+# Don't use the equality "==" symbol to compare objects to None
+# Use "is" instead
+"etc" is None #=> False
+None is None  #=> True
+
+# The 'is' operator tests for object identity. This isn't
+# very useful when dealing with primitive values, but is
+# very useful when dealing with objects.
+
+# None, 0, and empty strings/lists all evaluate to False.
+# All other values are True
+bool(0)  #=> False
+bool("") #=> False
+````
 ## Classes ##
 
 ## Private methods ##
