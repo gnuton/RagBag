@@ -1,4 +1,5 @@
 # Clojure #
+![logo](http://clojure.org/space/showimage/clojure-icon.gif)
 
 ## Basic stuff ##
 
