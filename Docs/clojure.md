@@ -1,26 +1,27 @@
-= Clojure =
+# Clojure #
 
-== Basic stuff ==
+## Basic stuff ##
 
-=== Namespace ===
+### Namespace ###
 By default clojure uses "user" as namespace
 You can set your own one with:
 ````
-(ns antonio)
+(ns mynamespace)
 ````
 
-=== Comments ===
+### Comments ###
 Comment lines start with ';'
 
-=== Types ===
+### Types ###
 
-=== String ===
-==== Concatenation ====
+### String ###
+
 ````
+; concatenation
 (str "ciao " "bello")
 ````
 
-=== Math ===
+### Math ###
 ````
 ; allowed operations +, -, *, /
 (+ 1 1)
