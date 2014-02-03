@@ -178,6 +178,33 @@ if __name__ == "__main__":
 
 # Intermediate topics #
 
+## Unicode and Strings ##
+unicode and str are two differnt types.
+
+````
+# to detect if a string is unicode. this returns FALSE
+s="ciao"
+isinstance(s, unicode)
+>>> False
+
+# u before the string declaration says to python that we wanna use a unicode type
+s=u"ciao"
+isinstance(s, unicode)
+>>> True
+
+# binary strings
+s=b'c\xc3\xa5i\xc3\xb6'
+print s
+>>> cåiö
+
+# convert binary string to unicode
+a=s.decode("utf8)
+>> u'c\xe5i\xf6'
+isinstance(a, unicode)
+>>> True
+
+````
+
 ## Generators ##
 The concept of generators is something that every pythonist should be aware about.
 In a nutshell, they are iterable objects (like lists), but when next() is called, the returned item is generated on the fly.
