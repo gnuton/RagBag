@@ -504,9 +504,10 @@ if __name__ == "__main__":
    # please note that this list is not sorted.
    print "Results %d" % len(results)
 ````
+
 ### Subprocess: the way to launch external application###
 The code below shows you how to use subprocess in order to run N jobs being sure that only M of them run in parallel
-'''
+````
 import subprocess
 import os
 import time
@@ -537,7 +538,7 @@ for name in files:
         # remove completed processes from the list
         complete_procs = set([p for p in processes if p.poll() is not None])
         processes -= complete_procs
-'''
+````
 
 ## Unit testing ##
 ### unittest module ###
