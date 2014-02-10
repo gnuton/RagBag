@@ -524,7 +524,8 @@ for name in files:
     p = subprocess.Popen([command, name])
     processes.add(p)
 
-    # Wait if the all the commands are running
+    # once we started our M processes, the script waits for a job to finish
+    # When a job is completed, it remove it from the list and the "for" loop loops again.
     if len(processes) >= max_processes:
         loop = True
         print "Waiting for a job to finish"
