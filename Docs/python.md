@@ -570,6 +570,37 @@ class fooTest(unittest.TestCase):
 if __name__ == "__main__":
         unittest.main()
 ````
+## Packaging ##
+To package a Python lib.
+1. Your project has to look as follow
+````
+TowelStuff/
+    LICENSE.txt
+    README.txt
+    setup.py
+    towelstuff/
+        __init__.py
+````
+2. Add a setup.py file which look like this one:
+````
+from distutils.core import setup
+
+setup(
+    name='TowelStuff',
+    version='0.1dev',
+    packages=['towelstuff',],
+    license='Creative Commons Attribution-Noncommercial-Share Alike license',
+    long_description=open('README.txt').read(),
+)
+````
+
+3. Create the first release with:
+```` 
+python setup.py sdist
+
+````
+This will generate a tag.gz in the dist/ directory.
+
 
 ## Cool libraries ##
 ### Networking ###
