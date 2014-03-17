@@ -571,8 +571,9 @@ if __name__ == "__main__":
         unittest.main()
 ````
 ## Packaging ##
-To package a Python lib.
-1. Your project has to look as follow
+You can package your python in 3 simple steps
+
+a. Your project has to look as follow
 ````
 TowelStuff/
     LICENSE.txt
@@ -581,7 +582,7 @@ TowelStuff/
     towelstuff/
         __init__.py
 ````
-2. Add a setup.py file which look like this one:
+b. Add a setup.py file which look like this one:
 ````
 from distutils.core import setup
 
@@ -594,7 +595,7 @@ setup(
 )
 ````
 
-3. Create the first release with:
+c. Create the first release with:
 ```` 
 python setup.py sdist
 
