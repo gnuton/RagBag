@@ -43,14 +43,16 @@ java.lang.String
 antonio=> (class +)
 clojure.core$_PLUS_
 
-; Collections & sequences
-; "Collections" are groups of data
-; "Sequences"  abstract description of list of data
-;              they can define infinite series
-;              --> seqs can be lazy, they need to provide an entry item when accessed
-;              (something like generators in python!)
+````
 
+### Collections & Sequences ###
+"Collections" are groups of data
+"Sequences"  abstract description of list of data
+              they can define infinite series
+              --> seqs can be lazy, they need to provide an entry item when accessed
+             (something like generators in python!)
 
+````
 antonio=> (class ())
 clojure.lang.PersistentList$EmptyList
 
