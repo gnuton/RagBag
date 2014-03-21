@@ -5,6 +5,30 @@ Clojure is a dialect of the Lisp language created by Rich Hickey. It's a general
 
 ## Basic stuff ##
 
+### Documentation ###
+As python even clojure has a "doc" command which allows you to read the documentation related to a clojure
+````
+user=> (doc doc)
+-------------------------
+clojure.core/doc
+([name])
+Macro
+  Prints documentation for a var or special form given its name
+nil
+
+user=> (doc map)
+-------------------------
+clojure.core/map
+([f coll] [f c1 c2] [f c1 c2 c3] [f c1 c2 c3 & colls])
+  Returns a lazy sequence consisting of the result of applying f to the
+  set of first items of each coll, followed by applying f to the set
+  of second items in each coll, until any one of the colls is
+  exhausted.  Any remaining items in other colls are ignored. Function
+  f should accept number-of-colls arguments.
+nil
+
+````
+
 ### Namespace ###
 By default clojure uses "user" as namespace
 You can set your own one with:
@@ -98,6 +122,18 @@ user=> (conj [1 2 3] 4)
 
 user=> (conj '(1 2 3) 4)
 (4 1 2 3)
+
+; concatenate lists and vectors
+user=> (concat [1 2] '(3 4))
+(1 2 3 4)
+
+user=> (concat [1 2] [3 4])
+(1 2 3 4)
+
+user=> (concat '(1 2) '(3 4))
+(1 2 3 4)
+
+; 
 
 ````
 ### Strings ###
