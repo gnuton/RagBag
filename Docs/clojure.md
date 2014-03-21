@@ -1,14 +1,22 @@
 # Clojure #
 ![logo](http://clojure.org/space/showimage/clojure-icon.gif)
 
+Clojure is a dialect of the Lisp language created by Rich Hickey. It's a general-purpose function language and it runs in the JVM as well as in JS engines (ClojureScript).
+
 ## Basic stuff ##
 
 ### Namespace ###
 By default clojure uses "user" as namespace
 You can set your own one with:
 ````
-(ns mynamespace)
+(ns my.namespace)
 ````
+File starts always with a namespace.
+
+A namespace can contain
+- (:import (org.something))
+- (:require [...])
+- (:use [])
 
 ### Comments ###
 Comment lines start with ';'
@@ -63,12 +71,31 @@ true
 antonio=> (seq? '(1 2 3))
 true
 
-antonio=> (seq? '[1 2 3])
+antonio=> (seq? [1 2 3])
 false
 
 antonio=> (seq? (range 4))
 true
 
+; range generates finite or infinite sequences 
+antonio=> (range 5)
+(0 1 2 3 4)
+
+antonio=> (take 3 (range 5))
+(0 1 2)
+
+; cons - adds item to the beginnig of a list or vector
+; conj - adds item to collection in the most efficient way
+antonio=> (cons 4 [1 2 3])
+(4 1 2 3)
+antonio=> (cons 4 [1 2 3])
+(4 1 2 3)
+
+user=> (conj [1 2 3] 4)
+[1 2 3 4]
+
+user=> (conj '(1 2 3) 4)
+(4 1 2 3)
 
 ````
 ### Strings ###
