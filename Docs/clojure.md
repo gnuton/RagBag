@@ -174,6 +174,20 @@ true
 
 
 ````
+### Maps ###
+- Hash maps (no order, fast lookup)
+- Array maps
+````
+; Hash Map
+user=> (class (hash-map :a 1 :b 2))
+clojure.lang.PersistentHashMap
+
+; Array Map
+user=> (class {:a 1 :b 2})
+clojure.lang.PersistentArrayMap
+
+
+````
 
 ### Functions ###
 ````
@@ -227,7 +241,5 @@ user=>  (defn myFun[arg1 arg2 & args] (str "arg1:" arg1 " arg2" arg2 "rest:" arg
 #'user/myFun
 user=> (myFun 1 2 3)
 "arg1:1 arg22rest:(3)"
-
-;
 
 ````
