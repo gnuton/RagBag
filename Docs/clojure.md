@@ -133,7 +133,10 @@ user=> (concat [1 2] [3 4])
 user=> (concat '(1 2) '(3 4))
 (1 2 3 4)
 
-; 
+; reduce, runs an operation 
+user=> (reduce + [1 2 3 4])
+10
+
 
 ````
 ### Strings ###
@@ -172,3 +175,59 @@ true
 
 ````
 
+### Functions ###
+````
+; define a fuction
+user=> (fn [] "Ciao")
+#<user$eval27$fn__28 user$eval27$fn__28@49b510b8>
+
+; Call a function
+user=> ((fn [] "Ciao"))
+"Ciao"
+
+; Assing a function to a variable
+user=> (def a (fn [] "ciao"))
+#'user/a
+
+user=> (a)
+"ciao"
+
+; Written in a shorten form
+user=> (defn a [] "ciao") 
+#'user/a
+
+; Passing arguments to a function
+user=> (defn a[b] b)
+#'user/a
+user=> (a "ciao")
+"ciao"
+
+; # replaces [] and shortens the function definition
+user=> (def myFun #(str "First arg: " %1 " Second one:" %2))                
+#'user/myFun
+user=> (myFun 1 2)
+"First arg: 1 Second one:2"
+
+; function overloading
+user=> (defn myFun
+             ([] "hello world") 
+             ([a] (str "hello" a))
+       )
+#'user/myFun
+
+user=> (myFun)
+"hello world"
+
+user=> (myFun "antonio")
+"helloantonio"
+
+; Packing args => use &args
+user=>  (defn myFun[arg1 arg2 & args] (str "arg1:" arg1 " arg2" arg2 "rest:" args))
+
+#'user/myFun
+user=> (myFun 1 2 3)
+"arg1:1 arg22rest:(3)"
+
+;
+
+````
