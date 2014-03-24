@@ -312,3 +312,30 @@ user=> (myFun 1 2 3)
 "arg1:1 arg22rest:(3)"
 
 ````
+
+### Special forms ###
+Special forms are just Macros
+
+#### IF ####
+````
+user=> (if (> 2 1) 2 1)
+2
+
+user=> (if false "isTrue" "isFalse")
+"isFalse"
+
+user=> (if false "isTrue")
+nil
+
+````
+
+#### Let ####
+````
+````
+
+#### Let ####
+````
+````
+
+#### Loop ####
+
