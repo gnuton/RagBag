@@ -141,41 +141,7 @@ user=> (reduce + [1 2 3 4])
 
 
 ````
-### Strings ###
 
-````
-; concatenation
-(str "ciao " "bello")
-````
-
-### Data evaluation ###
-(a b c) is a list, where a,b,c could be function or a var.
-(1 2 3) throws a ClassCastException.
-a literal list (Clojure won't evaulate it) can be defined as follow:
-````
-antonio=> '(1 2 3)
-(1 2 3)
-
-; eval evaluates literals
-antonio=> (eval '(+ 1 2 3))
-6
-
-````
-
-### Math ###
-````
-; allowed operations +, -, *, /
-(+ 1 1)
-
-; Equality
-(= 1 1)
-true
-
-; nesting forms
-(+ 1 (- 3 2))
-
-
-````
 ### Maps ###
 Types:
 - Hash maps (no order, fast lookup)
@@ -254,6 +220,42 @@ user=> (a 3)
 nil
 
 ;
+````
+
+### Strings ###
+
+````
+; concatenation
+(str "ciao " "bello")
+````
+
+### Data evaluation ###
+(a b c) is a list, where a,b,c could be function or a var.
+(1 2 3) throws a ClassCastException.
+a literal list (Clojure won't evaulate it) can be defined as follow:
+````
+antonio=> '(1 2 3)
+(1 2 3)
+
+; eval evaluates literals
+antonio=> (eval '(+ 1 2 3))
+6
+
+````
+
+### Math ###
+````
+; allowed operations +, -, *, /
+(+ 1 1)
+
+; Equality
+(= 1 1)
+true
+
+; nesting forms
+(+ 1 (- 3 2))
+
+
 ````
 
 ### Functions ###
