@@ -67,6 +67,8 @@ java.lang.String
 antonio=> (class +)
 clojure.core$_PLUS_
 
+user=> (class :a)
+clojure.lang.Keyword
 ````
 
 ### Collections & Sequences ###
@@ -175,8 +177,9 @@ true
 
 ````
 ### Maps ###
+Types:
 - Hash maps (no order, fast lookup)
-- Array maps
+- Array maps (when big becomes hash maps)
 ````
 ; Hash Map
 user=> (class (hash-map :a 1 :b 2))
@@ -185,8 +188,43 @@ clojure.lang.PersistentHashMap
 ; Array Map
 user=> (class {:a 1 :b 2})
 clojure.lang.PersistentArrayMap
+````
+Key:
+  Maps che use any hashable as key, but keywords (check Type chapter for more info) are better.
 
+How to define a map & usage:
+````
+;;;;; INSTANTIATING A MAP ;;;;;
+user=> (def keymap {:a 1 :b 2})
+#'user/keymap
 
+user=> keymap
+{:a 1, :b 2}
+
+;;;;;;; RETRIEVING VALUES ;;;;;;;;;;;;;;;
+; a value can be retrieved in two ways
+; - using the map as function
+user=> (keymap :a)
+1
+; - (only for KEYWORDS) using the keyword to retrieve the value
+user=> (:a keymap)
+1
+
+;;;;;;; ADD/REMOVE KEYS FROM MAPS ;;;;;;;;
+; Add - Clojure types are IMMUTABLE.
+user=> (def myMap {:a 1 :b 2})
+#'user/myMap
+user=> (assoc myMap :c 3)
+{:c 3, :a 1, :b 2}
+
+; remove
+user=> (dissoc myMap :c)
+{:a 1, :b 2}
+
+````
+
+### Sets ###
+````
 ````
 
 ### Functions ###
