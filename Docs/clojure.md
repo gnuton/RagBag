@@ -224,7 +224,36 @@ user=> (dissoc myMap :c)
 ````
 
 ### Sets ###
+
 ````
+; defining a set
+#{1 2 3}
+
+; Set class name
+user=> (class #{1 2 3})
+clojure.lang.PersistentHashSet
+
+; convert a Vector to set
+user=> (set [1 2 3 4])
+#{1 2 3 4}
+
+; add member
+user=> (def a #{1 2})
+#'user/a
+user=> (conj a 12)
+#{1 2 12}
+
+; remove member a is #{1 2 12}
+user=> (disj a 12)
+#{1 2}
+
+; test for existence a is #{1 2}
+user=> (a 1)
+1
+user=> (a 3)
+nil
+
+;
 ````
 
 ### Functions ###
