@@ -85,7 +85,22 @@ nil
 
 
 ````
-B. Require, Use & Import
+B. Use
+   Use can bue used as "require" for aliases
+   ````
+   user=> (use '[clojure.string :as str :only [join split]])
+   nil
+   ````
+C. Import
+   imports java libs
+   ````
+   user=> (import 'java.util.Date)
+   java.util.Date
+   user=> (Date.)
+   #<Date Thu Mar 27 13:23:50 EET 2014>
+   ````
+   
+D. Require, Use & Import
    This is the way to import other people code
 ````
 (ns my-great-project.core
