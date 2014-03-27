@@ -64,8 +64,38 @@ nil
 user=> (require 'clojure.unknown_symbol)
 java.io.FileNotFoundException: Could not locate clojure/unknown_symbol__init.class or clojure/unknown_symbol.clj on classpath:  (NO_SOURCE_FILE:0)
 
+; namespace aliasing
+user=> (require '[clojure.string :as string])
+nil
+; or you can alias it with
+user=> (require ['clojure.string :as 'string])
+nil
+
+user=> (string/capitalize "foo")
+"Foo"
+
+; import libraries with the same prefix
+user=> (require '(clojure string test))
+nil
+
+; See what happens under the hood when importing a lib
+user=> (require 'clojure.string :verbose)
+(clojure.core/load "/clojure/string")
+nil
+
+
 ````
-B. 
+B. Require, Use & Import
+   This is the way to import other people code
+````
+(ns my-great-project.core
+   "This namespace is CRAZY!"
+   (:use [clojure.string :only [split join]] :reload)
+   (:require clojure.stacktrace
+             [clojure.test :as test]
+             (clojure template walk) :verbose)
+  (:import (java.util Date GregorianCalendar)))
+````
 
 ### Comments ###
 Comment lines start with ';'
