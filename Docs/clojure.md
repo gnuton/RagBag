@@ -42,6 +42,31 @@ A namespace can contain
 - (:require [...])
 - (:use [])
 
+#### Importing a namespace ####
+A. Require - Accepts namespace symbols and make them available to the namespace for later use
+````
+; in case we wanna use the plit function in clojure.string, this will fail
+user=> (clojure.string/split "1,2,3" #",")
+java.lang.ClassNotFoundException: clojure.string (NO_SOURCE_FILE:0)
+
+; we have to import the namespace beforehand
+user=> (require 'clojure.string)
+nil
+user=> (clojure.string/split "1,2,3" #",")
+["1" "2" "3"]
+
+; Importing multiple quoted symbols
+user=> (require 'clojure.test 'clojure.string)
+nil
+
+; Importing a unknown symbol triggers an FileNotFound exception
+; Here Clojure cannot find the file unknown_symbol.clj in the clojure dir of your classpath or JAR
+user=> (require 'clojure.unknown_symbol)
+java.io.FileNotFoundException: Could not locate clojure/unknown_symbol__init.class or clojure/unknown_symbol.clj on classpath:  (NO_SOURCE_FILE:0)
+
+````
+B. 
+
 ### Comments ###
 Comment lines start with ';'
 
@@ -330,11 +355,32 @@ nil
 ````
 
 #### Let ####
+(let [bindings* ] exprs*)
+binding => binding-form init-expr
+
+Creates temporary bindings
 ````
+user=> (let [a 20 b 10] (> a b))
+true
+````
+
+#### Do ####
+(do exprs*)
+Evaluates the expressions in order and returns the value of the last. If no expressions are supplied, returns nil.
+````
+
 ````
 
 #### Let ####
 ````
+
+````
+
+#### Quote ####
+Yields the unevaulated form
+````
+user=> '(a b c)
+(a b c)
 ````
 
 #### Loop ####
