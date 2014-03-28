@@ -43,6 +43,13 @@ A namespace can contain
 - (:use [])
 
 #### Importing a namespace ####
+Clojure can import clj and classes files in the CLASSPATH dirs.
+````
+user=> (println (seq (.getURLs (java.lang.ClassLoader/getSystemClassLoader))))
+(#<URL file:/usr/share/java/clojure-1.2.1.jar>)
+
+````
+
 A. Require - Accepts namespace symbols and make them available to the namespace for later use
 ````
 ; in case we wanna use the plit function in clojure.string, this will fail
@@ -115,6 +122,24 @@ D. Require, Use & Import
 ### Comments ###
 Comment lines start with ';'
 
+### Vars ###
+Clojure provides 4 mechanisms to maintain a persistent reference to a changing value
+- Vars - refer to mutable storage location
+- Refs
+- Agents
+- Atoms
+````
+; DEF creates a interns a variable
+user=> (def x)
+#'user/x
+
+; DEF binds the root to an initial value
+user=> (def x 1)
+#'user/x
+
+; Dynamic variables - Vars are static by default
+
+````
 
 ### Types ###
 'class' function returns the class name of an object
