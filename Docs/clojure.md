@@ -455,3 +455,13 @@ user=> '(a b c)
 
 #### Loop ####
 
+
+## How to create a Clojure project ##
+Lein (http://leiningen.org) it the defacto way to automate all the building phases that a clojure project would need.
+
+- lein new projectname
+- add the library you need to your project.clj file with a name you choose
+- run lein deps to print out the command to use to add the jar to your local repo
+- add the jar
+- run lein deps again (you can skip this step if using leiningen2)
+- run lein repl
