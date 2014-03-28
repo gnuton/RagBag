@@ -141,6 +141,12 @@ user=> (def x 1)
 
 ````
 
+#### Private vars & Functions####
+````
+(def- private-fun [] ...)
+(def ^:private private-var ...)
+````
+
 ### Types ###
 'class' function returns the class name of an object
 ````
@@ -423,6 +429,14 @@ user=> (if false "isTrue")
 nil
 
 ````
+In clojure when should be used instead of (if .. (do ..))
+
+#### When ####
+````
+(when pred
+  (foo)
+  (bar))
+````
 
 #### Let ####
 (let [bindings* ] exprs*)
@@ -433,7 +447,20 @@ Creates temporary bindings
 user=> (let [a 20 b 10] (> a b))
 true
 ````
+Use if-let instead of let + if
 
+#### if-let ####
+````
+(if-let [results (foo x)]
+  (something-with results)
+  (something-else))
+  
+; instead of 
+(let [results (foo x)]
+  (if result
+    (something-with results)
+    (
+````
 #### Do ####
 (do exprs*)
 Evaluates the expressions in order and returns the value of the last. If no expressions are supplied, returns nil.
