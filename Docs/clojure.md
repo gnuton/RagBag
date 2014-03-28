@@ -121,6 +121,12 @@ D. Require, Use & Import
 
 ### Comments ###
 Comment lines start with ';'
+Comments blocks are defined like this:
+````
+(comment
+  this is the comment block! :DD
+)
+````
 
 ### Vars ###
 Clojure provides 4 mechanisms to maintain a persistent reference to a changing value
