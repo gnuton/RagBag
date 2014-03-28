@@ -442,9 +442,7 @@ Evaluates the expressions in order and returns the value of the last. If no expr
 ````
 
 #### Let ####
-````
-
-````
+
 
 #### Quote ####
 Yields the unevaulated form
@@ -465,3 +463,26 @@ Lein (http://leiningen.org) it the defacto way to automate all the building phas
 - add the jar
 - run lein deps again (you can skip this step if using leiningen2)
 - run lein repl
+- 
+
+## Clojure style ##
+A. Use two spaces per intentation per level
+````
+(when something
+  (something-else))
+````
+
+B. Align vertically function arguments.
+````
+(filter even?
+        (range 1 10))
+````
+C.Align let and map keys
+````
+(let [thing1 "some stuff"
+      thing2 "other stuff"]
+  {:thing1 thing1
+   :thing2 thing2})
+````
+
+Keep reading this on https://github.com/bbatsov/clojure-style-guide
