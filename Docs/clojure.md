@@ -141,7 +141,7 @@ user=> (def x 1)
 
 ````
 
-#### Private vars & Functions####
+### Private Vars, Functions###
 ````
 (def- private-fun [] ...)
 (def ^:private private-var ...)
