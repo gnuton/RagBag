@@ -261,9 +261,23 @@ user=> (map a (range 4))
 (0 1 4 9)
 
 ````
-2. Into-array
+2. Into-array/to-array
+Create an array from an existing collection.
 ````
-TODO
+; let's define a vector
+user=> (def c [1 2 3]) 
+#'user/c
+user=> (class c)
+clojure.lang.PersistentVector
+
+; to-array creates an array of objects
+user=> (class (to-array c))
+[Ljava.lang.Object;
+
+; into-array creates an array of objects with the type of the first element
+user=> (class (into-array c))
+[Ljava.lang.Integer;
+
 ````
 
 ### Maps ###
