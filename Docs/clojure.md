@@ -256,7 +256,7 @@ user=> (reduce + [1 2 3 4])
 user=> (defn a [i] (* i i))
 #'user/a
 
-; let's apply a to the a sequence.
+; let's apply 'a' function to the sequence.
 user=> (map a (range 4))
 (0 1 4 9)
 
