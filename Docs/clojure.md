@@ -248,6 +248,23 @@ user=> (reduce + [1 2 3 4])
 
 
 ````
+#### Useful functions for sequences and collections ####
+1. Map -  Returns a lazy sequence consisting of the result of applying f to the
+          the set of items
+````
+; let's define a function 'a'
+user=> (defn a [i] (* i i))
+#'user/a
+
+; let's apply a to the a sequence.
+user=> (map a (range 4))
+(0 1 4 9)
+
+````
+2. Into-array
+````
+TODO
+````
 
 ### Maps ###
 Types:
