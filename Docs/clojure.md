@@ -503,10 +503,7 @@ Use if-let instead of let + if
 Evaluates the expressions in order and returns the value of the last. If no expressions are supplied, returns nil.
 ````
 
-````
-
-#### Let ####
-
+````
 
 #### Quote ####
 Yields the unevaulated form
@@ -515,6 +512,16 @@ user=> '(a b c)
 (a b c)
 ````
 
+#### Case ####
+Acts like almost like a C++/Java Switch statement
+````
+user=> (case 1          
+1 "first"
+2 "second")
+
+"first"
+
+````
 #### Loop ####
 
 
