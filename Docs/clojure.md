@@ -569,4 +569,4 @@ C.Align let and map keys
 Keep reading this on https://github.com/bbatsov/clojure-style-guide
 
 #### IDEs for Clojure ####
-1. IntelliJ http://blog.tomeklipski.com/2013/04/running-and-debugging-clojure-code-with.html
+1. IntelliJ (http://blog.tomeklipski.com/2013/04/running-and-debugging-clojure-code-with.html)
