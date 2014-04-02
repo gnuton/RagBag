@@ -573,4 +573,4 @@ Keep reading this on https://github.com/bbatsov/clojure-style-guide
 2. IntelliJ 12 + Cursive 
    - add this repository to your IntellJ > 13.1 and install cursive http://cursiveclojure.com/plugins.xml 
    - Import a project (https://cursiveclojure.com/userguide/leiningen.html)
-   NOTE For me Cursive installed fine only 12 and didn' work on both. Still my collegues say that's the best way to write clojure.. good for them! :D
+   NOTE Cursive didn't work for me with IntellJ 13.
