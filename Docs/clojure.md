@@ -280,6 +280,16 @@ user=> (class (into-array c))
 
 ````
 
+### Arrays ####
+````
+; Create Array where 
+(def myArrayLength 1)
+(make-array Integer/TYPE myArrayLength)
+
+; make array can be used in order to create multi-dimensional arrays too
+; Syntax (make-array type dim & more-dims)
+
+````
 ### Maps ###
 Types:
 - Hash maps (no order, fast lookup)
@@ -557,3 +567,6 @@ C.Align let and map keys
 ````
 
 Keep reading this on https://github.com/bbatsov/clojure-style-guide
+
+#### IDEs for Clojure ####
+1. IntelliJ http://blog.tomeklipski.com/2013/04/running-and-debugging-clojure-code-with.html
