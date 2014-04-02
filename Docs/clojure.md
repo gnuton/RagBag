@@ -511,9 +511,7 @@ Use if-let instead of let + if
 #### Do ####
 (do exprs*)
 Evaluates the expressions in order and returns the value of the last. If no expressions are supplied, returns nil.
-````
 
-````
 
 #### Quote ####
 Yields the unevaulated form
@@ -558,7 +556,9 @@ B. Align vertically function arguments.
 (filter even?
         (range 1 10))
 ````
+
 C.Align let and map keys
+
 ````
 (let [thing1 "some stuff"
       thing2 "other stuff"]
