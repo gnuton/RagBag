@@ -570,6 +570,7 @@ Keep reading this on https://github.com/bbatsov/clojure-style-guide
 
 #### IDEs for Clojure ####
 1. IntelliJ + La Clojure [DEPRECATED](http://blog.tomeklipski.com/2013/04/running-and-debugging-clojure-code-with.html)
-2. IntelliJ + Cursive
-   - add this repository to your IntellJ > 13.1 and install cursive http://cursiveclojure.com/plugins-13.1.xml 
+2. IntelliJ 12 + Cursive
+   - add this repository to your IntellJ > 13.1 and install cursive http://cursiveclojure.com/plugins.xml 
    - Import a project (https://cursiveclojure.com/userguide/leiningen.html)
+   NOTE it didn't work for me on IntellJ 13.x
