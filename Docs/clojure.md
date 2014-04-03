@@ -360,6 +360,9 @@ user=> (class (into-array c))
   
   ````
 
+6. Flatten a multidimensional array
+  Convert the array to vector with (into [] myArray) and use (flatten myVector)
+
 ### Maps ###
 Types:
 - Hash maps (no order, fast lookup)
