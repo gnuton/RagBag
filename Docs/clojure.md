@@ -426,6 +426,23 @@ user=> (assoc myMap :c 3)
 user=> (dissoc myMap :c)
 {:a 1, :b 2}
 
+
+;;;;;; GET ALL THE KEYS AND VALUE ;;;;;
+user=> (def a {:a 1 :b 2})
+#'user/a
+
+; sequence of keys
+user=> (map key a)
+(:a :b)
+
+; sequence of values
+user=> (map val a)
+(1 2)
+
+;;;;;; ITERATING A MAP ;;;;
+user=> (seq a)
+([:a 1] [:b 2])
+
 ````
 
 ### Sets ###
