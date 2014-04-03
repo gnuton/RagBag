@@ -185,69 +185,87 @@ clojure.lang.Keyword
               --> seqs can be lazy, they need to provide an entry item when accessed
              (something like generators in python!)
 
+1. Vectors/List Sequences and Collections - how to create them
+  ````
+  antonio=> (class ())
+  clojure.lang.PersistentList$EmptyList
+  
+  antonio=> (class '(1 2 3))
+  clojure.lang.PersistentList
+  
+  antonio=> (class [1 2 3])
+  clojure.lang.PersistentVector
+  
+  ; what's a collection?
+  antonio=> (coll? [1 2 3])
+  true
+  
+  antonio=> (coll? '(1 2 3))
+  true
+  
+  ; what's a sequence?
+  antonio=> (seq? '(1 2 3))
+  true
+  
+  antonio=> (seq? [1 2 3])
+  false
+  
+  antonio=> (seq? (range 4))
+  true
+  ````
+
+2. "Range" to generate sequences 
+  ````
+  ; range generates finite or infinite sequences 
+  antonio=> (range 5)
+  (0 1 2 3 4)
+  
+  antonio=> (take 3 (range 5))
+  (0 1 2)
+  ````
+
+3. Adding elements 
+  ````
+  ; cons - adds item to the beginnig of a list or vector
+  ; conj - adds item to collection in the most efficient way
+  antonio=> (cons 4 [1 2 3])
+  (4 1 2 3)
+  antonio=> (cons 4 [1 2 3])
+  (4 1 2 3)
+  
+  user=> (conj [1 2 3] 4)
+  [1 2 3 4]
+  
+  user=> (conj '(1 2 3) 4)
+  (4 1 2 3)
+  ````
+
+4. Concatenate lists and vectors
+  ````
+  user=> (concat [1 2] '(3 4))
+  (1 2 3 4)
+  
+  user=> (concat [1 2] [3 4])
+  (1 2 3 4)
+  
+  user=> (concat '(1 2) '(3 4))
+  (1 2 3 4)
+  ````
+
+5. Reduce and Map operations
+  ````
+  ; reduce, runs an operation 
+  user=> (reduce + [1 2 3 4])
+  10
+  
+  ````
+
+6. Flatten a sequence
 ````
-antonio=> (class ())
-clojure.lang.PersistentList$EmptyList
-
-antonio=> (class '(1 2 3))
-clojure.lang.PersistentList
-
-antonio=> (class [1 2 3])
-clojure.lang.PersistentVector
-
-; what's a collection?
-antonio=> (coll? [1 2 3])
-true
-
-antonio=> (coll? '(1 2 3))
-true
-
-; what's a sequence?
-antonio=> (seq? '(1 2 3))
-true
-
-antonio=> (seq? [1 2 3])
-false
-
-antonio=> (seq? (range 4))
-true
-
-; range generates finite or infinite sequences 
-antonio=> (range 5)
-(0 1 2 3 4)
-
-antonio=> (take 3 (range 5))
-(0 1 2)
-
-; cons - adds item to the beginnig of a list or vector
-; conj - adds item to collection in the most efficient way
-antonio=> (cons 4 [1 2 3])
-(4 1 2 3)
-antonio=> (cons 4 [1 2 3])
-(4 1 2 3)
-
-user=> (conj [1 2 3] 4)
-[1 2 3 4]
-
-user=> (conj '(1 2 3) 4)
-(4 1 2 3)
-
-; concatenate lists and vectors
-user=> (concat [1 2] '(3 4))
-(1 2 3 4)
-
-user=> (concat [1 2] [3 4])
-(1 2 3 4)
-
-user=> (concat '(1 2) '(3 4))
-(1 2 3 4)
-
-; reduce, runs an operation 
-user=> (reduce + [1 2 3 4])
-10
-
-
+user=> (flatten [[1,2,3] [4,5,3]])
+(1 2 3 4 5 3)
 ````
+
 #### Useful functions for sequences and collections ####
 1. Map -  Returns a lazy sequence consisting of the result of applying f to the
           the set of items
