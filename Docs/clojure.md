@@ -261,42 +261,42 @@ clojure.lang.Keyword
   ````
 
 6. Flatten a sequence
-````
-user=> (flatten [[1,2,3] [4,5,3]])
-(1 2 3 4 5 3)
-````
+  ````
+  user=> (flatten [[1,2,3] [4,5,3]])
+  (1 2 3 4 5 3)
+  ````
 
 #### Useful functions for sequences and collections ####
 1. Map -  Returns a lazy sequence consisting of the result of applying f to the
           the set of items
-````
-; let's define a function 'a'
-user=> (defn a [i] (* i i))
-#'user/a
-
-; let's apply 'a' function to the sequence.
-user=> (map a (range 4))
-(0 1 4 9)
-
-````
+  ````
+  ; let's define a function 'a'
+  user=> (defn a [i] (* i i))
+  #'user/a
+  
+  ; let's apply 'a' function to the sequence.
+  user=> (map a (range 4))
+  (0 1 4 9)
+  
+  ````
 2. Into-array/to-array
 Create an array from an existing collection.
-````
-; let's define a vector
-user=> (def c [1 2 3]) 
-#'user/c
-user=> (class c)
-clojure.lang.PersistentVector
-
-; to-array creates an array of objects
-user=> (class (to-array c))
-[Ljava.lang.Object;
-
-; into-array creates an array of objects with the type of the first element
-user=> (class (into-array c))
-[Ljava.lang.Integer;
-
-````
+  ````
+  ; let's define a vector
+  user=> (def c [1 2 3]) 
+  #'user/c
+  user=> (class c)
+  clojure.lang.PersistentVector
+  
+  ; to-array creates an array of objects
+  user=> (class (to-array c))
+  [Ljava.lang.Object;
+  
+  ; into-array creates an array of objects with the type of the first element
+  user=> (class (into-array c))
+  [Ljava.lang.Integer;
+  
+  ````
 
 ### Arrays ####
 1. Create an array
