@@ -281,15 +281,51 @@ user=> (class (into-array c))
 ````
 
 ### Arrays ####
+1. Create Arrays
 ````
-; Create Array where 
-(def myArrayLength 1)
-(make-array Integer/TYPE myArrayLength)
+;;; A - make-array - (multidimensinal) Arrays  
+user=> (pprint (make-array Integer/TYPE 3))
+[0, 0, 0]
 
-; make array can be used in order to create multi-dimensional arrays too
-; Syntax (make-array type dim & more-dims)
+user=> (pprint (make-array Integer/TYPE 3 4))
+[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
+user=> (pprint (make-array Integer/TYPE 2 3 4))
+[[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+ [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]]
+
+;;; B - 
 ````
+
+2. Get element from array
+````
+user=> (def a (make-array Integer/TYPE 2 3))          
+#'user/a
+
+user=> (pprint a)
+[[0, 0, 0], [0, 0, 0]]
+
+user=> (pprint (aget a 0))
+[0, 0, 0]
+````
+
+3. Array length
+````
+; 
+user=> (def a (make-array Integer/TYPE 2 3))          
+#'user/a
+
+user=> (pprint a)
+[[0, 0, 0], [0, 0, 0]]
+
+user=> (alength a)
+2
+
+user=> (alength (aget a 0))
+3
+````
+
+
 ### Maps ###
 Types:
 - Hash maps (no order, fast lookup)
