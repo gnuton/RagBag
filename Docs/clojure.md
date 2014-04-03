@@ -282,83 +282,83 @@ user=> (class (into-array c))
 
 ### Arrays ####
 1. Create an array
-````
-;;; A - make-array - (multidimensinal) Arrays  
-user=> (pprint (make-array Integer/TYPE 3))
-[0, 0, 0]
-
-user=> (pprint (make-array Integer/TYPE 3 4))
-[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-
-user=> (pprint (make-array Integer/TYPE 2 3 4))
-[[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
- [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]]
-
-;;; B - into-array - 
-See section 5 (from vector to array)
-````
+  ````
+  ;;; A - make-array - (multidimensinal) Arrays  
+  user=> (pprint (make-array Integer/TYPE 3))
+  [0, 0, 0]
+  
+  user=> (pprint (make-array Integer/TYPE 3 4))
+  [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+  
+  user=> (pprint (make-array Integer/TYPE 2 3 4))
+  [[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+   [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]]
+  
+  ;;; B - into-array - 
+  See section 5 (from vector to array)
+  ````
 
 2. Get an element from an array
-````
-user=> (def a (make-array Integer/TYPE 2 3))          
-#'user/a
-
-user=> (pprint a)
-[[0, 0, 0], [0, 0, 0]]
-
-user=> (pprint (aget a 0))
-[0, 0, 0]
-````
+  ````
+  user=> (def a (make-array Integer/TYPE 2 3))          
+  #'user/a
+  
+  user=> (pprint a)
+  [[0, 0, 0], [0, 0, 0]]
+  
+  user=> (pprint (aget a 0))
+  [0, 0, 0]
+  ````
 
 3. Array length
-````
-user=> (def a (make-array Integer/TYPE 2 3))          
-#'user/a
-
-user=> (pprint a)
-[[0, 0, 0], [0, 0, 0]]
-
-user=> (alength a)
-2
-
-user=> (alength (aget a 0))
-3
-````
+  ````
+  user=> (def a (make-array Integer/TYPE 2 3))          
+  #'user/a
+  
+  user=> (pprint a)
+  [[0, 0, 0], [0, 0, 0]]
+  
+  user=> (alength a)
+  2
+  
+  user=> (alength (aget a 0))
+  3
+  ````
 
 4. Set value at the index
-````
-user=> (def a (make-array Integer/TYPE 2 3))          
-#'user/a
-
-user=> (pprint a)
-[[0, 0, 0], [0, 0, 0]]
-
-; aset returns the set value
-user=> (aset a  0 1 11)
-11
-
-user=> (pprint a)
-[[0, 11, 0], [0, 0, 0]]
-````
+  ````
+  user=> (def a (make-array Integer/TYPE 2 3))          
+  #'user/a
+  
+  user=> (pprint a)
+  [[0, 0, 0], [0, 0, 0]]
+  
+  ; aset returns the set value
+  user=> (aset a  0 1 11)
+  11
+  
+  user=> (pprint a)
+  [[0, 11, 0], [0, 0, 0]]
+  ````
 
 5. From vector & To Vector
-````
-;;;; Array => vector 
-user=> (def a (make-array Integer/TYPE 2 3))
-#'user/a
-
-user=> (class a)
-[[I
-
-; here we convert the array to a persistent vector
-user=> (class (into [] a))
-clojure.lang.PersistentVector
-
-; vector => Array
-user=> (class (into-array [1 2 3]))
-[Ljava.lang.Integer;
-
-````
+  ````
+  ;;;; Array => vector 
+  user=> (def a (make-array Integer/TYPE 2 3))
+  #'user/a
+  
+  user=> (class a)
+  [[I
+  
+  ; here we convert the array to a persistent vector
+  user=> (class (into [] a))
+  clojure.lang.PersistentVector
+  
+  ; vector => Array
+  user=> (class (into-array [1 2 3]))
+  [Ljava.lang.Integer;
+  
+  ````
 
 ### Maps ###
 Types:
