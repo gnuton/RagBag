@@ -440,8 +440,10 @@ user=> (map val a)
 (1 2)
 
 ;;;;;; ITERATING A MAP ;;;;
-user=> (seq a)
-([:a 1] [:b 2])
+user=> (defn a [[k v]] (str k "-" v))
+#'user/a
+user=> (map a {:a 1 :b 2 :c 3})
+(":a-1" ":b-2" ":c-3")
 
 ````
 
