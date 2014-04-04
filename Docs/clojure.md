@@ -540,7 +540,6 @@ true
   user=> (a)
   "ciao"
   ````
-
 3 Passing arguments to a function
   ````
   user=> (defn a[b] b)
@@ -576,12 +575,12 @@ true
   
   ````
 4. Anonymous functions
-````
-; they start with #
-user=> (map #(* 2 %) (range 4))
-(0 2 4 6)
-
-````
+  ````
+  ; they start with #
+  user=> (map #(* 2 %) (range 4))
+  (0 2 4 6)
+  
+  ````
 
 ### Special forms ###
 Special forms are just Macros
