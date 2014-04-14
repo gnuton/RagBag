@@ -699,5 +699,6 @@ Keep reading this on https://github.com/bbatsov/clojure-style-guide
 ## Clojure Cheat sheet ##
 (http://clojure.org/cheatsheet)
 
+
 ## Testing Framework ##
 1. Midje (https://github.com/marick/Midje/wiki/A-tutorial-introduction)
