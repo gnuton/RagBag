@@ -702,3 +702,7 @@ Keep reading this on https://github.com/bbatsov/clojure-style-guide
 
 ## Testing Framework ##
 1. Midje (https://github.com/marick/Midje/wiki/A-tutorial-introduction)
+   Midje tests can be run from the console in this way
+   ````
+   lein midje orc.mynamespace.mytestnamespace
+   ````
