@@ -706,3 +706,8 @@ Keep reading this on https://github.com/bbatsov/clojure-style-guide
    ````
    lein midje orc.mynamespace.mytestnamespace
    ````
+
+
+# References #
+0. http://joyofclojure.com/
+1. http://pleac.sourceforge.net/pleac_clojure/
