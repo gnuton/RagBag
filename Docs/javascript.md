@@ -1,9 +1,9 @@
 # Javascript #
 
-## Objects ##
+## Inheritance in objects and classes ##
 
-### Inheritance and prototypes ###
-Every javascript object is a subclass of Object
+### Objects inheritance  ###
+Every javascript object derives from Object
 ````
 > Object
 > function Object() { [native code] }
@@ -35,3 +35,6 @@ delete antonio.name;
 // where name="no name" which is the default value set in the base object for the "name" field.
 
 ````
+
+### Classes inheritance  ###
+
