@@ -54,3 +54,27 @@ Cat.prototype.age= 10
 
 // now tom contains Cat {name: "tom", age: 10}
 ````
+
+Douglas Crockford makes some analogies between a standard concept of class with its static/private/public methods and Javascript objects.
+In Javascript there are no scope modifiers: "private"/"public"/"protected".
+JavaScript functions are first-class objects, that means you can treat them just like any object.
+````
+// We define a "constructor" function with a private variable and a privileged method
+// privileged method are similar to what other languages call "public". They have access to private members
+function MyClass() {
+  var priv = 1; 
+  this.myPrivilegedMethod= function(){console.log("myMethod")}
+}
+
+// public methods in JS are added outside the object itself through the prototype
+// Properties:
+// - "this" keyword refers to MyClass
+// - cannot access to MyClass private members. It can access only other "privileged" or "public" members
+// - every instance of MyClass (created and future ones) will get this public method.
+MyClass.prototype.myPublicMethod = function() {console.log("public metdhod"); }
+
+// static method. are defined as follow and they do not have any relation with the instances we create of our class
+MyClass.myStaticMethod = function() { ... }
+
+
+````
