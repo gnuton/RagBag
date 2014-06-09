@@ -39,7 +39,7 @@ delete antonio.name;
 ### Classes inheritance  ###
 Well... there are no classes in Javascript. As we have already seen in the previous chapter in Javascript we have "PROTOTYPES".
 Methods live in prototypes:
-
+````
 // Let's create a funciton object or "costructor"
 function Cat(name){ this.name = name}
 
@@ -53,4 +53,4 @@ var tom = new Cat("tom")
 Cat.prototype.age= 10
 
 // now tom contains Cat {name: "tom", age: 10}
-
+````
