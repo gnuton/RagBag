@@ -1,6 +1,6 @@
 # Javascript #
 
-## Inheritance in objects and classes ##
+## Inheritance & objects ##
 
 ### Objects inheritance  ###
 Every javascript object derives from Object
@@ -37,4 +37,20 @@ delete antonio.name;
 ````
 
 ### Classes inheritance  ###
+Well... there are no classes in Javascript. As we have already seen in the previous chapter in Javascript we have "PROTOTYPES".
+Methods live in prototypes:
+
+// Let's create a funciton object or "costructor"
+function Cat(name){ this.name = name}
+
+// this creates by default a prototype.
+Cat.prototype; // prints out Cat{}
+
+// let create an new instance
+var tom = new Cat("tom")
+
+// if we set a field or method into the Cat.prototype that will be available to tom and other derived objects
+Cat.prototype.age= 10
+
+// now tom contains Cat {name: "tom", age: 10}
 
