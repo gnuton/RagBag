@@ -78,3 +78,7 @@ MyClass.myStaticMethod = function() { ... }
 
 
 ````
+
+
+## References ##
+- Prototypal Inheritance in JavaScript http://javascript.crockford.com/prototypal.html
