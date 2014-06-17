@@ -13,3 +13,5 @@ exp(x) # e^x
 factorial(x)
 ````
 
+## Reference ##
+http://egret.psychol.cam.ac.uk/statistics/R/basicstats.html
