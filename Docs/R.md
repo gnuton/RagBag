@@ -1,7 +1,7 @@
 # R #
 
 ## Basic maths ##
-
+````
 sum(x) # adds up a vector
 x^y
 sqrt(x)
@@ -11,4 +11,5 @@ log2(x) # short cut
 log10(x) # short cut
 exp(x) # e^x
 factorial(x)
+````
 
