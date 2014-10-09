@@ -135,7 +135,7 @@ Clojure provides 4 mechanisms to maintain a persistent reference to a changing v
 - Agents
 - Atoms
 ````
-; DEF creates a interns a variable
+; DEF creates a static a variable
 user=> (def x)
 #'user/x
 
@@ -144,6 +144,7 @@ user=> (def x 1)
 #'user/x
 
 ; Dynamic variables - Vars are static by default
+; def vs defn, the first are evaulate only once
 
 ````
 
