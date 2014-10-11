@@ -17,3 +17,15 @@ ans =  2
 > 1/2
 ans =  0.50000
 ````
+
+### LOGIC OPERATORS ###
+````
+````
+
+### PLOTTING GRAPHS ###
+````
+````
+
+### VECTORS AND MATRIcES ###
+````
+````
