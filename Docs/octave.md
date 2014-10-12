@@ -69,5 +69,29 @@ v =
 
    1   2   3
 
+octave:14>w=ones(1,3)
+w =
+
+   1   1   1
+   
+octave:15>w=zeros(2,3)
+w =
+
+   0   0   0
+   0   0   0
 
 ````
+
+### RANDOM NUMBER GENERATORS ###
+````
+% RAND Return a matrix with random elements uniformly distributed on the interval (0, 1).
+
+% RANDN Return a matrix with normally distributed random elements having zero mean and variance one.
+
+````
+
+## ADVANCED STUFF##
+````
+% Personalize prompt
+octave:15> w=randn(1,10000);
+octave:16> hist(w)
