@@ -168,6 +168,64 @@ ans =  1
 octave:50> a(1,2)
 ans =  2
 
+% get the 1st and 3rd row
+octave:51> a([1 3],:)
+ans =
+
+   1   2
+   5   6
+
+% replace one column
+octave:56> a(:,2) = [1; 2; 3];
+octave:57> a
+a =
+
+   1   1
+   3   2
+   5   3
+
+% adding a new column
+octave:59> a = [a,[1; 2; 3]];
+octave:60> a
+a =
+
+   1   1   1
+   3   2   2
+   5   3   3
+
+% get all element of the matrix as vector
+octave:61> a(:)
+ans =
+
+   1
+   3
+   5
+   1
+   2
+   3
+   1
+   2
+   3
+
+% concate matrixes
+octave:62> [zeros(3) ones(3)]
+ans =
+
+   0   0   0   1   1   1
+   0   0   0   1   1   1
+   0   0   0   1   1   1
+
+octave:63> [zeros(3); ones(3)]
+ans =
+
+   0   0   0
+   0   0   0
+   0   0   0
+   1   1   1
+   1   1   1
+   1   1   1
+
+
 ````
 
 ### RANDOM NUMBER GENERATORS ###
