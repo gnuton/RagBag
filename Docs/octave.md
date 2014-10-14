@@ -33,6 +33,15 @@ ans =  0.50000
 % assign value to var
 a = 3;
 
+% remove var from scope
+clear var_name
+
+% slice a var - eg: takes first 3 elements from a vector with 5
+octave:35> [1 2 3 4 5](1:3)
+ans =
+
+   1   2   3
+
 % prints var in scope
 octave:19> who
 Variables in the current scope:
@@ -184,6 +193,10 @@ featuresX =
    5   6
    7   8
 
+
+% saving data to file
+s=eye(10); % let's generate a diagonal matrix 
+save hello.mat s; % saves the matrix to file
 
 
 ````
