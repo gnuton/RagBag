@@ -28,6 +28,18 @@ ans =  2
 ans =  0.50000
 ````
 
+### VARS ###
+````
+% assign value to var
+a = 3;
+
+% prints var in scope
+octave:19> who
+Variables in the current scope:
+
+a    ans
+````
+
 ### LOGICAL OPERATRRS ###
 ````
 octave:4> 1 || 1
@@ -116,6 +128,16 @@ Diagonal Matrix
 
 ### FILESYSTEM & HANDLING DATA ###
 ````
+% current dir
+octave:16> pwd
+ans = /home/gnuton/Downloads
+octave:17> cd /tmp
+octave:18> pwd
+ans = /tmp
+
+% file in the current dir
+
+
 ````
 
 ## ADVANCED STUFF##
