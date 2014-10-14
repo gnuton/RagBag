@@ -131,11 +131,18 @@ Diagonal Matrix
 % current dir
 octave:16> pwd
 ans = /home/gnuton/Downloads
+
+% change working dir
 octave:17> cd /tmp
 octave:18> pwd
 ans = /tmp
 
-% file in the current dir
+% create dir
+octave:21> mkdir test;
+octave:22> cd test/
+
+% list files in dir
+octave:23> ls
 
 
 ````
