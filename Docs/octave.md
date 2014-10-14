@@ -143,6 +143,23 @@ octave:22> cd test/
 
 % list files in dir
 octave:23> ls
+featuresX.dat
+
+% loading a file
+octave:26> load featuresX.dat
+octave:27> who
+Variables in the current scope:
+
+a          ans        featuresX  v          w
+
+octave:28> featuresX
+featuresX =
+
+   1   2
+   3   4
+   5   6
+   7   8
+
 
 
 ````
