@@ -149,6 +149,25 @@ Diagonal Matrix
    1   0   0
    0   1   0
    0   0   1
+   
+% index & matrices
+octave:47> a(1,:)
+ans =
+
+   1   2
+
+octave:48> a(:,1)
+ans =
+
+   1
+   3
+   5
+
+octave:49> a(1,1)
+ans =  1
+octave:50> a(1,2)
+ans =  2
+
 ````
 
 ### RANDOM NUMBER GENERATORS ###
@@ -197,6 +216,8 @@ featuresX =
 % saving data to file
 s=eye(10); % let's generate a diagonal matrix 
 save hello.mat s; % saves the matrix to file
+
+save hello.mat s -ascii % saves the matrix to file in human-readable format
 
 
 ````
