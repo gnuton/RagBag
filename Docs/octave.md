@@ -81,6 +81,21 @@ w =
    0   0   0
    
    
+% size of a matrix
+octave:8> size(w)
+ans =
+
+   2   3
+
+octave:9> size(w,1)
+ans =  2
+
+% size of a vector
+
+octave:14> length([1 2 3])
+ans =  3
+
+% generates diagonal matrix
 octave:2> eye(3)
 ans =
 
