@@ -81,6 +81,14 @@ v =
 
    1   2   3
 
+% define coloumn vector
+octave:13> v = [1; 2; 3]
+v =
+
+   1
+   2   
+   3
+
 octave:14>w=ones(1,3)
 w =
 
