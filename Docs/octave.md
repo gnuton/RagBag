@@ -38,6 +38,22 @@ octave:19> who
 Variables in the current scope:
 
 a    ans
+
+% detailed print of  var in the scope
+octave:30> whos
+Variables in the current scope:
+
+   Attr Name           Size                     Bytes  Class
+   ==== ====           ====                     =====  ===== 
+        a              3x2                         48  double
+        ans            1x1                          1  logical
+        featuresX      4x2                         64  double
+        v              3x1                         24  double
+        w              2x3                         48  double
+
+Total is 24 elements using 185 bytes
+
+
 ````
 
 ### LOGICAL OPERATRRS ###
