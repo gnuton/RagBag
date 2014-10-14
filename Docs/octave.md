@@ -278,7 +278,9 @@ save hello.mat s; % saves the matrix to file
 save hello.mat s -ascii % saves the matrix to file in human-readable format
 
 
-````
+```
+## INTERMEDIATE STUFF##
+
 
 ## ADVANCED STUFF##
 ````
