@@ -1,5 +1,5 @@
 # Octave #
-![logo]()
+![logo](http://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Gnu-octave-logo.svg/240px-Gnu-octave-logo.svg.png)
 
 
 ## BASICS ##
