@@ -279,6 +279,113 @@ save hello.mat s -ascii % saves the matrix to file in human-readable format
 
 
 ```
+## COMPUTING ON DATA ##
+```
+% Multipling matrices
+octave:6> m
+m =
+   1   2
+   3   4
+   4   5
+octave:10> C=[11; 22]
+C =
+
+   11
+   22
+octave:11> m * C
+ans =
+
+    55
+   121
+   154
+
+% Element-wise moltiplication of matrices
+% period denotes element-wise operations in octave
+octave:13> m
+m =
+
+   1   2
+   3   4
+   4   5
+
+octave:14> B
+B =
+
+   11   22
+   33   44
+   55   66
+
+octave:15> m .* B
+ans =
+
+    11    44         % 1 * 11      2 * 22
+    99   176         % 3 * 33      4 * 44 
+   220   330
+
+% element-wise squaring
+octave:17> m
+m =
+
+   1   2
+   3   4
+   4   5
+
+octave:18> m .^2
+ans =
+
+    1    4
+    9   16
+   16   25
+   
+% 
+octave:19> v = [1; 2; 3]
+v =
+
+   1
+   2
+   3
+
+octave:20>  1./v
+ans =
+
+   1.00000
+   0.50000
+   0.33333
+
+% log(v)o
+ctave:22> log(v)
+ans =
+
+   0.00000
+   0.69315
+   1.09861
+   
+octave:23> exp(v)
+ans =
+
+    2.7183
+    7.3891
+   20.0855
+
+octave:24> abs(v)
+ans =
+
+   1
+   2
+   3
+   
+octave:25> -v
+ans =
+
+  -1
+  -2
+  -3
+
+%
+
+
+```
+
 ## INTERMEDIATE STUFF##
 
 
