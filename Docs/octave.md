@@ -280,6 +280,8 @@ save hello.mat s -ascii % saves the matrix to file in human-readable format
 
 ```
 ## COMPUTING ON DATA ##
+
+### MATRICES ###
 ```
 % Multipling matrices
 octave:6> m
@@ -381,8 +383,67 @@ ans =
   -2
   -3
 
-%
+% transpose
+octave:30> a = [1 2; 3 4; 5 6]
+a =
 
+   1   2
+   3   4
+   5   6
+
+octave:31> a'
+ans =
+
+   1   3   5
+   2   4   6
+```
+### VECTORS ###
+```
+% max
+octave:32> a = [1 2 3 5 6]
+a =
+
+   1   2   3   5   6
+
+octave:33> max(a)
+ans =  6
+
+octave:34> [val, ind] = max(a)
+val =  6
+ind =  5    % <-- index
+
+% finding item less/bigger than N in an array
+octave:39> a < 3
+ans =
+
+   1   1   0   0   0
+
+octave:40> find(a < 3)
+ans =
+
+   1   2   % <--- those are indexes
+
+% find elements in matrices
+octave:52> A
+A =
+
+   8   1   6
+   3   5   7
+   4   9   2
+
+octave:53> [r,c] = find(A >=7)
+% this means we got 3 points (1,1) (3,2) (2,3)
+r =
+
+   1   % <-- x of the first point
+   3
+   2
+
+c =
+
+   1  % <-- y of the first point
+   2
+   3
 
 ```
 
