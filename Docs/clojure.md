@@ -709,6 +709,9 @@ Keep reading this on https://github.com/bbatsov/clojure-style-guide
    ````
 
 
+# IDE #
+Many people use emacs. Java people may feel more confortable in using a more familiar IDE: IntelliJ with leiningen and LaClojure plugins: (http://wiki.jetbrains.net/intellij/Getting_started_with_La_Clojure#Prerequisites)
+
 # References #
 0. http://joyofclojure.com/
 1. http://pleac.sourceforge.net/pleac_clojure/
