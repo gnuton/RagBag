@@ -665,6 +665,47 @@ Lein (http://leiningen.org) it the defacto way to automate all the building phas
 - run lein deps again (you can skip this step if using leiningen2)
 - run lein repl
 - 
+## Introspection in Clojure ##
+Prints public vars in a namespace (in this example 'clojure.set')
+````
+user=> (dir clojure.set)
+difference
+index
+intersection
+join
+map-invert
+project
+rename
+rename-keys
+select
+subset?
+superset?
+union
+nil
+````
+
+Getting source code of a function
+````
+user=> (source cascalog.api/union)
+(defn union
+  "Merge the tuples from the subqueries together into a single
+  subquery and ensure uniqueness of tuples."
+  [& gens]
+  (ops/unique (apply combine gens)))
+nil
+````
+
+If you feel lost have a look at the help!
+````
+user=> (help)
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+````
+
 
 ## Clojure style ##
 A. Use two spaces per intentation per level
