@@ -710,7 +710,13 @@ Keep reading this on https://github.com/bbatsov/clojure-style-guide
 
 
 # IDE #
-Many people use emacs. Java people may feel more confortable in using a more familiar IDE: IntelliJ with leiningen and LaClojure plugins: (http://wiki.jetbrains.net/intellij/Getting_started_with_La_Clojure#Prerequisites)
+Many people use emacs. Java people may feel more confortable in using a more familiar IDE: IntelliJ Cursive. LaClojure and leiningen plugins have been deprecated!
+
+# Clojure & Hadoop: Cascalog #
+In order to get started with Cascalog and Clojure you may wanna run a single-node hadoop on you machine or run a cloudera VM image on your machine. Some people avoid hadoop by writing some midje tests to test the output of their queries, but that may be too advanced if you are a totally noob and it may not give you the understanding of what really happens on hadoop using cascalog.
+So once you have hadoop running you can go through the good set of tutorials you can find at http://cascalog.org/articles/guides.html
+
+
 
 # References #
 0. http://joyofclojure.com/
