@@ -582,6 +582,23 @@ true
   (0 2 4 6)
   
   ````
+### Macros ###
+Macros are functions that takes some arguments in and return something (actually a list) which "runs" where the macro is called. Clojure uses lists to represents function and macro calls.
+Let's have a look at the following function:
+````
+user=> (def pointless (fn [n] n))
+user=> (pointless (+ 3 5))
+````
+"(def pointless ..." looks like is acting like a macro, but it's NOT. The difference between a macro and a function is that arguments are evaulated before those are passed to the function whereas macros receive arguments as unevaulated data structures.
+Then, by attaching a key-value pair ":macro true" as metadata to the var mapped we could make the above function a macro.
+
+The easiest way to define a macro, is the following one:
+````
+(defmacro name
+          "description"
+          [expression]
+          HERE_THE_BODY)
+````
 
 ### Special forms ###
 Special forms are just Macros
@@ -760,3 +777,4 @@ So once you have hadoop running you can go through the good set of tutorials you
 # References #
 0. http://joyofclojure.com/
 1. http://pleac.sourceforge.net/pleac_clojure/
+2. http://www.braveclojure.com
