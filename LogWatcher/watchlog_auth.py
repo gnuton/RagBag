@@ -1,15 +1,26 @@
+#
+# This script reads continuosly the log file
+# and if the read line matches one of the pattern in
+# matching_pattern then a mail is sent to the recipient.
+#
+# Script written by Antonio Aloisio <gnuton@gnuton.org>
+# Copyright 2014 - License GPL
+#
+
 import os, sys, time
 import smtplib
 import re
 
+
 logfile_path = "/var/log/auth.log"
 
+# VARIABLES TO EDIT
 gmail_user = "the.mail.of.your.bot@gmail.com"
 gmail_password = "your_password"
 notification_subject = "WARNING: new log activity"
 notification_recipient = "your.mail@company.com"
 
-# sorry I'm lazy! :P
+# DO NOT EDIT ANYTHING BELOW THIS LINE!! :P
 matching_patterns=[
   re.compile(r"Failed password for"),
   re.compile(r"Invalid user"),
