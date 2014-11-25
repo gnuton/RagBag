@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #
 # This script reads continuosly the log file
 # and if the read line matches one of the pattern in
@@ -17,7 +18,7 @@ logfile_path = "/var/log/auth.log"
 # VARIABLES TO EDIT
 gmail_user = "the.mail.of.your.bot@gmail.com"
 gmail_password = "your_password"
-notification_subject = "WARNING: new log activity"
+notification_subject = "WARNING: Suspicious activity detected"
 notification_recipient = "your.mail@company.com"
 
 # DO NOT EDIT ANYTHING BELOW THIS LINE!! :P
@@ -81,7 +82,8 @@ if __name__ == "__main__":
                         break
             buf = "\n".join(fbuf)
             sys.stdout.write(buf)
-            send_email(notification_subject, buf, notification_recipient)
+            if buf != None and len(buf) > 0:
+            	send_email(notification_subject, buf, notification_recipient)
         try:
             if os.stat(logfile_path).st_ino != curino:
                 new = open(name, "r")
