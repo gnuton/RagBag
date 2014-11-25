@@ -13,6 +13,6 @@
  = Content:
  =   1. ProxyTester - Checks quality/validity of proxies in on/off-line lists
  =   2. TweeterQuotesBot - Tweets quotes from the Italian WikiQuote RSS feed
- =
+ =   3. LogWatcher - reads auth.log and warns you via mail in case of issue
  =
  ===============================================================================
