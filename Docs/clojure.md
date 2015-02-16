@@ -28,8 +28,19 @@ gnuton@Eva:/tmp/clojure-noob$ lein run        <-- runs the app we have just crea
 Hello, World!
 
 ````
+### Create jar from clojure code ###
+````
+gnuton@Eva:/tmp/clojure-noob$ lein uberjar
+Compiling clojure-noob.core
+Created /tmp/clojure-noob/target/uberjar+provided/clojure-noob-0.1.0-SNAPSHOT.jar
+Including clojure-noob-0.1.0-SNAPSHOT.jar
+Including clojure-1.5.1.jar
+Created /tmp/clojure-noob/target/clojure-noob-0.1.0-SNAPSHOT-standalone.jar
 
-## Basic stuff ##
+gnuton@Eva:/tmp/clojure-noob$  java -jar /tmp/clojure-noob/target/clojure-noob-0.1.0-SNAPSHOT-standalone.jar
+````
+
+## Clojure syntax ##
 
 ### Documentation ###
 As python even clojure has a "doc" command which allows you to read the documentation related to a clojure
