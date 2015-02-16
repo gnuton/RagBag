@@ -3,6 +3,32 @@
 
 Clojure is a dialect of the Lisp language created by Rich Hickey. It's a general-purpose function language and it runs in the JVM as well as in JS engines (ClojureScript).
 
+## Getting started ##
+### Create and run an app with lein ###
+Lein (short for leiningen) is the de-facto building tool for clojure.
+
+````
+gnuton@Eva:/tmp$ lein new app clojure-noob      <--- This creates app template
+gnuton@Eva:/tmp/clojure-noob$ tree
+.
+├── doc
+│   └── intro.md
+├── project.clj        <--- Configuration file
+├── README.md
+├── src
+│   └── clojure_noob   <--- Dir which contains our app code
+│       └── core.clj   
+└── test
+    └── clojure_noob
+        └── core_test.clj
+
+5 directories, 5 files
+
+gnuton@Eva:/tmp/clojure-noob$ lein run        <-- runs the app we have just created
+Hello, World!
+
+````
+
 ## Basic stuff ##
 
 ### Documentation ###
