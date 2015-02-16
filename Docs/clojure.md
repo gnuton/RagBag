@@ -694,6 +694,10 @@ Use if-let instead of let + if
 #### Do ####
 (do exprs*)
 Evaluates the expressions in order and returns the value of the last. If no expressions are supplied, returns nil.
+````
+clojure-noob.core=> (do (def a 1) (def b 2) (+ a b))
+3
+````
 
 
 #### Quote ####
