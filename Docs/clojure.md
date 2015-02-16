@@ -43,7 +43,7 @@ gnuton@Eva:/tmp/clojure-noob$  java -jar /tmp/clojure-noob/target/clojure-noob-0
 Or "Read-Eval-Print Loop" is the tool for experimenting with code.
 ````
 gnuton@Eva:/tmp/clojure-noob$ lein repl
-clojure-noob.core=> (println "hello")
+clojure-noob.core=> (-main)                     <--- runs the "-main" function in the namespace clojure-noob.core
 hello
 ````
 
