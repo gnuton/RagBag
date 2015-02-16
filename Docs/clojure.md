@@ -494,7 +494,7 @@ user=> (map a {:a 1 :b 2 :c 3})
 user=> (def c {:b {:a 1}})
 clojure-noob.core=> (get c :b)
 {:a 1}
-clojure-noob.core=> (get (get c :b) :a)
+clojure-noob.core=> (get-in c [:b :a])    <-- same as (get (get c :b) :a)
 1
 ````
 
