@@ -496,6 +496,14 @@ clojure-noob.core=> (get c :b)
 {:a 1}
 clojure-noob.core=> (get-in c [:b :a])    <-- same as (get (get c :b) :a)
 1
+
+;;;;;; DEFAULT VALUES ;;;;;;
+clojure-noob.core=> c
+{:b {:a 1}}
+clojure-noob.core=> (:d c)                      <-- :d is not found. returns nil
+nil
+clojure-noob.core=> (:d c "there is no val")    <- :d is not found. returns a default value
+"there is no val"
 ````
 
 ### Sets ###
