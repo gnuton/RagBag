@@ -39,6 +39,13 @@ Created /tmp/clojure-noob/target/clojure-noob-0.1.0-SNAPSHOT-standalone.jar
 
 gnuton@Eva:/tmp/clojure-noob$  java -jar /tmp/clojure-noob/target/clojure-noob-0.1.0-SNAPSHOT-standalone.jar
 ````
+### REPL ###
+Or "Read-Eval-Print Loop" is the tool for experimenting with code.
+````
+gnuton@Eva:/tmp/clojure-noob$ lein repl
+clojure-noob.core=> (println "hello")
+hello
+````
 
 ## Clojure syntax ##
 
