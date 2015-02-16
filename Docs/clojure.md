@@ -490,6 +490,12 @@ user=> (defn a [[k v]] (str k "-" v))
 user=> (map a {:a 1 :b 2 :c 3})
 (":a-1" ":b-2" ":c-3")
 
+;;;;;; NESTED MAPS ;;;;;;
+user=> (def c {:b {:a 1}})
+clojure-noob.core=> (get c :b)
+{:a 1}
+clojure-noob.core=> (get (get c :b) :a)
+1
 ````
 
 ### Sets ###
