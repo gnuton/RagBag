@@ -28,7 +28,7 @@ gnuton@Eva:/tmp/clojure-noob$ lein run        <-- runs the app we have just crea
 Hello, World!
 
 ````
-### Create jar from clojure code ###
+### Create jar from clojure code to distribute ###
 ````
 gnuton@Eva:/tmp/clojure-noob$ lein uberjar
 Compiling clojure-noob.core
