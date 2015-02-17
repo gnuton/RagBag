@@ -546,7 +546,7 @@ nil
 (str "ciao " "bello")
 ````
 
-### Data evaluation ###
+### Data evaluation & Quoting ###
 (a b c) is a list, where a,b,c could be function or a var.
 (1 2 3) throws a ClassCastException.
 a literal list (Clojure won't evaulate it) can be defined as follow:
@@ -557,7 +557,6 @@ antonio=> '(1 2 3)
 ; eval evaluates literals
 antonio=> (eval '(+ 1 2 3))
 6
-
 ````
 
 ### Math ###
@@ -575,7 +574,11 @@ true
 
 ````
 
-### Functions ###
+### Functions, Macros and Special forms ###
+There are the tree kinds of expressions that clojure defines.
+
+#### Functions ####
+Are expressions which have a function expression as the operator.
 1. Define a function
   ````
   user=> (fn [] "Ciao")
@@ -612,9 +615,9 @@ true
   user=> (myFun 1 2)
   "First arg: 1 Second one:2"
   
-  ; function overloading
+  ; function overloading or multiple-arity function definition
   user=> (defn myFun
-               ([] "hello world") 
+               ([] "hello world")         <--- each arity definition must be enclosed in ()
                ([a] (str "hello" a))
          )
   #'user/myFun
@@ -632,15 +635,34 @@ true
   user=> (myFun 1 2 3)
   "arg1:1 arg22rest:(3)"
   
+  ; a docstring can be passed to a function declaration too
+   user=> (defn my-func-name
+            "the doc string"
+            [the-argument]
+            (str the-argument))
+   user=> (doc my-func-name)   <-- returns the doc string
+   
+  ; decostructing vectors
+  user => (defn a [[first-el second-el & rest]] second-el)   
+  user => deviceregistry.setup=> (a [1 2 3])                                     
+  2
+  
+  ; decostructing maps
+  user=>  (defn a [{:keys [c d]}] (str "c arg:" c "d arg" d) <-- same as (defn a [{c :c d :d}] (str "c arg:" c "d arg" d))
+  user=> (a {:c 1 :d 2})
+  "c arg:1d arg2"
+  
   ````
 4. Anonymous functions
   ````
+  ; First way to create anonymous functions:
+  
   ; they start with #
   user=> (map #(* 2 %) (range 4))
   (0 2 4 6)
   
   ````
-### Macros ###
+#### Macros ####
 Macros are functions that takes some arguments in and return something (actually a list) which "runs" where the macro is called. Clojure uses lists to represents function and macro calls.
 Let's have a look at the following function:
 ````
@@ -658,8 +680,21 @@ The easiest way to define a macro, is the following one:
           HERE_THE_BODY)
 ````
 
-### Special forms ###
-Special forms are just Macros
+#### Special forms ####
+Special forms are just Macros, that in general implement core Clojure functionalities
+that canno be implemented by functions.
+
+Unlike function calls, special forms:
+- do not always evaluate all of their operands.
+- cannot be used as arguments to functions
+
+The general structure of a special form is the following one:
+You can see here that only one of the "then-form" or "optional-else-form" functions are valuated.
+````
+(if boolean-form
+  then-form
+  optional-else-form)
+````
 
 #### IF ####
 ````
