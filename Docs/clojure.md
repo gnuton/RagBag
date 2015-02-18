@@ -806,8 +806,8 @@ user=> (def a [1 2 3 4 5])
 user=> (loop [prev-a a
 #_=>          newa []]
 #_=>     (if (empty? prev-a)
-#_=>       newa
-#_=>       (let [[i & rest] prev-a] (recur rest (conj newa (* i 2))))
+#_=>       newa                                                           <-- returns the result when all input data has been processed
+#_=>       (let [[i & rest] prev-a] (recur rest (conj newa (* i 2))))     <-- multiply current item by 2, insert into newa vector and loops
 [2 4 6 8 10]
 ````
 
