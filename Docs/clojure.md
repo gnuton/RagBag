@@ -734,10 +734,17 @@ In clojure when should be used instead of (if .. (do ..))
 (let [bindings* ] exprs*)
 binding => binding-form init-expr
 
-Creates temporary bindings
 ````
+; Creates temporary bindings
 user=> (let [a 20 b 10] (> a b))
 true
+
+; bindings are valid in the let scope. Let supports destructuring rules (rest). 
+user=> (def a [1 2 3 4])            <--- here we define a vector
+user=> (let [a-in-scope a] (str a-in-scope))    <-- let defines a scope where the var a-in-scope is bound to a
+"[1 2 3 4]"                                         then we execute the expression (str a-in-scope).
+user=> (let [[a1 a2 & a-rest] a] (str "a1=" a1 " a2=" a2 " a-rest=" a-rest)) 
+"a1=1 a2=2 a-rest=(3 4)"
 ````
 Use if-let instead of let + if
 
@@ -780,7 +787,25 @@ user=> (case 1
 
 ````
 #### Loop ####
+````
+user=> (loop [i 0]                      <-- i is the iterator
+  #_=>   (println (str "i=" i))
+  #_=>   (if (> i 3)
+  #_=>     (println "bye")
+  #_=>     (recur (inc i))))            <-- increments i and rebinds the new value and restart the loop
+i=0
+i=1
+i=2
+i=3
+i=4
+bye
+````
 
+## Regexp ##
+````
+user=> (re-find #"[1-9]{2}" "102949")
+"29"
+````
 
 ## Introspection in Clojure ##
 Prints public vars in a namespace (in this example 'clojure.set')
