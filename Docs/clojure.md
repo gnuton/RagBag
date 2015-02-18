@@ -786,7 +786,7 @@ user=> (case 1
 "first"
 
 ````
-#### Loop ####
+#### Loop & Recur ####
 ````
 user=> (loop [i 0]                      <-- i is the iterator
   #_=>   (println (str "i=" i))
@@ -799,6 +799,16 @@ i=2
 i=3
 i=4
 bye
+
+; loop can contain more than one var. Recur must get same number of var passed to loop
+; splitting head and tail of a vector and collect the result in a new vector is very common in clojure
+user=> (def a [1 2 3 4 5])
+user=> (loop [prev-a a
+#_=>          newa []]
+#_=>     (if (empty? prev-a)
+#_=>       newa
+#_=>       (let [[i & rest] prev-a] (recur rest (conj newa (* i 2))))
+[2 4 6 8 10]
 ````
 
 ## Regexp ##
