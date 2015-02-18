@@ -811,6 +811,18 @@ user=> (loop [prev-a a
 [2 4 6 8 10]
 ````
 
+#### Map & Reduce ####
+The previous pattern is one of the "common" patterns in clojure that gets its own helping funtion: map.
+
+````
+; map
+user=> (map #(* % 2) [1 2 3 4])  <-- it's like the previous code in the loop example
+(2 4 6 8)
+
+; reduce
+user=> (reduce + [1 2 3 4])   <-- it's like (+ (+ (+ 1 2) 3) 4)
+10
+````
 ## Regexp ##
 ````
 user=> (re-find #"[1-9]{2}" "102949")
