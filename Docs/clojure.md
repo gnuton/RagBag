@@ -5,7 +5,14 @@ Clojure is a dialect of the Lisp language created by Rich Hickey. It's a general
 
 ## Getting started ##
 ### Create and run an app with lein ###
-Lein (short for leiningen) is the de-facto building tool for clojure.
+Lein (http://leiningen.org) it the defacto way to automate all the building phases that a clojure project would need.
+
+- lein new projectname
+- add the library you need to your project.clj file with a name you choose
+- run lein deps to print out the command to use to add the jar to your local repo
+- add the jar
+- run lein deps again (you can skip this step if using leiningen2)
+- run lein repl
 
 ````
 gnuton@Eva:/tmp$ lein new app clojure-noob      <--- This creates app template
@@ -775,16 +782,6 @@ user=> (case 1
 #### Loop ####
 
 
-## How to create a Clojure project ##
-Lein (http://leiningen.org) it the defacto way to automate all the building phases that a clojure project would need.
-
-- lein new projectname
-- add the library you need to your project.clj file with a name you choose
-- run lein deps to print out the command to use to add the jar to your local repo
-- add the jar
-- run lein deps again (you can skip this step if using leiningen2)
-- run lein repl
-- 
 ## Introspection in Clojure ##
 Prints public vars in a namespace (in this example 'clojure.set')
 ````
