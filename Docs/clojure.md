@@ -652,6 +652,12 @@ Are expressions which have a function expression as the operator.
   user=> (a {:c 1 :d 2})
   "c arg:1d arg2"
   
+  ; functions can return functions
+  user=> (defn a [b] #(* b 3))
+  user=> (a 8)
+  #<user$a$fn__2279 user$a$fn__2279@6f5208fd>
+  user=> ((a 8))
+  24
   ````
 4. Anonymous functions
   ````
