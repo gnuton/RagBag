@@ -913,6 +913,32 @@ Keep reading this on https://github.com/bbatsov/clojure-style-guide
    lein midje orc.mynamespace.mytestnamespace
    ````
 
+## Clojure Libs ##
+````
+; MySQL
+; 1. Add [org.clojure/java.jdbc "0.3.3"] and [mysql/mysql-connector-java "5.1.25"]
+;    to your project.clj
+; 2. Add '[clojure.java.jdbc :as jdbc] to your (require ) in the namespace/file you wanna use mysql
+; 3. Define DB connection specs
+(def db-spec
+  {:classname "com.mysql.jdbc.Driver"
+   :subprotocol "mysql"
+   :subname "//127.0.0.1:3306/MyDBName"
+   :user "db-user"
+   :password "db-pass"})
+   
+; 4. Let's run our first query!
+(jdbc/query db-spec 
+            ["show tables;"])
+; 5. If we wanna keep the connection open to the DB we can use a macro which helps to do that
+(jdbc/with-db-connection
+  [c db-spec]
+  (let [myquery1 (jdbc/query c ["show tables"])] 
+    (println myquery1)))
+
+; You can read more about MySQL in clojure at: https://github.com/clojure-cookbook/clojure-cookbook/blob/master/06_databases/6-03_manipulating-an-SQL-database.asciidoc
+````
+### Database ###
 
 # IDE #
 Many people use emacs. Java people may feel more confortable in using a more familiar IDE: IntelliJ Cursive. LaClojure and leiningen plugins have been deprecated!
