@@ -810,7 +810,19 @@ user=> (loop [prev-a a
 #_=>       (let [[i & rest] prev-a] (recur rest (conj newa (* i 2))))     <-- multiply current item by 2, insert into newa vector and loops
 [2 4 6 8 10]
 ````
+#### doall, doseq ####
+````
+; doall
+TODO
+; doseq - Exceutes the body (prn x) for side effects. Doesn't retain the head => garbage collected!
+;         
+=> (doseq [x (range 4)] (prn x))
+0
+1
+2
+3
 
+````
 #### Map & Reduce ####
 The previous pattern is one of the "common" patterns in clojure that gets its own helping funtion: map.
 
