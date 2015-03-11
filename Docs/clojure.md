@@ -675,9 +675,12 @@ Are expressions which have a function expression as the operator.
   (0 2 4 6)
   
   ````
+
 #### Macros ####
 Macros are functions that takes some arguments in and return something (actually a list) which "runs" where the macro is called. Clojure uses lists to represents function and macro calls.
-Let's have a look at the following function:
+You can read more about how they works in the "How clojure works chapter".
+
+Now let's have a look at the following function:
 ````
 user=> (def pointless (fn [n] n))
 user=> (pointless (+ 3 5))
@@ -691,6 +694,14 @@ The easiest way to define a macro, is the following one:
           "description"
           [expression]
           HERE_THE_BODY)
+````
+##### -> #####
+The "threading" macro allows how to define a function in a different way.
+````
+# here is a function definition. Evaluation starts from right (inc arg) to left (prn ...)
+user=> (defn my-fun [arg] (prn (inc arg)))
+# to write from left to write
+user=> (defn my-fun [arg] (-> arg inc ))
 ````
 
 #### Special forms ####
