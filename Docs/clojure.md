@@ -959,6 +959,51 @@ Many people use emacs. Java people may feel more confortable in using a more fam
 In order to get started with Cascalog you may wanna run a single-node hadoop cluster on you machine or run a cloudera VM image on your machine. Some people avoid using hadoop by writing some midje tests to test the output of their cascalog queries, but that may be too advanced if you are a totally noob and it may not give you the understanding of what really happens on hadoop using cascalog.
 So once you have hadoop running you can go through the good set of tutorials you can find at http://cascalog.org/articles/guides.html
 
+### How Clojure works ###
+Clojure evaluates data structures. What that means?
+(+ 1 2) is TEXT. This is the text representation of a data structure and it's called READER FORM. 
+The TEXT is parsed by a READER.
+In this case it's something like(list + 1 2)
+The READER reads TEXT and produces data structures:
+- symbols (eg: IF)
+- keywords/strings/lists/map/ ...
+The READER uses some READER macros (a set of rules) to transform TEXT to Data Structures.
+````
+user=> (read-string "#(+ 1 %)")
+(fn* [p1__2293#] (+ 1 p1__2293#))
+````
+The data structures are then evaulated by the EVALUATOR to produce a result.
+Evalutor evaluates data structures in those ways:
+````
+# 1. Thigs that evaluates to themselves
+user=> (eval (read-string "true"))
+true
+user=> (eval "t")
+"t"
+# 2. symbols
+# Clojure resolve symbols in this way
+# Looks up wether the symbol name is a special form
+# if not, tries to find a local binding
+# if not, tries to find a mapping introduced by def
+# if not it throws an exception
+````
+
+Let's not talk about MACROS!
+A. Macro are functions that evaluate arguments before they are executed by the EXECUTOR.
+````
+user=> (defmacro ignore-last [thefu] (butlast thefu))
+user=> (ignore-last (+ 1 2 3))
+3
+
+# If ignore-last would have been a function the (+ 1 2 3) would have been evaluated first!
+````
+B. Macros always evaluate they return. Function never evaluate those.
+````
+# macroexpand function allows us to run the macro but to not evaluate the returning data structure
+user=> (macroexpand '(ignore-last (+ 1 2 3)))
+(+ 1 2)
+````
+
 # References #
 0. http://joyofclojure.com/
 1. http://pleac.sourceforge.net/pleac_clojure/
