@@ -918,6 +918,14 @@ C.Align let and map keys
 
 Keep reading this on https://github.com/bbatsov/clojure-style-guide
 
+### Recursion in clojure ###
+A tipical problem that can be solved with recursion is fibonacci:
+````
+(defn fibonacci [x y] (cons x (lazy-seq (fibonacci y (+ x y))) ))
+(take 10 (fibonacci 1 1))
+=> (1 1 2 3 5 8 13 21 34 55)
+````
+
 ## IDEs for Clojure ##
 1. IntelliJ + La Clojure [DEPRECATED](http://blog.tomeklipski.com/2013/04/running-and-debugging-clojure-code-with.html)
 2. IntelliJ 12 + Cursive 
