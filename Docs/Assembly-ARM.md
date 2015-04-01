@@ -1,9 +1,10 @@
-Assembly
+# A quick introduction to ARM Assembly#
 
+# ARM Architecture #
 ARM is RISC (Reduced Instruction Set Computing) standard.
   - has less instructions that CISC (complex) => easy to analize, but slower than RISC
 
-== ARM Registers ==
+# ARM Registers #
 - temporary placeholders for variables used by
     - the program
     - varius CPU specific data
@@ -36,5 +37,5 @@ Other registers.
 ARM has several operation modes. Only some registers can be accesed in each mode. r0-r15 + CPSR are always available.
 
 
-== ARM Instructions ==
+# ARM Instructions #
 For reference you can find all the ARM instructions here: http://infocenter.arm.com/help/topic/com.arm.doc.qrc0001l/QRC0001_UAL.pdf
