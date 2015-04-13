@@ -741,6 +741,15 @@ In clojure when should be used instead of (if .. (do ..))
   (bar))
 ````
 
+#### when-let ####
+````
+(when-let [var 1] var)
+=> 1
+(when-let [var false] var)
+=> nil
+
+````
+
 #### Let ####
 (let [bindings* ] exprs*)
 binding => binding-form init-expr
