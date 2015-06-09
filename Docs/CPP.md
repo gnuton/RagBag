@@ -36,7 +36,7 @@ int main() { // SCOPE 1 STARTS
 } // SCOPE 1 ENDS
 
 ```
-# Reading Command line arguments
+#### Reading Command line arguments ####
 When you run your app from command line as:
 ```
 gnuton@Jeremia:/tmp$ ./a.out  1 2 3
