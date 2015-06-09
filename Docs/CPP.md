@@ -54,6 +54,10 @@ int main() { // SCOPE 1 STARTS
 #### Pointers ####
 Are simple variable storing memory addresses. They have have a fixed size depending on the CPU/OS.
 ```cpp
+// Pointer definitions
+// when you initialize a pointer, the pointer variable doesn't point to any valid address it points to 0.
+int* a; // create a pointer to an integer and initialize it to nullptr
+int* a = NULL; // NOT NICE! Use nullptr if you are using C++11
 
 ```
 
