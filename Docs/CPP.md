@@ -36,7 +36,17 @@ int main() { // SCOPE 1 STARTS
 } // SCOPE 1 ENDS
 
 ```
-# Program arguments
+# Reading Command line arguments
+When you run your app from command line as:
+```
+gnuton@Jeremia:/tmp$ ./a.out  1 2 3
+ARGC4
+ARG ./a.out
+ARG 1
+ARG 2
+ARG 3
+```
+
 ```cpp
 #include <iostream>
 
@@ -50,3 +60,4 @@ int main(int argc, char** argv){
   }
 }
 ```
+
