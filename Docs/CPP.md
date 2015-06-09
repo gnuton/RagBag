@@ -54,11 +54,24 @@ int main() { // SCOPE 1 STARTS
 #### Pointers ####
 Are simple variable storing memory addresses. They have have a fixed size depending on the CPU/OS.
 ```cpp
-// Pointer definitions
+// Pointer definitions, read this definition backwards
 // when you initialize a pointer, the pointer variable doesn't point to any valid address it points to 0.
 int* a; // create a pointer to an integer and initialize it to nullptr
 int* a = NULL; // NOT NICE! Use nullptr if you are using C++11
+int const *a; // pointer to const int
+int * const a; // const pointer to int
+int const * const a; // const pointer to const int
 
+// The first const can be on either side of the type so:
+const int * == int const *
+const int * const == int const * const
+
+// pointers can point to other pointers
+int ** // pointer to pointer to int
+int ** const // a const pointer to a pointer to an int
+int * const * // a pointer to a const pointer to an int
+int const ** // a pointer to a pointer to a const int
+int * const * const // a const pointer to a const pointer to an int
 ```
 
 #### Reading Command line arguments ####
