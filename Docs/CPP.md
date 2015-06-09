@@ -160,11 +160,17 @@ Used when we get a un undefined number of arguments.
 using namespace std;
 
 int main() {
+  // Read integer
   int i;
   cout << "Insert a number" << endl;
   cin >> i;
-  cout << "Thanks";
-  cerr << "Used for errors";
+  cout << "Thanks" << endl;
+  cerr << "Used for errors" << endl;
+  // read string with spaces
+  string s;
+  cout << "Insert your full name" << endl;
+  getline(cin, s);
+  cout << "Thanks again " << s << endl;
 }
 
 ```
