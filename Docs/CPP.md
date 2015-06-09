@@ -81,7 +81,46 @@ int const ** // a pointer to a pointer to a const int
 int * const * const // a const pointer to a const pointer to an int
 ```
 #### Strings ####
-```cpp
+```cpp#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+int main() {
+  string s = "TEST";
+  cout << "SIZE " << s.size() << endl; // 4
+  cout << "LENGTH " << s.length() << endl; // 4
+
+  // APPEND A STRING OR A CHAR
+  s.append("ciao");
+
+  // APPENDING VAR OF OTHER TYPES
+  // s.append(1); doesn't work!  
+  ostringstream oss;
+  int i = 10;
+  oss << i;
+  s += oss.str();
+  cout << "Here we have appended an integer to the string " << s << endl;
+
+  // access to the N-th member of a string
+  // as we have seen before with append, strings are mutable vars
+  cout << "5th element of the string is " << s[5-1] << endl;
+  s[4] = 'X';
+  cout << "5th element of the string is " << s[5-1] << endl;
+
+  // Use iterators instead of integers is a good approach
+  // not all C++ containers provide integer access, 
+  // and using iterators allow us to change less things if we need 
+  // to refactor our code
+  for (string::iterator i=s.begin(); i < s.end(); i++) {
+    cout << *i;
+  }
+
+  // slice the string
+  cout << endl << s.substr(0,4) << endl; // prints TEST
+}
+
+
 ```
 
 #### Casting ####
