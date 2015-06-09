@@ -35,6 +35,18 @@ int main() { // SCOPE 1 STARTS
 
 } // SCOPE 1 ENDS
 
-
 ```
+# Program arguments
+```cpp
+#include <iostream>
 
+using namespace std;
+
+int main(int argc, char** argv){
+  cout << "ARGC" << argc << endl;
+  for (int x=0; x < argc; x++){
+    cout << "ARG " << *argv << endl;
+    ++argv;
+  }
+}
+```
