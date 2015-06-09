@@ -59,7 +59,7 @@ int main() { // SCOPE 1 STARTS
 ```
 
 #### Pointers ####
-Are simple variables storing memory addresses. They have have a fixed size depending on the CPU/OS.
+Inherithed from C. Are simple variables storing memory addresses. They have have a fixed size depending on the CPU/OS.
 ```cpp
 // Pointer definitions, read this definition backwards
 // when you initialize a pointer, the pointer variable doesn't point to any valid address it points to 0.
@@ -79,6 +79,15 @@ int ** const // a const pointer to a pointer to an int
 int * const * // a pointer to a const pointer to an int
 int const ** // a pointer to a pointer to a const int
 int * const * const // a const pointer to a const pointer to an int
+```
+
+#### References ####
+less powerful but safer than the pointer.Because the operations on references are so limited, they are much easier to understand than pointers and are more resistant to errors. While pointers can be made invalid through a variety of mechanisms, ranging from carrying a null value to out-of-bounds arithmetic to illegal casts to producing them from random integers, a previously-valid reference only becomes invalid in two cases:
+- If it refers to an object with automatic allocation which goes out of scope,
+- If it refers to an object inside a block of dynamic memory which has been freed.
+
+```cpp
+
 ```
 #### Strings ####
 ```cpp
