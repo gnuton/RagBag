@@ -52,7 +52,7 @@ int main() { // SCOPE 1 STARTS
 ```
 
 #### Pointers ####
-Are simple variable storing memory addresses. They have have a fixed size depending on the CPU/OS.
+Are simple variables storing memory addresses. They have have a fixed size depending on the CPU/OS.
 ```cpp
 // Pointer definitions, read this definition backwards
 // when you initialize a pointer, the pointer variable doesn't point to any valid address it points to 0.
