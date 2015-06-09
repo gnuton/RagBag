@@ -111,6 +111,11 @@ int main() {
   // const references cannot be modified
   const int& CRi = i;
   //CRi++;  //  error: increment of read-only reference ‘CRi’
+  
+  // It's easy to go from a pointer to a reference and the other way around
+  int* pI = &i; // Reference to pointer
+  int& R2PI = *pI;  // pointer to Reference
+  cout << "Reference to pointer works " << R2PI << endl;
 }
 
 ```
