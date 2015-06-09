@@ -99,4 +99,31 @@ int main(int argc, char** argv){
 }
 ```
 
+## Functions ##
+### Overloading ###
+C++ functions are stricly typed. That means that we can our code can have two or more functions with the same name, same number of arguments but different var type
+
+```cpp
+void myfunc(int a) {
+  cout << "got int" << endl;
+}
+
+void myfunc(char const* a) {
+  cout << "got string" << endl;
+}
+
+void myfunc(double a) {
+  cout << "got double" << endl;
+}
+
+void myfunc(float a) {
+  cout << "got float" << endl;
+}
+
+// in the main
+myfunc(1.3f); // got a float
+myfunc("ciao"); // got a string
+
+```
+
 
