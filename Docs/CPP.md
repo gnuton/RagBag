@@ -2,7 +2,11 @@
 ![logo](https://www.thenewboston.com/photos/users/27/original/f34559fb85ab31961e60e1928bf4e0ca.jpg)
 
 ## Getting started ##
-
+To compile C++ code enabling C11 features you can run the following command
+```
+g++ mycode.cpp -std=c++11
+```
+A minimal C++ application would be: 
 ```cpp
 #include <iostream>
 
@@ -37,7 +41,7 @@ int main() { // SCOPE 1 STARTS
 } // SCOPE 1 ENDS
 
 ```
-#### Sizes ####
+#### Var size ####
 ```cpp
  sizeof(char) == 1; // 1 bytes in C++  and sizeof(int) in C
  sizeof(int) == 4; // 4 bytes or 32 bits 
@@ -46,6 +50,13 @@ int main() { // SCOPE 1 STARTS
  sizeof(long) == 8;
  sizeof(char*) == 8; // size of a pointer depends on CPU/OS. 8 for a 64bit arch OS
 ```
+
+#### Pointers ####
+Are simple variable storing memory addresses. They have have a fixed size depending on the CPU/OS.
+```cpp
+
+```
+
 #### Reading Command line arguments ####
 When you run your app from command line as:
 ```
@@ -70,4 +81,5 @@ int main(int argc, char** argv){
   }
 }
 ```
+
 
