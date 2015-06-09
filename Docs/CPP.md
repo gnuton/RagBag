@@ -45,7 +45,7 @@ int main() { // SCOPE 1 STARTS
  sizeof(double) == 8; // 8 bytes or 64 bit
  sizeof(long) == 8;
  sizeof(char*) == 8; // size of a pointer depends on CPU/OS. 8 for a 64bit arch OS
-` ``
+```
 #### Reading Command line arguments ####
 When you run your app from command line as:
 ```
