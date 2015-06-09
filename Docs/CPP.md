@@ -10,6 +10,7 @@ using namespace std;
 
 int main() {
   cout << "Hello world";
+  return 0; // exit without errors.
 }
 
 ```
@@ -32,7 +33,7 @@ int main() { // SCOPE 1 STARTS
     int i = 3;
     cout << "Scope 2:" << i << endl;
   }  // SCOPE 2 END
-
+  
 } // SCOPE 1 ENDS
 
 ```
