@@ -17,7 +17,7 @@ int main() {
 ## Basics ##
 ### Variables ###
 Variables are valid just in a certain scope
-
+#### Scope ####
 ```cpp
 #include <iostream>
 
@@ -37,6 +37,15 @@ int main() { // SCOPE 1 STARTS
 } // SCOPE 1 ENDS
 
 ```
+#### Sizes ####
+```cpp
+ sizeof(char) == 1; // 1 bytes in C++  and sizeof(int) in C
+ sizeof(int) == 4; // 4 bytes or 32 bits 
+ sizeof(float) == 4;
+ sizeof(double) == 8; // 8 bytes or 64 bit
+ sizeof(long) == 8;
+ sizeof(char*) == 8; // size of a pointer depends on CPU/OS. 8 for a 64bit arch OS
+` ``
 #### Reading Command line arguments ####
 When you run your app from command line as:
 ```
