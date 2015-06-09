@@ -73,6 +73,13 @@ int * const * // a pointer to a const pointer to an int
 int const ** // a pointer to a pointer to a const int
 int * const * const // a const pointer to a const pointer to an int
 ```
+#### Strings ####
+```cpp
+```
+
+#### Casting ####
+```cpp
+```
 
 #### Reading Command line arguments ####
 When you run your app from command line as:
@@ -100,6 +107,13 @@ int main(int argc, char** argv){
 ```
 
 ## Functions ##
+### Default function argument ###
+```cpp
+void myfunc1(int a=1, int b=1) { }  // OK
+void myfunc2(int a, int b=1) { }    // OK
+void myfunc3(int a=1, int b) { }  // WRONG: default args must be at the end of the argument list
+```
+
 ### Overloading ###
 C++ functions are stricly typed. That means that we can our code can have two or more functions with the same name, same number of arguments but different var type
 
@@ -124,6 +138,11 @@ void myfunc(float a) {
 myfunc(1.3f); // got a float
 myfunc("ciao"); // got a string
 
+```
+
+#### Ellipses ####
+Used when we get a un undefined number of arguments.
+```cpp
 ```
 
 
