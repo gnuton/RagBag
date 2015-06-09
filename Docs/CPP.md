@@ -258,3 +258,7 @@ int main() {
 ```cpp
 ```
 
+## OOP: Classes ##
+C++ is a object oriented programming language and supports classes in addition to structure defined by C.
+```cpp
+```
