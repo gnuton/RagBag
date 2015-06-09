@@ -82,11 +82,36 @@ int * const * const // a const pointer to a const pointer to an int
 ```
 
 #### References ####
-less powerful but safer than the pointer.Because the operations on references are so limited, they are much easier to understand than pointers and are more resistant to errors. While pointers can be made invalid through a variety of mechanisms, ranging from carrying a null value to out-of-bounds arithmetic to illegal casts to producing them from random integers, a previously-valid reference only becomes invalid in two cases:
+Less powerful but safer than the pointer. 
+Because the operations on references are so limited, they are much easier to understand than pointers and are more resistant to errors. While pointers can be made invalid through a variety of mechanisms, ranging from carrying a null value to out-of-bounds arithmetic to illegal casts to producing them from random integers, a previously-valid reference only becomes invalid in two cases:
 - If it refers to an object with automatic allocation which goes out of scope,
 - If it refers to an object inside a block of dynamic memory which has been freed.
 
 ```cpp
+#include <iostream>
+
+using namespace std;
+
+void inc(int& a){
+ ++a;
+}
+
+
+int main() {
+  int i = 1;
+  int& Ri = i;
+
+  cout << Ri << endl;
+  inc(i);
+  cout << Ri << endl;
+
+  int i2 = 30;
+  Ri = i2;
+
+  // const references cannot be modified
+  const int& CRi = i;
+  //CRi++;  //  error: increment of read-only reference ‘CRi’
+}
 
 ```
 #### Strings ####
