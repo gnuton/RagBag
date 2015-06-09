@@ -81,7 +81,8 @@ int const ** // a pointer to a pointer to a const int
 int * const * const // a const pointer to a const pointer to an int
 ```
 #### Strings ####
-```cpp#include <iostream>
+```cpp
+#include <iostream>
 #include <sstream>
 
 using namespace std;
