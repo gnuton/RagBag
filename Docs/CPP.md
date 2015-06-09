@@ -152,4 +152,24 @@ Used when we get a un undefined number of arguments.
 ```cpp
 ```
 
+## Input/Output ##
+### Reading and Writing to Console ###
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main() {
+  int i;
+  cout << "Insert a number" << endl;
+  cin >> i;
+  cout << "Thanks";
+  cerr << "Used for errors";
+}
+
+```
+
+### Reading and Writing to File ###
+```cpp
+```
 
