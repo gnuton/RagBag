@@ -21,11 +21,16 @@ int main() {
 ## Basics ##
 ### Variables ###
 Variables are valid just in a certain scope
-#### Scope ####
+#### Scope & Namespaces####
+Braces define scopes. Outside functions we can create namespace that define a scope for variables and functions. 
 ```cpp
 #include <iostream>
 
 using namespace std;
+
+namespace my_namespace {
+  void myfun(int i) {}
+}
 
 int i = 1; // GLOBAL VAR
 
@@ -38,9 +43,11 @@ int main() { // SCOPE 1 STARTS
     cout << "Scope 2:" << i << endl;
   }  // SCOPE 2 END
   
+  my_namespace::myfun(1);
 } // SCOPE 1 ENDS
 
 ```
+
 #### Var size ####
 ```cpp
  sizeof(char) == 1; // 1 bytes in C++  and sizeof(int) in C
