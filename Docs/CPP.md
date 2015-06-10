@@ -265,24 +265,36 @@ C++ is a object oriented programming language and supports classes in addition t
 
 using namespace std;
 
-class animal { // in this example this is a BASE class
+class animal { // in this example this is a BASE or SUPER class.
   public: // by default class members are private
   animal(){ // constuctor is the member that make a instance of this object
     cout << "Animal constructor\n";
   };
   virtual ~animal(){ //destructor frees the memory used by an instance of this object
-                     //base class destructor must be virtual.
+                     //base class destructor must be virtual. (see main class)
+                     //members are not virtual by default because virtual func are slower
+                     //Internally C++ uses a VTable (http://en.wikipedia.org/wiki/Virtual_method_table)
     cout << "Animal destructor\n";
   };
-  virtual void randomFunc(){
-    cout << "animal randomFunc\n";
+  virtual void randomFunc(){ // any class member can be virtual! not just destructors
   }
+
+  void setName(const string& name){
+    this->name = name;
+  }
+
+  string getName() const{ // functions must be const if they do not modify internal vars
+    return name;
+  }
+
   protected: // members accessible to child classes
   void protFunc(){
     cout  << "Protected func of animal\n";
   }
-  private: // members not accessible to anyone
+
+  private: // members not accessible to anyone. It usually stores internal variables
   int p;
+  string name;
 };
 
 class human : public animal{ }; // human is a subclass of animal.
@@ -305,7 +317,6 @@ class cat : private animal {
     protFunc(); //Oh yes! we can access parent classes protected function from the costructor
   }
 };
-
 int main(){
   cout << "Ciao\n";
   // Create an instance of animal and human in the stack memory
@@ -318,12 +329,14 @@ int main(){
   // Create an instance of dog in the heaps
   // heap can accomodate more memory than stack but data access is slower than the one in the stack
   animal *d = new dog();
+  d->setName("rex");
+  cout << d->getName() << endl;
   //d->protFunc(); // -> and . allow us to access to class members. -> works for pointers, . for objs
   delete d; // If animal desctructor is not virtual. This will delete animal without freeing 
             // dog members => lead to a crash.
 
   cat c = cat();
-  //c.protFunc(); ERROR! cat inherits animal as private. So we cannot access to animal protected func
+  //c.setName("felix"); cat cannot access to any member of animal!
 }
 
 ```
