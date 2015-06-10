@@ -261,4 +261,69 @@ int main() {
 ## OOP: Classes ##
 C++ is a object oriented programming language and supports classes in addition to structure defined by C.
 ```cpp
+#include <iostream>
+
+using namespace std;
+
+class animal { // in this example this is a BASE class
+  public: // by default class members are private
+  animal(){ // constuctor is the member that make a instance of this object
+    cout << "Animal constructor\n";
+  };
+  virtual ~animal(){ //destructor frees the memory used by an instance of this object
+                     //base class destructor must be virtual.
+    cout << "Animal destructor\n";
+  };
+  virtual void randomFunc(){
+    cout << "animal randomFunc\n";
+  }
+  protected: // members accessible to child classes
+  void protFunc(){
+    cout  << "Protected func of animal\n";
+  }
+  private: // members not accessible to anyone
+  int p;
+};
+
+class human : public animal{ }; // human is a subclass of animal.
+
+class dog : public animal {
+  public:
+  dog(){
+    //p=1; //ERROR! animal::p is a private variable!
+    protFunc(); //Oh yes! we can access parent classes protected function.
+  }
+  virtual ~dog(){
+    cout << "dog destroyied\n";
+  }
+};
+
+class cat : private animal {
+  public:
+  cat(){
+    //p=1; //ERROR! animal::p is a private variable!
+    protFunc(); //Oh yes! we can access parent classes protected function from the costructor
+  }
+};
+
+int main(){
+  cout << "Ciao\n";
+  // Create an instance of animal and human in the stack memory
+  // Object created in the stack memory:
+  // - can be accessed quickly, but heap space is limited.
+  // - are freed at the exit of the application in reverse order of creation
+  animal a = animal(); // first to be created, last to be destroyed. It's a stack! :D
+  human h = human();
+
+  // Create an instance of dog in the heaps
+  // heap can accomodate more memory than stack but data access is slower than the one in the stack
+  animal *d = new dog();
+  //d->protFunc(); // -> and . allow us to access to class members. -> works for pointers, . for objs
+  delete d; // If animal desctructor is not virtual. This will delete animal without freeing 
+            // dog members => lead to a crash.
+
+  cat c = cat();
+  //c.protFunc(); ERROR! cat inherits animal as private. So we cannot access to animal protected func
+}
+
 ```
