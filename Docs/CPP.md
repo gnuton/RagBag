@@ -165,6 +165,10 @@ int main() {
 
 #### Casting ####
 ```cpp
+const_cast
+static_cast
+dynamic_cast
+reinterpret_cast
 ```
 
 #### Reading Command line arguments ####
