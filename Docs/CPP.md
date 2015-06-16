@@ -20,7 +20,8 @@ int main() {
 ```
 ## Basics ##
 ### Variables ###
-Variables are valid just in a certain scope
+Variables are valid just in a certain scope and can be of the following base types: http://en.cppreference.com/w/cpp/language/types
+
 #### Scope & Namespaces####
 Braces define scopes. Outside functions we can create namespace that define a scope for variables and functions. 
 ```cpp
