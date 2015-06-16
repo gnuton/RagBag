@@ -345,3 +345,45 @@ int main(){
 }
 
 ```
+## Templates ##
+Usually templates are not really easy to use, but allow programmers to reuse the same code in case what changes is just the data type.
+We have only two different kind of templates:
+- function templates
+- class templates
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// function template
+template <typename T>
+const T& Max(const T& a, const T& b){
+  return a>b ? a : b;
+};
+
+// class template
+template <class T>
+class testClass{
+  public:
+  testClass(const T& t){
+    i = t;
+  }
+  const T& get(){ return i; } 
+
+  private:
+  T i;
+};
+
+
+int main(){
+  cout << max(2,1) << endl;
+  // we cannot use auto as type
+  testClass<int> a = testClass<int>(10);
+  cout << a.get() << endl; 
+}
+```
+
+## Containers ##
+```cpp
+
+```
