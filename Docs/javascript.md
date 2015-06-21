@@ -82,9 +82,6 @@ a <= b // less or equal to
 
 // 4. Boolean operators
 
-// 5. other operators
-a = (1 + 1) / 2 // ( ) is the operator precedence
-
 ```
 
 ### XXX ###
