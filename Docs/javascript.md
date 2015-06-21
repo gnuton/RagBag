@@ -38,9 +38,22 @@ var helloWorld = 1;
 ```
 ### Variables and Types ###
 ```js
-// the very same variable can contain many types;
+// JS has DYNAMIC TYPES: the very same variable can contain many types. 
 var a = 1;
 a = "ciao";
+
+// TYPES
+1.0 // number
+1   // number
+"this is a string" // string
+false // boolean
+true // boolean
+["ciao", "io"] // array
+{name:"antonio, surname: "aloisio"} // objects
+
+// we can use typeof to get the type name
+typeof("ciao"); // returns "string"
+
 // redeclaring a variable doesn't reset the variable itself.
 var a; //a still holds the string "ciao"
 var b; // when we defined a new variable it's value is undefined. where udefined is a null type.
