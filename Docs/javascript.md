@@ -1,18 +1,24 @@
 # Javascript #
 
+![logo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/768px-JavaScript-logo.png)
 
 ## Output ##
 ```js
-// 1.
-console.log("helloWorld");
-// 2.
+// 1. to console
+console.log("helloWorld"); // <-- each statement in javascript is separated by semicolons
+// 2. to window
 window.alert("hello world");
-// 3.
+// 3. to DOM
 document.write("hello world");
+```
+
+## Types ##
+```js
+```
 
 ## Inheritance & objects ##
 
-```
+
 ### Objects inheritance  ###
 Every javascript object derives from Object
 ```js
