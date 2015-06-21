@@ -36,6 +36,58 @@ var helloWorld = 1;
 
 // Unicode is used by default in JS
 ```
+### Variables and Types ###
+```js
+// the very same variable can contain many types;
+var a = 1;
+a = "ciao";
+// redeclaring a variable doesn't reset the variable itself.
+var a; //a still holds the string "ciao"
+var b; // when we defined a new variable it's value is undefined. where udefined is a null type.
+a=undefined;
+
+// Opeartions
+var a = 1 / 3  // split two integers give a float 0.333
+var a = "ciao" + 2 + 3 // "ciao23". this 2 and 3 are converted to string and concatenated to ciao. ou
+```
+
+### Operators ###
+```js
+// 1. Arithmetic
+1+1 // 2 - addition
+1-1 // 0 - subtraction
+3*2 // 6 - multiplication
+3%2 // 1 - modulus
+3/2 // 1.5 - division
+// increment & decrement
+var a=1;
+++a // or a++ increment by 1
+--a // or a-- decrement by 1
+
+// 2. Assignement operators
+a = 5  // assign 5 to a
+a += 5 // increment a by 5
+a -= 5 // decrement a by 5
+// and so on with other arithmetic operators
+
+// 3. Logical operators
+a == b // equal  to
+a === b // equal value and equal type
+a != b // not equal to
+a !=== b // not equal type and not equal value
+a > b // greater than
+a < b // less than
+a >= b // greater or equal to
+a <= b // less or equal to
+
+
+// 4. Boolean operators
+
+```
+
+### XXX ###
+```js
+```
 
 ## Inheritance & objects ##
 
