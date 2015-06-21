@@ -50,7 +50,8 @@ false // boolean
 true // boolean
 ["ciao", "io"] // array
 {name:"antonio, surname: "aloisio"} // objects
-
+null // is an null object so: null == undefined is true. null === undefined is false because they are different types
+undefined // undefined type
 // we can use typeof to get the type name
 typeof("ciao"); // returns "string"
 
