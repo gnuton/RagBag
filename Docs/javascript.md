@@ -54,6 +54,7 @@ null // is an null object so: null == undefined is true. null === undefined is f
 undefined // undefined type
 // we can use typeof to get the type name
 typeof("ciao"); // returns "string"
+typeof(NaN); // "number" eg: 1 * undefined = NaN
 typeof(function a(){}); // returns "function"
 
 // redeclaring a variable doesn't reset the variable itself.
@@ -96,6 +97,12 @@ a >= b // greater or equal to
 a <= b // less or equal to
 
 // 4. Boolean operators
+
+```
+## Functions ##
+```js
+function myFunc(arg1, arg2) { return arg1 * arg2; }
+myFunc(1,2)
 
 ```
 
