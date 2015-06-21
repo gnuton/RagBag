@@ -54,6 +54,7 @@ null // is an null object so: null == undefined is true. null === undefined is f
 undefined // undefined type
 // we can use typeof to get the type name
 typeof("ciao"); // returns "string"
+typeof(function a(){}); // returns "function"
 
 // redeclaring a variable doesn't reset the variable itself.
 var a; //a still holds the string "ciao"
