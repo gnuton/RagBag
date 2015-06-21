@@ -26,10 +26,15 @@ var a = 3;
 1 + 3 // expression. + is called OPERATOR.
 var a = 3; // var is a KEYWORD. Variable names are usually camelCaseInJavascript! 
 // this is a comment..
+/* This is a multiline
+   comment
+ */
 
 // do not forget that JAVASCRIPT IS CASE SENSITIVE. Those are two different var definitions
 var helloWorld = 1;
 var helloWorld = 1;
+
+// Unicode is used by default in JS
 ```
 
 ## Inheritance & objects ##
@@ -112,6 +117,16 @@ MyClass.myStaticMethod = function() { ... }
 
 ```
 
+## Coding style ##
+```js
+// Camel case. Hypen not allowed: it's a reserved char
+var helloWorld = 1;
+
+// spaces around operators (= + - / *)
+a = 1 + 1;
+
+// As many other languages lines should not be longher than 80 chars
+```
 
 ## References ##
 - Prototypal Inheritance in JavaScript http://javascript.crockford.com/prototypal.html
