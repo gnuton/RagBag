@@ -1,17 +1,28 @@
 # Javascript #
 
+
+## Output ##
+```js
+// 1.
+console.log("helloWorld");
+// 2.
+window.alert("hello world");
+// 3.
+document.write("hello world");
+
 ## Inheritance & objects ##
 
+```
 ### Objects inheritance  ###
 Every javascript object derives from Object
-````
+```js
 > Object
 > function Object() { [native code] }
-````
+```
 
 Now we define two objects and we make one inherith the other one.
 
-````
+```js
 // Create base obj: Object {name: "no name", age: 0}
 var person = {name: "no name", age: 0}
 
@@ -34,12 +45,12 @@ delete antonio.name;
 // now antonio looks like this Object {name: "no name", age: 0, newfield: true}
 // where name="no name" which is the default value set in the base object for the "name" field.
 
-````
+```
 
 ### Classes inheritance  ###
 Well... there are no classes in Javascript. As we have already seen in the previous chapter in Javascript we have "PROTOTYPES".
 Methods live in prototypes:
-````
+```js
 // Let's create a funciton object or "costructor"
 function Cat(name){ this.name = name}
 
@@ -53,12 +64,12 @@ var tom = new Cat("tom")
 Cat.prototype.age= 10
 
 // now tom contains Cat {name: "tom", age: 10}
-````
+```
 
 Douglas Crockford makes some analogies between a standard concept of class with its static/private/public methods and Javascript objects.
 In Javascript there are no scope modifiers: "private"/"public"/"protected".
 JavaScript functions are first-class objects, that means you can treat them just like any object.
-````
+```js
 // We define a "constructor" function with a private variable and a privileged method
 // privileged method are similar to what other languages call "public". They have access to private members
 function MyClass() {
@@ -77,7 +88,7 @@ MyClass.prototype.myPublicMethod = function() {console.log("public metdhod"); }
 MyClass.myStaticMethod = function() { ... }
 
 
-````
+```
 
 
 ## References ##
