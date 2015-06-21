@@ -12,8 +12,24 @@ window.alert("hello world");
 document.write("hello world");
 ```
 
-## Types ##
+## Javascript statements ##
+
 ```js
+// Statements are separated by semicolons
+// statements are made by literals, operators, keywords and comments
+var a = 3;
+// statements can have:
+// Literals (numbers, strings, Expressions), those can be changed are called variables.
+1
+1.0
+"hello"
+1 + 3 // expression. + is called OPERATOR.
+var a = 3; // var is a KEYWORD. Variable names are usually camelCaseInJavascript! 
+// this is a comment..
+
+// do not forget that JAVASCRIPT IS CASE SENSITIVE. Those are two different var definitions
+var helloWorld = 1;
+var helloWorld = 1;
 ```
 
 ## Inheritance & objects ##
