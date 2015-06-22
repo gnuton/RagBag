@@ -161,6 +161,17 @@ var a = {b: 1};
 var c = a; // c is NOT a copy of a. It's addressed by reference, not by value
 c.b = 3; // the the following will be true: c.b === a.b
 
+// Object properties attribute
+// 1. Value - store the value
+// 2. Writable - (true/false) - if false, value cannot be changed
+// 3. Enumerable - (true/false)- if true for (i in theObject) and Object.keys(theObj) work
+// 4. Configurable - (true/false) - if true the object can be deleted
+var x = {prop1: 1}
+var xAttrs =Object.getOwnPropertyDescriptor(x, "prop1") // returns Object {value: 1, writable: true, enumerable: true, configurable: true}
+// we can change property attributes in this way
+Object.defineProperty(x, "prop1", {writable: false}); // to make a property not writable
+Object.defineProperty(x, "ciao", {enumerable: false}) // Object.keys(x) will now return []
+
 ```
 
 ### Objects inheritance  ###
