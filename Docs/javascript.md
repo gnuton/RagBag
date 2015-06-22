@@ -144,6 +144,13 @@ myObject["property2"]; // returns the value of property2
 myObject.method1(); // execute the method and returns "ciao"
 myObject.property1 = 3; // OBJECTS ARE MUTABLE!!
 
+// looping properties
+var x = {a:1, b:2}
+for (i in x) {
+  console.log(i); // reading value
+  x[i] = 4; // writing value
+}
+
 // Copying objects:
 var a = {b: 1};
 var c = a; // c is NOT a copy of a. It's addressed by reference, not by value
