@@ -144,6 +144,11 @@ myObject["property2"]; // returns the value of property2
 myObject.method1(); // execute the method and returns "ciao"
 myObject.property1 = 3; // OBJECTS ARE MUTABLE!!
 
+// Add and delete properties
+var x = {a:1, b:2}
+x.c = 3; // add a property to the object x
+delete x.c; // remove the property c from x
+
 // looping properties
 var x = {a:1, b:2}
 for (i in x) {
