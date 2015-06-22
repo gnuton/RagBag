@@ -102,16 +102,54 @@ a <= b // less or equal to
 ## Functions ##
 ```js
 function myFunc(arg1, arg2) { return arg1 * arg2; }
-myFunc(1,2)
-
+a = myFunc(1,2) // a holds 2
+a = myFunc // a holds myFunc
 ```
 
-### XXX ###
+
+## objects ##
+Objects are variables containing many values
 ```js
+// an object can be created in 3 ways
+// 1. from literal
+var myObject = { property1: "1", property2: "2", method1: function(){return "ciao"}}
+// 2. using keyword new
+var myObject = new Object();
+myObject.property1 = 1;
+// 3. using an object constructor
+function myObject (prop1, prop2, method1) {this.property1 = prop1; this.property2 = prop2; this.method1 = method1;}
+var a = new myObject(1, 2, function(){return "ciao"})
+
+// here is the list of JS built-in constructors
+var x1 = new Object();    // A new Object object
+var x2 = new String();    // A new String object
+var x3 = new Number();    // A new Number object
+var x4 = new Boolean()    // A new Boolean object
+var x5 = new Array();     // A new Array object
+var x6 = new RegExp();    // A new RegExp object
+var x7 = new Function();  // A new Function object
+var x8 = new Date();      // A new Date object
+// but using primitives is better because faster
+var x1 = {};            // new object
+var x2 = "";            // new primitive string
+var x3 = 0;             // new primitive number
+var x4 = false;         // new primitive boolean
+var x5 = [];            // new array	object
+var x6 = /()/           // new regexp object
+var x7 = function(){};  // new function object
+
+// access to object methods and members
+myObject.property1; // returns the value of property1
+myObject["property2"]; // returns the value of property2
+myObject.method1(); // execute the method and returns "ciao"
+myObject.property1 = 3; // OBJECTS ARE MUTABLE!!
+
+// Copying objects:
+var a = {b: 1};
+var c = a; // c is NOT a copy of a. It's addressed by reference, not by value
+c.b = 3; // the the following will be true: c.b === a.b
+
 ```
-
-## Inheritance & objects ##
-
 
 ### Objects inheritance  ###
 Every javascript object derives from Object
