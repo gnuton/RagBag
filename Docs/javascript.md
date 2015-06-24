@@ -100,12 +100,24 @@ a <= b // less or equal to
 
 ```
 ## Functions ##
+In JS we can use functions as declaration (1) or expressions (")
 ```js
+// Function declaration
 function myFunc(arg1, arg2) { return arg1 * arg2; }
 a = myFunc(1,2) // a holds 2
 a = myFunc // a holds myFunc
-```
 
+// Function expression
+var myFunc = function (arg1, arg2) { return arg1 * arg2 } // this is called also Anonymous function
+
+//
+```
+Any function in javascript is an instance of Function Object
+```js
+// We could instantiate a function using Function costructor (but DO NOT DO THAT! :D)
+var myFunc = new Function("arg1", "arg2", "return arg1 * arg2")
+myFunc(2, 3); // returns 6
+```
 
 ## objects ##
 Objects are variables containing many values
