@@ -214,12 +214,15 @@ Before going forward let's clarify the difference between Object.__proto__ and O
 ```js
 var foo = function(){this.a=1};
 var a = new foo; // Instanciate the object { a: 1 }
-a.__proto__; // is {}. which is foo.prototype, and it is the actual object that is used in the lookup chain to resolve methods and so on
-a.prototype; // is undefined. This is the object that is used in order to build __proto__ when you create an object with new
-
+a.__proto__; // is {}. which is foo.prototype, and it is the actual object that is used in the lookup chain to
+             // resolve methods and so on. It's an internal property.
+a.prototype; // is undefined for objects. This is the object that is used in order to build __proto__ when you create an object with new
+foo.prototype; // {}. prototype is then available only to functions, Infact it's a property of function objects.
+               // it's the prototype that the function builds.
+foo.__proto__; // [Function: Empty] 
 ```
 
-Methods live in prototypes:
+Methods and properties live in prototypes:
 ```js
 // Let's create a funciton object or "costructor"
 function Cat(name){ this.name = name}
