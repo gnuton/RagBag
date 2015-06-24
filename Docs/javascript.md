@@ -118,6 +118,20 @@ Any function in javascript is an instance of Function Object
 var myFunc = new Function("arg1", "arg2", "return arg1 * arg2")
 myFunc(2, 3); // returns 6
 ```
+Hoisting is a JS feature that moves the declaration (not initialization) of the variables at the top.
+```js
+// the followig code is valid.
+x = 5
+var x; // the declaration of x is moved to the top
+
+// if x is initialized, then it's not moved at the top
+console.log(x); // this will fail
+var x = 5; // this is not moved at the top
+```
+// We could instantiate a function using Function costructor (but DO NOT DO THAT! :D)
+var myFunc = new Function("arg1", "arg2", "return arg1 * arg2")
+myFunc(2, 3); // returns 6
+```
 
 ## objects ##
 Objects are variables containing many values
