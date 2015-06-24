@@ -174,7 +174,7 @@ Object.defineProperty(x, "ciao", {enumerable: false}) // Object.keys(x) will now
 
 ```
 
-### Objects inheritance  ###
+### Objects Prototypes & inheritance  ###
 Every javascript object derives from Object
 ```js
 > Object
@@ -199,8 +199,7 @@ antonio.__proto__ = person
 person.newfield = true;
 // antonio now looks like this: Object {name: "antonio", age: 0, newfield: true}
 
-
-// Deleting a field from antonio will reset the value to the one defined in the base object
+// Deleting an a a field from antonio will reset the value to the one defined in the base object
 // antonio.name == "antonio" at beginning. Let's delete it!
 delete antonio.name;
 // now antonio looks like this Object {name: "no name", age: 0, newfield: true}
