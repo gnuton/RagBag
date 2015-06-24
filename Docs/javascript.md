@@ -258,8 +258,7 @@ function MyClass() {
 MyClass.prototype.myPublicMethod = function() {console.log("public metdhod"); }
 
 // static method. are defined as follow and they do not have any relation with the instances we create of our class
-MyClass.myStaticMethod = function() { ... }
-
+MyClass.myStaticMethod = function() { ... } // { [Function: MyClass] myStaticMethod: [Function] }
 
 ```
 
