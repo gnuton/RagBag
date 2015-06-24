@@ -174,7 +174,7 @@ Object.defineProperty(x, "ciao", {enumerable: false}) // Object.keys(x) will now
 
 ```
 
-### Objects Prototypes & inheritance  ###
+### Objects inheritance  ###
 Every javascript object derives from Object
 ```js
 > Object
@@ -209,6 +209,16 @@ delete antonio.name;
 
 ### Classes inheritance  ###
 Well... there are no classes in Javascript. As we have already seen in the previous chapter in Javascript we have "PROTOTYPES".
+
+Before going forward let's clarify the difference between Object.__proto__ and Object.prototype.
+```js
+var foo = function(){this.a=1};
+var a = new foo; // Instanciate the object { a: 1 }
+a.__proto__; // is {}. which is foo.prototype, and it is the actual object that is used in the lookup chain to resolve methods and so on
+a.prototype; // is undefined. This is the object that is used in order to build __proto__ when you create an object with new
+
+```
+
 Methods live in prototypes:
 ```js
 // Let's create a funciton object or "costructor"
@@ -217,7 +227,7 @@ function Cat(name){ this.name = name}
 // this creates by default a prototype.
 Cat.prototype; // prints out Cat{}
 
-// let create an new instance
+// let s create a new instance
 var tom = new Cat("tom")
 
 // if we set a field or method into the Cat.prototype that will be available to tom and other derived objects
