@@ -168,10 +168,11 @@ var x; // the declaration of x is moved to the top
 console.log(x); // this will fail
 var x = 5; // this is not moved at the top
 ```
+
 // We could instantiate a function using Function costructor (but DO NOT DO THAT! :D)
 var myFunc = new Function("arg1", "arg2", "return arg1 * arg2")
 myFunc(2, 3); // returns 6
-```
+
 
 ## objects ##
 Objects are variables containing many values
