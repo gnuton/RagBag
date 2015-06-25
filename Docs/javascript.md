@@ -118,6 +118,46 @@ Any function in javascript is an instance of Function Object
 var myFunc = new Function("arg1", "arg2", "return arg1 * arg2")
 myFunc(2, 3); // returns 6
 ```
+Arguments are passed by value and objects by reference
+```js
+// argument passed by value
+var a=3;
+function b(x){x=4}
+b(a) // a is still 3
+
+// object passed by reference
+var a = {b:1} 
+function c(d){d.b = 3}
+c(a) // the function c modifies b in the object { b: 3 } referenced by a
+```
+JS doesn't check argument type nor the number of arguments passed to a function.
+```js
+function f(a1, a2, a3) { console.log( a1 + " " + a2 + " " + a3)}
+f(1,2,3) // prints out: 1 2 3
+f(1,2) // prints out: 1 2 undefined
+f(1,2,3,4,5) // prints out: 1 2 3
+```
+
+JS is a crazy language. Even if you don't define any argument for a function, you can still pass N of those
+```js
+function a(){
+  for (i in arguments){
+    console.log(arguments[i] + " \n");
+   }
+}
+a(1,2,3,4,5); // yes this works! :D
+```
+JS doesn't really support default arguments, but we can have them
+```js
+function f(arg1) {
+  if (!arg1) 
+    arg1 = -1; 
+  console.log(arg1);
+}
+f(); // -1
+f(2); // 2
+```
+
 Hoisting is a JS feature that moves the declaration (not initialization) of the variables at the top.
 ```js
 // the followig code is valid.
