@@ -169,9 +169,11 @@ console.log(x); // this will fail
 var x = 5; // this is not moved at the top
 ```
 
-// We could instantiate a function using Function costructor (but DO NOT DO THAT! :D)
+We could instantiate a function using Function costructor (but DO NOT DO THAT! :D)
+```js
 var myFunc = new Function("arg1", "arg2", "return arg1 * arg2")
 myFunc(2, 3); // returns 6
+```
 
 
 ## objects ##
@@ -186,6 +188,20 @@ myObject.property1 = 1;
 // 3. using an object constructor
 function myObject (prop1, prop2, method1) {this.property1 = prop1; this.property2 = prop2; this.method1 = method1;}
 var a = new myObject(1, 2, function(){return "ciao"})
+
+// they keyword THIS. Yes this is not a variable, since it cannot be modified.
+this = 3; // ReferenceError: Invalid left-hand side in assignment
+this; // returns the reference to the object parent of the current code
+      // In a browser it could be Window {top: Window, location: Location, document: document....
+      // In nodejs it prints all the children of the global object
+// this in a constructor function doesn't have any value, but it will get the value of the object once created
+
+// Invoking a function as method
+// we can use Function.apply if the argument is an array
+// we can user Function.call if we hav more argument
+function f(a){ console.log(a) } // let's define a simple function
+f.apply(global,[2]); // we can invoke the function passing an context object (eg: global) and an array of args
+f.call(global,2); // or just the same thing passing the values as separate arguments.
 
 // here is the list of JS built-in constructors
 var x1 = new Object();    // A new Object object
