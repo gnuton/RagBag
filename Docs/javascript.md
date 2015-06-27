@@ -105,7 +105,7 @@ parseFloat("10.01") // 10.01
 // cast Number to primitive number
 n.valueOf() // 10
 ```
-#### Strings #####
+####3. Strings #####
 ```js
 var a = "ciao" // primitive
 var b = new String("ciao") // String object {0:"c", 1:"i", 2:"a", 3:"o"}
@@ -161,10 +161,24 @@ a[0] = "b" // DOESN'T WORK. No errors BTW!
 String.prototype.startsWith = function(a) { return this.indexOf(a) === 0}
 "abcd".startsWith("a") // true
 ```
-#### Strings #####
+####4. Arrays #####
 ```js
 
 ```
+
+####5. Booleans #####
+```js
+
+```
+
+####6. Dates #####
+```js
+
+```
+####7. Objects #####
+See the chapter below
+
+
 #### Variable scope ####
 ```js
 // 1. Global variable
