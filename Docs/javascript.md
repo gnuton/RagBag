@@ -494,6 +494,18 @@ MyClass.myStaticMethod = function() { ... } // { [Function: MyClass] myStaticMet
 
 ```
 
+
+## Math ##
+Several task can be performed by using the Math object.
+```js
+// Here just a few of the function available in the Math module
+Math.random() // 0.12002850137650967
+Math.floor(4.6) // 4
+Math.ceil(4.6) // 5
+Math.sin(Math.PI/2) // 1
+Math.cos(0) //1
+```
+
 ## Coding style ##
 ```js
 // Camel case. Hypen not allowed: it's a reserved char
