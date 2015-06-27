@@ -113,6 +113,10 @@ var pos = a.indexOf("a"); // 2. Returns the position of the first char in the st
  a.toUpperCase(); // CIAO
  a.toLowerCase(); // ciao
  
+// replace text in a string
+"Hello I'm jack 82".replace("e","H") // returns 'HHllo I\'m jack 82'
+"Hello I'm jack 82".replace(/[0-9]{2}/i,"H") // we can use regexps too: 'Hello I\'m jack H'
+
 // threat string as arrays - string should not be accessed as arrays. So please convert them
 var arr = a.split("") // [ 'c', 'i', 'a', 'o' ]
 a[0]; // c
