@@ -158,6 +158,12 @@ f(); // -1
 f(2); // 2
 ```
 
+### Function closures ###
+
+```js
+
+```
+
 Hoisting is a JS feature that moves the declaration (not initialization) of the variables at the top.
 ```js
 // the followig code is valid.
