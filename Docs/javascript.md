@@ -157,11 +157,23 @@ function f(arg1) {
 f(); // -1
 f(2); // 2
 ```
+JS supports self invoking function
+```js
+// syntax: (THE-LAMBDA-FUNCTION)() 
+> (function(){console.log("CIAO")})() // prints CIAO
+```
 
 ### Function closures ###
-
+A closure is an inner function that has access to the outer (enclosing) function's variables—scope chain. 
+The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function's variables, and it has access to the global variables.
 ```js
-
+var add = (function(){ // closure scope
+  var counter = 0; // outler enclosed var
+  return function(){ return ++counter;} // closure inner function
+})()
+add() // return3 1
+add() // return3 2
+add() // returns 3
 ```
 
 Hoisting is a JS feature that moves the declaration (not initialization) of the variables at the top.
