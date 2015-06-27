@@ -37,7 +37,7 @@ var helloWorld = 1;
 // Unicode is used by default in JS
 ```
 ### Variables ###
-#### Types ####
+####1. Intro e Primitive types ####
 ```js
 // JS has DYNAMIC TYPES: the very same variable can contain many types. 
 var a = 1;
@@ -67,7 +67,7 @@ a=undefined;
 var a = 1 / 3  // split two integers give a float 0.333
 var a = "ciao" + 2 + 3 // "ciao23". this 2 and 3 are converted to string and concatenated to ciao. ou
 ```
-#### Numbers #####
+####2.  Numbers#####
 ```js
 // JS supports 2 kind of numbers: primitive and objects
 var x = 1; // primitive number created from literal
