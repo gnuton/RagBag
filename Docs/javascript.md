@@ -88,6 +88,22 @@ Infinity == Number.POSITIVE_INFINITY // true
 isNaN(100/"ciao")  // True
 typeof NaN //'number'
 
+// Precision (number of digits) in JS is 17
+Math.PI.toString().length // 17
+
+// Number to string - here all the ways
+var n = 10;
+n.toString(); // '10'
+n.toExponential(3) // '1.000e+1' . 3 is the number of decimal numbers
+n.toFixed(3); // '10.000'  3 is the numbe rof decimal numbers
+n.toPrecision(5); //'10.000' is the number of digit in the numbers 1 0 0 0 0 
+
+// string to number - those functions are global ones
+parseInt("10.01") // 10
+parseFloat("10.01") // 10.01
+
+// cast Number to primitive number
+n.valueOf() // 10
 ```
 #### Strings #####
 ```js
