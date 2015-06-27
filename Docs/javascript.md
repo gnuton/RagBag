@@ -36,7 +36,8 @@ var helloWorld = 1;
 
 // Unicode is used by default in JS
 ```
-### Variables and Types ###
+### Variables ###
+#### Types####
 ```js
 // JS has DYNAMIC TYPES: the very same variable can contain many types. 
 var a = 1;
@@ -65,6 +66,24 @@ a=undefined;
 // Opeartions
 var a = 1 / 3  // split two integers give a float 0.333
 var a = "ciao" + 2 + 3 // "ciao23". this 2 and 3 are converted to string and concatenated to ciao. ou
+```
+#### Var scope ####
+```js
+// 1. Global variable
+// - are defined outside any function or braket
+var globalVar = 1;
+function  foob(bar){ return bar; }
+
+// - defined anywhere, but without the keyword var
+function foo(bar) {globalVar = 1; return bar}
+console.log(globalVar); // this is valid since globalVar is global
+
+// 2. Local variable
+// - alway defined with var and are always between brackets
+function foo(bar) {var localVar = 1; return bar}
+console.log(localVar); // this won't work
+
+console.log(globalVar); // this is valid since globalVar is global
 ```
 
 ### Operators ###
