@@ -99,16 +99,21 @@ a.slice(-2); // "ao"
 
 a.substr(1,3); // "iao" from the position 1 take 3 chars. This an alternative method to slice
 
-// find text in a string
+// extract text with a regexp
+var rx = /[0-9]{4}/i
+rx.exec("Born in 123 1923")[0] // RegExp.exec() returns [ '1923', index: 12, input: 'Born in 123 1923' ]
+
+// search for text in a string
 var a="ciao";
 var pos = a.indexOf("a"); // 2. Returns the position of the first char in the string passed as argument.
 
+"Born in 123 1981".search(/[0-9]{4}/i); // Looks for the regexp [0-9]{4} and it returns 12
+  
 // to upper/lowercase
  a.toUpperCase(); // CIAO
  a.toLowerCase(); // ciao
  
-// threat string as arrays
-// string should not be accessed as arrays. So please convert them
+// threat string as arrays - string should not be accessed as arrays. So please convert them
 var arr = a.split("") // [ 'c', 'i', 'a', 'o' ]
 a[0]; // c
 a[0] = "b" // DOESN'T WORK. No errors BTW!
