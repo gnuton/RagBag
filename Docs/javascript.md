@@ -140,6 +140,10 @@ var pos = a.indexOf("a"); // 2. Returns the position of the first char in the st
 var arr = a.split("") // [ 'c', 'i', 'a', 'o' ]
 a[0]; // c
 a[0] = "b" // DOESN'T WORK. No errors BTW!
+
+// startsWith is missing but we can add it! :D
+String.prototype.startsWith = function(a) { return this.indexOf(a) === 0}
+"abcd".startsWith("a") // true
 ```
 #### Strings #####
 ```js
