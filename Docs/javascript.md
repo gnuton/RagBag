@@ -67,8 +67,27 @@ a=undefined;
 var a = 1 / 3  // split two integers give a float 0.333
 var a = "ciao" + 2 + 3 // "ciao23". this 2 and 3 are converted to string and concatenated to ciao. ou
 ```
-#### Nunbers #####
+#### Numbers #####
 ```js
+// JS supports 2 kind of numbers: primitive and objects
+var x = 1; // primitive number created from literal
+var y = new Number(1); // object number
+var z = new Number(1);
+x == y // True. We can compare primitive and object numbers
+x === y // False. Those are different objects
+x == z // False. JS cannot compare ANY objects
+
+// Number properties
+// Number.MAX_VALUE	Returns the largest number possible in JavaScript
+// Number.MIN_VALUE	Returns the smallest number possible in JavaScript
+// Number.NEGATIVE_INFINITY	Represents negative infinity (returned on overflow)
+// NaN	Represents a "Not-a-Number" value
+// Number.POSITIVE_INFINITY	Represents infinity (returned on overflow)
+
+Infinity == Number.POSITIVE_INFINITY // true
+isNaN(100/"ciao")  // True
+typeof NaN //'number'
+
 ```
 #### Strings #####
 ```js
