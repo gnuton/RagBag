@@ -37,7 +37,7 @@ var helloWorld = 1;
 // Unicode is used by default in JS
 ```
 ### Variables ###
-#### Types####
+#### Types ####
 ```js
 // JS has DYNAMIC TYPES: the very same variable can contain many types. 
 var a = 1;
@@ -67,7 +67,57 @@ a=undefined;
 var a = 1 / 3  // split two integers give a float 0.333
 var a = "ciao" + 2 + 3 // "ciao23". this 2 and 3 are converted to string and concatenated to ciao. ou
 ```
-#### Var scope ####
+#### Nunbers #####
+```js
+```
+#### Strings #####
+```js
+var a = "ciao" // primitive
+var b = new String("ciao") // String object {0:"c", 1:"i", 2:"a", 3:"o"}
+// Only object have properties and methods, but JS threats primitive as objects
+// when you call props or methods.
+// PROPERTIES:
+//   constructor	Returns the function that created the String object's prototype
+//   length	      Returns the length of a string
+//   prototype	   Allows you to add properties and methods to an object
+// METHODS
+// Here the reference: http://www.w3schools.com/jsref/jsref_obj_string.asp
+// length
+var a="ciao";
+a.length; //4
+
+// create a substring (slice & substring)
+var a="ciao";
+a.slice(1,3); // "ia" NOTE: you can split this line in a.slice(1
+
+var a="ciao"; // we define again a, because if we run consecutivelu slice the second slice is ran on the 
+              // value returned from the previous one
+a.slice(1); // "iao"
+
+var a="ciao";
+a.slice(-2); // "ao"
+
+a.substr(1,3); // "iao" from the position 1 take 3 chars. This an alternative method to slice
+
+// find text in a string
+var a="ciao";
+var pos = a.indexOf("a"); // 2. Returns the position of the first char in the string passed as argument.
+
+// to upper/lowercase
+ a.toUpperCase(); // CIAO
+ a.toLowerCase(); // ciao
+ 
+// threat string as arrays
+// string should not be accessed as arrays. So please convert them
+var arr = a.split("") // [ 'c', 'i', 'a', 'o' ]
+a[0]; // c
+a[0] = "b" // DOESN'T WORK. No errors BTW!
+```
+#### Strings #####
+```js
+
+```
+#### Variable scope ####
 ```js
 // 1. Global variable
 // - are defined outside any function or braket
