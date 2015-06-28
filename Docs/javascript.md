@@ -163,7 +163,40 @@ String.prototype.startsWith = function(a) { return this.indexOf(a) === 0}
 ```
 ####4. Arrays #####
 ```js
+// Can be instantiated in these ways:
+ var a = [Date.now(), "test", 12, ["something",2]] // Arrays can contain different variable types
+ var a = new Array(10); // [ , , , , , , , , ,  ] // BAD! Do not use new to instantiate an array!
+                        // crates an array with 10 undefined values
+// Properties: length
+a = [4,2,1,3]
+a.length // 4
 
+// Methods:
+a.sort() // modifies a.  Mozzilla's one is implemented using Merge sort
+         // http://www.sorting-algorithms.com/merge-sort
+a.sort(function(x,y){ return x < y })
+
+// add and remove elements
+var a = [1,2,3,4]
+a.push(5) // [1,2,3,4,5]
+a.pop() // 5
+a[0] // 1
+a[0] = 4 // [4,2,3]
+
+// associative arrays (hash)
+var a = [4,3,2,1]
+a["test"] = 10 // BAD!! Arrays can be used as hashes but use object instead!
+               // [ 4, 3, 2, 1, test: 10 ]
+a.length // 4. As you see "test" is not counted!
+a[5] // returns undefined.
+a["test"] // returns 10 we can retrieve 10 using a for each loop
+
+// looping an array
+// 1. Stadard for loop
+var a = [4,3,2,1]
+for (var x=0; x < a.length; x++) {  console.log(a[x]) }
+// 2. for each loop
+> for (var x in a) { console.log(a[x]) } // this returns values stored as associative array
 ```
 
 ####5. Booleans #####
