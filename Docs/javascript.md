@@ -162,6 +162,15 @@ String.prototype.startsWith = function(a) { return this.indexOf(a) === 0}
 "abcd".startsWith("a") // true
 ```
 ####4. Arrays #####
+JS implements Arrays as objects so the complexity of such is the following:
+Access - O(1)
+Appending - Amortized O(1) (sometimes resizing the hashtable is required; usually only insertion is required)
+Prepending - O(n) via unshift, since it requires reassigning all the indexes
+Insertion - Amortized O(1) if the value does not exist. O(n) if you want to shift existing values (Eg, using splice).
+Deletion - Amortized O(1) to remove a value, O(n) if you want to reassign indices via splice.
+Swapping - O(1)
+
+Since JS arrays are object, developers can use strings as indexes, but that's a bad practice.
 ```js
 // Can be instantiated in these ways:
  var a = [Date.now(), "test", 12, ["something",2]] // Arrays can contain different variable types
@@ -178,10 +187,13 @@ a.sort(function(x,y){ return x < y })
 
 // add and remove elements
 var a = [1,2,3,4]
-a.push(5) // [1,2,3,4,5]
-a.pop() // 5
-a[0] // 1
-a[0] = 4 // [4,2,3]
+a.push(5) // a == [1,2,3,4,5] - adds 5 to the last position
+a.unshift(6) // a == [6,1,2,3,4,5] - adds 6 to the first position
+a.pop() // returns 5 - remove the last element having am integer index
+a.shift() // returns 1 - opposite to pop. remove the first element.
+
+a[0] // returns 1
+a[0] = 4 // a becomes [4,2,3]
 
 // associative arrays (hash)
 var a = [4,3,2,1]
@@ -197,6 +209,12 @@ var a = [4,3,2,1]
 for (var x=0; x < a.length; x++) {  console.log(a[x]) }
 // 2. for each loop
 > for (var x in a) { console.log(a[x]) } // this returns values stored as associative array
+
+// Joining  arrays
+[1,2,3,4].concat([5,6]) // [1,2,3,4,5,6]
+
+// reversing arrays
+ [1,2,3,4].reverse() // returns [4,3,2,1]
 ```
 
 ####5. Booleans #####
