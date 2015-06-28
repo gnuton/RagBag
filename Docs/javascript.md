@@ -662,5 +662,16 @@ a = 1 + 1;
 // As many other languages lines should not be longher than 80 chars
 ```
 
+## JS Strict mode ##
+Allow programmers to write code less prone to errors
+```js
+"use strict"; // doesn't work in nodejs
+x=1 // ERROR - every var has to be defined with var
+var x = {a:1, a:2} // ERROR - impossible to define an object with same properties
+function a(b,b){} // ERROR - function must hav different argument names
+// and so on!
+
+```
+
 ## References ##
 - Prototypal Inheritance in JavaScript http://javascript.crockford.com/prototypal.html
