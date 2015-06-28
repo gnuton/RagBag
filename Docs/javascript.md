@@ -55,6 +55,17 @@ switch(1) {
 ```
 ### LOOPS (FOR, WHILE) ###
 ```js
+// FOR
+var arr = [1,2,3,4];
+for (var i=0; i < arr.length; i++) {
+  console.log(arr[i])
+}
+
+// FOR IN
+var arr = [1,2,3,4];
+for (var i in arr) {
+  console.log(arr[i])
+}
 ```
 ### Variables ###
 ####1. Intro e Primitive types ####
