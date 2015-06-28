@@ -287,7 +287,7 @@ a += 5 // increment a by 5
 a -= 5 // decrement a by 5
 // and so on with other arithmetic operators
 
-// 3. Logical operators
+// 3. Comparison operators
 a == b // equal  to
 a === b // equal value and equal type
 a != b // not equal to
@@ -297,7 +297,21 @@ a < b // less than
 a >= b // greater or equal to
 a <= b // less or equal to
 
-// 4. Boolean operators
+// 4. Logical operators
+true && true //true - AND operator
+true || false // true - OR operator
+!false // true - NOT operator
+
+// 5. Bitwise operators
+3 & 1 // AND - 11 & 01 => 01 (1)
+3 | 1 // OR - 11 | 01 => 11 (3)
+~5// NOT - ~0101(5) => 1010 (10) 
+5^2// XOR 0101 (5) ^ 0001 (1) => 0100 (4)
+2 <<1 // SHIFT LEFT 10(2) << 1 => 100 (4)
+2 >>1 // SHIFT RIGHT 10(2) >> 1 => 1 (1)
+
+// 6. Ternary operators
+var a = (1 > 0) ? 10 : 20 // a=10 - read as "if 1>0 then 10 else 20"
 
 ```
 ## Functions ##
