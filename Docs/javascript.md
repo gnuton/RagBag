@@ -684,6 +684,19 @@ function a(b) {
     if (!b)
         b = 0;
 }
+
+// JS doesn't love floats
+var x = 0.1
+var y = 0.3
+(x+y) == 0.4 // false x+y == 0.30000000000000004 Floats are stored in 64-bit floats
+
+// never ending Arrays or objects with comma
+var z = [1,2,3,] // ERROR
+var o = {a:1,b:2,} // ERROR
+
+
+
+
 ```
 
 ## JS Strict mode ##
