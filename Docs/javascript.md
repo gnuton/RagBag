@@ -651,7 +651,7 @@ Math.sin(Math.PI/2) // 1
 Math.cos(0) //1
 ```
 
-## Coding style ##
+## Coding style & Best practices##
 ```js
 // Camel case. Hypen not allowed: it's a reserved char
 var helloWorld = 1;
@@ -660,6 +660,30 @@ var helloWorld = 1;
 a = 1 + 1;
 
 // As many other languages lines should not be longher than 80 chars
+
+// spaces around brackets should look like this for if and similar statements
+if (true) { //
+    // something. <-- 4 chars identation
+} else {
+    // something else
+}
+
+//camel case function names
+function theFunctionName() {
+}
+
+// variable always on top and intialized
+// try not to use global ones!!!
+var x=0
+var a=[]
+
+// do not use eval()
+
+// use default in functions
+function a(b) {
+    if (!b)
+        b = 0;
+}
 ```
 
 ## JS Strict mode ##
