@@ -36,6 +36,26 @@ var helloWorld = 1;
 
 // Unicode is used by default in JS
 ```
+### IF ELSE ###
+```js
+if (1>0) {console.log("bigger")} else { console.log("smaller")}
+```
+### SWITCH ###
+```js
+switch(1) {
+  case 0: 
+    console.log("0");
+    break;
+  case 1: 
+    console.log(1);
+    break;
+  default:
+    console.log("def");
+}
+```
+### LOOPS (FOR, WHILE) ###
+```js
+```
 ### Variables ###
 ####1. Intro e Primitive types ####
 ```js
