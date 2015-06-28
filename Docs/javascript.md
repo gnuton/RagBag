@@ -86,6 +86,17 @@ do {
 } while (i < 10)
 
 ```
+#### ERRORS: TRY/CATCH/FINALLY ####
+There are exceptions in JS too.
+```js
+try { // the code in this block is exectued
+  throw "test"; // throws an exception
+} catch(err) { // the code in this block is executed only if the exception is thrown
+  console.log("err " + err)
+} finally {
+  console.log("The code in the block finally is ALWAYS executed regardless the exception is thrown or not
+}
+```
 ### Variables ###
 ####1. Intro e Primitive types ####
 ```js
