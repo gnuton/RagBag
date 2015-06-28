@@ -66,6 +66,21 @@ var arr = [1,2,3,4];
 for (var i in arr) {
   console.log(arr[i])
 }
+
+// WHILE
+var i=0
+while (i<10) {
+  console.log("I: " + i); 
+  i++
+}
+
+// DO WHILE
+var i=0
+do {
+  console.log(i);
+  i++;
+} while (i < 10)
+
 ```
 ### Variables ###
 ####1. Intro e Primitive types ####
