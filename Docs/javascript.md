@@ -211,10 +211,18 @@ for (var x=0; x < a.length; x++) {  console.log(a[x]) }
 > for (var x in a) { console.log(a[x]) } // this returns values stored as associative array
 
 // Joining  arrays
-[1,2,3,4].concat([5,6]) // [1,2,3,4,5,6]
+[1,2,3,4].concat([5,6]) // the first array becomes [1,2,3,4,5,6]
+[1,2,3,4].concat([5,6], [7,8]) // the first array becomes [1,2,3,4,5,6,7,8]
 
 // reversing arrays
  [1,2,3,4].reverse() // returns [4,3,2,1]
+ 
+// slice 
+[0,1,2,3,4,5,6,7,8].slice(2,5) // Takes items from 5 elements and remove the first 2.
+                               // [2,3,4]
+                               
+[0,1,2,3,4,5,6,7,8].slice(-1) // returns 8
+[0,1,2,3,4,5,6,7,8].slice(1) // returns [1,2,3,4,5,6,7,8]
 ```
 
 ####5. Booleans #####
