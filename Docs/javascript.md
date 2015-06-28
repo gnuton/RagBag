@@ -223,11 +223,22 @@ for (var x=0; x < a.length; x++) {  console.log(a[x]) }
                                
 [0,1,2,3,4,5,6,7,8].slice(-1) // returns 8
 [0,1,2,3,4,5,6,7,8].slice(1) // returns [1,2,3,4,5,6,7,8]
+
+// comparing arrays
+var a=[1,2,3]
+var b=[1,2,3]
+a == b // false - we CANNOT compare OBJECTS!!!!
 ```
 
 ####5. Booleans #####
+Booleans are just primitives
 ```js
+var a = false
+var a = Boolean(NaN) // false -  casts NaN to boolean
+var a = Boolean("") // false 
 
+// methods
+a.toString() // returns "false"
 ```
 
 ####6. Dates #####
