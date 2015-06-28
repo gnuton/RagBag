@@ -54,6 +54,8 @@ switch(1) {
 }
 ```
 ### LOOPS (FOR, WHILE) ###
+We can iterate objects, array and more using loops. Break and continue keywords
+can respectively terminate the loop or skip to the next iteeration.
 ```js
 // FOR
 var arr = [1,2,3,4];
@@ -62,8 +64,10 @@ for (var i=0; i < arr.length; i++) {
 }
 
 // FOR IN
-var arr = [1,2,3,4];
+var arr = [1,2,3,4,5,6];
 for (var i in arr) {
+  if (i > 3) break; // terminate the loop at the 4th iteration
+  if (i == 2) continue; // skip 2
   console.log(arr[i])
 }
 
