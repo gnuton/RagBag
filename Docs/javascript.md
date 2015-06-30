@@ -24,6 +24,10 @@ var a = 3;
 1.0
 "hello"
 1 + 3 // expression. + is called OPERATOR.
+// Constant can be defined as follow. cons
+const THIS_IS_A_CONSTANT = 2;
+THIS_IS_A_CONSTANT= 10; // doesn't do anything but it doesn't shout.
+
 var a = 3; // var is a KEYWORD. Variable names are usually camelCaseInJavascript! 
 // this is a comment..
 /* This is a multiline
