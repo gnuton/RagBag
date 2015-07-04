@@ -494,6 +494,23 @@ this; // returns the reference to the object parent of the current code
       // In nodejs it prints all the children of the global object
 // this in a constructor function doesn't have any value, but it will get the value of the object once created
 
+// Objects can hide they own properties and have getter and setters
+var Person = function (firstName, lastName) {
+    var _firstName = firstName;
+    var _lastName = lastName;
+    this.__defineSetter__("name", function(text){
+        var nameArray= text.split(/[\s\t\n|,]+/);
+        _firstName = nameArray[0] ? nameArray[0] : "";
+        _lastName = nameArray[1] ? nameArray[1] : "";
+    });
+    this.__defineGetter__("firstName", function() { return _firstName;});
+    this.__defineGetter__("lastName", function() { return _lastName;});
+};
+var singer = new Person("Freddy", "Mercury"); // sets those strings respectively as first and last names
+singer.name = "Luciano Pavarotti";
+singer.firstName; // returns Luciano
+singer.lastName; // returns Pavarotti
+
 // Invoking a function as method
 // we can use Function.apply if the argument is an array
 // we can user Function.call if we hav more argument
