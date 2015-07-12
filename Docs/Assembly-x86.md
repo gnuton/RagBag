@@ -150,3 +150,11 @@ End of assembler dump.
 ```assembly
 
 ```
+
+
+
+# Tips #
+If you like to have Intel syntax in GDB just run this.
+```
+echo "set disassembly-flavor intel" > ~/.gdbinit
+```
