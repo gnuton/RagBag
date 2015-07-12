@@ -1,9 +1,9 @@
 # Assembly (x86) #
 
 
-## Registerss ##
+## Registers ##
 If we run an application, and we insert a breakpoint somewhere in hte code, we can check the status of registers
-'''
+```
 (gdb) info registers
 GENERAL PURPOSE REGISTERS:
 rax            0x40052d	4195629                     Accumulator
@@ -35,10 +35,10 @@ ss             0x2b	43
 ds             0x0	0
 es             0x0	0
 fs             0x0	0
-'''
+```
 
 ### Disassembling a simple function ###
-'''cpp
+```cpp
 #include <stdio.h>
 
 int myFunc() {
@@ -48,9 +48,10 @@ int myFunc() {
 int main() {
   myFunc();
 }
-'''
+```
 Let's disassemble the code produced by GCC using Intel syntax (More readable than AT&T one)
-'''assembly
+
+```assembly
 gnuton@biggoliath:/tmp$ objdump -D a.out -Mintel | grep -A 20 myFunc
 00000000004004ed <myFunc>:
   4004ed:	55                   	push   rbp
@@ -66,4 +67,4 @@ gnuton@biggoliath:/tmp$ objdump -D a.out -Mintel | grep -A 20 myFunc
   400501:	e8 e7 ff ff ff       	call   4004ed <myFunc> // calls myFunc at address 4004ed
   400506:	5d                   	pop    rbp
   400507:	c3                   	ret                   // returns EAX
-'''
+```
