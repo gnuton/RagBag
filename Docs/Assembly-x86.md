@@ -94,6 +94,56 @@ In the code above, the compiler has replaced printf with puts function since the
 and puts is faster.
 The puts function is in the PLT or Program Linker Table (http://www.iecc.com/linker/linker10.html) and 0x400410 is the address that points to the entry of such function.
 
+A trick to visualize better our disassembled code (if we have the source code) is to compile it
+using -g option of gcc.
+
+```assembly
+gnuton@biggoliath:/tmp$ objdump -S  a.out -M intel
+000000000040052d <main>:
+#include <stdio.h>
+
+
+int main() {
+  40052d:	55                   	push   rbp
+  40052e:	48 89 e5             	mov    rbp,rsp
+  printf("Hello world\n");
+  400531:	bf d4 05 40 00       	mov    edi,0x4005d4
+  400536:	e8 d5 fe ff ff       	call   400410 <puts@plt>
+  return 0; 
+  40053b:	b8 00 00 00 00       	mov    eax,0x0
+}
+  400540:	5d                   	pop    rbp
+  400541:	c3                   	ret   
+```
+We can also use gdb to dissassemble our code (here in AT&T syntax)
+```assembly
+gnuton@biggoliath:/tmp$ gdb -q a.out
+Reading symbols from a.out...done.
+(gdb) list
+No symbol table is loaded.  Use the "file" command.
+(gdb) quit
+gnuton@biggoliath:/tmp$ gdb -q a.out
+Reading symbols from a.out...done.
+(gdb) list
+1	#include <stdio.h>
+2	
+3	
+4	int main() {
+5	  printf("Hello world\n");
+6	  return 0; 
+7	}
+(gdb) disassemble main
+Dump of assembler code for function main:
+   0x000000000040052d <+0>:	push   %rbp
+   0x000000000040052e <+1>:	mov    %rsp,%rbp
+   0x0000000000400531 <+4>:	mov    $0x4005d4,%edi
+   0x0000000000400536 <+9>:	callq  0x400410 <puts@plt>
+   0x000000000040053b <+14>:	mov    $0x0,%eax
+   0x0000000000400540 <+19>:	pop    %rbp
+   0x0000000000400541 <+20>:	retq   
+End of assembler dump.
+(gdb) 
+```
 ### xxx ###
 ```cpp
 ```
