@@ -1,7 +1,7 @@
-= Assembly (x86) =
+# Assembly (x86) #
 
 
-== Registerss ==
+## Registerss ##
 If we run an application, and we insert a breakpoint somewhere in hte code, we can check the status of registers
 '''
 (gdb) info registers
