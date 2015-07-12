@@ -36,3 +36,34 @@ ds             0x0	0
 es             0x0	0
 fs             0x0	0
 '''
+
+### Disassembling a simple function ###
+'''cpp
+#include <stdio.h>
+
+int myFunc() {
+  return 12;
+}
+
+int main() {
+  myFunc();
+}
+'''
+Let's disassemble the code produced by GCC using Intel syntax (More readable than AT&T one)
+'''assembly
+gnuton@biggoliath:/tmp$ objdump -D a.out -Mintel | grep -A 20 myFunc
+00000000004004ed <myFunc>:
+  4004ed:	55                   	push   rbp
+  4004ee:	48 89 e5             	mov    rbp,rsp
+  4004f1:	b8 0c 00 00 00       	mov    eax,0xc  // Copy 12 (0xC) to EAX register
+  4004f6:	5d                   	pop    rbp
+  4004f7:	c3                   	ret             // Returns value of EAX and execution to caller
+
+00000000004004f8 <main>:
+  4004f8:	55                   	push   rbp
+  4004f9:	48 89 e5             	mov    rbp,rsp
+  4004fc:	b8 00 00 00 00       	mov    eax,0x0         // copy 0 to EAX
+  400501:	e8 e7 ff ff ff       	call   4004ed <myFunc> // calls myFunc at address 4004ed
+  400506:	5d                   	pop    rbp
+  400507:	c3                   	ret                   // returns EAX
+'''
