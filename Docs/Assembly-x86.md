@@ -82,18 +82,18 @@ Let's disassemble it! :D
 ```assembly
 gnuton@biggoliath:/tmp$ objdump -D a.out -Mintel | grep -A 20 main
 000000000040052d <main>:
-  40052d:	55                   	push   rbp
-  40052e:	48 89 e5             	mov    rbp,rsp
+  40052d:	55                   	push   rbp               // function prologue
+  40052e:	48 89 e5             	mov    rbp,rsp           // function prologue
   400531:	bf d4 05 40 00       	mov    edi,0x4005d4
   400536:	e8 d5 fe ff ff       	call   400410 <puts@plt> // Calls puts in the PLT
-  40053b:	b8 00 00 00 00       	mov    eax,0x0
-  400540:	5d                   	pop    rbp
+  40053b:	b8 00 00 00 00       	mov    eax,0x0            
+  400540:	5d                   	pop    rbp               // function epilogue
   400541:	c3                   	ret    
 ```
 In the code above, the compiler has replaced printf with puts function since there is no formatting implied
 and puts is faster.
-The puts function is in the PLT or Program Linker Table (http://www.iecc.com/linker/linker10.html) and 0x400410 is the address that points to the entry of such function.
-
+The puts function is in the PLT or [Program Linker Table](http://www.iecc.com/linker/linker10.html) and 0x400410 is the address that points to the entry of such function.
+More info about function prologue and epilogue can be found prologue [here ](https://en.wikipedia.org/wiki/Function_prologue)
 A trick to visualize better our disassembled code (if we have the source code) is to compile it
 using -g option of gcc.
 
@@ -134,16 +134,26 @@ Reading symbols from a.out...done.
 7	}
 (gdb) disassemble main
 Dump of assembler code for function main:
-   0x000000000040052d <+0>:	push   %rbp
-   0x000000000040052e <+1>:	mov    %rsp,%rbp
-   0x0000000000400531 <+4>:	mov    $0x4005d4,%edi
-   0x0000000000400536 <+9>:	callq  0x400410 <puts@plt>
-   0x000000000040053b <+14>:	mov    $0x0,%eax
-   0x0000000000400540 <+19>:	pop    %rbp
-   0x0000000000400541 <+20>:	retq   
+   0x000000000040052d <+0>:	push   rbp        
+   0x000000000040052e <+1>:	mov    rbp,rsp
+   0x0000000000400531 <+4>:	mov    edi,0x4005d4
+   0x0000000000400536 <+9>:	call   0x400410 <puts@plt>
+   0x000000000040053b <+14>:	mov    eax,0x0
+   0x0000000000400540 <+19>:	pop    rbp
+   0x0000000000400541 <+20>:	ret    
 End of assembler dump.
-(gdb) 
+(gdb) break main                               // Sets a breakpoint to main
+Breakpoint 1 at 0x400531: file a.c, line 5.
+(gdb) run                                      // runs the app which,but execution stops at breakpoint
+Starting program: /tmp/a.out 
+
+Breakpoint 1, main () at a.c:5
+5	  printf("Hello world\n");
+(gdb) info register rip                        //RIP (Register Instruction Point) 
+                                               //shows the current executed instruction
+rip            0x400531	0x400531 <main+4>      // 0x400531 is the address stored in RIP
 ```
+
 ### xxx ###
 ```cpp
 ```
