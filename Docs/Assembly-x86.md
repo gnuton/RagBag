@@ -92,8 +92,11 @@ gnuton@biggoliath:/tmp$ objdump -D a.out -Mintel | grep -A 20 main
 ```
 In the code above, the compiler has replaced printf with puts function since there is no formatting implied
 and puts is faster.
+
 The puts function is in the PLT or [Program Linker Table](http://www.iecc.com/linker/linker10.html) and 0x400410 is the address that points to the entry of such function.
-More info about function prologue and epilogue can be found prologue [here ](https://en.wikipedia.org/wiki/Function_prologue)
+
+More info about function prologue and epilogue can be found prologue [here ](https://en.wikipedia.org/wiki/Function_prologue).
+
 A trick to visualize better our disassembled code (if we have the source code) is to compile it
 using -g option of gcc.
 
