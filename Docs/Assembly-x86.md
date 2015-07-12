@@ -68,3 +68,35 @@ gnuton@biggoliath:/tmp$ objdump -D a.out -Mintel | grep -A 20 myFunc
   400506:	5d                   	pop    rbp
   400507:	c3                   	ret                   // returns EAX
 ```
+
+### Disassembling an Hello world ###
+```cpp
+#include <stdio.h>
+
+int main() {
+  printf("Hello world\n");
+  return 0; 
+}
+```
+Let's disassemble it! :D
+```assembly
+gnuton@biggoliath:/tmp$ objdump -D a.out -Mintel | grep -A 20 main
+000000000040052d <main>:
+  40052d:	55                   	push   rbp
+  40052e:	48 89 e5             	mov    rbp,rsp
+  400531:	bf d4 05 40 00       	mov    edi,0x4005d4
+  400536:	e8 d5 fe ff ff       	call   400410 <puts@plt> // Calls puts in the PLT
+  40053b:	b8 00 00 00 00       	mov    eax,0x0
+  400540:	5d                   	pop    rbp
+  400541:	c3                   	ret    
+```
+In the code above, the compiler has replaced printf with puts function since there is no formatting implied
+and puts is faster.
+The puts function is in the PLT or Program Linker Table (http://www.iecc.com/linker/linker10.html) and 0x400410 is the address that points to the entry of such function.
+
+### xxx ###
+```cpp
+```
+```assembly
+
+```
