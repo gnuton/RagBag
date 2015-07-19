@@ -170,7 +170,24 @@ class foo:
 if __name__ == "__main__":
         foo.sf()
 ````
+## overriding methods ##
 
+````
+class stack(list):
+  def push(self, x):
+    print "PUSH"
+    self.append(x)
+
+  def pop(self):
+    print "POP"
+    super(stack, self).pop()
+
+s = stack() # instantiate a stack object
+s.push(2) # appends 2 to the list
+s.pop() # calls list.pop()
+print len(s) # len works on stack since it's a child of list
+
+````
 
 # Intermediate topics #
 
