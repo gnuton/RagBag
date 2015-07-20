@@ -630,7 +630,9 @@ The Web Server Gateway Interface is a simple and universal interface between web
 [TODO]
 
 ## Coding style ##
-Every programmer should follow the PEP-8 [guidelines](http://legacy.python.org/dev/peps/pep-0008/)
+Every programmer should follow the PEP-8 [guidelines](http://legacy.python.org/dev/peps/pep-0008/).
+Coding style by pylint, if you do not use any IDE.
+
 ## Misc ##
 ### Closures ###
 Or "Function closure" is a function object that has access to vars in "terminated" enclosing scopes.
