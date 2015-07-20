@@ -657,6 +657,23 @@ f = foo("ciao")
 f()
 ````
 
+## Python bytecode ##
+Python compiler generates bytecode out of plain code. The most popular interpreter is CPython, but there are other written in different languages like Jhython and so on.
+
+Disassembling python code is pretty much easy:
+```python
+import dis
+def testFunction(x): print x
+dis.dis(test)
+```
+dis() function will print out an output like the following.
+```python
+  1           0 LOAD_FAST                0 (x)
+              3 PRINT_ITEM          
+              4 PRINT_NEWLINE       
+              5 LOAD_CONST               0 (None)
+              8 RETURN_VALUE     
+```
 
 # FAQ #
 1. What's the best IDE for programming in python? Get [PyCharm](http://www.jetbrains.com/pycharm/)
