@@ -629,6 +629,8 @@ The Web Server Gateway Interface is a simple and universal interface between web
 #### Flask ####
 [TODO]
 
+## Coding style ##
+Every programmer should follow the PEP-8 [guidelines](http://legacy.python.org/dev/peps/pep-0008/)
 ## Misc ##
 ### Closures ###
 Or "Function closure" is a function object that has access to vars in "terminated" enclosing scopes.
@@ -644,7 +646,6 @@ def foo(myVar):
 f = foo("ciao")
 f()
 ````
-
 
 
 # FAQ #
