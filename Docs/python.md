@@ -4,7 +4,7 @@
 # INTRO #
 
 # Basic topics #
-````
+```python
 # You have numbers
 3 #=> 3
 
@@ -86,7 +86,7 @@ None is None  #=> True
 # All other values are True
 bool(0)  #=> False
 bool("") #=> False
-````
+```
 ## Classes ##
 
 ## Private methods ##
@@ -94,7 +94,7 @@ By default python class methods are public. To make a method private the class
 name has to start with "__".
 
 Even if private is still possible to access to a private method in the following way:
-````
+```python
 class foo(object):
         def __init__(self):
                 print "INIT FOO"
@@ -103,7 +103,7 @@ class foo(object):
                 print "HIDDEN FOO"
 f = foo()
 f._foo__hidden()
-````
+```
 
 ## Exceptions ##
 [Built-in exceptions](http://docs.python.org/2/library/exceptions.html)
@@ -113,7 +113,7 @@ Before Python 2.2 there was no consistent way to discover what attributes and me
 Subclassing object class gives to your class a consistance interface among other python classes which allow developers
 to get, set and delete attribute values, to check the size of the object in memory (__sizeof__()), to get a string which
 represent the object (__repr__ or __str__) and so on.
-```` 
+```python
 # Defines old-style class
 class a:
    pass
@@ -129,13 +129,13 @@ dir(a)
 dir(b)
 # b supports the following methods
 # ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
-```` 
+```
 
 ## static class attributes ##
 variables defined in the class declaration are defined as static. static means you don't need to instantiate to object to access to the variable.
 Python allows you to edit static variables.
 
-````
+```python
 class foo:
         a=3
         def __init__(self):
@@ -152,12 +152,12 @@ if __name__ == "__main__":
         bar = foo()
         print bar.a  # prints out 5
 
-````   
+```  
 ## static methods ##
 static class methods must be marked by @staticmethod (that's a decorator, see advanced topics for more info)
 If you do not define it you will get an error like this: 
 "TypeError: unbound method sf() must be called with foo instance as first argument (got nothing instead)"
-````
+```python
 class foo:
         def __init__(self):
                 print "INIT"
@@ -169,10 +169,10 @@ class foo:
 
 if __name__ == "__main__":
         foo.sf()
-````
+```
 ## overriding methods ##
 
-````
+```python
 class stack(list):
   def push(self, x):
     print "PUSH"
@@ -186,15 +186,14 @@ s = stack() # instantiate a stack object
 s.push(2) # appends 2 to the list
 s.pop() # calls list.pop()
 print len(s) # len works on stack since it's a child of list
-
-````
+```
 
 # Intermediate topics #
 
 ## Unicode and Strings ##
 unicode and str are two differnt types.
 
-````
+```python
 # to detect if a string is unicode. this returns FALSE
 s="ciao"
 isinstance(s, unicode)
@@ -215,8 +214,7 @@ a=s.decode("utf8)
 >> u'c\xe5i\xf6'
 isinstance(a, unicode)
 >>> True
-
-````
+```
 
 ## Generators ##
 The concept of generators is something that every pythonist should be aware about.
@@ -225,7 +223,7 @@ In a nutshell, they are iterable objects (like lists), but when next() is called
 ### YIELD ####
 Generators can be obtained using 'yield' in a function.
 Or in with a less pythonic way using the generator pattern achieved with a iterable shown in the patterns paragraph.
-````
+```python
 def firstn(n):
         num = 0
         while num < n:
@@ -234,20 +232,17 @@ def firstn(n):
 
 sum_of_first_n = sum(firstn(1000000))
 print sum_of_first_n
-
-````
+```
 
 ### Generator expressions ###
 Generator expressions provide an additional shortcut to build generators out of expressions similar to that of list comprehensions.
 
-````
+```python
 doubles = (2 * n for n in range(50))
 # doubles is a generator object 
 doubles.next()
 # next() method let the generator generates the next item
-````
-
-
+```
 
 [Reference manual](https://wiki.python.org/moin/Generators)
 ### Comprehension list and dicts ###
@@ -262,7 +257,7 @@ a=[x for x in xrange(10) if x%2==0]
 ## Properties ##
 The following snippets shows how to use properties in Python
 
-````
+```python
 class foo(object):
         @property
         def x(self):
@@ -285,10 +280,10 @@ if __name__ == "__main__":
         bar.x = 2
         print bar.x
         print bar.getX()
-````
+```
 
 We can define properties without using decorators too, the code in this case would be...
-````
+```python
 class foo(object):
 
         def get_x(self):
@@ -311,13 +306,13 @@ if __name__ == "__main__":
         bar.x = 2
         print bar.x
         print bar.getX()
-````
+```
 
 ## args, * and **: ways of passing args to functions##
 Python allows programmers to pass arguments to functions in three ways.
 foo functions show all these three options to you
 
-````
+```python
 def foo1(first, second):
         print first
         print second
@@ -331,7 +326,7 @@ def foo3(**args_as_dict):
 foo1(1,2)
 foo2(1,2)
 foo3(first=1, second=2)
-````
+```
 # Advanced topics #
 
 
@@ -345,7 +340,7 @@ Mostly used by some libraries as Flask or by "properties" as seen in the previou
 What's a decorator in a nutshell? It's a fuction which returns another function.
 You can find a lot of very useful decorators in the [Python decorator library](https://wiki.python.org/moin/PythonDecoratorLibrary)
 
-````
+```python
 # This is the fuction which defines my decorator
 def my_decorator(old_function):
         # function defined which will be returned by the decorator
@@ -366,12 +361,12 @@ class foo(object):
 if __name__ == "__main__":
         bar = foo()
         print bar.get_x()
-````
+```
 
 ### Singleton class ###
 A singleton class is a class which has only one instance in the application scope
 Here is a decorator which you can use to make your class singleton
-````
+```python
 class Singleton:
     """
     A non-thread-safe helper class to ease implementing singletons.
@@ -435,12 +430,12 @@ class SingletonTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-````
+```
 
 ### Builder pattern ###
 Python is not Java. Python allows you to have default value for function arguments
 So you may want to write your code in this way:
-````
+```python
 class foo:
      defaultVar1 = "a"
      defaultVar2 = "b"
@@ -454,13 +449,12 @@ if __name__ == "__main__":
      bar = foo(var2="d")                # INIT var1=a var2=d
      bar = foo(var2="d", var1="c")      # INIT var1=c var2=d
      bar = foo()                        # INIT var1=a var2=b
-
-````
+```
 
 ### Generator pattern as Iterable ###
 Not really smart to use as we have 'yeld'. See generators paragraph instead of this one.
 
-````
+```python
 class firstn(object):
         def __init__(self, n):
                 self.n = n
@@ -478,7 +472,7 @@ class firstn(object):
 
 sum_of_first_n = sum(firstn(1000000))
 print sum_of_first_n
-````
+```
 
 ##  Concurrency programming ##
 
@@ -487,7 +481,7 @@ If you want to run in paralled a function on a list of data, this may be the cod
 Please note that Python actually spawn new processes and doesn't not really use threads here.
 The number of processes that the operating system can run is limited. Usually it's 1024. 
 On linux, you can run: "ulimit -n" to know how many open files can your system handle per user. 
-````
+```python
 def  runFunctionsInParallel(listOf_FuncAndArgLists):
     """
     Take a list of lists like [function, arg1, arg2, ...]. Run those functions in parallel, wait for them all to finish, and return the list of their return values, in order.
@@ -524,11 +518,11 @@ if __name__ == "__main__":
    # results is a list containing the values returned by "concat" in this case
    # please note that this list is not sorted.
    print "Results %d" % len(results)
-````
+```
 
 ### Subprocess: the way to launch external application###
 The code below shows you how to use subprocess in order to run N jobs being sure that only M of them run in parallel
-````
+```python
 import subprocess
 import os
 import time
@@ -560,12 +554,12 @@ for name in files:
         # remove completed processes from the list
         complete_procs = set([p for p in processes if p.poll() is not None])
         processes -= complete_procs
-````
+```
 
 ## Unit testing ##
 ### unittest module ###
 Basic usage:
-````
+```python
 import unittest
 
 class foo:
@@ -590,21 +584,21 @@ class fooTest(unittest.TestCase):
 
 if __name__ == "__main__":
         unittest.main()
-````
+```
 ## Packaging ##
 You can package your python in 3 simple steps
 
 a. Your project has to look as follow
-````
+```python
 TowelStuff/
     LICENSE.txt
     README.txt
     setup.py
     towelstuff/
         __init__.py
-````
+```
 b. Add a setup.py file which look like this one:
-````
+```python
 from distutils.core import setup
 
 setup(
@@ -614,13 +608,12 @@ setup(
     license='Creative Commons Attribution-Noncommercial-Share Alike license',
     long_description=open('README.txt').read(),
 )
-````
+```
 
 c. Create the first release with:
-```` 
+```python
 python setup.py sdist
-
-````
+```
 This will generate a tag.gz in the dist/ directory.
 
 
@@ -644,7 +637,7 @@ Coding style by pylint, if you do not use any IDE.
 ## Misc ##
 ### Closures ###
 Or "Function closure" is a function object that has access to vars in "terminated" enclosing scopes.
-````
+```python
 # myVar lives in the foo enclosing scope
 def foo(myVar):
      # bar is a closure since it has access to myVar
@@ -655,7 +648,7 @@ def foo(myVar):
 # f holds a reference to the function bar(), at this point foo has been executed and is not in memory anymore
 f = foo("ciao")
 f()
-````
+```
 
 ## Python bytecode ##
 Python compiler generates bytecode out of plain code. The most popular interpreter is CPython, but there are other written in different languages like Jhython and so on.
