@@ -250,7 +250,15 @@ doubles.next()
 
 
 [Reference manual](https://wiki.python.org/moin/Generators)
+### Comprehension list and dicts ###
+```python
+# The following line generates this dict {0: 'ciao 0', 1: 'ciao 1', 2: 'ciao 2', 3: 'ciao 3', 4: 'ciao 4', 5: 'ciao 5', 6: 'ciao 6', 7: 'ciao 7', 8: 'ciao 8', 9: 'ciao 9'}
+a=dict((a,"ciao %s" % a) for a in xrange(10))
 
+# the following comprehension list generates [0, 2, 4, 6, 8]
+a=[x for x in xrange(10) if x%2==0]
+
+```
 ## Properties ##
 The following snippets shows how to use properties in Python
 
