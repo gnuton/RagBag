@@ -541,6 +541,9 @@ myObject.property1; // returns the value of property1
 myObject["property2"]; // returns the value of property2
 myObject.method1(); // execute the method and returns "ciao"
 myObject.property1 = 3; // OBJECTS ARE MUTABLE!!
+// get the list of properties
+Object.getOwnPropertyNames(myObject)
+[ 'property1', 'property2', 'method1' ]
 
 // Add and delete properties
 var x = {a:1, b:2}
