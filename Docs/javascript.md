@@ -736,3 +736,4 @@ function a(b,b){} // ERROR - function must hav different argument names
 
 ## References ##
 - Prototypal Inheritance in JavaScript http://javascript.crockford.com/prototypal.html
+- List of new ES6 features https://github.com/lukehoban/es6features
