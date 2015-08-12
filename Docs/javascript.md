@@ -314,9 +314,9 @@ a.toString() // returns "false"
 See the chapter below
 
 
-#### Variable scope ####
+#### Scope of a variable ####
 ```js
-// 1. Global variable
+// 1. GLOBAL SCOPE
 // - are defined outside any function or braket
 var globalVar = 1;
 function  foob(bar){ return bar; }
@@ -325,12 +325,18 @@ function  foob(bar){ return bar; }
 function foo(bar) {globalVar = 1; return bar}
 console.log(globalVar); // this is valid since globalVar is global
 
-// 2. Local variable
+// 2. LEXICAL SCOPE
 // - alway defined with var and are always between brackets
 function foo(bar) {var localVar = 1; return bar}
 console.log(localVar); // this won't work
 
 console.log(globalVar); // this is valid since globalVar is global
+
+// 3. BLOCK SCOPE (defined by ES6)
+if (true) {
+   let myVar;
+}
+
 ```
 
 ### Operators ###
