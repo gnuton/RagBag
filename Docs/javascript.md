@@ -321,10 +321,6 @@ See the chapter below
 var globalVar = 1;
 function  foob(bar){ return bar; }
 
-// - defined anywhere, but without the keyword var
-function foo(bar) {globalVar = 1; return bar}
-console.log(globalVar); // this is valid since globalVar is global
-
 // 2. LEXICAL SCOPE
 // - alway defined with var and are always between brackets
 function foo(bar) {var localVar = 1; return bar}
@@ -362,7 +358,7 @@ a -= 5 // decrement a by 5
 a == b // equal  to
 a === b // equal value and equal type
 a != b // not equal to
-a !=== b // not equal type and not equal value
+a !== b // not equal type and not equal value
 a > b // greater than
 a < b // less than
 a >= b // greater or equal to
