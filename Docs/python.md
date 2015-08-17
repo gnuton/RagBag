@@ -557,7 +557,7 @@ for name in files:
 ```
 
 ### Eventlet: concurrent networking library ###
-```
+```python
 #!/usr/bin/env python
 """
 This is a simple web "crawler" that fetches a bunch of urls using a pool to
@@ -580,8 +580,6 @@ def fetch(url):
     body = urllib2.urlopen(url).read()
     print("done with", url)
     return url, body
-
-# Single threaded
 
 single_thread = False
 if single_thread:
