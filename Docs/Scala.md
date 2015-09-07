@@ -13,6 +13,7 @@ object Hello {
 }
 Hello.main(null)
 ```
+In scala semicolons are optionals. They are only used in case you have multiple instrucitons on the same line.
 
 # Variables #
 ```scala
@@ -26,6 +27,8 @@ var a = 1  //Integer
 // Under the hood 1 is converted implicitely to RichInt and than the method is applied.
 // Strings are converted to StringOps
 
+// 0. Unit - is the void or null of other languages
+var a = ()
 // 1. Boolean
 // 2. Numeric types (they are 7 as in Java)
 //    Byte, Char, Short, Int, Long, Float, Double
@@ -45,6 +48,35 @@ a
 ```scala
 // are & | ^ >> <<
 ```
+# Control structures #
+
+## IF/ELSE ##
+```scala
+if (1 > 0) 1 else -1  // returns 1 and it's like 1 > 0 ? 1 : -1 statement of other programming languages but
+                      // you can have expressions for 1 and -1
+if (1 > 0) (if (3 < 2) 4) else -1 // returns ()                      
+if (1 > 0) "ciao" else -1 // returns "ciao". if there are mixed type expressions, the if returns a super type\
+                          // common to both types String and Int which is the type 'Any'
+
+if (n > 0) { val i = 0; i } // returns 45
+// in scala it's okay to use the Kernighan & Ritchie brace style
+if (n > 0) {
+  val i = 0
+  i
+}
+```
+
+## Block Expression ##
+They are the same as in C++ or Java, but they return the value of the latest operation
+```scala
+{ val i = 0; i } // the block contains several expressions sorrounded by braces. it returns the value of i
+```
 
 # Calling Functions and Methods #
 
+# REPL tricks #
+1. :paste enables the paste mode that allow you to paste code blocks 
+2. 
+
+# Documentation #
+http://scala-lang.org/api/current/#package
