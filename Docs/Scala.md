@@ -70,6 +70,27 @@ if (n > 0) {
 They are the same as in C++ or Java, but they return the value of the latest operation
 ```scala
 { val i = 0; i } // the block contains several expressions sorrounded by braces. it returns the value of i
+{ val i = 0 } // returns () because assignements return a Unit value
+```
+## loops ##
+```scala
+// WHILE loop
+while (n>0) {
+  // something
+}
+
+// FOR EACH loop. There is no "standard" FOR loop  
+for (i <- 1 to 10) { println(i) }
+for (i <- "ciao") {println(i)} // prints out all the letters of the string
+
+// scala supports multiple generators in loops
+for (i <- 0 to 10;  j <- 10 to 20) println(i +"-" + j) // prints strings: 0-10, 0-11, 0-12, ... ,10-20
+
+// each generator can have a "guard"; a boolean condition which says which may discard the generated value
+for (i <- 0 to 3;  j <- 0 to 3 if (i != j)) println(+ i + "-" + j) // 0-1, 0-2, 0-3, 1-0, 1-2, 1-3 ...
+
+// COMPREHENSION it's a loop which yield a series of values
+for (i <- 0 to 3;  j <- 0 to 3 ) yield  i + "-" + j // returns Vector(0-0, 0-1, 0-2,..., 3-1, 3-2, 3-3)
 ```
 
 # Calling Functions and Methods #
