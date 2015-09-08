@@ -99,7 +99,7 @@ for (i <- 0 to 3;  j <- 0 to 3 if (i != j)) println(+ i + "-" + j) // 0-1, 0-2, 
 for (i <- 0 to 3;  j <- 0 to 3 ) yield  i + "-" + j // returns Vector(0-0, 0-1, 0-2,..., 3-1, 3-2, 3-3)
 ```
 
-# Functions  & Procedures#
+# Functions  & Procedures #
 Everyone knows what a function is, but what about procedure in scala?
 Procedures are function that do not return anything. They produce a side-effect.
 ```scala
@@ -129,7 +129,12 @@ func("ciao", r="Y") // prints "[ciaoY"
 def f(args : Int*) = for (i <- args.elements) println(i)
 f(1,2,3,4,5) // prints all the argument passed.
 f(0 to 10: _*) // since f doesn't teke in sequences but just integers, : _* converts it to ints
-
+```
+## Advanced stuff which help you to understand scala docs ##
+If you have a look at Scala doc you may find strange-looking syntax. 
+```scala
+// 1. func method takes in as argument a function from A to Boolean
+def func (p: (A) => Boolean ) : Int
 ```
 
 # Exceptions #
@@ -161,11 +166,12 @@ finally {
 // new must used to instantiate an array with N null elements
 var a = new Array[Int](5)
 // new can be omitted if you initialize the array
-var a = Array(1,2,3,4,"ciao")
+var a = Array(1,2,3,4,"ciao") // an Array of "Any" object can host integers and strings
 // an array can be accessed as follow
 a(0) // is 1
 a(4) // is "ciao"
 a(4) = 4 // replaces "ciao' with 4
+a ++= 0 until 5 // appends 0,1,2,3,4 to a
 ```
 You can read more here: http://docs.scala-lang.org/overviews/collections/arrays.html
 
@@ -184,8 +190,28 @@ b += (10,20,30)
 b.insert(2, 10) // insert 10 to 2nd position
 b.toArray() // converts the bufferArray to Array
 ```
+### Traversing Arrays/ArrayBuffers ###
+There are basically two ways to traverse an array
+```scala
+// 1. by element
+for (i <- theArray) print i // it will print all the elements in the array
 
+// 2. by index
+for (i <- 0 until theArray.size) print i
+```
+### Algorithms ###
+```scala
+var a = 0 to 10 toArray
+a.reverse
+a.sortWith(_ < _)
+a.max
+a.min
 
+var b = new ArrayBuffer[Int]()
+b ++= 0 to 10 toArray
+b.reverse // returns a new reversed ArrayBuffer
+a.sortWith(_ < _) // returns a new reversed ArrayBuffer
+```
 
 # REPL tricks #
 1. :paste enables the paste mode that allow you to paste code blocks 
