@@ -35,6 +35,12 @@ var a = ()
 // 3. Big numbers - BigInt and BigDecimal are used in order to compute large, but finite number with a lot of //                       digits
       val x = BigInt(1)
 ```
+## lazy variables ##
+if a variable is declared lazy, it initiazlization is deferred until it's accessed for the first time
+```scala
+lazy val words = io.Source.fromFile("/not-existing-file").mkString // this doesn't fail yet
+println(words) // here it failes throwing a java.io.FileNotFoundException
+```
 
 # Arithmetic operations #
 1. Arithmetic operators
@@ -102,7 +108,7 @@ def f(n : Int) = {n} // Takes an Int returns an Int.
 // a procedure the implementation is not proceded by a = sign
 def p(n : Int) {n} // Takes an Int in as arg and return Unit
 ```
-
+and now back to "functions":
 ```scala
 // To define a function in scala you need to define the function name, argument name (n) and type (Int)
 // : Int is the return type and it's needed only in case of recursion
@@ -126,7 +132,22 @@ f(0 to 10: _*) // since f doesn't teke in sequences but just integers, : _* conv
 
 ```
 
-# Calling Functions and Methods #
+# Exceptions #
+```scala
+// Exception can be thrown as shown
+throw new IllegalArgumentException("This is a test")
+
+// Exceptions are not checked at compile time in Scala like they are in Java.
+// That means you do not need to add any exception to the function signature
+def f(i : Int) = { throw new Exception("test") } // f takes an int and returns a "Nothing" type
+
+// Scala can catch different exception types in a single block
+try { throw new IllegalArgumentException("Test") }
+catch { 
+  case ia: IllegalArgumentException => println( ia.printStackTrace())
+  case _: Exception => println("got something else")
+}
+```
 
 # REPL tricks #
 1. :paste enables the paste mode that allow you to paste code blocks 
