@@ -93,6 +93,30 @@ for (i <- 0 to 3;  j <- 0 to 3 if (i != j)) println(+ i + "-" + j) // 0-1, 0-2, 
 for (i <- 0 to 3;  j <- 0 to 3 ) yield  i + "-" + j // returns Vector(0-0, 0-1, 0-2,..., 3-1, 3-2, 3-3)
 ```
 
+# Functions #
+```scala
+// To define a function in scala you need to define the function name, argument name (n) and type (Int)
+// : Int is the return type and it's needed only in case of recursion
+// the implementation of the function follows "=" and it must be in a {} block if it uses several lines
+// the return keyword is not generally used. The last value is returned in any case
+// return can be used to exit before the end
+def myFun(n : Int) = n+1
+
+// recursive functions need the returned type defined before "="
+def func(n : Int) : Int = if (n != 0) func(n-1) else n
+
+// Function declarations allow default values
+def func(s : String, l : String = "[", r : String = "]") = println (l + s + r)
+func("ciao", r="Y") // prints "[ciaoY"
+
+// Functions can read in a variable number of arguments
+// we can iterate trough args.elements or get the tail from args.tail
+def f(args : Int*) = for (i <- args.elements) println(i)
+f(1,2,3,4,5) // prints all the argument passed.
+f(0 to 10: _*) // since f doesn't teke in sequences but just integers, : _* converts it to ints
+
+```
+
 # Calling Functions and Methods #
 
 # REPL tricks #
