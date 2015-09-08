@@ -142,12 +142,50 @@ throw new IllegalArgumentException("This is a test")
 def f(i : Int) = { throw new Exception("test") } // f takes an int and returns a "Nothing" type
 
 // Scala can catch different exception types in a single block
+// _ is used to define a variable which is not taked in use
 try { throw new IllegalArgumentException("Test") }
 catch { 
   case ia: IllegalArgumentException => println( ia.printStackTrace())
   case _: Exception => println("got something else")
 }
+finally {
+  println("it goes all the time here")
+}
 ```
+
+# Data Structures #
+## Arrays ##
+### Fixed and variable size Array###
+#### Array type is fixed type ####
+```scala
+// new must used to instantiate an array with N null elements
+var a = new Array[Int](5)
+// new can be omitted if you initialize the array
+var a = Array(1,2,3,4,"ciao")
+// an array can be accessed as follow
+a(0) // is 1
+a(4) // is "ciao"
+a(4) = 4 // replaces "ciao' with 4
+```
+You can read more here: http://docs.scala-lang.org/overviews/collections/arrays.html
+
+#### Array Buffers for variable size array ####
+They are like the ArrayList available in Java or the Vector in C++.
+Adding and removing elements from the beginning or ending happends in efficient (amortized costant time).
+Inserting elements in the middle it's not that efficient since it requires shifting elements.
+```scala
+import collection.mutable.ArrayBuffer
+val b = new ArrayBuffer[Int]()
+b.append(20)
+b.prepend(10)
+b.clear()
+b += 10
+b += (10,20,30)
+b.insert(2, 10) // insert 10 to 2nd position
+b.toArray() // converts the bufferArray to Array
+```
+
+
 
 # REPL tricks #
 1. :paste enables the paste mode that allow you to paste code blocks 
