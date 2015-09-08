@@ -93,7 +93,16 @@ for (i <- 0 to 3;  j <- 0 to 3 if (i != j)) println(+ i + "-" + j) // 0-1, 0-2, 
 for (i <- 0 to 3;  j <- 0 to 3 ) yield  i + "-" + j // returns Vector(0-0, 0-1, 0-2,..., 3-1, 3-2, 3-3)
 ```
 
-# Functions #
+# Functions  & Procedures#
+Everyone knows what a function is, but what about procedure in scala?
+Procedures are function that do not return anything. They produce a side-effect.
+```scala
+// a function
+def f(n : Int) = {n} // Takes an Int returns an Int. 
+// a procedure the implementation is not proceded by a = sign
+def p(n : Int) {n} // Takes an Int in as arg and return Unit
+```
+
 ```scala
 // To define a function in scala you need to define the function name, argument name (n) and type (Int)
 // : Int is the return type and it's needed only in case of recursion
