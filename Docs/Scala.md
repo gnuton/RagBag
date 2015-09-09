@@ -231,13 +231,22 @@ matrix(2)(1)=112
 ```
 
 ## Maps and Tuples ##
-Scala provides mutable and immutable maps. 
+A Map is an Iterable consisting of pairs of keys and values 
+As other collection types, scala provides mutable and immutable maps. 
 Maps in Scala can be sorted (implemented as Tree) or unsorted (implemented as Hash).
 ```scala
-// Immutable maps can be instantiated as 
+// Immutable unsorted maps can be instantiated as 
 val map = Map("Antonio" -> 1, "Alessia" -> 2) // creates scala.collection.immutable.Map[java.lang.String,Int]
                                               // the opeartor -> makes a pair. you could use ("antonio", 1) too
-// Mutable maps
+// Immutable sorted maps 
+val sortedMap = collection.immutable.SortedMap("antonio" -> 1, "Alessia" -> 2)
+
+// Mutable sorted maps - it has not been implemented yet in Scala, please use java TreeMap
+//                     - using TreeMap will allow you to modify the data in constant time insteaf of log(n)
+val sortedMap = new java.util.TreeMap[String, Int]()
+sortedMap.put("antonio", 1)
+
+// Mutable unsorted maps
 val map = new collection.mutable.HashMap[String, Int]
 map("antonio") = 1 // assign a value to the key "antonio"
 map("antonio2") // it doesn't exists and throws java.util.NoSuchElementException
