@@ -230,7 +230,21 @@ val matrix = Array.ofDim[Int](3,2) // creates Array[Array[Int]] = Array(Array(0,
 matrix(2)(1)=112
 ```
 
-## Maps and Tuples ##
+## Tuples ##
+Are immutable objects containing more than one value. They are usually returned by functions that output many objects. Dislike arrays, the first element in a tuple is 1 and not 0.
+```scala
+val t = ("antonio",1,3)
+t._1 // returns "antonio". 
+t._1 = 1 // triggers an error
+val (a,b,c) = t // a b and c get the value of the tuple. This is called decomposition.
+// tuples can be created with zip methods available in collections.
+val a = List(10,20,30)
+val b = List(40,50,60)
+a.zip(b) // creates List[(Int, Int)] = List((10,40), (20,50), (30,60))
+a.zipWithIndex // List[(Int, Int)] = List((10,0), (20,1), (30,2))
+```
+
+## Maps ##
 A Map is an Iterable consisting of pairs of keys and values 
 As other collection types, scala provides mutable and immutable maps. 
 Maps in Scala can be sorted (implemented as Tree) or unsorted (implemented as Hash).
@@ -272,7 +286,7 @@ http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConversion
 
 # REPL tricks #
 1. :paste enables the paste mode that allow you to paste code blocks 
-2. 
+2. pressing several time TAB in the scala REPL triggers auto-completation
 
 # Reference #
 - Official docs - http://scala-lang.org/api/current/#package
