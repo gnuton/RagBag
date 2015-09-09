@@ -129,12 +129,22 @@ func("ciao", r="Y") // prints "[ciaoY"
 def f(args : Int*) = for (i <- args.elements) println(i)
 f(1,2,3,4,5) // prints all the argument passed.
 f(0 to 10: _*) // since f doesn't teke in sequences but just integers, : _* converts it to ints
+
+// Function can explicitely ask to some arguments type to have some trait
+def f(x: Iterable[Int]) = x // useless function that retunrs its Iterable argument
+
 ```
-## Advanced stuff which help you to understand scala docs ##
-If you have a look at Scala doc you may find strange-looking syntax. 
+and in the end we have special methods
 ```scala
-// 1. func method takes in as argument a function from A to Boolean
-def func (p: (A) => Boolean ) : Int
+// some methods allow you to chain calls  like 
+// a -= 1 += 3
+def -= (elem: A) : ArrayBuffer.this.type
+
+// In a method signature is possible set the lower/upper bound type so that B is constrained to 
+// be a supertype/subtype of A
+class Stack[+A] {
+  def push[B >: A](elem: B): Stack[B] = new Stack[B] { ... }
+}
 ```
 
 # Exceptions #
