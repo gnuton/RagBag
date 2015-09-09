@@ -140,11 +140,12 @@ and in the end we have special methods
 // a -= 1 += 3
 def -= (elem: A) : ArrayBuffer.this.type
 
-// In a method signature is possible set the lower/upper bound type so that B is constrained to 
+// In a method signature is possible set the upper/lower bound type so that B is constrained to 
 // be a supertype/subtype of A
 class Stack[+A] {
   def push[B >: A](elem: B): Stack[B] = new Stack[B] { ... }
 }
+
 ```
 
 # Exceptions #
@@ -222,6 +223,41 @@ b ++= 0 to 10 toArray
 b.reverse // returns a new reversed ArrayBuffer
 a.sortWith(_ < _) // returns a new reversed ArrayBuffer
 ```
+### Multi-Dimensional Arrays ###
+```scala
+val matrix = Array.ofDim[Int](3,2) // creates Array[Array[Int]] = Array(Array(0, 0), Array(0, 0), Array(0, 0))
+matrix(2)(1)=112
+```
+
+## Maps and Tuples ##
+Scala provides mutable and immutable maps
+```scala
+// Immutable maps can be instantiated as 
+val map = Map("Antonio" -> 1, "Alessia" -> 2) // creates scala.collection.immutable.Map[java.lang.String,Int]
+                                              // the opeartor -> makes a pair. you could use ("antonio", 1) too
+// Mutable maps
+val map = new collection.mutable.HashMap[String, Int]
+map("antonio") = 1 // assign a value to the key "antonio"
+map("antonio2") // it doesn't exists and throws java.util.NoSuchElementException
+map.contains("antonio")
+map.remove("antonio2") // returns None
+map.remove("antonio") // remove the element and returns the value of "antonio"
+map -= "antonio" // removes the key/value pair associated to "antonio" from the map returns the map
+map - "antonio" // returns a NEW map without "antonio" key/value pair
+map += ("a" -> 1, "b" -> 2) // adds a set of value to the map
+
+// every map can be traversed with a for
+for ((k, v) <- map) println(k + " " + v)
+
+```
+
+# How to use Java in Scala #
+## Conversion of collections ##
+```scala
+import collection.JavaConversions._
+TODO
+```
+http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConversions$
 
 # REPL tricks #
 1. :paste enables the paste mode that allow you to paste code blocks 
