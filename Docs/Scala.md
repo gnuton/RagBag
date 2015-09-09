@@ -283,7 +283,7 @@ for ((k, v) <- map) println(k + " " + v)
 # Classes #
 Scala files can have more than one class.
 
-Let's start to have a look at class fields. They can be private or public.
+Let's start to have a look at class fields. Those can be public or private. In both cases Scala creates private or public getter and setters method.
 ```scala
 class MyClass {
   private var x : Int = 0; // as in other langs private fields are accessible only from this class
@@ -298,6 +298,19 @@ class MyClass {
 var m = new MyClass
 m.y_ = (2) //works too
 m.y = 2
+m.
+```
+let's have a look now at the methods
+```scala
+class MyClass {
+  private var x : Int = 0;
+  def inc() = { x+=1 }
+  def current = x // accessor do not use (). In scala is good practice not to define it as current()
+}
+
+var m = new MyClass
+m.current() // fails
+m current // this works fine! :D
 ```
 
 # How to use Java in Scala #
