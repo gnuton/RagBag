@@ -15,8 +15,12 @@ Hello.main(null)
 ```
 In scala semicolons are optionals. They are only used in case you have multiple instrucitons on the same line.
 
-# Variables #
+# Variables & Constatns#
 ```scala
+// Constant values
+val c = 3
+c = 4 // this will trigger an error
+
 // You do not need to define a type when you declare a variable in scala
 var a = 1  //Integer
 
@@ -274,6 +278,26 @@ map += ("a" -> 1, "b" -> 2) // adds a set of value to the map
 // every map can be traversed with a for
 for ((k, v) <- map) println(k + " " + v)
 
+```
+
+# Classes #
+Scala files can have more than one class.
+
+Let's start to have a look at class fields. They can be private or public.
+```scala
+class MyClass {
+  private var x : Int = 0; // as in other langs private fields are accessible only from this class
+  var y = 1; // scala creates setter and getters from public fields under the hood.
+             // public int y and public void age_$eq(int)
+  // in case we would like to redefine the setter method
+  private var privateZ:Int= -1;
+  def z_=(newZ:Int) { if (newZ > privateZ) privateZ=newZ }
+  def z = privateZ
+}
+
+var m = new MyClass
+m.y_ = (2) //works too
+m.y = 2
 ```
 
 # How to use Java in Scala #
