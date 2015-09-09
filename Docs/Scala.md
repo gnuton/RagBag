@@ -170,6 +170,7 @@ finally {
 ```
 
 # Data Structures #
+
 ## Arrays ##
 ### Fixed and variable size Array###
 #### Array type is fixed type ####
@@ -230,7 +231,8 @@ matrix(2)(1)=112
 ```
 
 ## Maps and Tuples ##
-Scala provides mutable and immutable maps
+Scala provides mutable and immutable maps. 
+Maps in Scala can be sorted (implemented as Tree) or unsorted (implemented as Hash).
 ```scala
 // Immutable maps can be instantiated as 
 val map = Map("Antonio" -> 1, "Alessia" -> 2) // creates scala.collection.immutable.Map[java.lang.String,Int]
@@ -263,5 +265,6 @@ http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConversion
 1. :paste enables the paste mode that allow you to paste code blocks 
 2. 
 
-# Documentation #
-http://scala-lang.org/api/current/#package
+# Reference #
+- Official docs - http://scala-lang.org/api/current/#package
+- Intro to Collections - http://docs.scala-lang.org/overviews/collections/introduction.html
