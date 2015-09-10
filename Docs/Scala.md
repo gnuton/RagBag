@@ -387,6 +387,7 @@ public class MyClass implements scala.ScalaObject {
   public void b_$eq(int);
   public MyClass();
 }
+
 ```
 
 # Reference #
