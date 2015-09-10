@@ -281,7 +281,7 @@ for ((k, v) <- map) println(k + " " + v)
 ```
 
 # Classes #
-Scala files can have more than one class.
+Scala files can have more than one class. Every Scala class is child of scala.ScalaObject and it inheriths all the properties from it.
 
 Let's start to have a look at class fields. Those can be public or private. In both cases Scala creates private or public getter and setters method. Class fields must be always initialized
 ```scala
@@ -344,6 +344,34 @@ class MyClass{
   }
 }
 ```
+
+### Nested Classes ###
+Scala supports nested classes.
+```scala
+class MyClass(){
+  def a = new Array[NestedClass](5)
+  class NestedClass(x:Int) {
+    def test(y:Int) = println("TEST")
+  }
+}
+```
+under the hood the scala compiler creates two sepearates class MyClass$NestedClass and MyClass.
+Despite two separate classes, you cannot instantiate a class defined in another class from the outside.
+This looks differents if you use a companion object.
+```scala
+object MyClass {
+  class NestedClass(x:Int) {
+    def test(y:Int) = println("TEST")
+  }
+}
+
+class MyClass(){
+  var a = new Array[MyClass.NestedClass](5)
+}
+
+m.a(0) = new MyClass.NestedClass(2) // here we are! :D we can create instances of MyClass.
+```
+
 ## bean properties ##
 Java beans are classes that expect to have getter and setter method in the form getX/setX. And Scala as we have seen so far generates different signatures for getter and setter methods.
 Annotating a variable with a @BeanProperty tells Scala copiler to generates 2 methods more (public void setX(int) and public int getX())which are needed to make the class java bean compliant.
@@ -387,7 +415,6 @@ public class MyClass implements scala.ScalaObject {
   public void b_$eq(int);
   public MyClass();
 }
-
 ```
 
 # Reference #
