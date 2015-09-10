@@ -312,6 +312,23 @@ var m = new MyClass
 m.current() // fails
 m current // this works fine! :D
 ```
+As in other languages, even in scala a class instance A can access to private fields of private fields of other instances if they are instance of the same class object.
+```scala
+class MyClass (private val x:Int){
+  def isBigger(y:MyClass) = y.x < x
+}
+
+var a = new MyClass(10)
+var b = new MyClass(12)
+a.isBigger(b)
+```
+## bean properties ##
+Java beans are classes that expect to have getter and setter method in the form getX/setX. And Scala as we have seen so far generates different signatures for getter and setter methods.
+Annotating a variable with a @BeanProperty tells Scala copiler to generates 2 methods more (public void setX(int) and public int getX())which are needed to make the class java bean compliant.
+```scala
+import scala.reflect._
+class MyClass() {@BeanProperty var x : Int = 0 }
+```
 
 # How to use Java in Scala #
 ## Conversion of collections ##
