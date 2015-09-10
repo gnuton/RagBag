@@ -283,7 +283,7 @@ for ((k, v) <- map) println(k + " " + v)
 # Classes #
 Scala files can have more than one class.
 
-Let's start to have a look at class fields. Those can be public or private. In both cases Scala creates private or public getter and setters method.
+Let's start to have a look at class fields. Those can be public or private. In both cases Scala creates private or public getter and setters method. Class fields must be always initialized
 ```scala
 class MyClass {
   private var x : Int = 0; // as in other langs private fields are accessible only from this class
@@ -324,6 +324,31 @@ http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConversion
 # REPL tricks #
 1. :paste enables the paste mode that allow you to paste code blocks 
 2. pressing several time TAB in the scala REPL triggers auto-completation
+
+# Understanding stuff under the hood #
+## Having a look at what the compiler does #
+Let's write a simple scala class like this
+```scala
+class MyClass {
+  private var a:Int = 0
+  var b:Int = 0
+}
+```
+then we can compile it scalac which generates the bytecode myclass.class
+```
+scalac myclass.scala
+```
+At this point we can run javap to analize it
+```
+gnuton@joseph:/tmp$ javap MyClass
+Picked up JAVA_TOOL_OPTIONS: -javaagent:/usr/share/java/jayatanaag.jar 
+Compiled from "myclass.scala"
+public class MyClass implements scala.ScalaObject {
+  public int b();
+  public void b_$eq(int);
+  public MyClass();
+}
+```
 
 # Reference #
 - Official docs - http://scala-lang.org/api/current/#package
