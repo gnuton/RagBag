@@ -322,6 +322,27 @@ var a = new MyClass(10)
 var b = new MyClass(12)
 a.isBigger(b)
 ```
+
+### Class constructors ###
+Scala allows you to have a primary and many auxiliary secondary constructors as other languages do.
+```scala
+// Primary constructor
+class MyClass(val x:Int){
+  println(x) // we can access x from the class 
+}
+def m = new MyClass
+m.x // x field can be accessed from outside the class too
+
+// Auxiliary constructors are defined as follow
+class MyClass{
+  private var a:Int = 0
+  
+  def this(a:Int) { // this is the auxiliary constructor. we can have as much as we want of those
+    this()
+    this.a = a
+  }
+}
+```
 ## bean properties ##
 Java beans are classes that expect to have getter and setter method in the form getX/setX. And Scala as we have seen so far generates different signatures for getter and setter methods.
 Annotating a variable with a @BeanProperty tells Scala copiler to generates 2 methods more (public void setX(int) and public int getX())which are needed to make the class java bean compliant.
