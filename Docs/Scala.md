@@ -327,11 +327,12 @@ a.isBigger(b)
 Scala allows you to have a primary and many auxiliary secondary constructors as other languages do.
 ```scala
 // Primary constructor
-class MyClass(val x:Int){
+class MyClass(val x:Int){ // val or var can be omitted and x will become a private field
   println(x) // we can access x from the class 
+  override def toString = "ciao" /// here in the body or primary constructor we can override some methods
 }
 def m = new MyClass
-m.x // x field can be accessed from outside the class too
+m.x // x field can be accessed from outside the class too if not defined as private
 
 // Auxiliary constructors are defined as follow
 class MyClass{
