@@ -490,8 +490,8 @@ import org.gnuton.xxx.test._
 val t = new testClass
 ```
 
-Scala packages can host objects, classes and traits, but no functions or variables are allowed to to Java.
-Object Packages are objects that are defined in a package and are used to host those functions and variables.
+Scala packages can host objects only public object. For instance classes and traits, but no functions or variables are allowed due to Java.
+Object Packages are objects that are defined in a package and are used to host functions and variables.
 
 ```scala
 package org.gnuton.xxx
