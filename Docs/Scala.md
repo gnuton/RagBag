@@ -394,6 +394,46 @@ import scala.reflect._
 class MyClass() {@BeanProperty var x : Int = 0 }
 ```
 
+# Objects #
+Objects are abstractions in scala that can extend a class/traits and they may have all the features that a class have, but the costructor must have no arguments as for traits
+```scala
+object test(a:Int) {} // DOESN'T WORK! 
+object test {} // this is OK
+```
+
+## Singleton objects ##
+Objects are abstractions which are needed in scala whenever you wanna have a singleton instance.
+```scala
+object counter { 
+  private var i = 0; 
+  def inc() = {i+=1; i}
+}
+counter.inc() // returns 1
+counter.inc() // returns 2
+```
+
+##Companion Objects ##
+A companion object is an object which has the same name of a class and it'd defined in the same file.
+Companion objects and class can access each other private vars.
+Companion objects is what is used in scala in order to define static fields and methods.
+```scala
+class test {
+  def staticFunc() = test.staticFunc() // the staticFunc method points to the object one
+  def setX(x:String) = test.x = x // the class have access to the object private vars
+}
+
+object test {
+  private var x = "ciao" // the class and the object can access this var
+  def staticFunc() = println(x)
+}
+
+var t = new test
+test.staticFunc // prints "ciao"
+t.staticFunc // same as test.staticFunc
+t.setX("bye")
+t.staticFunc
+```
+
 # How to use Java in Scala #
 ## Conversion of collections ##
 ```scala
