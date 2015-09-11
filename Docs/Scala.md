@@ -454,6 +454,9 @@ def myFun(x:osType.Value) = { if (x==linux) println("linux")}
 myFun(linux)
 ```
 
+## Package object ##
+Please have a look at the "Scala packages" chapter
+
 ## Extending a class ##
 As said before, objects can extend classes. let's have a look at a simple example
 ```scala
@@ -485,6 +488,23 @@ We can import testClass and use it in another file as such:
 ```scala
 import org.gnuton.xxx.test._
 val t = new testClass
+```
+
+Scala packages can host objects, classes and traits, but no functions or variables are allowed to to Java.
+Object Packages are objects that are defined in a package and are used to host those functions and variables.
+
+```scala
+package org.gnuton.xxx
+package object test {
+  val x = 1
+}
+package test {
+  class testClass {}
+}
+
+
+import org.gnuton.xxx.test
+test.x // returns 1
 ```
 
 # How to use Java in Scala #
