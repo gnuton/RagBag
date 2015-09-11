@@ -396,8 +396,22 @@ class MyClass() {@BeanProperty var x : Int = 0 }
 ## inheritance ##
 Classes can be extended unless they are final
 ```scala
-class my
+class Person
+class Italian extends Person
+
+final class Alien extends Person
+class German extends Alien // this fails! Alien is final!
 ```
+Inherited classes must use override keyword to override the behaviour of a method .
+```scala
+class Person
+class Italian extends Person {
+  override def toString = "Sono Italiano (it was " + super.toString + ")"
+}
+def p = new Italian
+p.toString  // returns  "Sono Italiano (it was Italian@5323e7b7)"
+```
+
 # Objects #
 Objects are abstractions in scala that can extend a class/traits and they may have all the features that a class have, but the costructor must have no arguments as for traits
 ```scala
