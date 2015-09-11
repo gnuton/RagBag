@@ -346,14 +346,28 @@ class MyClass{
 ```
 
 ### Nested Classes ###
-Scala supports nested classes.
+Scala supports nested classes. # sign is called "type projection" and it means "a Member of ANY MyClass".
+Type projection is usually used in very few places and 
 ```scala
 class MyClass(){
-  def a = new Array[NestedClass](5)
-  class NestedClass(x:Int) {
+  def a = new Array[MyClass#NestedClass](5)
+  def b = new Array[NestedClass](5)
+  def createNestedObj(x:Int) = new NestedClass(x)
+  def addNestedObjA0(x:Int) = a(0) = new NestedClass(x)
+  def addNestedObjB0(x:Int) = b(0) = new NestedClass(x)
+  
+  class NestedClass(x:Int) {                               // here is the nested class
     def test(y:Int) = println("TEST")
   }
 }
+var x = new MyClass
+var y = new MyClass
+x.a(0) = x.createNestedObj(0)  // works, The array a takes in MyClass#NestedClass
+y.a(1) = x.createNestedObj(1)  // works
+y.b(0) =  x.createNestedObj(0) // ERROR! the array b doesn't take in MyClass#NestedClass
+x.addNestedObjB0(0)            // If we insert the NestedClass into b from inside than it works 
+x.addNestedObjA0(0)            // inserting stuff into a will continue to work too
+
 ```
 under the hood the scala compiler creates two sepearates class MyClass$NestedClass and MyClass.
 Despite two separate classes, you cannot instantiate a class defined in another class from the outside.
