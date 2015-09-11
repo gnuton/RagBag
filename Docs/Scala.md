@@ -393,7 +393,11 @@ import scala.reflect._
 class MyClass() {@BeanProperty var x : Int = 0 }
 ```
 
-
+## inheritance ##
+Classes can be extended unless they are final
+```scala
+class my
+```
 # Objects #
 Objects are abstractions in scala that can extend a class/traits and they may have all the features that a class have, but the costructor must have no arguments as for traits
 ```scala
@@ -453,6 +457,7 @@ import osType._
 def myFun(x:osType.Value) = { if (x==linux) println("linux")}
 myFun(linux)
 ```
+BTW enumeratum for many people could be a better way to achieve enumerations in scala https://github.com/lloydmeta/enumeratum
 
 ## Package object ##
 Please have a look at the "Scala packages" chapter
