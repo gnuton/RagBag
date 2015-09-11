@@ -466,7 +466,26 @@ object MyObjectWhichExtendTheClass extends MyAbstractClass(10) {
 MyObjectWhichExtendTheClass.myMethod
 ```
 
-# Importing packages #
+# Scala packages #
+Scala packages are similar to what java and c++ namespace offer.
+We could define our class in org.gnuton.xxx.test scope in two ways:
+```scala
+// 1. Chained package clause
+package org.gnuton.xxx {
+  package test {
+    class testClass {}
+  }
+}
+
+// 2. top file notation 
+package org.gnuton.xxx.test
+class testClass {}
+```
+We can import testClass and use it in another file as such:
+```scala
+import org.gnuton.xxx.test._
+val t = new testClass
+```
 
 # How to use Java in Scala #
 ## Conversion of collections ##
