@@ -445,6 +445,15 @@ object HelloWorld extends App { // extending the main traits is one way to creat
 }
 ```
 
+## Enumeration object ##
+There is no enumeration type in scala, but enumaration can be obtained extending Enumeration helper class.
+```scala
+object osType extends Enumeration { val linux, win, ios = Value }
+import osType._
+def myFun(x:osType.Value) = { if (x==linux) println("linux")}
+myFun(linux)
+```
+
 ## Extending a class ##
 As said before, objects can extend classes. let's have a look at a simple example
 ```scala
@@ -457,6 +466,7 @@ object MyObjectWhichExtendTheClass extends MyAbstractClass(10) {
 MyObjectWhichExtendTheClass.myMethod
 ```
 
+# Importing packages #
 
 # How to use Java in Scala #
 ## Conversion of collections ##
