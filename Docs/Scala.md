@@ -1,7 +1,6 @@
 # Scala #
 ![logo](https://upload.wikimedia.org/wikipedia/en/8/85/Scala_logo.png)
 
-xxx
 ## Getting started ##
 ### Create and run your first hello word app  ###
 Let's open the scala interpreter and let's run the following code:
@@ -394,6 +393,7 @@ import scala.reflect._
 class MyClass() {@BeanProperty var x : Int = 0 }
 ```
 
+
 # Objects #
 Objects are abstractions in scala that can extend a class/traits and they may have all the features that a class have, but the costructor must have no arguments as for traits
 ```scala
@@ -412,7 +412,7 @@ counter.inc() // returns 1
 counter.inc() // returns 2
 ```
 
-##Companion Objects ##
+## Companion Objects ##
 A companion object is an object which has the same name of a class and it'd defined in the same file.
 Companion objects and class can access each other private vars.
 Companion objects is what is used in scala in order to define static fields and methods.
@@ -433,6 +433,30 @@ t.staticFunc // same as test.staticFunc
 t.setX("bye")
 t.staticFunc
 ```
+
+## Application object ##
+Any application needs an entry point. In scala every app use an Application object as entrypoint
+```scala
+object HelloWorld extends App { // extending the main traits is one way to create an entry point for an app
+  if (args.size > 0)
+    println(args(0))
+  else
+    println("Hello World!")
+}
+```
+
+## Extending a class ##
+As said before, objects can extend classes. let's have a look at a simple example
+```scala
+abstract class MyAbstractClass(x:Int) {
+  def myMethod() : Unit
+}
+object MyObjectWhichExtendTheClass extends MyAbstractClass(10) {
+  override def myMethod() {  println("Do something..") }
+}
+MyObjectWhichExtendTheClass.myMethod
+```
+
 
 # How to use Java in Scala #
 ## Conversion of collections ##
