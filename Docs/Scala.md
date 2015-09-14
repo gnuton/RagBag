@@ -54,8 +54,8 @@ var c:Int = null // ERROR. It's not possible to assign null to a value (AnyVal d
 ## Inheritance hierarchy of Scala types ##
 We have three root types. Any, Null and Nothing.
 Any type is extended by Anyval and AnyRef; AnyVal is the base type for objects that in Java are primitives and AnyRef is for the rest.
-# AnyVal doesn't add any method to Any. It's just a marker.
-# AnyRef adds [wait/notify methods and syncronized block ](http://www.programcreek.com/2009/02/notify-and-wait-example/) 
+* AnyVal doesn't add any method to Any. It's just a marker.
+* AnyRef adds [wait/notify methods and syncronized block ](http://www.programcreek.com/2009/02/notify-and-wait-example/) 
 ![logo](http://joelabrahamsson.com/PageFiles/148/1310_1644.jpg)
 
 ## lazy variables ##
