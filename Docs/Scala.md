@@ -38,9 +38,26 @@ var a = ()
 // 3. Big numbers - BigInt and BigDecimal are used in order to compute large, but finite number with a lot of //                       digits
       val x = BigInt(1)
 // 4. Strings
-// 5. Any 
+.... and more.... look at diagram in the next chapter for the full list
+
+Beside those tipes there are some special ones:
+// 1. Any - Any variable can contain any kind of variable but null and nothing.
 var a:Any = 1
+// 2. Null is the type that has only one instance and that's null.
+var a = null // Defines a Null object
+class MyClass
+var c:MyClass = null // it's possible to assign null to a reference (AnyRef derived type)
+var c:Int = null // ERROR. It's not possible to assign null to a value (AnyVal derived type)
+// 3. Nothing type has not instances. [Read more about that here](http://oldfashionedsoftware.com/2008/08/20/a-post-about-nothing/)
 ```
+
+## Inheritance hierarchy of Scala types ##
+We have three root types. Any, Null and Nothing.
+Any type is extended by Anyval and AnyRef; AnyVal is the base type for objects that in Java are primitives and AnyRef is for the rest.
+# AnyVal doesn't add any method to Any. It's just a marker.
+# AnyRef adds [wait/notify methods and syncronized block ](http://www.programcreek.com/2009/02/notify-and-wait-example/) 
+![logo](http://joelabrahamsson.com/PageFiles/148/1310_1644.jpg)
+
 ## lazy variables ##
 if a variable is declared lazy, it initiazlization is deferred until it's accessed for the first time
 ```scala
