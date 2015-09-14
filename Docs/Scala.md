@@ -652,6 +652,70 @@ import org.gnuton.xxx.test
 test.x // returns 1
 ```
 
+# IO #
+
+## Reading from console ##
+```scala
+val i = readInt // reads Int from STDIN
+val str = readLine // reads a string from STDIN
+val d = readDouble
+val sin = io.Source.stdin
+```
+
+## Reading files ##
+```scala
+// READING FROM PLAIN TEXT FILES
+val source = io.Source.fromFile("/usr/share/dict/words")
+// once you defined the file source you can
+// 1. loop
+for (l <- source.getLines) println(l)
+// 2. make an array out of it
+val lines = source.getLines.toArray
+// 3. make a string
+val str = source.getLines.mkString
+
+//do not forget to close the file descriptor
+source.close
+
+// READING FROM BINARY FILES
+// Scala doesn't provide any library for this. We must fall back to java
+import java.nio.file._
+val path = Paths.get("/usr/bin/mesg")
+val bytes = Files.readAllBytes(path) // creates an Array[Byte] object
+```
+
+## Reading from URL ##
+```scala
+var u = io.Source.fromURL("http://www.gnuton.org", "UTF-8")
+var html = val str = u.getLines.mkString
+```
+
+## Reading from String ##
+```scala
+var s = io.Source.fromString("12,3124,213,43,45,12,564,234")
+val numbers = s.getLines.mkString.split(",").map(_.toInt)
+```
+
+## Writing text files ##
+Here we are again.. Scala doesn't provide API to write text files, let's use Java for this too.
+We could use BufferedWriter (the more efficient) or PrintWriter for achieve this task.
+```scala
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
+
+val f = new File("/tmp/test")
+if (!f.exists()) f.createNewFile
+val fw = new FileWriter(f.getAbsoluteFile())
+val bw = new BufferedWriter(fw)
+bw.write "Hello man"
+bw.close
+```
+
+## Walk a directory ##
+
+# Regular Expressions #
+
 # How to use Java in Scala #
 ## Conversion of collections ##
 ```scala
