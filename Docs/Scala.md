@@ -412,6 +412,34 @@ def p = new Italian
 p.toString  // returns  "Sono Italiano (it was Italian@5323e7b7)"
 ```
 
+## Type checks ##
+Every scala object inheriths isInstaceOf metdhod.
+```scala
+1.isInstanceOf[Int] // returns True
+1.0.isInstanceOf[Double] // reutnrns True
+
+abstract class a
+class b
+c = new b
+c.isInstanceOf[b] // true
+c.isInstanceOf[a] // true
+c.isInstanceOf[ScalaObject] // true
+
+().isInstanceOf[Unit]
+```
+If you wanna check that an object is really an instance of a class and not a sub/super class of it..
+```scala
+class a 
+class b extends a
+class c extends b
+
+def bb = new b
+def cc = new c
+
+bb.getClass == classOf[b] // true
+cc.getClass == classOf[b] // false
+```
+
 # Objects #
 Objects are abstractions in scala that can extend a class/traits and they may have all the features that a class have, but the costructor must have no arguments as for traits
 ```scala
