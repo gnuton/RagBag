@@ -367,6 +367,40 @@ class MyClass{
   }
 }
 ```
+If the constructor make use of some val in the class body some problem may pop up.
+Let's have a look at the following example:
+```scala
+// a standar class with an array. the size of the array is defined by the range value
+class a {
+  val range = 5
+  var array = Array[Int](range)
+}
+var aa = new a
+aa.array // the array has 5 elements
+
+// let's extend the class and let's change the value of range
+class b extends a { override val range = 1 } 
+var bb = new b
+aa.array // the array size is 0. So it didn't worked because we have overriden the value 
+         // before running the b constructor which is the one that sets the new value to b.range
+```
+Solutions for this issue could be:
+```scala
+//1. To make the field lazy
+class a {
+  lazy val range = 5
+  var array = Array[Int](range)
+}
+class b extends a { override lazy val range = 1 }  // this will fail!
+
+//2. To set the value as final so that it cannot be overriden
+class a {
+  final val range = 5 
+  var array = Array[Int](range)
+}
+class b extends a { override val range = 1 }  // this will fail!
+```
+If you face construction order problems as shown here you could use scalac -Xcheckinit to build your code and that will throw an exception is such issues are found.
 
 ### Nested Classes ###
 Scala supports nested classes. # sign is called "type projection" and it means "a Member of ANY MyClass".
