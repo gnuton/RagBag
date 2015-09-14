@@ -37,6 +37,9 @@ var a = ()
 //    Byte, Char, Short, Int, Long, Float, Double
 // 3. Big numbers - BigInt and BigDecimal are used in order to compute large, but finite number with a lot of //                       digits
       val x = BigInt(1)
+// 4. Strings
+// 5. Any 
+var a:Any = 1
 ```
 ## lazy variables ##
 if a variable is declared lazy, it initiazlization is deferred until it's accessed for the first time
@@ -300,7 +303,7 @@ for ((k, v) <- map) println(k + " " + v)
 # Classes #
 Scala files can have more than one class. Every Scala class is child of scala.ScalaObject and it inheriths all the properties from it.
 
-Let's start to have a look at class fields. Those can be public or private. In both cases Scala creates private or public getter and setters method. Class fields must be always initialized
+Let's start to have a look at class fields. Those can be public, protected or private. In any cases Scala creates private or public getter and setters method. Class fields must be always initialized
 ```scala
 class MyClass {
   private var x : Int = 0; // as in other langs private fields are accessible only from this class
@@ -308,6 +311,7 @@ class MyClass {
              // public int y and public void age_$eq(int)
   // in case we would like to redefine the setter method
   private var privateZ:Int= -1;
+  protected
   def z_=(newZ:Int) { if (newZ > privateZ) privateZ=newZ }
   def z = privateZ
 }
