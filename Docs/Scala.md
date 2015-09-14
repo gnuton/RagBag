@@ -310,8 +310,8 @@ class MyClass {
   var y = 1; // scala creates setter and getters from public fields under the hood.
              // public int y and public void age_$eq(int)
   // in case we would like to redefine the setter method
-  private var privateZ:Int= -1;
-  protected
+  private var privateZ:Int= -1
+  protected var protectedY = -1 // as in other languages this is accessible only to this and subclasses
   def z_=(newZ:Int) { if (newZ > privateZ) privateZ=newZ }
   def z = privateZ
 }
@@ -345,7 +345,7 @@ a.isBigger(b)
 ```
 
 ### Class constructors ###
-Scala allows you to have a primary and many auxiliary secondary constructors as other languages do.
+Scala allows you to have a primary and many auxiliary (secondary) constructors as other languages do.
 ```scala
 // Primary constructor
 class MyClass(val x:Int){ // val or var can be omitted and x will become a private field
@@ -354,7 +354,9 @@ class MyClass(val x:Int){ // val or var can be omitted and x will become a priva
 }
 def m = new MyClass
 m.x // x field can be accessed from outside the class too if not defined as private
-
+```
+Auxiliary constructors starts with a call to the main one. For this reason they cannot invoke superclass constructors.
+```scala
 // Auxiliary constructors are defined as follow
 class MyClass{
   private var a:Int = 0
@@ -432,6 +434,19 @@ class Italian extends Person {
 }
 def p = new Italian
 p.toString  // returns  "Sono Italiano (it was Italian@5323e7b7)"
+```
+
+If a superclass constructors requires some arguments, the derived class must fullfill that request
+```scala
+class a(x:Int) 
+class b(y:Int, x:Int) extends a(x)
+```
+
+Scala classes can extend Java ones
+```scala
+class myFrame(title:String) extends java.awt.Frame(title)
+var window = new myFrame("Test")
+window.setVisible(true)
 ```
 
 ## Type checks ##
