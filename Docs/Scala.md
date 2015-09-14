@@ -436,6 +436,16 @@ def p = new Italian
 p.toString  // returns  "Sono Italiano (it was Italian@5323e7b7)"
 ```
 
+Scala  supports abstract classes which can contain abstract fields and methods.
+```scala
+abstract class a { 
+  val x:Int; // Abstract field  
+  val y = 1; // concrete field
+  def aMethod // Abstract method
+  def getX = x // concrete method
+}
+```
+
 If a superclass constructors requires some arguments, the derived class must fullfill that request
 ```scala
 class a(x:Int) 
