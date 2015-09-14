@@ -75,6 +75,24 @@ if (n > 0) {
 }
 ```
 
+## PATTERN MATCHING ##
+```scala
+var y = x match { 
+  case 1 => println("1 is Int")
+  case 2 => println("2 is Int")
+  //case "uno":String => println("we got a string")
+  case _ => println("default")
+}
+
+// match supports differnt types too
+var x:Any = 1
+x match {
+  case 1 => println(1);
+  case "ciao" => println(2);
+  case _ => println("default")
+}
+```
+
 ## Block Expression ##
 They are the same as in C++ or Java, but they return the value of the latest operation
 ```scala
