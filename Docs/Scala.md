@@ -714,6 +714,24 @@ bw.close
 
 ## Walk a directory ##
 
+## Object serialization ##
+```scala
+@serializable @SerialVersionUID(1L) class a {
+  val a = 10
+  @transient var b="ciao"
+}
+var aa = new a
+var fileOut = new java.io.FileOutputStream("/tmp/test")
+var out = new java.io.ObjectOutputStream(fileOut)
+out.writeObject(aa)
+out.close()
+
+var fileIn = new java.io.FileInputStream("/tmp/test")
+var in = new java.io.ObjectInputStream(fileIn)
+var aa2 = in.readObject().asInstanceOf[a]
+aa2.b // is null since it's transient and it has not been serialized
+```
+
 # Regular Expressions #
 
 # How to use Java in Scala #
