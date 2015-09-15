@@ -715,6 +715,7 @@ bw.close
 ## Walk a directory ##
 
 ## Object serialization ##
+Serialization is usefull to store objects on the disk or send it via network. Scala relies on the java APIs for this.
 ```scala
 @serializable @SerialVersionUID(1L) class a {
   val a = 10
@@ -733,6 +734,26 @@ aa2.b // is null since it's transient and it has not been serialized
 ```
 
 # Regular Expressions #
+```scala
+// regular expression patterns are build from strings
+val rx = "[0-9]{4}".r
+var str = "Copyright 23 Dec 1998-1999"
+
+// get all matches
+rx.findAllIn(str).toArray // Array(1998,1999)
+
+// get the first match
+rx.findFirstIn(str).toArray
+
+// replace strings
+rx.replaceAllIn(str, "XXXX")
+
+// groupping
+val rx = "([0-9]{4}) ([a-z]*)".r
+val rx(a,b) = "" // throws MatchError exception
+val rx(a,b) = "1919 abc" //defines variable a=1919 and b=abc
+```
+
 
 # How to use Java in Scala #
 ## Conversion of collections ##
