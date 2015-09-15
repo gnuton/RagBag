@@ -657,6 +657,23 @@ object MyObjectWhichExtendTheClass extends MyAbstractClass(10) {
 }
 MyObjectWhichExtendTheClass.myMethod
 ```
+# Traits #
+Traits are special objects that encapsulates field and method definitions. They are very similar to abstract java clases.
+Traits allo classes to inherith properties from one or more traits. Rule of the thumb... put your code in a trait if you wanna make it reusable and if you want make it available in various part of the class hierarchy.
+
+```scala
+// trait are just objects that define some methods or fields
+trait CanFly { def land(); def takeOff; def isFlying:Boolean }
+trait CanSwim { def float; def sink; isSwimming:Boolean }
+trait Green { def color = "green"}
+
+// trait can extend other traits
+trait anatidae  extends CanSwim with CanFly
+
+// a class can extend multiple traits but only one class
+class duck extedns anatidae { ... }
+
+```
 
 # Scala packages #
 Scala packages are similar to what java and c++ namespace offer.
