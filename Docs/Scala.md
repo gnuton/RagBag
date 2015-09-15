@@ -210,9 +210,12 @@ finally {
 }
 ```
 
-# Data Structures #
+# Collections #
+Collections are containers of objects. Collections can be: 
+* lazy/strict - lazy collections do not consume memory until they are not accessed
+* mutable/immutable - immutable when the object referenced by the collection never changes
 
-## Arrays ##
+## 1. Arrays ##
 ### Fixed and variable size Array###
 #### Array type is fixed type ####
 ```scala
@@ -271,7 +274,7 @@ val matrix = Array.ofDim[Int](3,2) // creates Array[Array[Int]] = Array(Array(0,
 matrix(2)(1)=112
 ```
 
-## Tuples ##
+## 2. Tuples ##
 Are immutable objects containing more than one value. They are usually returned by functions that output many objects. Dislike arrays, the first element in a tuple is 1 and not 0.
 ```scala
 val t = ("antonio",1,3)
@@ -285,7 +288,42 @@ a.zip(b) // creates List[(Int, Int)] = List((10,40), (20,50), (30,60))
 a.zipWithIndex // List[(Int, Int)] = List((10,0), (20,1), (30,2))
 ```
 
-## Maps ##
+## 3. Lists ##
+Scala's List[T] is a linked list of type T.
+List are immutable structures and are implemented as linked list which are used in functional programming.
+```scala
+// Define List of integers.
+val x = List(1,2,3,4)
+x(0) = 2 //ERROR it immutable
+
+```
+Mutable List can be achieved using ListBuffer. 
+Performance differences between Array (which are mutable) and Lists
+```
+                          Array  List
+Access the ith element    O(1)   O(i)
+Discard the ith element   O(n)   O(i)
+Insert an element at i    O(n)   O(i)
+Reverse                   O(n)   O(n)
+Concatenate (length m,n)  O(n+m) O(n)
+Calculate the length      O(1)   O(n)
+Memory differences
+
+                          Array  List
+Get the first i elements  O(i)   O(i)
+Drop the first i elements O(n-i) O(1)
+Insert an element at i    O(n)   O(i)
+Reverse                   O(n)   O(n)
+Concatenate (length m,n)  O(n+m) O(n)
+```
+## 4. Sets ##
+A set is a collection of pairwise different elements of the same type.
+```scala
+// Define a set.
+var x = Set(1,3,5,7)
+```
+
+## 5. Maps ##
 A Map is an Iterable consisting of pairs of keys and values 
 As other collection types, scala provides mutable and immutable maps. 
 Maps in Scala can be sorted (implemented as Tree) or unsorted (implemented as Hash).
@@ -314,7 +352,13 @@ map += ("a" -> 1, "b" -> 2) // adds a set of value to the map
 
 // every map can be traversed with a for
 for ((k, v) <- map) println(k + " " + v)
+```
 
+## 6. Options ##
+Option[T] provides a container for zero or one element of a given type.
+```scala
+// Define an option
+val x:Option[Int] = Some(5)
 ```
 
 # Classes #
