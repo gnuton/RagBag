@@ -646,6 +646,16 @@ BTW enumeratum for many people could be a better way to achieve enumerations in 
 ## Package object ##
 Please have a look at the "Scala packages" chapter
 
+## Case Object ##
+* pattern matching support
+* default implementations of equals and hashCode
+* default implementations of serialization
+* a prettier default implementation of toString
+
+```scala
+  case object a
+```
+
 ## Extending a class ##
 As said before, objects can extend classes. let's have a look at a simple example
 ```scala
@@ -815,6 +825,8 @@ val rx(a,b) = "" // throws MatchError exception
 val rx(a,b) = "1919 abc" //defines variable a=1919 and b=abc
 ```
 
+# Concurrency: Actors #
+Actors are concurrent processes that communicate by exchanging async messages.
 
 # How to use Java in Scala #
 ## Conversion of collections ##
