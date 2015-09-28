@@ -653,7 +653,25 @@ Please have a look at the "Scala packages" chapter
 * a prettier default implementation of toString
 
 ```scala
-  case object a
+  scala> object A
+defined module A
+
+case object B
+defined module B
+
+import java.io._
+import java.io._
+
+val bos = new ByteArrayOutputStream        
+val oos = new ObjectOutputStream(bos)
+
+val bos = new ByteArrayOutputStream  
+
+val oos = new ObjectOutputStream(bos)
+oos: java.io.ObjectOutputStream = java.io.ObjectOutputStream@23818a8e
+scala> oos.writeObject(B)
+scala> oos.writeObject(A) // thrown an exception
+
 ```
 
 ## Extending a class ##
