@@ -866,6 +866,32 @@ http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConversion
 1. :paste enables the paste mode that allow you to paste code blocks 
 2. pressing several time TAB in the scala REPL triggers auto-completation
 
+# SBT #
+SBT is a build tool for Scala and Java projects as Maven or Ant.
+An build.sbt file is usually placed in the root of the project and it expects the code to be in src/main/scala/
+
+```scala
+name := "MyProject"
+version := "1.0"
+scalaVersion  := "2.11.7"
+
+scalacOptions ++= Seq( "-unchecked"
+  , "-deprecation"
+  , "-encoding", "utf8"
+)
+
+scalacOptions ++= Seq(
+  "-feature",
+  "-language", "postfixOps"
+)
+
+libraryDependencies ++= Seq(
+  "org.scalatest" %% "scalatest" % "2.2.4" % "test",
+  //"org.scala-lang" % "scala-actors" % "2.10.0-M6",
+  "com.typesafe.akka" %% "akka-actor" % "2.3.14"
+)
+```
+
 # Understanding stuff under the hood #
 ## Having a look at what the compiler does #
 Let's write a simple scala class like this
