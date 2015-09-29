@@ -844,6 +844,9 @@ val rx(a,b) = "1919 abc" //defines variable a=1919 and b=abc
 ```
 
 # Concurrency #
+Scala achieve concurrency using a actor model. Actors mainly differ from threads because they communicate only sending messages among them and there are no shared states.
+Despite Actor model could be less error prone, still a programmer could face deadlocks in some cases.
+
 ## the "old" scala Actors##
 [Actors](http://docs.scala-lang.org/overviews/core/actors.html) are concurrent processes that communicate by exchanging async messages. They have been deprecated and Akka actors should be used instead.
 Nowadays Actors lib is a separate artifact so you need to add that dependency to SBT config file.
@@ -909,7 +912,6 @@ class TheActorClass extends Actor {
     case _ => { sender ! "NOT it's not" }
   }
 }
-case object AskNameMessage
 
 object Main extends App {
   // ActorSystem - group of actors sharing the same configuration
