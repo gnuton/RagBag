@@ -843,8 +843,16 @@ val rx(a,b) = "" // throws MatchError exception
 val rx(a,b) = "1919 abc" //defines variable a=1919 and b=abc
 ```
 
-# Concurrency: Actors #
-Actors are concurrent processes that communicate by exchanging async messages.
+# Concurrency #
+## the "old" scala Actors##
+[Actors](http://docs.scala-lang.org/overviews/core/actors.html) are concurrent processes that communicate by exchanging async messages. They have been deprecated and Akka actors should be used instead.
+Nowadays Actors lib is a separate artifact so you need to add that dependency to SBT config file.
+```scala
+libraryDependencies ++= Seq(
+  "org.scala-lang" % "scala-actors" % "2.10.0-M6"
+)
+```
+## the "new" Akka Actors ##
 
 # How to use Java in Scala #
 ## Conversion of collections ##
