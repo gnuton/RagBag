@@ -892,6 +892,18 @@ libraryDependencies ++= Seq(
 )
 ```
 
+# IDE #
+Many scala devs use IntelliJ for developing their own projects.
+## Importing a Scala project to IntelliJ #
+1. Install scala plugin. Settings -> Plugins -> Scala -> Install
+2. Open directory with sbt build: File -> Open Project -> select directory with build.sbt -> configure settings
+
+## Creating a Scala SBT project ##
+### Intellij 14 ###
+1. File > New > Project > SBT
+2. In the wizard dialog change something is needed.. in most of cases just press next and finish in the last page
+3. Create a Scala class in src/main/scala 
+
 # Understanding stuff under the hood #
 ## Having a look at what the compiler does #
 Let's write a simple scala class like this
