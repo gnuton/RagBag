@@ -853,6 +853,28 @@ libraryDependencies ++= Seq(
 )
 ```
 ## the "new" Akka Actors ##
+```scala
+import akka.actor._
+
+class TheActorClass extends Actor {
+  def receive = {
+    case "11" => println("got 11")
+    case _       => println("got unknown")
+  }
+}
+
+object Main extends App {
+  // ActorSystem - group of actors sharing the same configuration
+  val theSystem = ActorSystem("HelloActorSystem")
+
+  // Instantiate one actor without
+  val helloActor = theSystem.actorOf(Props[TheActorClass], name = "theActor")
+
+  // Send messages to the actor
+  helloActor ! "11"
+  helloActor ! "222 333"
+}
+```
 
 # How to use Java in Scala #
 ## Conversion of collections ##
@@ -910,6 +932,24 @@ Many scala devs use IntelliJ for developing their own projects.
    }
 ```
 5. Right click on the scala file then click on run from the menu to run the app
+
+## Add dependencies to Scala SBT projects ##
+The proper way to add dependencies to a scala project is to add a line in the build.sbt file.
+For instance:
+```scala
+libraryDependencies +=
+  "com.typesafe.akka" %% "akka-actor" % "2.4-SNAPSHOT"
+```
+
+Beside modifing the SBT file, you can use IntellJ UI to achieve this, but don't really see this clean as the previous option. For the sake of completeness here is how to achieve this:
+1. File > Project structure > Click your project from the left list > Select Dependencies tab
+2. click the "+" icon > Libraries
+3. from the dialog select "new Library" > "from Maven"
+4. search for "Akka" for instance or any other lib you are interested in > select the lib > press OK
+5. in "Choose Libraries" dialog select the lib you have added (eg: com.typesafe.akka) > click "Add selected"
+6. in "Project Structure" dialog you may see the lib added  > press OK
+7. wait for SBT to download and compile the required libs
+8.
 # Understanding stuff under the hood #
 ## Having a look at what the compiler does #
 Let's write a simple scala class like this
