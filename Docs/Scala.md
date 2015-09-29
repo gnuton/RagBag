@@ -904,10 +904,11 @@ Many scala devs use IntelliJ for developing their own projects.
 2. In the wizard dialog change something is needed.. in most of cases just press next and finish in the last page
 3. Create a Scala class in src/main/scala 
 4. For testing purposes you can enter the following code in the scala file you have just created
-   ```scala
+```scala
    object Hello extends App{
      println("Hello world")
-   }```
+   }
+```
 5. Right click on the scala file then click on run from the menu to run the app
 # Understanding stuff under the hood #
 ## Having a look at what the compiler does #
