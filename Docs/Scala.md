@@ -853,15 +853,63 @@ libraryDependencies ++= Seq(
 )
 ```
 ## the "new" Akka Actors ##
+
+### Sending msgs to an Actor ###
 ```scala
 import akka.actor._
 
+// Actor are base traits that get extended
+// Actors have not cyclic life-cycle. They are in RUNNING (get msgs) or SHUTDOWN state (do nothing).
 class TheActorClass extends Actor {
+  // this is a special method. 
   def receive = {
     case "11" => println("got 11")
     case _       => println("got unknown")
   }
 }
+
+object Main extends App {
+  // ActorSystem - group of actors sharing the same configuration. It allocates one or more threads for the app
+  val theSystem = ActorSystem("HelloActorSystem")
+
+  // Instantiate one actor that takes no constructor arguments. ActorOf creates the actor asynchronously
+  // and returns an instance of ActorRef which can be used ad "handle" to the actor. The ActorRef avoid 
+  // the programmer to change the internal state of the Actor itself. Actor internals state must be changed
+  // only via messages.
+  val helloActor = theSystem.actorOf(Props[TheActorClass], name = "theActor")
+  // in case the actor class was requiring a paramenter as argument we would have used Props in a different way
+  // class TheActorClass2(s: String) extends Actor { ... }
+  // val helloActor = theSystem.actorOf(Props(new TheActorClass2("aa")), name = "theActor")
+  
+  // Send messages to the actor. 
+  // The ! operator is a "fire-and-forget" the message is sent and it returns immediately
+  // The ? operator can be used too. it would return a Future representing the reply. See next section.
+  helloActor ! "11"
+  helloActor ! "222 333"
+  
+  theSystem.shutdown() // let the app terminate when the work is done, but doesn't check the actor is stil running
+                       // for this reason you must monitor your actor with watch
+}
+```
+
+### Receving messages from Actors ###
+```scala
+import akka.actor._
+import akka.pattern._ // enable ? operator
+import akka.util.Timeout
+import scala.concurrent.duration._
+import scala.concurrent.{Future, Await}
+
+// add support for ? operator
+class TheActorClass extends Actor {
+  def receive = {
+    case "stop this" => context.stop(self)
+    case "stop system" => context.system.shutdown()
+    case "red" => { sender ! "OK is RED" }
+    case _ => { sender ! "NOT it's not" }
+  }
+}
+case object AskNameMessage
 
 object Main extends App {
   // ActorSystem - group of actors sharing the same configuration
@@ -870,10 +918,24 @@ object Main extends App {
   // Instantiate one actor without
   val helloActor = theSystem.actorOf(Props[TheActorClass], name = "theActor")
 
-  // Send messages to the actor
-  helloActor ! "11"
-  helloActor ! "222 333"
+  // Send messages to the actor and block the main thread until an answer is got within a timeout
+  implicit val timeout = Timeout(5.seconds)
+  val future = helloActor ? "blue"
+  val result = Await.result(future, timeout.duration).asInstanceOf[String]
+  println(result)
+
+  // here is just hte very same code but with "better" handling of data returned.
+  val future2: Future[String] = akka.pattern.ask(helloActor, "red").mapTo[String] // instead of  helloActor ? "red"
+  val result2 = Await.result(future2, 5 seconds)
+  println(result2)
+
+  helloActor ! "stop system"
 }
+```
+
+### Watch for the death of an Actor ###
+```scala
+
 ```
 
 # How to use Java in Scala #
