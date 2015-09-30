@@ -16,9 +16,10 @@ In scala semicolons are optionals. They are only used in case you have multiple 
 
 # Variables & Constatns#
 ```scala
-// Constant values
+// Constant values. val is evaluated as soon as it's defined.
 val c = 3
 c = 4 // this will trigger an error
+val r = scala.util.Random.nextInt // r stores the value generated
 
 // You do not need to define a type when you declare a variable in scala
 var a = 1  //Integer
@@ -1042,3 +1043,4 @@ public class MyClass implements scala.ScalaObject {
 # Reference #
 - Official docs - http://scala-lang.org/api/current/#package
 - Intro to Collections - http://docs.scala-lang.org/overviews/collections/introduction.html
+- Scala cookbook - https://www.safaribooksonline.com/library/view/scala-cookbook/9781449340292/ch13s06.html
