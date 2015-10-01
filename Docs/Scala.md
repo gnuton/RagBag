@@ -1083,11 +1083,39 @@ object ClosureExample extends App {
   println(justAnotherScope.x.exec(isBigger, 4))
 }
 ```
-## Partial functions ##
+## Partially applied functions ##
+Are functions that call other functions but with some parameters set
 ```scala
 def wrap = (tagB:String, content: String, tagE:String) => tagB + content + tagE
 def wrapP = wrap("<p>", _:String,"<p>") // here we define a partial function
 wrapP("text") // prints <p>text</p>
+```
+## Partial Function ##
+Are functions that work only for a subset of possible input values.
+It provides a isDefinedAt method that is used to check if the argument is
+in the domain of the function.
+```scala
+ val dev = new PartialFunction[Int, Double] {
+    override def isDefinedAt(x: Int): Boolean = x!=0
+    override def apply(v1: Int): Double = 10/v1
+  }
+  println(if (dev isDefinedAt(1)) dev(1))
+```
+Partial functions are important because some APIs require them.
+```scala
+val devide : PartialFunction[Int, Double] = {
+    case d:Int if d !=0 => 10/d
+  }
+  
+// collect checks for for isDefinedAt before running apply
+println(List(0,1,2).collect{devide})
+```
+
+## Functions returning a functions ##
+```scala
+-Method declaration--  --  function literal ---------
+def f(prefix:String) = (s:String) => prefix + " " + s
+f("ciao")("TEST")
 ```
 
 # Understanding stuff under the hood #
