@@ -1014,7 +1014,76 @@ Beside modifing the SBT file, you can use IntellJ UI to achieve this, but don't 
 5. in "Choose Libraries" dialog select the lib you have added (eg: com.typesafe.akka) > click "Add selected"
 6. in "Project Structure" dialog you may see the lib added  > press OK
 7. wait for SBT to download and compile the required libs
-8.
+
+
+# Functional Programming #
+Scala can be used for FP but its root are deep in Java OOP and it can be used for both paradigms.
+Scala encourage developers to use an [Expression-oriented programming language](https://en.wikipedia.org/wiki/Expression-oriented_programming_language) where almost every statement yelds a value. 
+
+## Anonymous Functions ##
+Called also Function literal. They can be stored in variables and passed to functions. 
+=> should be seen as a transformer. It transforms the data on the left side to the one on the right.
+
+```scala
+val myAnonFunction = (i:Int) => { i % 2 == 0 }
+List.range(1,10).filter(myAnonFunction) // returns List(2, 4, 6, 8)
+// we could short the anonymous function if we like!
+List.range(1,10).filter(_%2==0)
+```
+## Functions as variables ##
+in FP functions are first class object. They can be passed as variable/argument of a function
+```scala
+// as argument of map
+List.range(1,10).map((i:Int) => i*2)
+
+// A function that takes in another function as arg must have a signature like: 'nameFun:(arg1) => outputType'
+def run(c:() => Unit ) { c() }
+val f = () => {println("Hi")}
+run(f)
+
+// the run function can get other parameters along with the function
+def run(c:(Int) => Unit, i:Int) { c(i) }
+val f = (i:Int) => {println(i)}
+run(f, 2)
+
+```
+and here another example
+```scala
+package justAnotherScope {
+  object x {
+    var i = 0
+    def exec(f:(Int) => Int):Int = {i = f(x.i); i}
+  }
+}
+
+object Main extends App {
+  def inc = (j:Int) => j + 1
+  justAnotherScope.x.exec(inc)
+  var res:Int = justAnotherScope.x.exec(inc)
+  println(res)
+}
+```
+
+## Closures ##
+By definition is a function with a referencing environment for the non-local variables of that function.
+Closures allow a function to access to variables outside its immediate lexical scope.
+In order to create closures in Scala, just define a function that refers to a variable that's in the same scope as its declaration. The function can be used later even when the variable is no longer in the function's scope (eg function passed to another class, method or function).
+```scala
+package justAnotherScope {
+  object x {
+    def exec(f:(Int) => Boolean, i:Int):Boolean = {f(i)}
+  }
+}
+
+object ClosureExample extends App {
+  var max = 60
+  val isBigger = (x:Int) => (x >= max)
+  println(justAnotherScope.x.exec(isBigger, 4))
+  max = 3
+  println(justAnotherScope.x.exec(isBigger, 4))
+}
+```
+
 # Understanding stuff under the hood #
 ## Having a look at what the compiler does #
 Let's write a simple scala class like this
