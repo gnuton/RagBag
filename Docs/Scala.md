@@ -1083,6 +1083,12 @@ object ClosureExample extends App {
   println(justAnotherScope.x.exec(isBigger, 4))
 }
 ```
+## Partial functions ##
+```scala
+def wrap = (tagB:String, content: String, tagE:String) => tagB + content + tagE
+def wrapP = wrap("<p>", _:String,"<p>") // here we define a partial function
+wrapP("text") // prints <p>text</p>
+```
 
 # Understanding stuff under the hood #
 ## Having a look at what the compiler does #
