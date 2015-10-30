@@ -1142,6 +1142,31 @@ public class MyClass implements scala.ScalaObject {
   public MyClass();
 }
 ```
+# Frameworks #
+## Spray ##
+### Spray-json ###
+```scala
+import spray.json._
+
+case class xx(val took: Int)
+
+object xxProtocol extends DefaultJsonProtocol {
+  implicit val xxFormat = jsonFormat1(xx)
+}
+
+object Playground extends App {
+  import xxProtocol._ // import the implicit JsonWriter/Reader in this scope
+  //1.  Convert map to JSON
+  println(Map("took" -> 1).toJson)
+
+  //2.  Convert map to case class
+  println(Map("took" -> 1).toJson.convertTo[xx])
+
+  //3. Convert case class to JSON string
+  val c = new xx(1)
+  println(c.toJson.compactPrint)
+}
+```
 
 # Reference #
 - Official docs - http://scala-lang.org/api/current/#package
