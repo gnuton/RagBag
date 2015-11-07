@@ -214,11 +214,31 @@ Disassembly of section .data:
    b:	64 21 0a             	and    DWORD PTR fs:[edx],ecx
 ```
 
-### xxx ###
-```cpp
-```
-```assembly
+### Memory segments ###
+The memory is devided into indipendent segments.
+* DATA - stores data used by the program
+	* .data - Contains initialized data
+	 	- instruction used EQU, DB, DW, DD, DQ and DT
+	* .bss - Stores variables
+	       - RESB, RESW, RESD, RESQ and REST reserve uninitialized space in memory for your variables
+* TEXT - stores the instruction codes
+* STACK - contains data values passed to functions within the program
 
+And here how the sections looks like in the source code
+```assembly
+section .data
+	message:    db 'Hello world!'     ; message = 'Hello world!' as Bytes
+	msglength:  equ 12                ; msglength  = 12 as constant
+	
+section .bss
+	number:     resb    1             ; Reserves 1 byte
+	bignum:     resw    1             ; Reserves 1 word (1 word = 2 bytes)
+	realarray:  resq    10            ; Reserves an array of 10 reals
+	
+section .text
+	global _start
+_start:
+	pop    ebx        ; Here is the where the program actually begins	
 ```
 
 
