@@ -157,6 +157,63 @@ Breakpoint 1, main () at a.c:5
 rip            0x400531	0x400531 <main+4>      // 0x400531 is the address stored in RIP
 ```
 
+# Programming in ASM #
+## How to build aN ASM app ##
+```bash
+# Builds a .o Object file
+nasm -f elf a.asm
+# Links the object to libs
+ld -m elf_i386 -s -o a a.o
+```
+## Hello World ##
+```assembly
+section	.text
+   global_start   ;must be declared for linker (ld)
+	
+_start:	          ;tells linker entry point
+   mov	edx,len   ;message length
+   mov	ecx,msg   ;message to write
+   mov	ebx,1     ;file descriptor (stdout)
+   mov	eax,4     ;system call number (sys_write)
+   int	0x80      ;call kernel
+	
+   mov	eax,1     ;system call number (sys_exit)
+   int	0x80      ;call kernel
+
+section	.data
+msg db 'Hello, world!', 0xa  ;string + /n 
+len equ $ - msg    ;string length
+```
+Once built with ASM it looks like this in objectdump (objdump  -Mintel -D helloworld.o)
+```assembly
+a.o:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	ba 0e 00 00 00       	mov    edx,0xe
+   5:	b9 00 00 00 00       	mov    ecx,0x0
+   a:	bb 01 00 00 00       	mov    ebx,0x1
+   f:	b8 04 00 00 00       	mov    eax,0x4
+  14:	cd 80                	int    0x80
+  16:	b8 01 00 00 00       	mov    eax,0x1
+  1b:	cd 80                	int    0x80
+
+Disassembly of section .data:
+
+00000000 <msg>:
+   0:	48                   	dec    eax
+   1:	65                   	gs
+   2:	6c                   	ins    BYTE PTR es:[edi],dx
+   3:	6c                   	ins    BYTE PTR es:[edi],dx
+   4:	6f                   	outs   dx,DWORD PTR ds:[esi]
+   5:	2c 20                	sub    al,0x20
+   7:	77 6f                	ja     78 <len+0x6a>
+   9:	72 6c                	jb     77 <len+0x69>
+   b:	64 21 0a             	and    DWORD PTR fs:[edx],ecx
+```
+
 ### xxx ###
 ```cpp
 ```
