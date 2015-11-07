@@ -241,8 +241,21 @@ _start:
 	pop    ebx        ; Here is the where the program actually begins	
 ```
 
-
-
+### Registers ###
+#### X86_32 ####
+* GENERAL PURPOSE
+	* DATA REGISTERs (32-bit E*X, 16-bit *X, 8-bit *L, where * is A,B,C,D)
+		* EAX - Accumulator
+		* EBX - Base
+		* ECX - Counter
+		* EDX - Data
+	* POINTER REGISTERs (32-bit EIP/ESP/BSP, 16-bit IP/SP/BP)
+		* EIP - Instruction Pointer - stores offset address of the next instruction to be executed
+		* ESP - Stack Pointer
+		* EBP - Base Pointer
+	* INDEX REGISTERs
+* CONTROL
+* SEGMENT
 # Tips #
 If you like to have Intel syntax in GDB just run this.
 ```
