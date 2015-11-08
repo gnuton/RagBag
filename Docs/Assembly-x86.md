@@ -290,6 +290,7 @@ A register is a small amount of data storage inside a processor which makes it f
 Note that in order to reference any memory location in a segment, the processor combines the segment address in the segment register with the offset value of the location.
 
 ### Data types ###
+The following are used to declare initialized data
 * DB - Bytes (1Byte - 8bit)
 * DW - Words   (2 Byte -16bit)
 * DD - Double word (4B)
@@ -297,6 +298,34 @@ Note that in order to reference any memory location in a segment, the processor 
 * DO - Octo word (16B)
 * DY - (32B)
 * DZ - (64B)
+```assembly
+; Initiliaze 3 bytes
+db 0x01,0x02,0x03
+dw 0x1234
+```
+unitialized data is declred using the RES* pseudo-istructions
+* RESB - Declares uninitaliazed byte
+* RESW - Declares uninitaliazed word
+* RESD ...
+* RESQ
+* REST
+* RESO
+* RESY
+* RESZ
+
+Costants are declared using 
+* EQU
+```assembly
+mycost equ 3 ; decleare mycost = 3
+```
+
+you can include a binary file
+* INCBIN
+
+you can repeat instruction or data
+* TIMES
+
+
 
 # Tips #
 If you like to have Intel syntax in GDB just run this.
