@@ -214,12 +214,21 @@ Disassembly of section .data:
    b:	64 21 0a             	and    DWORD PTR fs:[edx],ecx
 ```
 
+You can build your assembly code using the 64 bit registers too
+```
+# Builds a .o Object file
+nasm -f elf64 a.asm
+# Links the object to libs
+ld -o a a.o
+
+```
+
 ### Memory segments ###
 The memory is devided into indipendent segments.
 * DATA - stores data used by the program
-	* .data - Contains initialized data
+	* .data - Contains initialized data (costants)
 	 	- instruction used EQU, DB, DW, DD, DQ and DT
-	* .bss - Stores variables
+	* .bss - Stores uninitialized data (vars)
 	       - RESB, RESW, RESD, RESQ and REST reserve uninitialized space in memory for your variables
 * TEXT - stores the instruction codes
 * STACK - contains data values passed to functions within the program
@@ -242,20 +251,53 @@ _start:
 ```
 
 ### Registers ###
-#### X86_32 ####
-* GENERAL PURPOSE
-	* DATA REGISTERs (32-bit E*X, 16-bit *X, 8-bit *L, where * is A,B,C,D)
-		* EAX - Accumulator
-		* EBX - Base
-		* ECX - Counter
-		* EDX - Data
+A register is a small amount of data storage inside a processor which makes it fast to access to data.
+
+#### X86 register ####
+* GENERAL PURPOSE (There are 16 types in 64 bit and )
+	* DATA REGISTERs (64 bit R*X, 32-bit E*X, 16-bit *X, 8-bit *L, where * is A,B,C,D)
+		* AX - Accumulator - usually contains the syscall number
+		* BX - Base
+		* CX - Counter
+		* DX - Data - 
 	* POINTER REGISTERs (32-bit EIP/ESP/BSP, 16-bit IP/SP/BP)
-		* EIP - Instruction Pointer - stores offset address of the next instruction to be executed
-		* ESP - Stack Pointer
-		* EBP - Base Pointer
+		* IP - Instruction Pointer - stores offset address of the next instruction to be executed
+		* SP - Stack Pointer -address of top of the stack. Data is added and removed only from the top. So it changes everytime a word or address is pushed or popped off the stack.
+		* BP - Base/Frame Pointer - points to ESP when a function starts. 
 	* INDEX REGISTERs
+		* SI - Source Index -
+		* DI - Destination Index -
 * CONTROL
+	* OF - Overflow flag
+	* DF - Direction flag
+	* IF - Interrupt flag
+	* TF - Trap flag
+	* SF - Sign flag
+	* ZF - Zero flag
+	* AF - Auxiliary carry flag
+	* PF - Parity flag
+	* CF - Carry flag
 * SEGMENT
+	* CS - Code Segment - starting address of the code segment
+	* DS - Data Segment - starting address of the data segment
+	* SS - Stack Segment -starting address of the stack
+	* ES - Extra Segment
+	* FS - Additional segment to store data
+	* GS - Additional segment to store data
+
+64-bit processor have etra registers:  r8, r9, r10, r11, r12, r13, r14, r15
+
+Note that in order to reference any memory location in a segment, the processor combines the segment address in the segment register with the offset value of the location.
+
+### Data types ###
+* DB - Bytes (1Byte - 8bit)
+* DW - Words   (2 Byte -16bit)
+* DD - Double word (4B)
+* DQ - Quad word(8B)
+* DO - Octo word (16B)
+* DY - (32B)
+* DZ - (64B)
+
 # Tips #
 If you like to have Intel syntax in GDB just run this.
 ```
