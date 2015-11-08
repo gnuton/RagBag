@@ -289,6 +289,29 @@ A register is a small amount of data storage inside a processor which makes it f
 
 Note that in order to reference any memory location in a segment, the processor combines the segment address in the segment register with the offset value of the location.
 
+### SYSTEM CALLS ###
+Are APIs that expose some kernel function to  user space.
+A good list with registers used by these syscall can be found [here] (https://filippo.io/linux-syscall-table/)
+
+In order to use them:
+1. Insert the syscall number into the EAX/RAX register
+2. Insert the arguments data into some specific registers (see link above)
+3. call the kernel using generating a software interrupt using the instruction int 80h 
+```assembly
+; In this example we call the syscall sys_write in a i32 system
+; ssize_t sys_write(unsigned int fd, const char * buf, size_t count)
+
+; Step 1
+mov	eax,4     ;system call number (sys_write)
+; Step 2
+mov	ebx,1     ;file descriptor (stdout)
+mov	ecx,msg   ;message to write
+mov	edx,len   ;message length
+
+; Step 3
+int	0x80      ;call kernel
+```
+
 ### Data types ###
 The following are used to declare initialized data
 * DB - Bytes (1Byte - 8bit)
@@ -326,6 +349,47 @@ you can repeat instruction or data
 * TIMES
 
 
+# Examples #
+## Read and write from console #
+```assembly
+section	.text
+   global_start   ;must be declared for linker (ld)
+	
+_start:	          ;tells linker entry point
+   ; Writes insert a number
+   mov	eax,4     ;sys_write
+   mov	ebx,1     ;stdout
+   mov	ecx,msg   ;message to write
+   mov	edx,len   ;message length
+   int	0x80
+
+   ; Reads in the 3 chars
+   mov eax, 3     ;sys_read
+   mov ebx, 0     
+   mov ecx, mstr
+   mov edx, mstrl  
+   int	0x80      ;call kernel
+   
+   ; Writes out the char
+   mov	eax,4     ;sys_write
+   mov	ebx,1     ;stdout
+   mov	ecx,mstr   ;message to write
+   mov	edx,mstrl   ;message length
+   int	0x80
+
+   ; exit
+   mov	eax,1     ;system call number (sys_exit)
+   mov  ebx,0
+   int	0x80      ;call kernel
+
+section .bss
+mstr resb mstrl     ;preallocate 128 bytes
+
+section	.data
+msg db 'Insert a number', 0xa  ;our dear string
+len equ $ - msg    ;length of our dear string
+mstrl equ 3        ; length of the buffer to read
+```
 
 # Tips #
 If you like to have Intel syntax in GDB just run this.
