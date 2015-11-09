@@ -348,6 +348,23 @@ you can include a binary file
 you can repeat instruction or data
 * TIMES
 
+### Memory Addressing ###
+Every programming language has functions that take arguments.
+In assembly OPERANDS are the arguments of this "functions".
+
+Those can be passed in several ways
+```assembly
+; 1 Direct offset addressing
+wordarr dw 'A', 66, 'C'
+mov	ecx, wordarr+3; mov C to ECX
+
+; 2 Direct memory addressing or displacement-only - specifies the address
+mov    ecx,0x80490a0; by default this is the offset into the data segment
+                    ; for offset in a different segment use segment_name:[0xoffset] 
+
+; 3 Indirect memory addressing
+
+```
 
 # Examples #
 ## Read and write from console #
@@ -389,6 +406,53 @@ section	.data
 msg db 'Insert a number', 0xa  ;our dear string
 len equ $ - msg    ;length of our dear string
 mstrl equ 3        ; length of the buffer to read
+```
+
+## Disassembling an array #
+```assembly
+section	.text
+   global_start   ;must be declared for linker (ld)
+	
+_start:	          ;tells linker entry point
+
+   mov	edx,2   ;message length
+   mov	ecx, wordarr   ;message to write
+   mov	ebx,1     ;file descriptor (stdout)
+   mov	eax,4     ;system call number (sys_write)
+   int	0x80      ;call kernel
+	
+   mov	eax,1     ;system call number (sys_exit)
+   int	0x80      ;call kernel
+
+section	.data
+wordarr dw 'A', 66, 'C', 'D','F','G','H','I'
+```
+
+```assembly
+gnuton@biggoliath:~/ASM/HelloWorld$objdump -D b -Mintel
+
+b:     file format elf32-i386
+Disassembly of section .text:
+
+08048080 <.text>:
+ 8048080:	ba 02 00 00 00       	mov    edx,0x2
+ 8048085:	b9 a0 90 04 08       	mov    ecx,0x80490a0
+ 804808a:	bb 01 00 00 00       	mov    ebx,0x1
+ 804808f:	b8 04 00 00 00       	mov    eax,0x4
+ 8048094:	cd 80                	int    0x80
+ 8048096:	b8 01 00 00 00       	mov    eax,0x1
+ 804809b:	cd 80                	int    0x80
+
+Disassembly of section .data:
+
+080490a0 <.data>:
+ 80490a0:	41                   	inc    ecx ; A
+ 80490a1:	00 42 00             	add    BYTE PTR [edx+0x0],al ; B
+ 80490a4:	43                   	inc    ebx ; C
+ 80490a5:	00 44 00 46          	add    BYTE PTR [eax+eax*1+0x46],al; D F 
+ 80490a9:	00 47 00             	add    BYTE PTR [edi+0x0],al; G 
+ 80490ac:	48                   	dec    eax; H
+ 80490ad:	00 49 00             	add    BYTE PTR [ecx+0x0],cl; I
 ```
 
 # Tips #
