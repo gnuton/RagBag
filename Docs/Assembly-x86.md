@@ -1,24 +1,23 @@
 # Assembly Linux-x86 #
+In this document we will see how to write a NASM assembly application on linux for X86-32 and maybe quickly showing how it looks like on x86-64 too.
+Let's getting started! ÖD
 
-
-
-
-# Programming in ASM #
-## How to build aN ASM app ##
-```bash
-# Builds a .o Object file
-nasm -f elf a.asm
-# Links the object to libs
-ld -m elf_i386 -s -o a a.o
-```
-
-## ELF file layout##
+## A minimal NASM app ##
+The layout of an ELF NASM app looks like this
 ```assembly
 section .text
-
+    global _start
+ 
+_start:
+    ; do something here
+section .data
+    ; initialized data
+ 
+ 
 ```
 
 ## Hello World ##
+Let's put some code in such 
 ```assembly
 section	.text
    global_start   ;must be declared for linker (ld)
@@ -37,7 +36,69 @@ section	.data
 msg db 'Hello, world!', 0xa  ;string + /n 
 len equ $ - msg    ;string length
 ```
-Once built with ASM it looks like this in objectdump (objdump  -Mintel -D helloworld.o)
+## Building NASM code ##
+```bash
+# Builds a .o Object file
+nasm -f elf a.asm
+# Links the object to libs
+ld -m elf_i386 -s -o a a.o
+```
+
+## Reading the generated ELF ##
+Readelf shows the sections of the elf layout.
+.text section shows the flag AX, where X means it's executable.
+
+```assembly
+gnuton@biggoliath:~/ASM$ readelf --all hw
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           Intel 80386
+  Version:                           0x1
+  Entry point address:               0x8048080
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          200 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         2
+  Size of section headers:           40 (bytes)
+  Number of section headers:         4
+  Section header string table index: 3
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text             PROGBITS        08048080 000080 00001d 00  AX  0   0 16
+  [ 2] .data             PROGBITS        080490a0 0000a0 00000e 00  WA  0   0  4
+  [ 3] .shstrtab         STRTAB          00000000 0000ae 000017 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings)
+  I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
+  O (extra OS processing required) o (OS specific), p (processor specific)
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x000000 0x08048000 0x08048000 0x0009d 0x0009d R E 0x1000
+  LOAD           0x0000a0 0x080490a0 0x080490a0 0x0000e 0x0000e RW  0x1000
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .text 
+   01     .data 
+
+There is no dynamic section in this file.
+```
+
+## Let's have a look at how it looks disassembled ##
+objectdump  allows us to have a look at it (objdump  -Mintel -D helloworld.o)
 ```assembly
 a.o:     file format elf32-i386
 
@@ -75,8 +136,7 @@ nasm -f elf64 a.asm
 ld -o a a.o
 
 ```
-
-### Memory segments ###
+## Memory segments ##
 The memory is devided into indipendent segments.
 * DATA - stores data used by the program
 	* .data - Contains initialized data (costants)
@@ -465,10 +525,11 @@ rip            0x400531	0x400531 <main+4>      // 0x400531 is the address stored
 ```
 
 # Tips #
-If you like to have Intel syntax in GDB just run this.
+* If you like to have Intel syntax in GDB just run this.
 ```
 echo "set disassembly-flavor intel" > ~/.gdbinit
 ```
+* To convert integers to hex use python hex(11) and to go back int(hex(11),16)
 
 # Reference #
 https://en.wikibooks.org/wiki/X86_Assembly
