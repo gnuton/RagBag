@@ -1,4 +1,4 @@
-# Assembly (x86) #
+# Assembly Linux-x86 #
 
 
 ## Registers ##
@@ -165,6 +165,13 @@ nasm -f elf a.asm
 # Links the object to libs
 ld -m elf_i386 -s -o a a.o
 ```
+
+## ELF file layout##
+```assembly
+section .text
+
+```
+
 ## Hello World ##
 ```assembly
 section	.text
@@ -231,7 +238,6 @@ The memory is devided into indipendent segments.
 	* .bss - Stores uninitialized data (vars)
 	       - RESB, RESW, RESD, RESQ and REST reserve uninitialized space in memory for your variables
 * TEXT - stores the instruction codes
-* STACK - contains data values passed to functions within the program
 
 And here how the sections looks like in the source code
 ```assembly
@@ -254,6 +260,7 @@ _start:
 A register is a small amount of data storage inside a processor which makes it fast to access to data.
 
 #### X86 register ####
+
 * GENERAL PURPOSE (There are 16 types in 64 bit and )
 	* DATA REGISTERs (64 bit R*X, 32-bit E*X, 16-bit *X, 8-bit *L, where * is A,B,C,D)
 		* AX - Accumulator - usually contains the syscall number
@@ -460,3 +467,7 @@ If you like to have Intel syntax in GDB just run this.
 ```
 echo "set disassembly-flavor intel" > ~/.gdbinit
 ```
+
+# Reference #
+https://en.wikibooks.org/wiki/X86_Assembly
+
