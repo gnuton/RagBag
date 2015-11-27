@@ -225,6 +225,28 @@ mov	edx,len   ;message length
 ; Step 3
 int	0x80      ;call kernel
 ```
+Another examples
+```assembly
+; Using syscalls. testing execve see man 2 execve
+
+section .data
+  filename: db "/bin/bash"
+
+section .text
+  global _start
+
+_start:
+  ;int execve(const char *filename, char *const argv[], char *const envp[]);
+  ; according to man 2 syscall
+  ; arch/ABI   arg1   arg2   arg3   arg4   arg5   arg6   arg7
+  ; i386       ebx    ecx    edx    esi    edi    ebp    -
+  ; execve = 11 according to  /usr/include/asm/unistd_32.h
+  mov eax, 0xb ; set ebx to 11
+  mov ebx, filename
+  xor ecx, ecx ; null pointer 
+  xor edx, edx ; null pointer
+  int 0x80
+```
 
 ### Data types ###
 The following are used to declare initialized data
