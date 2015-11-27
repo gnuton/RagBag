@@ -553,6 +553,9 @@ echo "set disassembly-flavor intel" > ~/.gdbinit
 ```
 * To convert integers to hex use python hex(11) and to go back int(hex(11),16)
 
+# GDB cheatsheet #
+http://www.cs.berkeley.edu/~mavam/teaching/cs161-sp11/gdb-refcard.pdf
+
 # Reference #
 https://en.wikibooks.org/wiki/X86_Assembly
 
