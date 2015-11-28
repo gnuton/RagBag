@@ -546,15 +546,12 @@ Breakpoint 1, main () at a.c:5
 rip            0x400531	0x400531 <main+4>      // 0x400531 is the address stored in RIP
 ```
 
-# Analizing Function prologue #
+# Virtual address Space  #
+Some operating system kernels, such as Linux, divide their virtual address space into two regions, devoting the larger to user space and the smaller to the kernel. In current 32-bit x86 computers, this commonly (although does not have to, as this is a configurable option) takes the form of a 3GB/1GB split of the 4GB address space, so kernel virtual addresses start at 0xC0000000 and go to 0xFFFFFFFF. The lower 896 MB, from 0xC0000000 to 0xF7FFFFFF, is directly mapped to the kernel physical address space, and the remaining 128 MB, from 0xF8000000 to 0xFFFFFFFF, is used on demand by the kernel to be mapped to high memory.
+
 ```assembly
 
-Function Prologue
-Goes from 0 to the offset +6.
-Saves the base pointer EBP in the stack (PUSH EBP).
-
-
-Memory management in Linux (x86-32)
+Linux manages its memory in this way.
 
 +-----------------+ 0xFFFFFFFF
 |  Kernel Space   |              1GB 
@@ -569,7 +566,18 @@ Memory management in Linux (x86-32)
 |                 |
 |                 |
 +-----------------+ 0x00000000        <--EBP
+```
+# Analyzing function prologue #
+Applications live in the user space. Before the main starts or each function, some operations are performed.
+```assembly
+push ebp
+mov ebp, esp
+sub esp, X
+```
+For more info please read
+https://en.wikibooks.org/wiki/X86_Disassembly/Functions_and_Stack_Frames
 
+```assembly
 gdb a.out
 (gdb) disas main
 Dump of assembler code for function main:
