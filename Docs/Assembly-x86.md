@@ -546,6 +546,239 @@ Breakpoint 1, main () at a.c:5
 rip            0x400531	0x400531 <main+4>      // 0x400531 is the address stored in RIP
 ```
 
+# Analizing Function prologue #
+```assembly
+
+Function Prologue
+Goes from 0 to the offset +6.
+Saves the base pointer EBP in the stack (PUSH EBP).
+
+
+Memory management in Linux (x86-32)
+
++-----------------+ 0xFFFFFFFF
+|  Kernel Space   |              1GB 
++-----------------+ 0xC0000000 
+|                 |              3GB <-- ESP
+|                 |
+|                 |
+|   User Space    |            
+|                 |
+|                 |
+|                 |
+|                 |
+|                 |
++-----------------+ 0x00000000        <--EBP
+
+gdb a.out
+(gdb) disas main
+Dump of assembler code for function main:
+   0x0804844d <+0>:	push   ebp
+   0x0804844e <+1>:	mov    ebp,esp
+   0x08048450 <+3>:	and    esp,0xfffffff0
+   0x08048453 <+6>:	sub    esp,0x20
+   0x08048456 <+9>:	mov    DWORD PTR [esp+0x1c],0x96
+   0x0804845e <+17>:	cmp    DWORD PTR [ebp+0x8],0x1
+   0x08048462 <+21>:	jg     0x8048470 <main+35>
+   0x08048464 <+23>:	mov    DWORD PTR [esp],0x8048540
+   0x0804846b <+30>:	call   0x8048310 <printf@plt>
+   0x08048470 <+35>:	mov    eax,DWORD PTR [ebp+0xc]
+   0x08048473 <+38>:	add    eax,0x4
+   0x08048476 <+41>:	mov    eax,DWORD PTR [eax]
+   0x08048478 <+43>:	mov    DWORD PTR [esp],eax
+   0x0804847b <+46>:	call   0x8048340 <atoi@plt>
+   0x08048480 <+51>:	add    DWORD PTR [esp+0x1c],eax
+   0x08048484 <+55>:	mov    eax,DWORD PTR [ebp+0xc]
+   0x08048487 <+58>:	add    eax,0x4
+   0x0804848a <+61>:	mov    eax,DWORD PTR [eax]
+   0x0804848c <+63>:	mov    edx,DWORD PTR [esp+0x1c]
+   0x08048490 <+67>:	mov    DWORD PTR [esp+0x8],edx
+   0x08048494 <+71>:	mov    DWORD PTR [esp+0x4],eax
+   0x08048498 <+75>:	mov    DWORD PTR [esp],0x8048559
+   0x0804849f <+82>:	call   0x8048310 <printf@plt>
+   0x080484a4 <+87>:	mov    eax,0x0
+   0x080484a9 <+92>:	leave  
+   0x080484aa <+93>:	ret    
+End of assembler dump.
+(gdb) break *0x0804844d
+Breakpoint 1 at 0x804844d
+(gdb) define hook-stop
+Type commands for definition of "hook-stop".
+End with a line saying just "end".
+>disas
+>end
+(gdb) set step-mode on
+(gdb) step 1
+The program is not being run.
+(gdb) run 10
+Starting program: /home/gnuton/ASM/a.out 10
+Dump of assembler code for function main:
+=> 0x0804844d <+0>:	push   ebp
+   0x0804844e <+1>:	mov    ebp,esp
+   0x08048450 <+3>:	and    esp,0xfffffff0
+   0x08048453 <+6>:	sub    esp,0x20
+   ...    
+End of assembler dump.
+
+Breakpoint 1, 0x0804844d in main ()
+(gdb) info registers
+eax            0x2	2
+ecx            0x6ab3210f	1790124303
+edx            0xffffd024	-12252
+ebx            0xf7fb0000	-134545408    
+esp            0xffffcffc	0xffffcffc    <+++ STACK POINTER high ~ 0xffffcffc * 1 Byte ~ 4 GB
+ebp            0x0	0x0                   <--- BASE POINTER low 
+esi            0x0	0
+edi            0x0	0
+eip            0x804844d	0x804844d <main>
+eflags         0x246	[ PF ZF IF ]  <-- ParityFlag, ZeroFlag, InterruptEnableFlag
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+(gdb) step 1
+Dump of assembler code for function main:
+   0x0804844d <+0>:	push   ebp
+=> 0x0804844e <+1>:	mov    ebp,esp
+   0x08048450 <+3>:	and    esp,0xfffffff0
+   0x08048453 <+6>:	sub    esp,0x20
+   ...
+
+0x0804844e in main ()
+(gdb) info registers
+eax            0x2	2
+ecx            0x6ab3210f	1790124303
+edx            0xffffd024	-12252
+ebx            0xf7fb0000	-134545408
+esp            0xffffcff8	0xffffcff8 <+++ push ebp, increased esp of +4 (4*8 Byte)
+ebp            0x0	0x0
+esi            0x0	0
+edi            0x0	0
+eip            0x804844e	0x804844e <main+1> <=== Istruction pointer +1
+eflags         0x246	[ PF ZF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+(gdb) step 1
+Dump of assembler code for function main:
+   0x0804844d <+0>:	push   ebp
+   0x0804844e <+1>:	mov    ebp,esp
+=> 0x08048450 <+3>:	and    esp,0xfffffff0
+   0x08048453 <+6>:	sub    esp,0x20
+   ...  
+End of assembler dump.
+0x08048450 in main ()
+(gdb) info registers
+eax            0x2	2
+ecx            0x6ab3210f	1790124303
+edx            0xffffd024	-12252
+ebx            0xf7fb0000	-134545408
+esp            0xffffcff8	0xffffcff8
+ebp            0xffffcff8	0xffffcff8  <-- EBX points to ESP memory address
+esi            0x0	0
+edi            0x0	0
+eip            0x8048450	0x8048450 <main+3>
+eflags         0x246	[ PF ZF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+(gdb) step 1
+Dump of assembler code for function main:
+   0x0804844d <+0>:	push   ebp
+   0x0804844e <+1>:	mov    ebp,esp
+   0x08048450 <+3>:	and    esp,0xfffffff0
+=> 0x08048453 <+6>:	sub    esp,0x20
+   0x08048456 <+9>:	mov    DWORD PTR [esp+0x1c],0x96
+   ....
+(gdb) info registers
+eax            0x2	2
+ecx            0x6ab3210f	1790124303
+edx            0xffffd024	-12252
+ebx            0xf7fb0000	-134545408
+esp            0xffffcff0	0xffffcff0  <++++ the AND has moved ESP of -8
+ebp            0xffffcff8	0xffffcff8
+esi            0x0	0
+edi            0x0	0
+eip            0x8048453	0x8048453 <main+6>
+eflags         0x286	[ PF SF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+(gdb) step 1
+Dump of assembler code for function main:
+   0x0804844d <+0>:	push   ebp
+   0x0804844e <+1>:	mov    ebp,esp
+   0x08048450 <+3>:	and    esp,0xfffffff0
+   0x08048453 <+6>:	sub    esp,0x20
+=> 0x08048456 <+9>:	mov    DWORD PTR [esp+0x1c],0x96
+   0x0804845e <+17>:	cmp    DWORD PTR [ebp+0x8],0x1
+   ....
+(gdb) info registers
+eax            0x2	2
+ecx            0x6ab3210f	1790124303
+edx            0xffffd024	-12252
+ebx            0xf7fb0000	-134545408
+esp            0xffffcfd0	0xffffcfd0  <++++ the SUB has moved ESP of -32 bytes 
+ebp            0xffffcff8	0xffffcff8
+esi            0x0	0
+edi            0x0	0
+eip            0x8048456	0x8048456 <main+9>
+eflags         0x282	[ SF IF ]           <------ PF Parity Flag is gone because the 
+cs             0x23	35                          result of the previous operation 
+ss             0x2b	43                          (SUB) returned a 0xffffcfd0 which 
+ds             0x2b	43                          is a pair number
+es             0x2b	43                          PF is usually used for conditional jumps
+fs             0x0	0
+gs             0x63	99
+
+(gdb) step 1
+Dump of assembler code for function main:
+   0x0804844d <+0>:	push   ebp
+   0x0804844e <+1>:	mov    ebp,esp
+   0x08048450 <+3>:	and    esp,0xfffffff0
+   0x08048453 <+6>:	sub    esp,0x20
+   0x08048456 <+9>:	mov    DWORD PTR [esp+0x1c],0x96  <--
+=> 0x0804845e <+17>:	cmp    DWORD PTR [ebp+0x8],0x1
+   0x08048462 <+21>:	jg     0x8048470 <main+35>
+   ....
+(gdb) info registers
+eax            0x2	2
+ecx            0x6ab3210f	1790124303
+edx            0xffffd024	-12252
+ebx            0xf7fb0000	-134545408
+esp            0xffffcfd0	0xffffcfd0  <+++ 
+ebp            0xffffcff8	0xffffcff8
+esi            0x0	0
+edi            0x0	0
+eip            0x804845e	0x804845e <main+17>
+eflags         0x282	[ SF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+
+(gdb) info frame
+Stack level 0, frame at 0xffffd000:
+ eip = 0x8048462 in main; saved eip = 0xf7e1fa83
+ Arglist at 0xffffcff8, args: 
+ Locals at 0xffffcff8, Previous frame's sp is 0xffffd000
+ Saved registers:
+  ebp at 0xffffcff8, eip at 0xffffcffc
+```
+
 # Tips #
 * If you like to have Intel syntax in GDB just run this.
 ```
