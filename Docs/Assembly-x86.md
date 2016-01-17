@@ -546,6 +546,52 @@ Breakpoint 1, main () at a.c:5
 rip            0x400531	0x400531 <main+4>      // 0x400531 is the address stored in RIP
 ```
 
+### Disassembling another function ###
+Lee's compile the next example using gcc:  gcc -m32 triangle.c
+```cpp
+#include <stdio.h>
+int triangle (int width, int height){
+  int array[5] = {0,1,2,3,4};
+  int area;
+  area = width * height/2;
+  return (area);
+}
+int main(){ triangle(1,2);}
+```
+
+Let's disassemble it using gdb: gdb -q a.out
+```asm
+(gdb) disass main
+Dump of assembler code for function main:
+   0x0804842e <+0>:	push   ebp
+   0x0804842f <+1>:	mov    ebp,esp
+   0x08048431 <+3>:	sub    esp,0x8
+   0x08048434 <+6>:	mov    DWORD PTR [esp+0x4],0x2
+   0x0804843c <+14>:	mov    DWORD PTR [esp],0x1
+   0x08048443 <+21>:	call   0x80483ed <triangle>
+   0x08048448 <+26>:	leave  
+   0x08048449 <+27>:	ret   
+(gdb) disas triangle
+Dump of assembler code for function triangle:
+   0x080483ed <+0>:	push   ebp
+   0x080483ee <+1>:	mov    ebp,esp
+   0x080483f0 <+3>:	sub    esp,0x20
+   0x080483f3 <+6>:	mov    DWORD PTR [ebp-0x14],0x0
+   0x080483fa <+13>:	mov    DWORD PTR [ebp-0x10],0x1
+   0x08048401 <+20>:	mov    DWORD PTR [ebp-0xc],0x2
+   0x08048408 <+27>:	mov    DWORD PTR [ebp-0x8],0x3
+   0x0804840f <+34>:	mov    DWORD PTR [ebp-0x4],0x4
+   0x08048416 <+41>:	mov    eax,DWORD PTR [ebp+0x8]
+   0x08048419 <+44>:	imul   eax,DWORD PTR [ebp+0xc]
+   0x0804841d <+48>:	mov    edx,eax
+   0x0804841f <+50>:	shr    edx,0x1f
+   0x08048422 <+53>:	add    eax,edx
+   0x08048424 <+55>:	sar    eax,1
+   0x08048426 <+57>:	mov    DWORD PTR [ebp-0x18],eax
+   0x08048429 <+60>:	mov    eax,DWORD PTR [ebp-0x18]
+   0x0804842c <+63>:	leave  
+   0x0804842d <+64>:	ret
+```
 # Virtual address Space  #
 Some operating system kernels, such as Linux, divide their virtual address space into two regions, devoting the larger to user space and the smaller to the kernel. In current 32-bit x86 computers, this commonly (although does not have to, as this is a configurable option) takes the form of a 3GB/1GB split of the 4GB address space, so kernel virtual addresses start at 0xC0000000 and go to 0xFFFFFFFF. The lower 896 MB, from 0xC0000000 to 0xF7FFFFFF, is directly mapped to the kernel physical address space, and the remaining 128 MB, from 0xF8000000 to 0xFFFFFFFF, is used on demand by the kernel to be mapped to high memory.
 
