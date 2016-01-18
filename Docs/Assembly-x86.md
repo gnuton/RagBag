@@ -12,10 +12,27 @@ _start:
     ; do something here
 section .data
     ; initialized data
- 
- 
 ```
-
+So a process in memory is divided in 3 regions:
+```
+                             /------------------\  lower
+                             |                  |  memory
+                             |       Text       |  addresses
+                             |                  |
+                             |------------------|
+                             |   (Initialized)  |
+                             |        Data      |
+                             |  (Uninitialized) |
+                             |------------------|
+                             |                  |
+                             |       Stack      |  higher
+                             |                  |  memory
+                             \------------------/  addresses
+                           
+```  
+* TEXT region is fixed by the program and includes code (instructions) and read-only data. 
+* BSS DATA region contains initialized and uninitialized data. Static variables are stored in this region. Its size can be changed with the brk(2) system call.
+* 
 ## Hello World ##
 Let's put some code in such 
 ```assembly
