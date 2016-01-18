@@ -32,7 +32,9 @@ So a process in memory is divided in 3 regions:
 ```  
 * TEXT region is fixed by the program and includes code (instructions) and read-only data. 
 * BSS DATA region contains initialized and uninitialized data. Static variables are stored in this region. Its size can be changed with the brk(2) system call.
-* 
+* STACK contiguous block of memory containing data. It s used to dynamically allocate the local variables used in
+functions, to pass parameters to the functions, and to return values from the function.
+
 ## Hello World ##
 Let's put some code in such 
 ```assembly
@@ -630,7 +632,7 @@ Linux manages its memory in this way.
 |                 |
 +-----------------+ 0x00000000        <--EBP
 ```
-# Analyzing function prologue #
+# Analyzing function prologue and the stack#
 Applications live in the user space. Before the main starts or each function, some operations are performed.
 ```assembly
 push ebp
