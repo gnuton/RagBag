@@ -55,6 +55,13 @@ section	.data
 msg db 'Hello, world!', 0xa  ;string + /n 
 len equ $ - msg    ;string length
 ```
+
+## Generate assembly using gcc ##
+Gcc can generate assembly code too
+```bash
+gcc -S file.c 
+``
+
 ## Building NASM code ##
 ```bash
 # Builds a .o Object file
@@ -852,12 +859,36 @@ Stack level 0, frame at 0xffffd000:
   ebp at 0xffffcff8, eip at 0xffffcffc
 ```
 
+# Smashing the stack#
+If we compile the following code without stack protector, we get a nice segfault.
+Otherwise we get a: *** stack smashing detected ***: ./a.out terminated
+
+gcc  -fno-stack-protector 2.c
+```c
+#include <stdio.h>
+#include <string.h>
+
+void function(char *str) {
+  char buffer[16];
+  strcpy(buffer,str);
+}
+
+void main() {
+  char large_string[256];
+  int i;
+  for( i = 0; i < 255; i++)
+    large_string[i] = 'A';
+  function(large_string);
+}
+```
+
 # Tips #
 * If you like to have Intel syntax in GDB just run this.
 ```
 echo "set disassembly-flavor intel" > ~/.gdbinit
 ```
 * To convert integers to hex use python hex(11) and to go back int(hex(11),16)
+
 
 # GDB cheatsheet #
 http://www.cs.berkeley.edu/~mavam/teaching/cs161-sp11/gdb-refcard.pdf
