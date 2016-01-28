@@ -505,6 +505,7 @@ class MyClass(){
 m.a(0) = new MyClass.NestedClass(2) // here we are! :D we can create instances of MyClass.
 ```
 
+
 ## bean properties ##
 Java beans are classes that expect to have getter and setter method in the form getX/setX. And Scala as we have seen so far generates different signatures for getter and setter methods.
 Annotating a variable with a @BeanProperty tells Scala copiler to generates 2 methods more (public void setX(int) and public int getX())which are needed to make the class java bean compliant.
@@ -553,6 +554,14 @@ Scala classes can extend Java ones
 class myFrame(title:String) extends java.awt.Frame(title)
 var window = new myFrame("Test")
 window.setVisible(true)
+```
+### Selft type###
+If a trait needs another trait than we talk about self types
+In this case the trait b requires a to be instantiated by a class
+```scala
+trait a {}
+trait b {this: a =>}
+class c extends b # error: illegal inheritance; self-type c does not conform to b's selftype b with a
 ```
 
 ## Type checks ##
