@@ -50,6 +50,10 @@ class MyClass
 var c:MyClass = null // it's possible to assign null to a reference (AnyRef derived type)
 var c:Int = null // ERROR. It's not possible to assign null to a value (AnyVal derived type)
 // 3. Nothing type has not instances. [Read more about that here](http://oldfashionedsoftware.com/2008/08/20/a-post-about-nothing/)
+
+# Scala supports aliases too
+type MYINT = Int
+def a: MYINT = 10
 ```
 
 ## Inheritance hierarchy of Scala types ##
