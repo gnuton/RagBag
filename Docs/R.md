@@ -74,6 +74,10 @@ boxplot(my_data)
 IQR(my_data)
 sd(my_data)
 
+# Calculate Z-scores
+my_data <- c(21.0,21.0 ,22.8 ,21.4 ,18.7 ,18.1 ,14.3 ,24.4 ,22.8 ,19.2 ,17.8 ,16.4 ,17.3 ,15.2 ,10.4)
+(my_data - mean(my_data)/sd(my_data)
+
 ## List
 li <- list(1,c(2,3,4),TRUE)
 li[[2]][1] # grabs the second element (vector) and prints out the second element in the vector
