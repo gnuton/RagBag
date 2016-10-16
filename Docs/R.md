@@ -15,12 +15,12 @@ bigger_than_two <- v > 2  #returns a vector with element bigger than 2
 
 ## Matrix
 m <- matrix(1:20, ncol=4, nrow=5) # creates a 4 by 5 matrix filled with numbers from 1 to 20
+dim(m) # returns the n of col and row of the matrix. Works for array and dataframes too
 
-
-## Factors - Statistical data type which stores categorical (or discrete/ no continuous) vars
+## Factors - Statistical data type which stores categorical (or discrete/ no continuous) vars (a kind of enum)
 student_status <- c("student", "not student", "student", "not student")
 categorical_student <- factor(student_status)
-
+levels(categorical_student) # returns the two possible variables "student", "not student"
 
 ## Dataframes -dataset of different types
 > mtcars
@@ -38,6 +38,41 @@ diameter <- c(0.382, 0.949, 1, 0.532, 11.209, 9.449, 4.007, 3.883)
 planet_df <- data.frame(planets, diameter, diameter)
 planet_df[1, c(2,3)] # select the values in the first row and second and third columns
 planet_df$diameter # select the column diameter
+
+# get the size of the dataframe with dir
+dir(mtcars)
+
+# Code continuos numeric data in categorical - here we create a new variable and we set hight
+# if the contiuous one is bigger than 20
+my_dataframe$the_new_categ_data[my_dataframe$the_continuosvar <= 20] <- "high"
+
+# Display frequency table
+table(your_dataframe) # returns a matrix with the frequency for each category
+
+# Making a bar graph
+barplot(table(my_dataframe$the_var_to_plot) # polots a barplot from a frequency table
+#  If you like to cusomize the label on the Y or the X you can pass those as argument 
+barnames <- c("automatic", "manual")
+barplot(table(cars$am), ylab="number of cars", names.arg= barnames)
+
+# Plotting a Histogram
+hist(mtcars$carb, main = "title", ylim=c(0, 20), col="red", xlab="The X label")
+
+# calculate mode mean and median
+mode <- sort(table(mydataframe$thevar), decreasing= TRUE)[1]
+mean(mydataframe$thevar)
+median(mydataframe$thevar)
+
+# quantiles
+my_data <- c(21.0,21.0 ,22.8 ,21.4 ,18.7 ,18.1 ,14.3 ,24.4 ,22.8 ,19.2 ,17.8 ,16.4 ,17.3 ,15.2 ,10.4)
+quantile(my_data) # returns lowest, 1st quartile, 2nd, 3rd, highest val
+ 
+# Make a boxplot
+boxplot(my_data)
+
+# Calculate the interquartile IQR and standard deviation SD
+IQR(my_data)
+sd(my_data)
 
 ## List
 li <- list(1,c(2,3,4),TRUE)
