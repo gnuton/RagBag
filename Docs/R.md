@@ -7,7 +7,7 @@ lo <- TRUE # logic variable
 nu <- 1 # numeric variable
 ch <- "ciao"   #character variable
 nu_as_char <- as.character(nu)
-'''
+
 # Vector
 v <- c(1,2,3)
 v[1] # prints out the first value
