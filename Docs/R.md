@@ -55,6 +55,38 @@ log2(x) # short cut
 log10(x) # short cut
 exp(x) # e^x
 factorial(x)
+
+
+## Functions
+# arguments can be passed by position or by name
+grades <- c(1,2,3)
+mean(grades) # runs mean by position
+mean(x=grades) # runs mean by name
+
+#  Creating a new function
+multiply_a_b <- function(a, b) {
+    return (a*b)
+}
+result= multiply_a_b(3,7) # call the function multiply_a_b and store the result into a variable result
+
+## Getting data into R
+# 1. read.table: Reads in tabular data such as txt files
+# 2. read.csv: Read in data from a comma-separated file format
+# 3. readWorksheetFromFile : Reads in an excel worksheet
+# 4. read.spss: Reads in data from .sav SPSS format.
+cars <- read.csv("http://the_url/read.csv", sep=";") # reads data from csv
+
+## Handling local dirs
+getwd() # returns the current Dir
+setwd("/tmp") # chaange working dir
+
+## Importing R packages
+# Install the package ggplot2 using install.packages("ggplot2")
+# Load the package ggplot2 using library(ggplot2) or require(ggplot2)
+
+
+## Getting Help
+help(function_name) # or ?help
 ```
 
 ## Reference ##
