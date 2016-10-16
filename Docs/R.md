@@ -8,7 +8,7 @@ ch <- "ciao"   #character variable
 nu_as_char <- as.character(nu)
 
 ## Vector
-v <- c(1,2,3)
+v <- c(1,2,3) # or v <- 1:3
 v[1] # prints out the first value
 bigger_than_two <- v > 2  #returns a vector with element bigger than 2 
 
@@ -35,8 +35,16 @@ Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
 #  to create a data frame
 planets <- c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
 diameter <- c(0.382, 0.949, 1, 0.532, 11.209, 9.449, 4.007, 3.883)
-planet_df <- data.frame(planets, diameter)
+planet_df <- data.frame(planets, diameter, diameter)
+planet_df[1, c(2,3)] # select the values in the first row and second and third columns
+planet_df$diameter # select the column diameter
 
+## List
+li <- list(1,c(2,3,4),TRUE)
+li[[2]][1] # grabs the second element (vector) and prints out the second element in the vector
+
+# Grab the first column of the third component of `my_list` and print it to the console
+my_list[[3]][,1]
 ## Basic maths ##
 sum(x) # adds up a vector
 x^y
@@ -51,3 +59,5 @@ factorial(x)
 
 ## Reference ##
 http://egret.psychol.cam.ac.uk/statistics/R/basicstats.html
+http://ideone.com/
+
