@@ -100,7 +100,8 @@ sum((y1-y)^2) # calculate the squared error of line 1
 plot(x,y) # draws scattered plot
 line <- lm(y ~ x) # returns the coefficients a and b of the regression line
 abline(line) # draws the regression line
-
+abline(mean(x), 0) # plots the line of the mean
+(cor(x,y))^2 # calculates the r^2 - sqared Pearson's r which tells how much better (%) in terms of error the regression line is against the mean line
 ## List
 li <- list(1,c(2,3,4),TRUE)
 li[[2]][1] # grabs the second element (vector) and prints out the second element in the vector
