@@ -12,6 +12,8 @@ v <- c(1,2,3) # or v <- 1:3
 v[1] # prints out the first value
 bigger_than_two <- v > 2  #returns a vector with element bigger than 2 
 
+# Round numerics
+round(1.2345, digits=2) # returns 1.23
 
 ## Matrix
 m <- matrix(1:20, ncol=4, nrow=5) # creates a 4 by 5 matrix filled with numbers from 1 to 20
@@ -77,6 +79,27 @@ sd(my_data)
 # Calculate Z-scores
 my_data <- c(21.0,21.0 ,22.8 ,21.4 ,18.7 ,18.1 ,14.3 ,24.4 ,22.8 ,19.2 ,17.8 ,16.4 ,17.3 ,15.2 ,10.4)
 (my_data - mean(my_data)/sd(my_data)
+
+
+## Regression 
+### Plot a graph
+plot(women$height, women$weight, main="Heights and Weights") # where women is a dataframe
+
+### Contigency table
+table(my_dataframe)
+
+### Correlation between two variables (those are vector of vars eg:heights vs weights)
+corr(dataframe$heights, dataframe$weights) # outputs the correlation. a single number which describes the degree of relationship btw the vars
+ 
+#### Squared Error betwen line and actual values
+y1 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)  # predicted values of y according to line 1
+y <- c(3, 2, 1, 4, 5, 10, 8, 7, 6, 9)   # actual values of y
+sum((y1-y)^2) # calculate the squared error of line 1
+
+### Calculate regression line intercept(b) and slope(a). Y = a +bX
+plot(x,y) # draws scattered plot
+line <- lm(y ~ x) # returns the coefficients a and b of the regression line
+abline(line) # draws the regression line
 
 ## List
 li <- list(1,c(2,3,4),TRUE)
