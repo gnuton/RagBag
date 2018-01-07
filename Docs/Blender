@@ -1,0 +1,39 @@
+__________.__                     .___            
+\______   \  |   ____   ____    __| _/___________ 
+ |    |  _/  | _/ __ \ /    \  / __ |/ __ \_  __ \
+ |    |   \  |_\  ___/|   |  \/ /_/ \  ___/|  | \/
+ |______  /____/\___  >___|  /\____ |\___  >__|   
+        \/          \/     \/      \/    \/       
+        
+= TEXTURE =
+== UV Unwrapping ==
+=== Basic Unwrapping==
+Smart UV Project is fastest way to automatically unwrap your mesh:
+- GOOD if you use texture paiting.
+- NOT VERY GOOD if you wanna place a simple texture, because there will be some cuts visible on it.
+
+To Unwrap a mesh automatically:
+0. Select the object to unwrap
+1. Enter Edit Mode
+2. Press U
+3. Select "Smart UV Project"
+4. Open "UV Image Editor" view. The unwrap will be shown there.
+
+=== Basic Manual Unwrapping ===
+Mnual unwrapping works so that you define the cuts (seems).
+The seems define cuts in the mesh.
+Rule of thumb:
+- A cut usually goes where there are 90 degrees angles.
+- Some cut are fine to be seen, other don't.
+
+Process:
+0. Select the object
+1. Select the edges to become seems
+2. Press CTRL-E > Mark Seem
+3  Repeat 2 and 3 until  you have define the cuts you want.
+4. In the UV Image Editor" press N to show the tool bar on the right side and select "Stretch" from UV>Outline tab.
+5. Repeat 2-3 until the unwrapped texture doesn't become comletely blue. If it's light blue it means it' stretched and 
+   there the texture will look bad.
+6  If  you want to remove all seems, press A (to select all edges) > CTRL E > Clear Select
+
+==Texture Hand Paiting ===
