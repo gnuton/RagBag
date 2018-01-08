@@ -37,3 +37,13 @@ Process:
 6  If  you want to remove all seems, press A (to select all edges) > CTRL E > Clear Select
 
 ==Texture Hand Paiting ===
+0. Select the object to texture paint
+1. Unwrap by following the automatic procedure described in the previous chapter
+2. In the image UV Editor click NEW in the toolbar at bottom
+3. Select the resolution of the texture, black and create it.
+4. Select Cycle as Render engine
+5. Add a material to the mesh by clicking The red sphere icon in the toolbar on the right side of the viee and then press new
+6  In the node editor view press SHIFT A to and add Texture> Image Texture > Select the image created in the UV Editor
+7  Switch to Texture paint in the 3d View
+
+
