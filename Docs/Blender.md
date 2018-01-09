@@ -5,9 +5,9 @@ __________.__                     .___
  |______  /____/\___  >___|  /\____ |\___  >__|   
         \/          \/     \/      \/    \/       
         
-= TEXTURE =
-== UV Unwrapping ==
-=== Basic Unwrapping==
+# TEXTURE #
+## UV Unwrapping ##
+### Basic Unwrapping ###
 Smart UV Project is fastest way to automatically unwrap your mesh:
 - GOOD if you use texture paiting.
 - NOT VERY GOOD if you wanna place a simple texture, because there will be some cuts visible on it.
@@ -19,7 +19,7 @@ To Unwrap a mesh automatically:
 3. Select "Smart UV Project"
 4. Open "UV Image Editor" view. The unwrap will be shown there.
 
-=== Basic Manual Unwrapping ===
+### Basic Manual Unwrapping ###
 Mnual unwrapping works so that you define the cuts (seems).
 The seems define cuts in the mesh.
 Rule of thumb:
@@ -36,10 +36,10 @@ Process:
    there the texture will look bad.
 6  If  you want to remove all seems, press A (to select all edges) > CTRL E > Clear Select
 
-=== Optimize the Texture ===
+### Optimize the Texture ###
 Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) the Isles (pieces of textures) once selected with L.
 
-==Texture Hand Paiting ===
+##Texture Hand Paiting ##
 0. Select the object to texture paint
 1. Unwrap by following the automatic procedure described in the previous chapter
 2. In the image UV Editor click NEW in the toolbar at bottom
