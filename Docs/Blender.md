@@ -36,6 +36,9 @@ Process:
    there the texture will look bad.
 6  If  you want to remove all seems, press A (to select all edges) > CTRL E > Clear Select
 
+=== Optimize the Texture ===
+Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) the Isles (pieces of textures) once selected with L.
+
 ==Texture Hand Paiting ===
 0. Select the object to texture paint
 1. Unwrap by following the automatic procedure described in the previous chapter
