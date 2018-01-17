@@ -39,7 +39,7 @@ Process:
 ### Optimize the Texture ###
 Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) the Isles (pieces of textures) once selected with L.
 
-##Texture Hand Paiting ##
+## Texture Hand Paiting ##
 0. Select the object to texture paint
 1. Unwrap by following the automatic procedure described in the previous chapter
 2. In the image UV Editor click NEW in the toolbar at bottom
