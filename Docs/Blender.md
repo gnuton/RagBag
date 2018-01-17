@@ -46,8 +46,8 @@ Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) 
 3. Select the resolution of the texture, black and create it.
 4. Select Cycle as Render engine
 5. Add a material to the mesh by clicking The red sphere icon in the toolbar on the right side of the viee and then press new
-6  In the node editor view press SHIFT A to and add Texture> Image Texture > Select the image created in the UV Editor
-7  Switch to Texture paint in the 3d View
-8 Remember to save the texture or you will use it.
+6.  In the node editor view press SHIFT A to and add Texture> Image Texture > Select the image created in the UV Editor
+7.  Switch to Texture paint in the 3d View
+8. Remember to save the texture or you will use it.
 
 
