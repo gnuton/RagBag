@@ -1,10 +1,12 @@
+`
 __________.__                     .___            
 \______   \  |   ____   ____    __| _/___________ 
  |    |  _/  | _/ __ \ /    \  / __ |/ __ \_  __ \
  |    |   \  |_\  ___/|   |  \/ /_/ \  ___/|  | \/
  |______  /____/\___  >___|  /\____ |\___  >__|   
         \/          \/     \/      \/    \/       
-        
+`
+
 # MESH #
 ## Modeling ##
 ## Sculpturing ##
@@ -57,3 +59,7 @@ Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) 
 8. Remember to save the texture or you will use it.
 
 ## Normal Map ##
+
+
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
