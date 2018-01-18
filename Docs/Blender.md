@@ -5,6 +5,12 @@ __________.__                     .___
  |______  /____/\___  >___|  /\____ |\___  >__|   
         \/          \/     \/      \/    \/       
         
+# MESH #
+## Modeling ##
+## Sculpturing ##
+## Poly reduction ##
+### Retopoflow ###
+
 # TEXTURE #
 ## UV Unwrapping ##
 ### Basic Unwrapping ###
@@ -50,4 +56,4 @@ Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) 
 7.  Switch to Texture paint in the 3d View
 8. Remember to save the texture or you will use it.
 
-
+## Normal Map ##
