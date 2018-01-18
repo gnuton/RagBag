@@ -64,5 +64,9 @@ https://www.youtube.com/watch?v=_0FwsMkWm0k
 
 
 ## MATERIALS ##
-
+### Shaders ###
+#### Shader for testing normal maps ####
+Image Texutre -> Normal Map -> Glossy BSDF ->  (Fac)   Mix Shader -> Material Output
+                            -> Diffuse BSDF -> (shader)
+                               Fresnel      -> (shader)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
