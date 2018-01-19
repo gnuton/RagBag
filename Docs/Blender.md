@@ -62,7 +62,6 @@ Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) 
 ### Using Multires modifier ###
 https://www.youtube.com/watch?v=_0FwsMkWm0k
 
-
 ## MATERIALS ##
 ### Shaders ###
 #### Shader for testing normal maps ####
