@@ -62,6 +62,17 @@ Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) 
 ### Using Multires modifier ###
 https://www.youtube.com/watch?v=_0FwsMkWm0k
 
+0. Select only one mesh for baking normal map
+1. Be sure it's unwrapped and the image associated is selected in the node editor. If not create a material and add Image texture boxe in it, then set the image and keep it highlighted.
+2. Use multires modifier on that object
+3. Raise the levels of subdivisions as high as I need to have nice details
+4. Created details in sculpt mode, go to Cycles Render Engine
+5. Go to "Render" tab and open "Bake" option
+6. "Selected to Active" is disabled (becaused baking normal maps with this option is based on other method)
+7. Change "Bake Type" to "Normal"
+8. Hit the "Bake" button and be happy to have good normal map.
+
+This way of baking normal maps for mesh is usually used when your mesh has fine topology (the mesh consists of square-shaped faces and not triangles), because multires modifier will subdivide all faces and mesh that consists of triangles, will deform the mesh alot. However, it's easier to subdivide squares and it doesn't cause any problems this way.
 ## MATERIALS ##
 ### Shaders ###
 #### Shader for testing normal maps ####
