@@ -59,10 +59,12 @@ Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) 
 8. Remember to save the texture or you will use it.
 
 ## Normal Map ##
-### Using Multires modifier ###
+### Baking normal map from hi-res content on top of a Multires modifier ###
 https://www.youtube.com/watch?v=_0FwsMkWm0k
 
-0. Select only one mesh for baking normal map
+0. Select only one mesh for baking normal map. The mesh has to be made of squares and not triangles. You can achieve that using for instance a cube and applying a subdiv modifier on it
+1. If a sphere press SPACE and click to Sphere
+2. In object more, from the panel on the left side under "tools" page click smooth. If you do not do that you will see the mesh subdivision into the normal map.
 1. Be sure it's unwrapped and the image associated is selected in the node editor. If not create a material and add Image texture boxe in it, then set the image and keep it highlighted.
 2. Use multires modifier on that object
 3. Raise the levels of subdivisions as high as I need to have nice details
