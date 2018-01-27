@@ -23,6 +23,7 @@ How to make tubes with paths
 8. Press TAB to enter edit mode
 9. Select one or more vertices and translate it/them on the Y (green) axis to modify the taper of the tube
 10. You can now edit the shape of the tube from moving the vertices of the the main path in edit mode
+11. Add a "decimate" modifier at the mesh and use Un-Subdivide and Increase Iteration as long as the mesh looks okay.
 11. Once you have done, if you wanna get a mesh out of the tube, select the tube,  press ALT-C and press Mesh from Curve
 ## Sculpturing ##
 ## Poly reduction ##
