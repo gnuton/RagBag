@@ -9,6 +9,21 @@ __________.__                     .___
 
 # MESH #
 ## Modeling ##
+### Curves ###
+#### Paths ####
+How to make tubes with paths
+0. SHIFT-A > Curves > Path
+1. Duplicate the above path
+2. SHIFT-A > Curves > Nurbs Circle
+3. Select the first path
+4. From the right panel (property window) select the TAB "curves"
+5. Use the picker to select the circle as bevel object (if this is right your path will become a tube)
+6. Use the picker to select the other path as Taper object (the tube will disappear!)
+7. Select the path used as Taper object.
+8. Press TAB to enter edit mode
+9. Select one or more vertices and translate it/them on the Y (green) axis to modify the taper of the tube
+10. You can now edit the shape of the tube from moving the vertices of the the main path in edit mode
+11. Once you have done, if you wanna get a mesh out of the tube, select the tube,  press ALT-C and press Mesh from Curve
 ## Sculpturing ##
 ## Poly reduction ##
 ### Retopoflow ###
