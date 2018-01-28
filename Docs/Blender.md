@@ -9,6 +9,18 @@ __________.__                     .___
 
 # MESH #
 ## Modeling ##
+### Movement ###
+
+#### Move cursor to center ####
+SHIFT-C Moves the curso to center and zooms in
+
+#### Move selection to origin####
+1. Move cursor to origin by pressing SHIFT C
+2. SHIFT-S > Selection to Cursor
+
+#### Change origin ####
+CTRL-ALT-SHIFT-C 
+
 ### Curves ###
 #### Paths ####
 How to make tubes with paths
@@ -98,3 +110,7 @@ Image Texutre -> Normal Map -> Glossy BSDF ->  (Fac)   Mix Shader -> Material Ou
                             -> Diffuse BSDF -> (shader)
                                Fresnel      -> (shader)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+
+## MODIFIERS ##
+### Array ###
+#### Place element circularly around an object ####
