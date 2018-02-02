@@ -9,6 +9,15 @@ __________.__                     .___
 
 # MESH #
 ## Modeling ##
+
+### Hiding objects ###
+If you work in a scene, hiding objects close to the one you are working on is quite convinient.
+1. Go To object mode
+2. Select the object you want do not want to hide
+2. Press Shift-H
+To show all other objects again press ALT-H
+Note: if you are in edit mode those shortcuts works too but for part of the same object.
+
 ### Movement ###
 
 #### Move cursor to center ####
