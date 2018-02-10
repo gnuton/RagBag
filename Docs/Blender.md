@@ -84,6 +84,9 @@ Process:
 ### Optimize the Texture ###
 Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) the Isles (pieces of textures) once selected with L.
 
+### Unwrap multiple objects ###
+https://www.youtube.com/watch?v=Cuj0Oypj_ic
+
 ## Texture Hand Paiting ##
 0. Select the object to texture paint
 1. Unwrap by following the automatic procedure described in the previous chapter
@@ -97,6 +100,12 @@ Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) 
 
 ## Normal Map ##
 ### Baking normal map from hi-res content on top of a Multires modifier ###
+1. select all object
+2. press SPACE BAR
+3. write "smart unwrap"
+4. In the message box press OK
+
+Now to see if it worked select 1 object, go to edit mode by pressing TAB and you will see highlighted in the image the UV mapped texture.
 https://www.youtube.com/watch?v=_0FwsMkWm0k
 
 0. Select only one mesh for baking normal map. The mesh has to be made of squares and not triangles. You can achieve that using for instance a cube and applying a subdiv modifier on it
