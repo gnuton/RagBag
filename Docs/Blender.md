@@ -138,3 +138,7 @@ Image Texutre -> Normal Map -> Glossy BSDF ->  (Fac)   Mix Shader -> Material Ou
 ## Troubleshoots ##
 ### Camera doesn't zoom anymore ###
 In Blender you can rotate around an point and zoom in and out, for some reasons from time to time zooming in is not possible anymore. You can press '.' in the numerica pad to workaround this issue.
+
+
+## Extra reading ##
+* [Normal Maps vs Bump Maps vs Height Maps](https://cgcookie.com/articles/normal-vs-displacement-mapping-why-games-use-normals)
