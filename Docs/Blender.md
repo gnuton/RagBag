@@ -141,4 +141,7 @@ In Blender you can rotate around an point and zoom in and out, for some reasons 
 
 
 ## Extra reading ##
+### Diffuse map
+### Normal map
+* [Shader fundamentals - Normal Mapping](https://www.youtube.com/watch?v=6_-NNKc4lrk)
 * [Normal Maps vs Bump Maps vs Height Maps](https://cgcookie.com/articles/normal-vs-displacement-mapping-why-games-use-normals)
