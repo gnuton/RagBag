@@ -85,7 +85,16 @@ Process:
 Once unwrapped, in the UV/Image Editor we can scale (S), Rotate(R) and Move (G) the Isles (pieces of textures) once selected with L.
 
 ### Unwrap multiple objects ###
+#### Method A - unwrap objects all together ####
+1. Select the objects to unwrap
+2. Press enter and write "smart UV Project"
 https://www.youtube.com/watch?v=Cuj0Oypj_ic
+
+#### Method B - unwrap object one at time ####
+1. Select the object and unwrap with a method describe above.
+2. Do the same for the same object
+3. In object mode select the objects you want to see the UV
+3. In the Image/UV Editor view click "Draw other objects" to see the UV of the selected objects side by side
 
 ## Texture Hand Paiting ##
 0. Select the object to texture paint
