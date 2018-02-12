@@ -1,11 +1,4 @@
-`
-__________.__                     .___            
-\______   \  |   ____   ____    __| _/___________ 
- |    |  _/  | _/ __ \ /    \  / __ |/ __ \_  __ \
- |    |   \  |_\  ___/|   |  \/ /_/ \  ___/|  | \/
- |______  /____/\___  >___|  /\____ |\___  >__|   
-        \/          \/     \/      \/    \/       
-`
+![BlenderLogo](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Logo_Blender.svg/300px-Logo_Blender.svg.png)
 
 # MESH #
 ## Modeling ##
