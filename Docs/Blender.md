@@ -90,10 +90,20 @@ https://www.youtube.com/watch?v=Cuj0Oypj_ic
 3. In the Image/UV Editor view click "Draw other objects" to see the UV of the selected objects side by side
 
 #### Use a single mapping for several objects ####
+##### Method A #####
 This will work if the meshes of the objects to unwrap have the same geometry
 1. Select the objects to unwrap
 2. Select at last the object with UV mapping
 3. Press CTRL-L > Transfer UV Map
+
+##### Method B (best one)#####
+This method requires "Texture Atlas" plugin
+1. unwrap the objects
+2. From the property > "Render" tab > Texture Atlas > press +
+3. Press "Start Manual Unwrap"
+4. From the UV/Image view > UVs > Pack Islands
+5. Press "FinishManualUnwrap" button in the plugin
+Video: https://youtu.be/j8xJJ6EbfjM
 
 ## Texture Hand Paiting ##
 0. Select the object to texture paint
