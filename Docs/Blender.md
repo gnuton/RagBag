@@ -89,6 +89,12 @@ https://www.youtube.com/watch?v=Cuj0Oypj_ic
 3. In object mode select the objects you want to see the UV
 3. In the Image/UV Editor view click "Draw other objects" to see the UV of the selected objects side by side
 
+#### Use a single mapping for several objects ####
+This will work if the meshes of the objects to unwrap have the same geometry
+1. Select the objects to unwrap
+2. Select at last the object with UV mapping
+3. Press CTRL-L > Transfer UV Map
+
 ## Texture Hand Paiting ##
 0. Select the object to texture paint
 1. Unwrap by following the automatic procedure described in the previous chapter
