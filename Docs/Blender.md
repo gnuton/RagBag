@@ -104,7 +104,9 @@ This method requires "Texture Atlas" plugin
 4. From the UV/Image view > UVs > Pack Islands
 5. Press "FinishManualUnwrap" button in the plugin
 Video: https://youtu.be/j8xJJ6EbfjM
-
+Trableshooting: Make unique the Atlas UV Map.
+                From properties panel > click "Data" tab (The icon is an upside down triangle) > UV Maps > Click - on UV maps
+                different from the atlas created.
 ## Texture Hand Paiting ##
 0. Select the object to texture paint
 1. Unwrap by following the automatic procedure described in the previous chapter
@@ -151,7 +153,7 @@ Image Texutre -> Normal Map -> Glossy BSDF ->  (Fac)   Mix Shader -> Material Ou
 ### Array ###
 #### Place element circularly around an object ####
 
-## Troubleshoots ##
+## Troubleshooting ##
 ### Camera doesn't zoom anymore ###
 In Blender you can rotate around an point and zoom in and out, for some reasons from time to time zooming in is not possible anymore. You can press '.' in the numerica pad to workaround this issue.
 
