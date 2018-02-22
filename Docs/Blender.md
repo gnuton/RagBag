@@ -23,6 +23,12 @@ SHIFT-C Moves the curso to center and zooms in
 #### Change origin ####
 CTRL-ALT-SHIFT-C 
 
+#### Apply scale/rotation/Location ####
+When you scale, rotate o change the location of an object, you may run into trobles if you do not reset them to 1.0.
+For instance if you have a cube and you scale it. Then you enter in sculpturing mode the sculpturing will cotain the transformations.
+In object mode press CTRL-A and use Apply Scale/Location/Rotation to set them to 1.0. 
+The value of those params can be found in the menu which appears when you press N.
+
 ### Curves ###
 #### Paths ####
 How to make tubes with paths
