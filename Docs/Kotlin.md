@@ -6,6 +6,11 @@
 var x =
 val y =
 ```
+## Ranges
+```kotlin
+val x: IntRange = 1..10 //
+val y: IntRange = 1 until 10 // 1,2,3, ..., 9
+```
 ## Array
 ## Maps
 ```kotlin
