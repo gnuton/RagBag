@@ -14,6 +14,25 @@ a[0] =2
 var x: Int? = null // the ? let the constant accept nulls
 
 ```
+
+## Strings
+```kotlin
+val multilineStr = """
+        this is 
+        a test
+    """.trimIndent() // there is .trimMargin() too if you wanna get rid of just the margin
+println(multilineStr) // prints the multiline string without the identation used in the code
+```
+
+## Regexp
+```kotlin
+// Match
+val rx = "[a-z]{3}".toRegex()
+rx.matches("abc")
+"abc".matches(rx)
+
+```
+
 ## Ranges
 ```kotlin
 val x: IntRange = 1..10 //
