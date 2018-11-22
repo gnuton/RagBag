@@ -20,10 +20,40 @@ val x: IntRange = 1..10 //
 val y: IntRange = 1 until 10 // 1,2,3, ..., 9
 ```
 ## Array
-## Maps
+Always mutable
 ```kotlin
-// immutable map
-val imap = mapOf( 1 to "a", 2 to "b")
+val x = arrayOf(1,2,3)
+x[0] = 2 // we can modify the elements any time
+```
+
+## List
+can be mutable or unmutable
+```kotlin
+// ArrayList is always mutable
+val x = arrayListOf(1,2,3)
+x[0] = 2
+
+// not mutable list
+val x = listOf(1,2,3)
+
+// Mutable List
+val x = mutableListOf(1,2,3)
+x[0] = 2
+
+```
+
+## Set
+can be mutable or unmutable
+```kotlin
+val x = setOf(1,2,3) // immutable
+val x = hashSetOf(1,2,3) // immutable
+``
+
+## Maps
+can be mutable or unmutable
+```kotlin
+val imap = mapOf( 1 to "a", 2 to "b") // immutable
+val imap = hashMapOf( 1 to "a", 2 to "b") // immutable
 
 // mutable map
 val mmap = mutableMapOf( 1 to "a", 2 to "b")
@@ -106,9 +136,11 @@ val map = mapOf( 1 to "a", 2 to "b")
 ```
 
 ## Extension functions
-Extend a class. Defined outside the class.
+Extend a class. 
+Defined outside the class.
 Kotlin extension are seen as static functions in java. 
 Extension cannot call private members of the extended clas.
+Kotlin STD lib is just an extension of the Java's one.
 
 ```kotlin
 // extendedFunction.kt
@@ -120,6 +152,10 @@ import org.gnuton.hellognuton.lastChar
 fun main(args: Array<String>) {
     println("ciao".lastChar())
 }
+```
+.javaClass member returns the corrispective java function. It's analogous to the Java's set.getClass()
+```kotlin
+hashSetOf(1,2,3).javaClass // returns java.util.HashSet
 ```
 
 
