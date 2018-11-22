@@ -20,24 +20,26 @@ val x: IntRange = 1..10 //
 val y: IntRange = 1 until 10 // 1,2,3, ..., 9
 ```
 ## Array
-Always mutable
+Always mutable.
+
 ```kotlin
 val x = arrayOf(1,2,3)
 x[0] = 2 // we can modify the elements any time
+x.getOrNull(10) // tries to get the 10th element otherwise returns null. This is a Kotlin extensino
 ```
 
 ## List
 can be mutable or unmutable
 ```kotlin
 // ArrayList is always mutable
-val x = arrayListOf(1,2,3)
+val x = arrayListOf(1,2,3) // extends java.util.ArrayList
 x[0] = 2
 
 // not mutable list
-val x = listOf(1,2,3)
+val x = listOf(1,2,3) // extends java.util.Arrays$ArrayList
 
 // Mutable List
-val x = mutableListOf(1,2,3)
+val x = mutableListOf(1,2,3) // extends java.util.ArrayList
 x[0] = 2
 
 ```
@@ -45,18 +47,18 @@ x[0] = 2
 ## Set
 can be mutable or unmutable
 ```kotlin
-val x = setOf(1,2,3) // immutable
-val x = hashSetOf(1,2,3) // immutable
-``
+val x = setOf(1,2,3) // immutable extends java.util.LinkedHashSet
+val x = hashSetOf(1,2,3) // immutable extends java.util.HashSet
+```
 
 ## Maps
 can be mutable or unmutable
 ```kotlin
-val imap = mapOf( 1 to "a", 2 to "b") // immutable
-val imap = hashMapOf( 1 to "a", 2 to "b") // immutable
+val imap = mapOf( 1 to "a", 2 to "b") // immutable extends java.util.Collections$SingletonMap
+val imap = hashMapOf( 1 to "a", 2 to "b") // immutable extends java.util.HashMap
 
 // mutable map
-val mmap = mutableMapOf( 1 to "a", 2 to "b")
+val mmap = mutableMapOf( 1 to "a", 2 to "b") // extends java.util.LinkedHashMap
 mmap[1] = "c"
 
 val map1 = mutableMapOf<Int, String>()
