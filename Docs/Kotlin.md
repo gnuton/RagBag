@@ -40,7 +40,8 @@ println(map2 + map1) // {1=c, 2=b}
 ```
 
 ## Exceptions
-no different between checked and not checked exceptions
+no different between checked and not checked exceptions.
+There is no need to use the java @Throws(IOException::class) in Kotlin as we do in Java
 ```kotlin
 // throw is an expression
 val n = 200
@@ -53,6 +54,7 @@ val t: Int? = try {
 } catch(e: NumberFormatException) {
   null
 }
+
 ```
 
 ## Functions
