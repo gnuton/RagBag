@@ -30,6 +30,11 @@ fun main(args: Array<String>) {
     println(check(1)) // Integer
 }
 ```
+### IF
+```kotlin
+val x = 9
+val y = if (x>=10) "bigger" else "lower" // y == lower
+```
 
 ## IntelliJ shortcuts
 Write the first string and press TAB to expan it to the code on the right side.
