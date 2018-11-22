@@ -1,10 +1,18 @@
 # Kotlin
 
-## Variables
+## Variables & Types
 ### Val & Vars
 ```
-var x =
-val y =
+var x = 0 // variable
+val y = 1 // constant
+
+// val may contain mutable objects!! watch out.
+val a = arrayOf(1,2,3) 
+a[0] =2
+
+// Nulls
+var x: Int? = null // the ? let the constant accept nulls
+
 ```
 ## Ranges
 ```kotlin
@@ -31,8 +39,24 @@ println(map1 + map2) // {1=a, 2=b}
 println(map2 + map1) // {1=c, 2=b}
 ```
 
-## Functions
+## Exceptions
+no different between checked and not checked exceptions
+```kotlin
+// throw is an expression
+val n = 200
+val e = if (n in 0..100) n else throw IllegalArgumentException("here we go! $n")
+
+// try is an expression too
+
+val t: Int? = try {
+  Integer.parseInt("ciao")
+} catch(e: NumberFormatException) {
+  null
+}
 ```
+
+## Functions
+```kotlin
 ```
 ## Classes
 ### Enumerations
