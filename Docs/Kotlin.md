@@ -1,11 +1,30 @@
 # Kotlin
+
 ## Variables
 ### Val & Vars
 ```
 var x =
 val y =
 ```
-##
+## Array
+## Maps
+```kotlin
+// immutable map
+val imap = mapOf( 1 to "a", 2 to "b")
+
+// mutable map
+val mmap = mutableMapOf( 1 to "a", 2 to "b")
+mmap[1] = "c"
+
+val map1 = mutableMapOf<Int, String>()
+val map2 = mutableMapOf<Int, String>()
+map1[1] = "c"
+map2.put(1,"a")
+map2.put(2,"b")
+println(map2) // {1=a, 2=b}
+println(map1 + map2) // {1=a, 2=b}
+println(map2 + map1) // {1=c, 2=b}
+```
 
 ## Functions
 ```
@@ -16,7 +35,7 @@ val y =
 enum class RGB { RED, GREEN, BLUE }
 ```
 
-## Conditionals
+## Control structures
 ### WHEN
 ```
 enum class RGB { RED, GREEN, BLUE }
@@ -34,6 +53,24 @@ fun main(args: Array<String>) {
 ```kotlin
 val x = 9
 val y = if (x>=10) "bigger" else "lower" // y == lower
+```
+### Loops
+```kotlin
+// looping an array
+for (s in arrayOf(1,2,3)) {
+       println(s)
+}
+
+// looping a map
+val map = mapOf( 1 to "a", 2 to "b")
+    for ((key, value) in map) {
+        println ("$key and $value")
+    }
+
+```
+
+### IN
+```kotlin
 ```
 
 ## IntelliJ shortcuts
