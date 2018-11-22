@@ -91,7 +91,44 @@ val t: Int? = try {
 
 ## Functions
 ```kotlin
+// this is one way to define a fuction
+fun myFunction(a: Int, b: Int) : Int = a + b
+
+// Unit is like void. it can be omitted as returned type if we do no return anything
+fun myFunction(a:Int) {
+  println(a)
+}
 ```
+### Template
+```kotlin
+fun <T> identity(a: T) = a
+println(identity(10))
+```    
+
+In extensions
+```kotlin
+class Test {
+    fun <A,B> A.to(that: B) = Pair(this, that)
+}
+
+fun main(args: Array<String>) {
+    val t = Test()
+    println(t.to(10)) // returns the Pair(t, 10)
+}
+```
+
+### Infix - allow you not to have to call a method without .
+```kotlin
+class Test {
+    infix fun noDotHere(i: Int) = i
+}
+
+fun main(args: Array<String>) {
+    val t = Test()
+    println(t noDotHere 10)
+}
+```
+
 ## Classes
 ### Enumerations
 ```
