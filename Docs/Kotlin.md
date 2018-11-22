@@ -102,10 +102,30 @@ val map = mapOf( 1 to "a", 2 to "b")
 
 ### IN
 ```kotlin
+
 ```
 
-## IntelliJ shortcuts
-Write the first string and press TAB to expan it to the code on the right side.
+## Extension functions
+Extend a class. Defined outside the class.
+Kotlin extension are seen as static functions in java. 
+Extension cannot call private members of the extended clas.
+
+```kotlin
+// extendedFunction.kt
+package org.gnuton.hellognuton
+fun String.lastChar() = this.get(this.length -1)
+
+// main.kt
+import org.gnuton.hellognuton.lastChar
+fun main(args: Array<String>) {
+    println("ciao".lastChar())
+}
+```
+
+
+## IntelliJ templates
+IntellJ comes with a few templates for kotlin too.
+You can add more templates from File > Settings > Search for "Template" > Live Template > Choose "Kotlin"
 ```
 psvm -> fun main(args: Array<String>) {}
 sout -> println()
