@@ -149,6 +149,42 @@ fun main(args: Array<String>) {
 ```
 
 ## Classes
+Constructors
+```kotlin
+// Primary constructor. constructor visibility modifier can be omitted
+class MyClassConstructors public constructor (val first: String, val second: String) {
+   constructor(first: String) : this(first, "") // secondary constructor
+}
+// the above can be re-written as
+class MyClassConstructorsCleanedUp  (val first: String, val second: String = "") 
+
+// this class cannot be instantiated
+class ThisClassCannotBeInstantiated private constructor() 
+
+val a = MyClassConstructors("test")
+val b = MyClassConstructors("test", "test2")
+val c = MyClassConstructors(second="test2", first = "test1")
+```
+Init blocks
+```kotlin
+class MyClass(name: String) {
+   val firstProp = "first $name".also(::println)
+   init {
+      println("This is printed just when this class is instantiated")
+   }
+
+   init {
+      println("and again this will be printed after the first init")
+   }
+}
+```
+
+Inheritance
+```kotlin
+```
+
+```kotlin
+```
 ### Enumerations
 ```
 enum class RGB { RED, GREEN, BLUE }
