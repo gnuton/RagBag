@@ -127,7 +127,7 @@ println(identity(10))
 In extensions
 ```kotlin
 class Test {
-    fun <A,B> A.to(that: B) = Pair(this, that)
+    fun <A,B> A.to(that: B): Pair<A, B> = Pair(this, that)
 }
 
 fun main(args: Array<String>) {
@@ -199,6 +199,15 @@ Defined outside the class.
 Kotlin extension are seen as static functions in java. 
 Extension cannot call private members of the extended clas.
 Kotlin STD lib is just an extension of the Java's one.
+
+simple example:
+```kotlin
+infix fun <T> T.eq(other: T) {
+  if (this == other) println("ok")
+    else println("error")
+}
+11 eq 10
+```
 
 ```kotlin
 // extendedFunction.kt
