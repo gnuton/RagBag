@@ -181,12 +181,70 @@ class MyClass(name: String) {
 
 Inheritance
 ```kotlin
+open class BaseClass(num: Int) {
+    // Overridable and not functions
+    open fun myFun(): Int = 3
+    final fun notOverridableFunc() = 5 // actually final is redoundant classes and methods are final by default
+
+    // Overiddable and not properties
+    open val x = 3
+    
+    protected open val protectedY = 4
+    private val privateY = 4
+}
+
+class DerivedClass(num: Int) : BaseClass(num) {
+    override fun myFun(): Int = 5
+    fun callBaseMyFun() = super.myFun() // We can call base class methods using super
+    override var x = 4 // Note we can override a val with a var. But no viceversa
+    
+    // overrides private and protected
+    private val privateY = 4
+    override val protectedY = this.privateY
+}
+
+fun main(args: Array<String>) {
+    val dc = DerivedClass(1)
+    dc.callBaseMyFun()
+}
 ```
 
+Inner classes
+```kotlin
+class MyClass {
+    fun foo() = 4
+    inner class InnerClass{
+        fun bar() = foo()
+    }
+    val inn = InnerClass()
+    fun bar() = inn.bar()
+}
+
+fun main(args: Array<String>) {
+    val dc = MyClass()
+    println(dc.bar())
+}
+```
+
+Abrstact classes
+```kotlin
+open class MyClass {
+    fun x() = 3
+}
+abstract class AbsClass : MyClass()
+
+fun main(args: Array<String>) {
+    val dc = MyClass()
+    //val abs = AbsClass()  You cannot create instance of an abstract class
+}
+```
+
+Companion Objects
 ```kotlin
 ```
+
 ### Enumerations
-```
+```kotlin
 enum class RGB { RED, GREEN, BLUE }
 ```
 
