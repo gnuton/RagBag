@@ -288,6 +288,7 @@ val map = mapOf( 1 to "a", 2 to "b")
 ```
 
 ## Extension functions
+Extensions re Java static functions.
 Extend a class. 
 Defined outside the class.
 Kotlin extension are seen as static functions in java. 
