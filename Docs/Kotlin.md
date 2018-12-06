@@ -89,6 +89,12 @@ println(map2) // {1=a, 2=b}
 println(map1 + map2) // {1=a, 2=b}
 println(map2 + map1) // {1=c, 2=b}
 ```
+## Nullable type
+```kotlin
+val s1: String? = null // question mark allow s1 to accept nulls
+val len: Int? = s1?.length // SAFE ACCESS - this is like running if (s1 != null) { return s1.length }
+val len: Int  = s1?.length ?: 0 // ?: returns 0 instead of null as default
+```
 
 ## Exceptions
 no different between checked and not checked exceptions.
