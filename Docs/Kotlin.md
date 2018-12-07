@@ -91,6 +91,8 @@ println(map1 + map2) // {1=a, 2=b}
 println(map2 + map1) // {1=c, 2=b}
 ```
 ### Nullable type
+Nullability is important because we get rid of null pointer exceptions.
+
 ```kotlin
 val s1: String? = null // question mark allow s1 to accept nulls
 // When we havea nullable type we can threat in two ways
@@ -109,11 +111,14 @@ val l2:List<Int?> = listOf(null)   // elements in the list can be null
 fun foo(): String = "foo" // compiles to @NotNull public static final String foo() { return "foo"; }
 fun bar(): String? = "foo" // compiles to @Nullable ...
 
-```
-### Casting types
-```kotlin
-
-```
+// Casting
+// as  returns ClassCastException if the cast is unsuccesfull
+// as? returns null
+val x: Any? = 1
+val y: Int? =  x as Int //if (x is Int) x else null
+// smart cast
+val z = "ciao"
+val z2 = if (z is String) z.toUpperCase() else "" // Smart cast
 
 ## Exceptions
 no different between checked and not checked exceptions.
