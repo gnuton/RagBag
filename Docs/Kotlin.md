@@ -15,7 +15,7 @@ var x: Int? = null // the ? let the constant accept nulls
 
 ```
 
-## Strings
+### Strings
 ```kotlin
 val multilineStr = """
         this is 
@@ -24,7 +24,7 @@ val multilineStr = """
 println(multilineStr) // prints the multiline string without the identation used in the code
 ```
 
-## Regexp
+### Regexp
 ```kotlin
 // Match
 val rx = "[a-z]{3}".toRegex()
@@ -33,12 +33,13 @@ rx.matches("abc")
 
 ```
 
-## Ranges
+### Ranges
 ```kotlin
 val x: IntRange = 1..10 //
 val y: IntRange = 1 until 10 // 1,2,3, ..., 9
 ```
-## Array
+
+### Array
 Always mutable.
 
 ```kotlin
@@ -47,7 +48,7 @@ x[0] = 2 // we can modify the elements any time
 x.getOrNull(10) // tries to get the 10th element otherwise returns null. This is a Kotlin extensino
 ```
 
-## List
+### List
 can be mutable or unmutable
 ```kotlin
 // ArrayList is always mutable
@@ -63,14 +64,14 @@ x[0] = 2
 
 ```
 
-## Set
+### Set
 can be mutable or unmutable
 ```kotlin
 val x = setOf(1,2,3) // immutable extends java.util.LinkedHashSet
 val x = hashSetOf(1,2,3) // immutable extends java.util.HashSet
 ```
 
-## Maps
+### Maps
 can be mutable or unmutable
 ```kotlin
 val imap = mapOf( 1 to "a", 2 to "b") // immutable extends java.util.Collections$SingletonMap
@@ -89,7 +90,7 @@ println(map2) // {1=a, 2=b}
 println(map1 + map2) // {1=a, 2=b}
 println(map2 + map1) // {1=c, 2=b}
 ```
-## Nullable type
+### Nullable type
 ```kotlin
 val s1: String? = null // question mark allow s1 to accept nulls
 // When we havea nullable type we can threat in two ways
@@ -107,6 +108,10 @@ val l2:List<Int?> = listOf(null)   // elements in the list can be null
 // they use annotations and no wrappers like Java Optionals
 fun foo(): String = "foo" // compiles to @NotNull public static final String foo() { return "foo"; }
 fun bar(): String? = "foo" // compiles to @Nullable ...
+
+```
+### Casting types
+```kotlin
 
 ```
 
