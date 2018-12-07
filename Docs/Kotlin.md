@@ -92,8 +92,22 @@ println(map2 + map1) // {1=c, 2=b}
 ## Nullable type
 ```kotlin
 val s1: String? = null // question mark allow s1 to accept nulls
+// When we havea nullable type we can threat in two ways
+// 1. Safe Access (? sign)
 val len: Int? = s1?.length // SAFE ACCESS - this is like running if (s1 != null) { return s1.length }
 val len: Int  = s1?.length ?: 0 // ?: returns 0 instead of null as default
+// 2. Non-null exception (!! sign) - Try to avoid this!
+s1!!.length // throws a kotlin.KotlinNullPointerException if s1 is null
+
+// For list
+val l: List<Int>? = null           // list can be null
+val l2:List<Int?> = listOf(null)   // elements in the list can be null
+    
+// how they are implemented under the hood?
+// they use annotations and no wrappers like Java Optionals
+fun foo(): String = "foo" // compiles to @NotNull public static final String foo() { return "foo"; }
+fun bar(): String? = "foo" // compiles to @Nullable ...
+
 ```
 
 ## Exceptions
