@@ -89,6 +89,10 @@ map2.put(2,"b")
 println(map2) // {1=a, 2=b}
 println(map1 + map2) // {1=a, 2=b}
 println(map2 + map1) // {1=c, 2=b}
+
+
+// Mapping maps
+
 ```
 ### Nullable type
 Nullability is important because we get rid of null pointer exceptions.
@@ -350,6 +354,52 @@ fun main(args: Array<String>) {
 hashSetOf(1,2,3).javaClass // returns java.util.HashSet
 ```
 
+## Functional Programming
+### Lambdas
+```kotlin
+// lambdas are usually wrapped in {}
+val f = {x: Int, y: Int -> x+y } 
+
+// we can avoid to explicitely declrare the type\
+listOf(-1,1,2,3).map {i -> i > 0}
+
+// we caan avoid to name the var if we use 'it'
+listOf(-1,1,2,3).map {it > 0}
+
+// in a lambda the last value is always returned
+listOf(-1,1,2,3).map {print(it); it > 0}
+
+// Decomposing
+// we call _ the var which we do not use
+mapOf( "one" to 1).map { (_,value) -> "$value" } // [1]
+
+```
+### Common operations on collections
+Thsoe operations (filter, map, groupBy, count, any, ..) are defined in the kotlin std lib as extention functions
+```kotlin
+// Filter - keeps the element satisfing the predicated
+
+// map - applies a function to a collection and returns a new collectin
+
+// any - Returns true if at least one element matches the given predicate.
+// all -  Returns true if all of one element matches the given predicate.
+// none - Returns true if none of one element matches the given predicate.
+
+ // find/first/firstOrNull - Returns the first element matching the predicate
+ listOf(1,2,-3, -4).find {it < 1} // returns -3
+ listOf(1,2,3, 4).find {it < 1} // nulll
+ listOf(1,2,3, 4).first {it < 1} // java.util.NoSuchElementException
+ listOf(1,2,3, 4).firstOrNull {it < 1} // null
+ 
+ // count - returns the n of elements matching the predicate
+ listOf(-1,-2,3, 4).count {it < 1} // 2
+ 
+ // partition - returns a pair of lists one matching and the other not the predicate
+ listOf(-1,-2,3, 4).partition {it < 1} // ([-1, -2], [3, 4])
+ 
+ // groupBy - 
+ listOf("Antonio", "Fabio", "Carlo").groupBy { it.length} // {7=[Antonio], 5=[Fabio, Carlo]}
+```
 
 ## IntelliJ templates
 IntellJ comes with a few templates for kotlin too.
