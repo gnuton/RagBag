@@ -399,6 +399,18 @@ Thsoe operations (filter, map, groupBy, count, any, ..) are defined in the kotli
  
  // groupBy - 
  listOf("Antonio", "Fabio", "Carlo").groupBy { it.length} // {7=[Antonio], 5=[Fabio, Carlo]}
+ 
+ // assiociateBy
+class Person(val name: String, val age: Int)
+
+fun main(args: Array<String>) {
+    val friends = listOf(
+            Person("Alice",31),
+            Person("Carl", 31),
+            Person("Sam", 22))
+    val a = friends.associateBy { it.name } // Map<String, Person>
+    val b = friends.associateBy({it.name}, {it.age}) //Map<String, Int?
+}
 ```
 
 ## IntelliJ templates
