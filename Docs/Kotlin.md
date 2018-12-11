@@ -95,6 +95,8 @@ val m = mapOf("a" to 1, "b" to 2)
 val a = m.getValue("d") // returns null
 val b =m["d"]           // throws exception
 
+// getOrElse
+mapOf("a" to 1, "b" to 2).getOrElse("f", {4}) //  returns 4 since f is missing in the map
 
 // Mapping maps
 
