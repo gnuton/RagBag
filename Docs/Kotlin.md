@@ -382,8 +382,13 @@ Thsoe operations (filter, map, groupBy, count, any, ..) are defined in the kotli
 // map - applies a function to a collection and returns a new collectin
 
 // any - Returns true if at least one element matches the given predicate.
-// all -  Returns true if all of one element matches the given predicate.
-// none - Returns true if none of one element matches the given predicate.
+listOf(1,2,3,4,5).any {it > 1} // true
+
+// all -  Returns true if all elements matche the given predicate.
+listOf(1,2,3,4,5).all {it > 1} // false
+
+// none - Returns true if none of the elements matche the given predicate.
+listOf(1,2,3,4,5).none {it > 1} // false
 
  // find/first/firstOrNull - Returns the first element matching the predicate
  listOf(1,2,-3, -4).find {it < 1} // returns -3
@@ -395,7 +400,7 @@ Thsoe operations (filter, map, groupBy, count, any, ..) are defined in the kotli
  listOf(-1,-2,3, 4).count {it < 1} // 2
  
  // partition - returns a pair of lists one matching and the other not the predicate
- listOf(-1,-2,3, 4).partition {it < 1} // ([-1, -2], [3, 4])
+ val (lessThanOne, moreThanOne) = listOf(-1,-2,3, 4).partition {it < 1} // ([-1, -2], [3, 4])
  
  // groupBy - 
  listOf("Antonio", "Fabio", "Carlo").groupBy { it.length} // {7=[Antonio], 5=[Fabio, Carlo]}
@@ -417,7 +422,17 @@ fun main(args: Array<String>) {
  val c = 1..4
  val ab = c.zip(b) // [(1, a), (2, b), (3, c), (4, d)]
  
- 
+ // MaxBy - to compare elements when they are not comparable
+val heroes = listOf(
+Hero("The Captain", 60, MALE),
+Hero("Frenchy", 42, MALE), 
+Hero("The Kid", 9, null), 
+Hero("Lady Lauren", 29, FEMALE), 
+Hero("First Mate", 29, MALE), 
+Hero("Sir Stephen", 37, MALE))
+heroes.maxBy { it.age }?.name // "The Captain" it could return null if heros is empty
+
+
 ```
 
 ## IntelliJ templates
