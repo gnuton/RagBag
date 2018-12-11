@@ -411,6 +411,13 @@ fun main(args: Array<String>) {
     val a = friends.associateBy { it.name } // Map<String, Person>
     val b = friends.associateBy({it.name}, {it.age}) //Map<String, Int?
 }
+
+// zip
+ val b = listOf("a","b","c","d")
+ val c = 1..4
+ val ab = c.zip(b) // [(1, a), (2, b), (3, c), (4, d)]
+ 
+ 
 ```
 
 ## IntelliJ templates
