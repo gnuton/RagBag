@@ -284,13 +284,14 @@ Companion Objects
 ```kotlin
 ```
 
-Data classes
-[data](https://kotlinlang.org/docs/reference/data-classes.html)
+Data classes - have at least one constructor, hold data, are serializable and comparable by default.
+[More info](https://kotlinlang.org/docs/reference/data-classes.html)
 ```kotlin
 data class User(val name: String, val age: Int)
 val x = DClass("A", 4)
 val y = DClass("A", 4)
 x == y // true. It would have been false if it was not a data class
+x.toString() // serialize it to (a=A, b=4)
 ```
 
 ### Enumerations
