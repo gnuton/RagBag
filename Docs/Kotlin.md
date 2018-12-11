@@ -90,6 +90,11 @@ println(map2) // {1=a, 2=b}
 println(map1 + map2) // {1=a, 2=b}
 println(map2 + map1) // {1=c, 2=b}
 
+/// way to access a map
+val m = mapOf("a" to 1, "b" to 2)
+val a = m.getValue("d") // returns null
+val b =m["d"]           // throws exception
+
 
 // Mapping maps
 
