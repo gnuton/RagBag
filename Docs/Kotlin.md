@@ -1,4 +1,5 @@
 # Kotlin
+Kotlin is an opensource language (https://github.com/JetBrains/kotlin) developed and maitained by JetBrains.
 
 ## Variables & Types
 ### Val & Vars
@@ -147,6 +148,29 @@ val t: Int? = try {
   null
 }
 
+```
+### Function type
+```kotlin
+val sum = {x: Int, y:Int -> x+y}
+val isEven: (Int) -> Boolean = { x:Int -> x %2  == 0}
+
+// call lambdas
+{ println("test") }()
+// or
+run { println("test")}
+
+// this way we run kotlin lambdas in Java
+val runnable = Runnable { println("this is a lambda in Java") }
+runnable.run()
+
+// nullability
+val f1: () -> Int? = null       // won't compile
+val f2: () -> Int? = { null }
+val f3: (() -> Int)? = null
+val f4: (() -> Int)? = { null } // won't compile
+    
+f3?.invoke() // allow us to run f3
+if (f3 != null) { f3() } // same as the line above
 ```
 
 ## Functions
