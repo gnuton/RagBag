@@ -131,24 +131,8 @@ val y: Int? =  x as Int //if (x is Int) x else null
 // smart cast
 val z = "ciao"
 val z2 = if (z is String) z.toUpperCase() else "" // Smart cast
-
-## Exceptions
-no different between checked and not checked exceptions.
-There is no need to use the java @Throws(IOException::class) in Kotlin as we do in Java
-```kotlin
-// throw is an expression
-val n = 200
-val e = if (n in 0..100) n else throw IllegalArgumentException("here we go! $n")
-
-// try is an expression too
-
-val t: Int? = try {
-  Integer.parseInt("ciao")
-} catch(e: NumberFormatException) {
-  null
-}
-
 ```
+
 ### Function type
 ```kotlin
 val sum = {x: Int, y:Int -> x+y}
@@ -171,7 +155,11 @@ val f4: (() -> Int)? = { null } // won't compile
     
 f3?.invoke() // allow us to run f3
 if (f3 != null) { f3() } // same as the line above
+```
 
+store function reference in variables is possible for members and toplevel functions
+thanks to function reference "::"
+```kotlin
 // A. you can store members in variables
 class MyClass {
   fun aMember() { println("Hello method")}
@@ -186,6 +174,24 @@ val y = ::aFunction // :: is an unbound reference
 y()
 ```
 
+## Exceptions
+no different between checked and not checked exceptions.
+There is no need to use the java @Throws(IOException::class) in Kotlin as we do in Java
+```kotlin
+// throw is an expression
+val n = 200
+val e = if (n in 0..100) n else throw IllegalArgumentException("here we go! $n")
+
+// try is an expression too
+
+val t: Int? = try {
+  Integer.parseInt("ciao")
+} catch(e: NumberFormatException) {
+  null
+}
+
+```
+
 ## Functions
 ```kotlin
 // this is one way to define a fuction
@@ -196,6 +202,7 @@ fun myFunction(a:Int) {
   println(a)
 }
 ```
+
 ### Template
 ```kotlin
 fun <T> identity(a: T) = a
@@ -304,7 +311,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-Abrstact classes
+Abstract classes
 ```kotlin
 open class MyClass {
     fun x() = 3
