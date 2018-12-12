@@ -171,6 +171,19 @@ val f4: (() -> Int)? = { null } // won't compile
     
 f3?.invoke() // allow us to run f3
 if (f3 != null) { f3() } // same as the line above
+
+// A. you can store members in variables
+class MyClass {
+  fun aMember() { println("Hello method")}
+}
+
+val x = MyClass::aMember // MyClass:: is a called "Bound reference"
+x(MyClass())
+
+// B. you can store functions in variables if you use the function reference ::
+fun aFunction() { println("Hello function")}
+val y = ::aFunction // :: is an unbound reference
+y()
 ```
 
 ## Functions
