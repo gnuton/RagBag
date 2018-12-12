@@ -433,8 +433,20 @@ listOf(-1,1,2,3).map {print(it); it > 0}
 // Decomposing
 // we call _ the var which we do not use
 mapOf( "one" to 1).map { (_,value) -> "$value" } // [1]
-
 ```
+return can accept labels to force it to return a specific function
+```kotlin
+fun<T> duplicateNoZeroElements(list: List<T>) : List<T>{
+   return list.flatMap thisIsALabel@{
+   if (it == 0) {
+      return@thisIsALabel listOf<T>() // we exit flatMap here. Same as return@flatMap listOf<T>()
+   } else {
+       listOf(it, it)
+   }
+}
+duplicateNoZeroElements(listOf(0,1,2,3)) // returns [] if return doesn't have any label because return exits duplicateNoZeroElements function
+```
+
 ### Common operations on collections
 Thsoe operations (filter, map, groupBy, count, any, ..) are defined in the kotlin std lib as extention functions
 ```kotlin
