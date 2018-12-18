@@ -337,7 +337,36 @@ val y = DClass("A", 4)
 x == y // true. It would have been false if it was not a data class
 x.toString() // serialize it to (a=A, b=4)
 ```
+ 
+class properties - kotlin exposes getter and setters (accessors) and this make the field (var x) a property.
+```kotlin
 
+    class Contact {
+        var address: String = ""
+            // overwrite the accessor for the property
+            set(value) { // Accessor
+                println("Field address changed $field")
+                field = value
+            }
+            get() { // here another accessor
+                return "xx"
+            }
+    }
+
+    val c = Contact()
+    c.address = "TEST"
+    print(c.address)
+```
+ 
+ changing accessor visibility
+ ```kotlin
+ class Person {
+        var age: Int = 0
+            private set
+    }
+    val p = Person()
+    // p.age=30 THIS FAILS
+```    
 ### Enumerations
 ```kotlin
 enum class RGB { RED, GREEN, BLUE }
