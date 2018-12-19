@@ -392,6 +392,43 @@ lazy properties
     val x = test()
     x.onCreate()
 ```
+members can be..
+```kotlin
+ abstract class MyClass {
+       // class members can be
+       // public - visible everywhere - default
+       // internal -  visible in the same module
+       // protected - visible in subclass
+       // private - visible in a class
+       // but also: final (by default), open, abstract and override
+       final fun x() = 3 // final is redundant.. since all functions are final by default
+       open fun y() = 4  // open means not final
+       abstract fun z() // means that the functions is not implemented
+   }
+
+   // more classes can live in the same file. Different than Java
+   // package
+
+```
+Constructors
+```kotlin
+    // MyClass has primary contructor
+    class MyClass1(val name: String)
+
+    // you can specify the costructor body
+    class MyClass2(name: String) {
+        val name: String
+        init {
+            this.name = name
+        }
+    }
+
+    // second constructor
+    class MyClass3(val name: String) {
+        public constructor() : this("second constructor") {}
+        public constructor(x: Int) : this("third constructor") {}
+    }
+```
 
 ### Enumerations
 ```kotlin
