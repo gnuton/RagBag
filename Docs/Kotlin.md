@@ -367,6 +367,32 @@ class properties - kotlin exposes getter and setters (accessors) and this make t
     val p = Person()
     // p.age=30 THIS FAILS
 ```    
+lazy properties
+```kotlin
+ // lazy property - runs just once when called
+    val l : String by lazy {
+        println("Initialized")
+        "I'M SO LAZY"
+    }
+  
+
+    // lazy initialization
+    class test {
+        // restrictions:
+        // - not val -> in java is not final
+        // - myVar  is not nullable
+        // - cannot be a primitive var
+        lateinit var myVar: String
+        fun onCreate() {
+            myVar = "ok"
+            println(myVar)
+        }
+        // println(myVar) // throws Kotlin expecting member declaration
+    }
+    val x = test()
+    x.onCreate()
+```
+
 ### Enumerations
 ```kotlin
 enum class RGB { RED, GREEN, BLUE }
