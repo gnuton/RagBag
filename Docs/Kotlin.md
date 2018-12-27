@@ -336,6 +336,31 @@ val x = DClass("A", 4)
 val y = DClass("A", 4)
 x == y // true. It would have been false if it was not a data class
 x.toString() // serialize it to (a=A, b=4)
+
+// copying data classes
+data class Contact(val name: String, val age: Int)
+val a = Contact("Tony", 29)
+val b = a.copy(age = 30)
+println("$a VS $b")
+
+// Equals (==)VS reference equality (===)
+    val c = setOf(1,2,3)
+    val d = setOf(1,2,3)
+    println(c==d) // true
+    println(c===d) // false because the rerefence is different
+
+    // equality with data classes
+    data class myClass1(val x:Int)
+    val e1 = myClass1(1)
+    val f1 = myClass1( 1)
+    println(e1==f1) // true
+    println(e1===f1) // false
+    //
+    class myClass(val x:Int)
+    val e = myClass(1)
+    val f = myClass( 1)
+    println(e==f) // false
+    println(e===f) // false
 ```
  
 class properties - kotlin exposes getter and setters (accessors) and this make the field (var x) a property.
@@ -429,10 +454,30 @@ Constructors
         public constructor(x: Int) : this("third constructor") {}
     }
 ```
+Inheritance
+```kotlin
+    // interface Base // cannot be local
+    open class BaseImpl: Base // open is needed to make Child inherit BaseImpl
+    class Child: BaseImpl()
+
+    // Calling constructor of the parent class
+    open class Parent(val name: String)
+    class child(name: String) : Parent(name)
+    // this is the same as
+    open class Parent2(val name:String)
+    class Child2 : Parent {
+        constructor (name: String) : super(name)
+    }
+```
 
 ### Enumerations
 ```kotlin
 enum class RGB { RED, GREEN, BLUE }
+enum class Color(val r:Int, val g: Int, val b: Int) {
+    BLUE(0,0, 255),
+    ORANGE(255, 166, 0); // ; split members and methods
+    fun rgb() = (r * 256 + g) * 256 + b
+}
 ```
 
 ## Control structures
