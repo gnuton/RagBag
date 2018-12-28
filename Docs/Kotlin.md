@@ -294,75 +294,6 @@ fun main(args: Array<String>) {
 }
 ```
 
-Inner classes
-```kotlin
-class MyClass {
-    fun foo() = 4
-    inner class InnerClass{
-        fun bar() = foo()
-    }
-    val inn = InnerClass()
-    fun bar() = inn.bar()
-}
-
-fun main(args: Array<String>) {
-    val dc = MyClass()
-    println(dc.bar())
-}
-```
-
-Abstract classes
-```kotlin
-open class MyClass {
-    fun x() = 3
-}
-abstract class AbsClass : MyClass()
-
-fun main(args: Array<String>) {
-    val dc = MyClass()
-    //val abs = AbsClass()  You cannot create instance of an abstract class
-}
-```
-
-Companion Objects
-```kotlin
-```
-
-Data classes - have at least one constructor, hold data, are serializable and comparable by default.
-[More info](https://kotlinlang.org/docs/reference/data-classes.html)
-```kotlin
-data class User(val name: String, val age: Int)
-val x = DClass("A", 4)
-val y = DClass("A", 4)
-x == y // true. It would have been false if it was not a data class
-x.toString() // serialize it to (a=A, b=4)
-
-// copying data classes
-data class Contact(val name: String, val age: Int)
-val a = Contact("Tony", 29)
-val b = a.copy(age = 30)
-println("$a VS $b")
-
-// Equals (==)VS reference equality (===)
-    val c = setOf(1,2,3)
-    val d = setOf(1,2,3)
-    println(c==d) // true
-    println(c===d) // false because the rerefence is different
-
-    // equality with data classes
-    data class myClass1(val x:Int)
-    val e1 = myClass1(1)
-    val f1 = myClass1( 1)
-    println(e1==f1) // true
-    println(e1===f1) // false
-    //
-    class myClass(val x:Int)
-    val e = myClass(1)
-    val f = myClass( 1)
-    println(e==f) // false
-    println(e===f) // false
-```
- 
 class properties - kotlin exposes getter and setters (accessors) and this make the field (var x) a property.
 ```kotlin
 
@@ -469,8 +400,63 @@ Inheritance
         constructor (name: String) : super(name)
     }
 ```
+### Classes modifiers
+* Abstract
+* Data Classes
+* Enum
+* Sealed classes
+* Inner & nested classes
+* Class Delegation
 
-### Enumerations
+#### Abstract classes
+```kotlin
+open class MyClass {
+    fun x() = 3
+}
+abstract class AbsClass : MyClass()
+
+fun main(args: Array<String>) {
+    val dc = MyClass()
+    //val abs = AbsClass()  You cannot create instance of an abstract class
+}
+```
+
+#### Data classes
+have at least one constructor, hold data, are serializable and comparable by default.
+[More info](https://kotlinlang.org/docs/reference/data-classes.html)
+```kotlin
+data class User(val name: String, val age: Int)
+val x = DClass("A", 4)
+val y = DClass("A", 4)
+x == y // true. It would have been false if it was not a data class
+x.toString() // serialize it to (a=A, b=4)
+
+// copying data classes
+data class Contact(val name: String, val age: Int)
+val a = Contact("Tony", 29)
+val b = a.copy(age = 30)
+println("$a VS $b")
+
+// Equals (==)VS reference equality (===)
+    val c = setOf(1,2,3)
+    val d = setOf(1,2,3)
+    println(c==d) // true
+    println(c===d) // false because the rerefence is different
+
+    // equality with data classes
+    data class myClass1(val x:Int)
+    val e1 = myClass1(1)
+    val f1 = myClass1( 1)
+    println(e1==f1) // true
+    println(e1===f1) // false
+    //
+    class myClass(val x:Int)
+    val e = myClass(1)
+    val f = myClass( 1)
+    println(e==f) // false
+    println(e===f) // false
+```
+#### Enumerations
 ```kotlin
 enum class RGB { RED, GREEN, BLUE }
 enum class Color(val r:Int, val g: Int, val b: Int) {
@@ -478,6 +464,83 @@ enum class Color(val r:Int, val g: Int, val b: Int) {
     ORANGE(255, 166, 0); // ; split members and methods
     fun rgb() = (r * 256 + g) * 256 + b
 }
+```
+#### Sealed classes
+Restrict  the class hierarchy.
+Example: In the code below the when doesn't compile if we do not define the else.
+This bacause 'e' the compiler doesn't know what to do in case the instance derived from Expr
+is not a Num or Sum.
+
+```kotlin
+import java.lang.IllegalArgumentException
+
+interface Expr
+fun main(args: Array<String>) {
+    class Num(val value:Int):Expr
+    class Sum(val left:Expr, val right: Expr) : Expr
+
+    fun eval(e:Expr) : Int = when (e) {
+        is Num -> e.value
+        is Sum -> eval(e.left) + eval(e.right)
+        else -> throw IllegalArgumentException("Uknown expression")
+    }
+
+}
+
+// We can rewrite the above as follow using SEALED CLASS
+
+sealed class Expr
+class Num(val value:Int): Expr()
+class Sum(val left:Expr, val right: Expr) : Expr()
+fun main(args: Array<String>) {
+    
+    fun eval(e:Expr) : Int = when (e) {
+        is Num -> e.value
+        is Sum -> eval(e.left) + eval(e.right)
+    }
+}
+
+```
+
+#### Inner & Nestedclasses
+keeps the reference the outter class. This the main difference between inner and nested classes.
+So in the example above bar calls this@MyClass.. we MUST define InnerClass as innner to get that reference.
+
+```kotlin
+// Inner class
+class MyClass {
+    fun foo() = 4
+    inner class InnerClass{
+        fun bar() = foo() // same as this@MyClass.foo()
+    }
+    val inn = InnerClass()
+    fun bar() = inn.bar()
+}
+
+fun main(args: Array<String>) {
+    val dc = MyClass()
+    println(dc.bar())
+}
+```
+
+#### class delegation
+```kotlin
+// ADD EXAMPLE HERE
+```
+## Objects
+Objects are SINGLETON. under the hood it create a java class with provate constructor.
+```kotlin
+object MyObject {
+    fun x() = 4
+}
+```
+### Objects Expressions
+
+```kotlin
+```
+
+### Companion object
+```kotlin
 ```
 
 ## Control structures
