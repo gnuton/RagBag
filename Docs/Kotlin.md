@@ -528,19 +528,59 @@ fun main(args: Array<String>) {
 // ADD EXAMPLE HERE
 ```
 ## Objects
-Objects are SINGLETON. under the hood it create a java class with provate constructor.
+Objects are SINGLETON. Singleton is a class with a single instanec.
+Under the hood it creates a java class with private constructor.
 ```kotlin
 object MyObject {
     fun x() = 4
 }
 ```
 ### Objects Expressions
-
+Replace Java anonymous classes
+OE are instantiated at each call
+EXAMPLE HERE https://kotlinlang.org/docs/reference/object-declarations.html
 ```kotlin
 ```
 
 ### Companion object
+Kotlin doesn't have static members. 
 ```kotlin
+class A {
+    //@JvmStatic fun foo2() =2 // doesn't work
+    companion object {
+        const val bar = 2
+        fun foo() = 1
+        @JvmStatic fun staticFoo() = 2
+    }
+}
+```
+Companion objects are not static members and they can implement interfaces
+```kotlin
+interface MyInterface<T> {
+    fun create() : T
+}
+
+class B {
+    companion object : MyInterface<B> {
+        override fun create(): B = B()
+    }
+}
+
+val b = B.create()
+```
+Companion objects look like static members, but they are not.
+@JVMStatic forces the function in the companion object to be really static
+```kotlin
+class C {
+    //@JvmStatic fun foo2() =2 // doesn't work it must be inside a companion object
+    companion object {
+        const val bar = 2
+        fun foo() = 1
+        @JvmStatic fun staticFoo() = 2 
+    }
+}
+
+A.staticFoo() // same as A.Companion.staticFoo()
 ```
 
 ## Control structures
