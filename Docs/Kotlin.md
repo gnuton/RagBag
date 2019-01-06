@@ -255,6 +255,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ## Classes
 Constructors
 ```kotlin
@@ -603,6 +604,21 @@ class C {
 }
 
 A.staticFoo() // same as A.Companion.staticFoo()
+```
+## Operators
+Kotlin defines a fixed amount of opearators like +, -, /, *, / and so on.
+Operators can be overloaded but we cannot add new ones.
+```kotlin
+// operator overloading
+// It's not possible to create new operators!!
+class A(val i: Float)
+operator fun A.plus(other: A): A {return A(i + other.i + 5)}
+val x = A(1F) + A(2F)
+print(x.i)
+
+// you can use infix functions which look like operators but looks a little bit ugly! :P
+infix fun A.`^`(exponent: Int) : Float = i.pow(exponent)
+val y = A(2F) `^` 2
 ```
 
 ## Control structures
