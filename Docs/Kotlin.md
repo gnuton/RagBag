@@ -621,6 +621,13 @@ infix fun A.`^`(exponent: Int) : Float = i.pow(exponent)
 val y = A(2F) `^` 2
 ```
 
+## Conventions
+The following operators work via conventions and compiled to these funcionts
+ * > < >=  <=   use .compareTo
+ * []           use .get() and .set() in order to get and set alements in array
+ * ..           use .rangeTo
+ * in           use .iterator in for( c in "Xxx')
+and more
 ## Control structures
 ### WHEN
 ```
