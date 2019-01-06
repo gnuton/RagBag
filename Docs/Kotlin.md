@@ -191,6 +191,28 @@ val t: Int? = try {
 }
 
 ```
+## Constamts
+### Const
+Inlines the value. Only top-level or in-object primitivea and strings can take const.
+```kotlin
+const val myPrimitive = 2
+
+object MyObj {
+  const val myPrimitive =3
+}
+
+```
+### JVMStatic and JVMField
+These are required for the operability with Java.
+```kotlin
+object MyObj{
+    @JvmStatic
+    val a = 1 // JVMStatic makes the getter accessor static in Java (MyObj.INSTANCE.getA)
+
+    @JvmField
+    val b = 1 // JVMField makes the accessors static MyObj.b
+}
+```
 
 ## Functions
 ```kotlin
