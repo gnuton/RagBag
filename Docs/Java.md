@@ -1,5 +1,8 @@
 # Java
-## Java wrapper classes
+## 1 Core
+## 2 Concurrency
+## 3 Collections
+### Java wrapper classes
 Needed by Generics. Incapsulate primitive types. 
 List of primitive types and its wrapper: 
 ```java
@@ -30,9 +33,9 @@ Integer i = list.iterator().next(); // This doesn't work. it needs to be casted
 Generic type argimens must be reference types (so no primitive ones).
 
 TBC
-
-## Stream API
+## 4 Stream API
 ```java
 ```
-
-## Unit testing
+## 5 Java IO
+## 6 Unit testing
+## 7 Advanced
