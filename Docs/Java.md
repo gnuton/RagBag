@@ -8,6 +8,17 @@ List of primitive types and its wrapper:
 boolean, byte, short, char, int, long, float, double 
 Boolean, Byte, Short, Character, Integer, Long, Float, Double
 ```
+To and from primitive values
+```java
+Integer x = 1; // bpxing 1 is wrapped
+x.intValue(); // returns the primitive value
+```
+
+### autoboxing
+```java
+List<Integer> arrayList = new ArrayList<>();
+arrayList.add(1); // autoboxing converts 1 to Integer(1)
+```
 
 ## Generics
 Introduced in Java 5
