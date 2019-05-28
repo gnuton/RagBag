@@ -1,6 +1,4 @@
 # Java
-## The good old Java
-
 ## Java wrapper classes
 Needed by Generics. Incapsulate primitive types. 
 List of primitive types and its wrapper: 
@@ -33,8 +31,7 @@ Generic type argimens must be reference types (so no primitive ones).
 
 TBC
 
-## Java 8
-### Stream API
+## Stream API
 ```java
 ```
 
