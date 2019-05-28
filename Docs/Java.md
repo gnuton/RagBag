@@ -34,6 +34,10 @@ Generic type argimens must be reference types (so no primitive ones).
 
 TBC
 ## 4 Stream API
+* do not modify its source
+* all operations are lazily applied to the elements of the stream
+* parallelStream allows to apply a function in parallel to the stream elements
+
 ```java
 ```
 ## 5 Java IO
