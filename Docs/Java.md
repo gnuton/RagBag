@@ -120,7 +120,10 @@ for (int i = 0; i < N; i++) {
 // break and continue
 loops can be stopped or steps can  be skipped 
 ```
-### Arrays
+### Data structures
+
+#### Array
+* fixed size
 ```java
         String[] stringArray = {"ciao"};
         Integer[][] multidimensinoalArray = {{1,2},{3,4}, {5}, {}};
@@ -133,13 +136,50 @@ loops can be stopped or steps can  be skipped
             // do stuff with s
         }
 ```
+#### Collections
+Most of  data structures in java belongs since Java 2.0 to the collection framework.
+Please have look at the collection chapter for more info.
+
 ### Exceptions
 ```java
+try {
+  //  Block of code to try
+}
+catch(Exception e) {
+  //  Block of code to handle errors
+}
 ```
 ### 2 Classes
 
 ## 3 Concurrency
 ## 4 Collections
+Collection framework is made of:
+* Interfaces - Abstract data types
+* Classes - Implementation of the interfaces
+* Algorithms - methods performin useful computations
+
+### 4.1 Interfaces
+1. The root - public interface Collection<E> extends Iterable<E> has method(add,remove,addAll,removeAll,clan...)
+2. List Interface 
+3. Set Interface
+  * Sorted Set - extends Set
+4. Map
+  * SortedMap
+5. Enumeration (obsolete)
+
+### 4.2 Classes
+It's a set of classes which full or (Abstract) partially implement the collection interfaces.
+AbstractCollection, AbstractSet, AbstractList, AbstractSequentialList and AbstractMap provide skeletal implemetnation to the core collection interfaces.
+The fully implemented classes are:
+1. LinkedList/ArrayList
+2. HashSet/TreeSet
+3. HashMap/TreeMap/WeakHashMap/LinkedHashMap/IdentityHashMap
+```java
+```
+### 4.3 Algorithms 
+```java
+```
+
 ### Java wrapper classes
 Needed by Generics. Incapsulate primitive types. 
 List of primitive types and its wrapper: 
