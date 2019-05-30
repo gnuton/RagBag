@@ -17,7 +17,11 @@ final int myConstantNum = 5;
 ```
 ### Data Types
 Java types can be <b>primitive</b> and <b>non-primitive</b>
-
+#### Primitive types
+* cannot be defined by the developer
+* never null
+* primitive types name starts with lower case
+* size dependes on the data
 
 |type|size||
 |---|---|---|
@@ -36,11 +40,31 @@ char myLetter = 'D';
 boolean myBool = true;
 String myText = "Hello";
 ```
+#### Non-primitive types
+* can be defined by the developer
+* can be null
+* non-primitive types never start with lower case
+* all have same size
+Eg String, Arrays, Classes ...
+
 ### Type Casting
+* Widening casting - automatically performed
+* Narrowing casting - manually performed
+
 ```java
+// widening -    byte -> short -> char -> int -> long -> float -> double
+// narrowing -   double -> float -> long -> int -> char -> short -> byte
+
+int myInt = 9;
+double myDouble = myInt; // Automatic casting: int to double
+double myDouble = 9.78;
+int myInt = (int) myDouble; // Manual casting: double to int
 ```
 ### Operators
+perform operations on variables and values.
+
 ```java
+
 ```
 ### Strings
 ```java
