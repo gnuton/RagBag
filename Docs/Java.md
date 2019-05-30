@@ -153,6 +153,7 @@ catch(Exception e) {
 
 ## 3 Concurrency
 ## 4 Collections
+Introduced in Java 2.
 Collection framework is made of:
 * Interfaces - Abstract data types
 * Classes - Implementation of the interfaces
@@ -175,6 +176,32 @@ The fully implemented classes are:
 2. HashSet/TreeSet
 3. HashMap/TreeMap/WeakHashMap/LinkedHashMap/IdentityHashMap
 ```java
+        // LinkedList
+        Integer[] array = {1,2,3};
+        List linkedList = Arrays.asList(array); // asList returns an ArrayList as List
+        List linkedList2 = new LinkedList<Integer>(linkedList); // can take another collection in the constructor.
+        linkedList2.add(1); // append. Same as addLast
+        linkedList2.add(1,0); //prepend - same as addFirst
+        List linkedList2ShallowCopy = (List) ((LinkedList) linkedList2).clone();
+        linkedList2.get(0); // get element 0
+        linkedList2.indexOf(1); // search element 1 in the list and returns the position index
+        linkedList.size();
+        linkedList2.remove(1); // remove the element at position 1
+        linkedList2.remove((Integer)1); // search and remove element 1
+        linkedList.toArray();
+        linkedList2.clear();
+        linkedList2.add(1);
+        linkedList2.add(31);
+        linkedList2.removeIf((x)-> (int)x > 30); // just like filter in streeams but not lazy
+
+        // ArrayList
+        List arrayList = new ArrayList(8); // set to 8 the initial capacity
+        arrayList.add(2);
+        arrayList.add(0,1);
+        ((ArrayList) arrayList).trimToSize();
+        // the rest of methods are pretty much the same as LinkedList above
+        System.out.printf("the array list %s", arrayList);
+        
 ```
 ### 4.3 Algorithms 
 ```java
