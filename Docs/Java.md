@@ -72,13 +72,18 @@ perform operations on variables and values.
 ```
 ### Strings
 ```java
+        String a = "ciao";
+        a.length(); // size
+        a.toCharArray();
+        a.toLowerCase();
+        a.indexOf('c'); // returns the position of the char 'c' or -1
+        a.indexOf("c"); // returns the position of the string "c" or -1
+        String b = "a" + "b"; //concatenation
+        String c = "a" + 20; //"a20"
 ```
 ### Math
-```java
-```
-### Booleans
-```java
-```
+Basic math functions are in the Math package: https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
+
 ### Conditionals
 ```java
 ```
