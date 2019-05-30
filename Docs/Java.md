@@ -193,6 +193,9 @@ The fully implemented classes are:
         linkedList2.add(1);
         linkedList2.add(31);
         linkedList2.removeIf((x)-> (int)x > 30); // just like filter in streeams but not lazy
+        linkedList2.contains(1);
+        Stream s = linkedList2.stream(); // return a stream
+        Stream ps = linkedList2.parallelStream(); // returns a parallel stream
 
         // ArrayList
         List arrayList = new ArrayList(8); // set to 8 the initial capacity
@@ -202,6 +205,16 @@ The fully implemented classes are:
         // the rest of methods are pretty much the same as LinkedList above
         System.out.printf("the array list %s", arrayList);
         
+        // HashSet/TreeSet
+        Set hashSet= new HashSet<Integer>(); // unsorted. items are hashed and stored. The hash is used as index.
+        Set treeSet = new TreeSet<String>(); // sorted. items stored in a tree.
+
+        // HashMap/TreeMap/WeakHashMap/LinkedHashMap/IdentityHashMap
+        Map hashMap = new HashMap();
+        hashMap.put("key1", "value1");
+        hashMap.containsKey("TheKey");
+        hashMap.containsValue("TheValue");
+        Set set = hashMap.entrySet(); // return mapping contained
 ```
 ### 4.3 Algorithms 
 ```java
