@@ -42,4 +42,12 @@ TBC
 ```
 ## 5 Java IO
 ## 6 Unit testing
+```java
+public class MyClassTest {
+  @Test
+  public void publicTest() {
+    asserEquals(expectedValue, MyClass.theMethodToTest())
+  }
+}
+```
 ## 7 Advanced
