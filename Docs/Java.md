@@ -62,7 +62,11 @@ int myInt = (int) myDouble; // Manual casting: double to int
 ```
 ### Operators
 perform operations on variables and values.
-
+* Arithmetic operators (+ - * / % ++ --)
+* Assignment operators (= += -= *= /= %= |= ^=  >>= <<=)
+* Comparison operators (== != < > >= <=)
+* Logical operators (&& || !)
+* Bitwise operators
 ```java
 
 ```
