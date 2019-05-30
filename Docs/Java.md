@@ -86,9 +86,52 @@ Basic math functions are in the Math package: https://docs.oracle.com/javase/8/d
 
 ### Conditionals
 ```java
+// if else
+if (condition1) {
+  // block of code to be executed if condition1 is true
+} else if (condition2) {
+  // block of code to be executed if the condition1 is false and condition2 is true
+} else {
+  // block of code to be executed if the condition1 is false and condition2 is false
+}
+
+// switch
+switch(expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+
+// while
+while (condition) {
+  // code block to be executed
+}
+
+// for 
+for (int i = 0; i < N; i++) {
+  // code block to be executed
+}
+
+// break and continue
+loops can be stopped or steps can  be skipped 
 ```
 ### Arrays
 ```java
+        String[] stringArray = {"ciao"};
+        Integer[][] multidimensinoalArray = {{1,2},{3,4}, {5}, {}};
+        stringArray[0] = "test";
+        int stringArrayLength = stringArray.length;
+        for (int i=0; i < stringArrayLength; i++) {
+            // do stuff with stringArray[i]
+        }
+        for (String s : stringArray) {
+            // do stuff with s
+        }
 ```
 ### Exceptions
 ```java
