@@ -149,7 +149,7 @@ catch(Exception e) {
   //  Block of code to handle errors
 }
 ```
-### 2 Classes
+## 2 Classes
 
 ## 3 Concurrency
 ## 4 Collections
