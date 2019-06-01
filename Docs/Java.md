@@ -135,6 +135,8 @@ loops can be stopped or steps can  be skipped
         for (String s : stringArray) {
             // do stuff with s
         }
+        // to print the values in an array we use Arrays.string
+        System.out.println(Arrays.toString(my_array))
 ```
 #### Collections
 Most of  data structures in java belongs since Java 2.0 to the collection framework.
