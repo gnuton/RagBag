@@ -216,9 +216,13 @@ The fully implemented classes are:
         hashMap.containsValue("TheValue");
         Set set = hashMap.entrySet(); // return mapping contained
 ```
-### 4.3 Algorithms 
-```java
-```
+#### Comparator
+Comparator is the toCompare method which you should implement when you extend a abstract subclass.
+
+#### Iterator
+
+### 4.3 Algorithms
+It's a set of algorithms usefull to extend the abstract classes.
 
 ### Java wrapper classes
 Needed by Generics. Incapsulate primitive types. 
@@ -252,7 +256,7 @@ Generic type argimens must be reference types (so no primitive ones).
 
 TBC
 ## 5 Stream API
-* do not modify its source
+* do not modify the input
 * all operations are lazily applied to the elements of the stream
 * parallelStream allows to apply a function in parallel to the stream elements
 
