@@ -83,6 +83,25 @@ String c = "a" + 20; //"a20"
 
 String.format("%d %f %s %c",12, 1.2, "anotherString",'c');
 "ciao bello".replace(" ",""); // removes spaces
+
+// Transform String to List of chars using streams.
+List<Character> chars = s.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+
+// substring
+"123456".substring(1)   // 23456
+"123456".substring(1,3) // 23
+
+// regexps 
+// match
+Pattern p = Pattern.compile("\\w+");
+boolean ris = p.matcher("ciao").matches(); // True
+
+// find
+Pattern p2 = Pattern.compile("[a-z]+");
+Matcher matcher = p2.matcher("123ciao456bello");
+while (matcher.find()) {
+  System.out.println(String.format("substring:%s found. Start: %d Ends: %d", matcher.group(), matcher.start(), matcher.end()));
+}
 ```
 ### Math
 Basic math functions are in the Math package: https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
