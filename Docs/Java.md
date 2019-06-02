@@ -102,6 +102,9 @@ Matcher matcher = p2.matcher("123ciao456bello");
 while (matcher.find()) {
   System.out.println(String.format("substring:%s found. Start: %d Ends: %d", matcher.group(), matcher.start(), matcher.end()));
 }
+
+// the powerfull replace
+"ciao bello!".replaceAll("(\\w)(\\w*)", "$2$1ay"); // "iaocay ellobay!"
 ```
 ### Math
 Basic math functions are in the Math package: https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
