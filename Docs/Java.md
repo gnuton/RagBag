@@ -281,6 +281,14 @@ TBC
         Set<Character> toSetCollect = Arrays.asList('a', 'b', 'c', 'b').stream().collect(Collectors.toSet()); // [a, b, c]
         List<Character> toListCollector = Arrays.asList('a', 'b').stream().collect(Collectors.toCollection(LinkedList::new)); // [ab,b]
         Map<Integer, List<String>> integerListMap = Arrays.asList("1", "22", "333", "033").stream().collect(Collectors.groupingBy(String::length)); // {1=[1], 2=[22], 3=[333, 033]}
+        
+        // This exampple shows how to handle strings in streams
+        justAString
+                .chars() // generate a IntStream
+                .mapToObj(x -> (char) x) // Convert to Stream<Character>
+                .map(c-> m.get(c) > 1 ? ')' : '(' ) // Trasformation
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append) // Join the chars
+                .toString();
   
 ```
 ## 6 Java IO
