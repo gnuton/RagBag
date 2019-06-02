@@ -272,6 +272,7 @@ TBC
         // Count, filter, map, reduce
         Arrays.asList(1,2,3).stream().count(); // 3
         Object[] y = Arrays.asList(1, 2, 3).stream().filter((x) -> x <= 2).toArray(); // [1,2]
+        Object[] y = Arrays.asList(1, 2, 3).stream().filter((x) -> x <= 2).findFirst().orElse(-1); // 1  Returns the first element matching or -1
         Object[] z = Arrays.asList(1,2,3).stream().map(x-> x+1).toArray(); // [2,3,4]
         int sum = Arrays.asList(1,2,3).stream().reduce(0,(acc, val) -> acc + val); // 6. Reduce an array of T. Outputs a T
 
