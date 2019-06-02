@@ -266,34 +266,38 @@ TBC
 * parallelStream allows to apply a function in parallel to the stream elements
 
 ```java
-  // merging streams
-        Stream<Integer> stream1 = Stream.of(1, 3, 5);
-        Stream<Integer> stream2 = Stream.of(2, 4, 6);
+// merging streams
+Stream<Integer> stream1 = Stream.of(1, 3, 5);
+Stream<Integer> stream2 = Stream.of(2, 4, 6);
 
-        Stream<Integer> resultingStream = Stream.concat(stream1, stream2);
+Stream<Integer> resultingStream = Stream.concat(stream1, stream2);
 
-        // Count, filter, map, reduce
-        Arrays.asList(1,2,3).stream().count(); // 3
-        Object[] y = Arrays.asList(1, 2, 3).stream().filter((x) -> x <= 2).toArray(); // [1,2]
-        Object[] y = Arrays.asList(1, 2, 3).stream().filter((x) -> x <= 2).findFirst().orElse(-1); // 1  Returns the first element matching or -1
-        Object[] z = Arrays.asList(1,2,3).stream().map(x-> x+1).toArray(); // [2,3,4]
-        int sum = Arrays.asList(1,2,3).stream().reduce(0,(acc, val) -> acc + val); // 6. Reduce an array of T. Outputs a T
+// Count, filter, map, reduce
+Arrays.asList(1,2,3).stream().count(); // 3
+Object[] y = Arrays.asList(1, 2, 3).stream().filter((x) -> x <= 2).toArray(); // [1,2]
+Object[] y = Arrays.asList(1, 2, 3).stream().filter((x) -> x <= 2).findFirst().orElse(-1); // 1  Returns the first element matching or -1
+Object[] z = Arrays.asList(1,2,3).stream().map(x-> x+1).toArray(); // [2,3,4]
+int sum = Arrays.asList(1,2,3).stream().reduce(0,(acc, val) -> acc + val); // 6. Reduce an array of T. Outputs a T
 
-        // Collectors
-        // Collectors.toList, Collectors.ToSet, collectors.toCollection
-        List<Character> toListCollect = Arrays.asList('a', 'b', 'c').stream().collect(Collectors.toList()); // converts stream to list [1,2,3]
-        Set<Character> toSetCollect = Arrays.asList('a', 'b', 'c', 'b').stream().collect(Collectors.toSet()); // [a, b, c]
-        List<Character> toListCollector = Arrays.asList('a', 'b').stream().collect(Collectors.toCollection(LinkedList::new)); // [ab,b]
-        Map<Integer, List<String>> integerListMap = Arrays.asList("1", "22", "333", "033").stream().collect(Collectors.groupingBy(String::length)); // {1=[1], 2=[22], 3=[333, 033]}
+// Collectors
+// Collectors.toList, Collectors.ToSet, collectors.toCollection
+List<Character> toListCollect = Arrays.asList('a', 'b', 'c').stream().collect(Collectors.toList()); // converts stream to list [1,2,3]
+Set<Character> toSetCollect = Arrays.asList('a', 'b', 'c', 'b').stream().collect(Collectors.toSet()); // [a, b, c]
+List<Character> toListCollector = Arrays.asList('a', 'b').stream().collect(Collectors.toCollection(LinkedList::new)); // [ab,b]
+Map<Integer, List<String>> integerListMap = Arrays.asList("1", "22", "333", "033").stream().collect(Collectors.groupingBy(String::length)); // {1=[1], 2=[22], 3=[333, 033]}
         
-        // This exampple shows how to handle strings in streams
-        justAString
-                .chars() // generate a IntStream
-                .mapToObj(x -> (char) x) // Convert to Stream<Character>
-                .map(c-> m.get(c) > 1 ? ')' : '(' ) // Trasformation
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append) // Join the chars
-                .toString();
-  
+// This exampple shows how to handle strings in streams
+justAString
+    .chars() // generate a IntStream
+    .mapToObj(x -> (char) x) // Convert to Stream<Character>
+    .map(c-> m.get(c) > 1 ? ')' : '(' ) // Trasformation
+    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append) // Join the chars
+    .toString();
+    
+// statistics on numbers
+String numbers = "8 3 -5 42 -1 0 0 -9 4 7 4 -4";
+IntSummaryStatistics stats = Arrays.stream(numbers.split(" ")).mapToInt(Integer::valueOf).summaryStatistics();
+System.out.println(String.format("max=%d min=%d", stats.getMax(), stats.getMin()));
 ```
 ## 6 Java IO
 ## 7 Unit testing
