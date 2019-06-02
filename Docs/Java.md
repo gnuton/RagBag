@@ -286,7 +286,8 @@ Set<Character> toSetCollect = Arrays.asList('a', 'b', 'c', 'b').stream().collect
 List<Character> toListCollector = Arrays.asList('a', 'b').stream().collect(Collectors.toCollection(LinkedList::new)); // [ab,b]
 Map<Integer, List<String>> integerListMap = Arrays.asList("1", "22", "333", "033").stream().collect(Collectors.groupingBy(String::length)); // {1=[1], 2=[22], 3=[333, 033]}
         
-// This exampple shows how to handle strings in streams
+// String in streams
+// Example 1 - join chars
 justAString
     .chars() // generate a IntStream
     .mapToObj(x -> (char) x) // Convert to Stream<Character>
@@ -294,6 +295,11 @@ justAString
     .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append) // Join the chars
     .toString();
     
+// Example 2 - joining strings
+Stream<String> words = Arrays.stream(str.split(" "));
+Function<String, String> transformString = (String x) -> x;
+String s = words.map(transformString).collect(Collectors.joining(" "));
+
 // statistics on numbers
 String numbers = "8 3 -5 42 -1 0 0 -9 4 7 4 -4";
 IntSummaryStatistics stats = Arrays.stream(numbers.split(" ")).mapToInt(Integer::valueOf).summaryStatistics();
