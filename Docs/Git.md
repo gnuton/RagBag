@@ -67,4 +67,15 @@ git commit
 ```
 # Tags
 ```
+// create tag
+git tag
+
+// push tags to remote
+git push --tag
+
+//delete local tag
+git delete LOCAL_TAG_NAME
+
+//delete remote tag
+git push origin -- delete TAG_TO_DELETE_REMOTELY
 ```
