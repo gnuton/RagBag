@@ -1,6 +1,26 @@
 # Git
-## Commits
+## Operations
+
+
+## Remotes
 ```bash
+// Initialize git repo
+git init
+
+// clone repository
+git clone git://to-your-remote-repo.git
+
+// Add new remote repo
+git remote add REMOTE_NAME git://to-your-remote.git
+```
+## Commits and files
+```bash
+// track file with git
+git add FILENAME
+
+// delete and untrack file
+git rm FILENAME
+
 // status of the files
 git status
 
@@ -13,8 +33,18 @@ git log
 // revert a single commit
 git revert COMMIT_HASH
 
+// reset history
+// options:
+// --hard - all changes not in commits get lost
+// --soft - all changes not in commits are staged
+
+git reset --hard COMMIT_HASH
 // pick a commit from a different branch
 git cherry-pick COMMIT_HASH_IN_ANOTHER_BRANCH
+
+```
+#### Stash
+```bash
 ```
 ### Cleaning 
 ```bash
