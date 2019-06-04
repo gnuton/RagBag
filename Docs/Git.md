@@ -1,6 +1,6 @@
 # Git
-## Operations
-
+## Opeartions in a nutshell
+![](git-lifecicle-and-ops.png)
 
 ## Remotes
 ```bash
