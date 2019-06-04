@@ -177,7 +177,125 @@ catch(Exception e) {
 }
 ```
 ## 2 Classes
+```java
+// Package
+// to create a package create a folder, and inside the folder create classes with
+// package TheNameOfTheFolder
+// as first line
 
+import testPackage.*; // Import all Classes in the package
+import testPackage.TestClass; // import only TestClass from the package testPackage
+
+abstract class MyAbstractClass {
+    final int z = 10;
+}
+public class MyClass extends  MyAbstractClass { // Inheritance -
+    int x = 5; // Attribute or Field -  variable inside the class
+    int y;
+
+    // Modifier - define access policy for fields and methods
+    // 1 Access Modifers
+    // - public (default) - accessible by all classes
+    // - protected - accessible by classes in the same package and subclasses
+    // - privete - accessible only inside the class itself
+    // 2 Non-Access Modifiers
+    // For Classes:
+    // - final - cannot be inherited by other classes
+    // - abstract - must be inherited to crate other classes
+    // For attributes and methods
+    // - final - attributes cannot be modified and methods cannot be overridden
+    // - static - attributes and methods accessible without class instance
+    // - abstract - only for methods in abstract classes
+    // - transient - attributs and methods are skippped when serializing objects
+    // - synchronized - methods that can be accessed only by one method at the time
+    // - volatile - attribute always read from the "main memory" and never from the thread cache
+    public static void main(String[] args) {
+        MyClass myClass = new MyClass();
+        // . is used to access methods and fields
+        myClass.x = 10;
+        final String res = myClass.myMethod();
+        final String res2 = MyClass.MyMethod2(); // even static methods are called by .
+    }
+
+    public MyClass(){ // Constructor - a special method which is called when new MyClass is called
+        y = 10;
+    }
+
+    public MyClass(int y){ // Constructor cant take params. A class can have multiple cosntructors
+        this.y = y;
+    }
+
+    private String myMethod(){ // Method - function inside the class
+        return "I'm justa method";
+    }
+    public static String MyMethod2() {
+        return "oh boy I'm a private method";
+    }
+
+    // Encapsulation - Hides sensitive data from users
+    private int myAttributeToEncapsulate;
+
+    public int getMyAttributeToEncapsulate() {
+        return myAttributeToEncapsulate;
+    }
+
+    public void setMyAttributeToEncapsulate(int myAttributeToEncapsulate) {
+        this.myAttributeToEncapsulate = myAttributeToEncapsulate;
+    }
+}
+
+// Polymorphism - achieved when two or more classes use extends the same interface or base class
+//                and use the same method to perform different tasks
+//              - Classes cannot extend multiple abstract classes
+abstract class base {
+    abstract void myMethod();
+    final void methodWhichCannotBeExtended() {}
+}
+abstract class base2 { }
+
+class derived1 extends base{
+    @Override
+    void myMethod(){} { }
+    // @Override  <-- we cannot use override here bucause it doesn't override anything
+    void xxx(){}
+}
+
+class derived2 extends  base {
+    @Override
+    void myMethod() { }
+}
+
+// Interface - Along with Abstract classes it's another way to achieve abstraction in java
+//           - class can implements multiple interfaces
+interface MyInterface1 {
+    int x = 0; //Fields are by default static, public and final
+    // no costructor allowed
+    void myMethod(); // Methods are by default public and abstract
+    void myOtherMethod();
+}
+
+interface MyInterface2 {
+    int y = 4;
+}
+
+class MyInterfaceImplementation implements MyInterface1, MyInterface2 {
+
+    @Override
+    public void myMethod() { }
+
+    @Override
+    public void myOtherMethod() { }
+}
+
+// Enumerations
+enum MyEnum {
+    FIRST,
+    SECOND
+}
+
+// Usage
+// MyEnum myEnum = MyEnum.FIRST;
+```
 ## 3 Concurrency
 ## 4 Collections
 Introduced in Java 2.
