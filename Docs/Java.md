@@ -424,6 +424,7 @@ int sum = Arrays.asList(1,2,3).stream().reduce(0,(acc, val) -> acc + val); // 6.
 List<Character> toListCollect = Arrays.asList('a', 'b', 'c').stream().collect(Collectors.toList()); // converts stream to list [1,2,3]
 Set<Character> toSetCollect = Arrays.asList('a', 'b', 'c', 'b').stream().collect(Collectors.toSet()); // [a, b, c]
 List<Character> toListCollector = Arrays.asList('a', 'b').stream().collect(Collectors.toCollection(LinkedList::new)); // [ab,b]
+LinkedList<Integer> x = Arrays.stream(A).boxed().collect(Collectors.toCollection(LinkedList::new)); // int[] A  to  LinkedList<Integer>
 Map<Integer, List<String>> integerListMap = Arrays.asList("1", "22", "333", "033").stream().collect(Collectors.groupingBy(String::length)); // {1=[1], 2=[22], 3=[333, 033]}
         
 // String in streams
