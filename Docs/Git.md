@@ -45,6 +45,15 @@ git cherry-pick COMMIT_HASH_IN_ANOTHER_BRANCH
 ```
 #### Stash
 ```bash
+// stashes the working copy changes
+git stash
+
+// get the changes back from the working copy
+git stash apply
+
+// lists the changes stored in the stash
+git stash list
+
 ```
 ### Cleaning 
 ```bash
